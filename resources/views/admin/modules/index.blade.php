@@ -29,6 +29,12 @@
                             {{ trans('cruds.module.fields.module_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.module.fields.module_abbr') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.module.fields.module_code') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +50,12 @@
                             </td>
                             <td>
                                 {{ $module->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $module->module_abbr ?? '' }}
+                            </td>
+                            <td>
+                                {{ $module->module_code ?? '' }}
                             </td>
                             <td>
                                 @can('module_show')

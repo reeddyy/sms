@@ -50,6 +50,14 @@
                 <span class="help-block">{{ trans('cruds.user.fields.roles_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="note">{{ trans('cruds.user.fields.note') }}</label>
+                <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note') }}</textarea>
+                @if($errors->has('note'))
+                    <span class="text-danger">{{ $errors->first('note') }}</span>
+                @endif
+                <span class="help-block">{{ trans('cruds.user.fields.note_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

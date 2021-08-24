@@ -5,11 +5,9 @@ namespace App\Models;
 use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Module extends Model
 {
-    use SoftDeletes;
     use HasFactory;
 
     public $table = 'modules';
@@ -22,6 +20,8 @@ class Module extends Model
 
     protected $fillable = [
         'module_name',
+        'module_abbr',
+        'module_code',
         'created_at',
         'updated_at',
         'deleted_at',

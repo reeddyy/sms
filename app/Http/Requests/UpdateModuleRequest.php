@@ -22,6 +22,16 @@ class UpdateModuleRequest extends FormRequest
                 'required',
                 'unique:modules,module_name,' . request()->route('module')->id,
             ],
+            'module_abbr' => [
+                'string',
+                'required',
+                'unique:modules,module_abbr,' . request()->route('module')->id,
+            ],
+            'module_code' => [
+                'string',
+                'required',
+                'unique:modules,module_code,' . request()->route('module')->id,
+            ],
         ];
     }
 }

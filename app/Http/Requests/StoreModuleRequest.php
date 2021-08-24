@@ -22,6 +22,16 @@ class StoreModuleRequest extends FormRequest
                 'required',
                 'unique:modules',
             ],
+            'module_abbr' => [
+                'string',
+                'required',
+                'unique:modules',
+            ],
+            'module_code' => [
+                'string',
+                'required',
+                'unique:modules',
+            ],
         ];
     }
 }

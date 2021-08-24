@@ -5,12 +5,16 @@ namespace App\Models;
 use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Course extends Model
 {
-    use SoftDeletes;
     use HasFactory;
+
+    public const COURSE_LEVEL_RADIO = [
+        'Foundation' => 'Foundation',
+        'Managerial' => 'Managerial',
+        'Leadership' => 'Leadership',
+    ];
 
     public $table = 'courses';
 
@@ -22,10 +26,27 @@ class Course extends Model
 
     protected $fillable = [
         'course_name',
+        'course_abbr',
+        'course_level',
+        'course_duration',
+        'course_total_fee',
+        'course_fee',
+        'm_el_fee',
+        'examination_fee',
+        'registration_fee',
+        'no_of_instalment',
+        'instalment_1_fee',
+        'instalment_2_fee',
+        'instalment_3_fee',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function course_modules()
+    {
+        return $this->belongsToMany(Module::class);
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

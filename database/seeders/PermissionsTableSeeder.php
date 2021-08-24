@@ -76,46 +76,106 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
-                'title' => 'course_create',
-            ],
-            [
-                'id'    => 18,
-                'title' => 'course_edit',
-            ],
-            [
-                'id'    => 19,
-                'title' => 'course_show',
-            ],
-            [
-                'id'    => 20,
-                'title' => 'course_delete',
-            ],
-            [
-                'id'    => 21,
-                'title' => 'course_access',
-            ],
-            [
-                'id'    => 22,
                 'title' => 'module_create',
             ],
             [
-                'id'    => 23,
+                'id'    => 18,
                 'title' => 'module_edit',
             ],
             [
-                'id'    => 24,
+                'id'    => 19,
                 'title' => 'module_show',
             ],
             [
-                'id'    => 25,
+                'id'    => 20,
                 'title' => 'module_delete',
             ],
             [
-                'id'    => 26,
+                'id'    => 21,
                 'title' => 'module_access',
             ],
             [
+                'id'    => 22,
+                'title' => 'course_create',
+            ],
+            [
+                'id'    => 23,
+                'title' => 'course_edit',
+            ],
+            [
+                'id'    => 24,
+                'title' => 'course_show',
+            ],
+            [
+                'id'    => 25,
+                'title' => 'course_delete',
+            ],
+            [
+                'id'    => 26,
+                'title' => 'course_access',
+            ],
+            [
                 'id'    => 27,
+                'title' => 'individual_create',
+            ],
+            [
+                'id'    => 28,
+                'title' => 'individual_edit',
+            ],
+            [
+                'id'    => 29,
+                'title' => 'individual_show',
+            ],
+            [
+                'id'    => 30,
+                'title' => 'individual_delete',
+            ],
+            [
+                'id'    => 31,
+                'title' => 'individual_access',
+            ],
+            [
+                'id'    => 32,
+                'title' => 'qualification_create',
+            ],
+            [
+                'id'    => 33,
+                'title' => 'qualification_edit',
+            ],
+            [
+                'id'    => 34,
+                'title' => 'qualification_show',
+            ],
+            [
+                'id'    => 35,
+                'title' => 'qualification_delete',
+            ],
+            [
+                'id'    => 36,
+                'title' => 'qualification_access',
+            ],
+            [
+                'id'    => 37,
+                'title' => 'grade_create',
+            ],
+            [
+                'id'    => 38,
+                'title' => 'grade_edit',
+            ],
+            [
+                'id'    => 39,
+                'title' => 'grade_show',
+            ],
+            [
+                'id'    => 40,
+                'title' => 'grade_delete',
+            ],
+            [
+                'id'    => 41,
+                'title' => 'grade_access',
+            ],
+            [
+                'id'    => 42,
                 'title' => 'profile_password_edit',
             ],
         ];

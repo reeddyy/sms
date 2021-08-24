@@ -29,6 +29,45 @@
                             {{ trans('cruds.course.fields.course_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.course_abbr') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_level') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_modules') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_duration') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_total_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.m_el_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.examination_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.registration_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.no_of_instalment') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_1_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_2_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_3_fee') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -44,6 +83,47 @@
                             </td>
                             <td>
                                 {{ $course->course_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->course_abbr ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Course::COURSE_LEVEL_RADIO[$course->course_level] ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($course->course_modules as $key => $item)
+                                    <span class="badge badge-info">{{ $item->module_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $course->course_duration ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->course_total_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->course_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->m_el_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->examination_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->registration_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->no_of_instalment ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->instalment_1_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->instalment_2_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->instalment_3_fee ?? '' }}
                             </td>
                             <td>
                                 @can('course_show')
