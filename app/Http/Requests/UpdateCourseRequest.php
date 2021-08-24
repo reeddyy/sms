@@ -22,6 +22,31 @@ class UpdateCourseRequest extends FormRequest
                 'required',
                 'unique:courses,course_name,' . request()->route('course')->id,
             ],
+            'course_abbr' => [
+                'string',
+                'required',
+                'unique:courses,course_abbr,' . request()->route('course')->id,
+            ],
+            'course_level' => [
+                'required',
+            ],
+            'course_modules.*' => [
+                'integer',
+            ],
+            'course_modules' => [
+                'required',
+                'array',
+            ],
+            'course_duration' => [
+                'string',
+                'nullable',
+            ],
+            'no_of_instalment' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
         ];
     }
 }

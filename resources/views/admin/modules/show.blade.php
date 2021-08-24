@@ -31,6 +31,22 @@
                             {{ $module->module_name }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.module.fields.module_abbr') }}
+                        </th>
+                        <td>
+                            {{ $module->module_abbr }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.module.fields.module_code') }}
+                        </th>
+                        <td>
+                            {{ $module->module_code }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

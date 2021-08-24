@@ -20,6 +20,66 @@
                         </p>
                     </a>
                 </li>
+                @can('individual_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.individuals.index") }}" class="nav-link {{ request()->is("admin/individuals") || request()->is("admin/individuals/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-user-circle">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.individual.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('qualification_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.qualifications.index") }}" class="nav-link {{ request()->is("admin/qualifications") || request()->is("admin/qualifications/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-user-graduate">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.qualification.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('course_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.courses.index") }}" class="nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-book">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.course.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('module_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.modules.index") }}" class="nav-link {{ request()->is("admin/modules") || request()->is("admin/modules/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon far fa-file-alt">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.module.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
+                @can('grade_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.grades.index") }}" class="nav-link {{ request()->is("admin/grades") || request()->is("admin/grades/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon far fa-star">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.grade.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @can('user_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">
@@ -69,30 +129,6 @@
                                 </li>
                             @endcan
                         </ul>
-                    </li>
-                @endcan
-                @can('course_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.courses.index") }}" class="nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon fas fa-book">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.course.title') }}
-                            </p>
-                        </a>
-                    </li>
-                @endcan
-                @can('module_access')
-                    <li class="nav-item">
-                        <a href="{{ route("admin.modules.index") }}" class="nav-link {{ request()->is("admin/modules") || request()->is("admin/modules/*") ? "active" : "" }}">
-                            <i class="fa-fw nav-icon far fa-file-alt">
-
-                            </i>
-                            <p>
-                                {{ trans('cruds.module.title') }}
-                            </p>
-                        </a>
                     </li>
                 @endcan
                 @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))

@@ -25,13 +25,25 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('users/destroy', 'UsersController@massDestroy')->name('users.massDestroy');
     Route::resource('users', 'UsersController');
 
+    // Modules
+    Route::delete('modules/destroy', 'ModulesController@massDestroy')->name('modules.massDestroy');
+    Route::resource('modules', 'ModulesController');
+
     // Courses
     Route::delete('courses/destroy', 'CoursesController@massDestroy')->name('courses.massDestroy');
     Route::resource('courses', 'CoursesController');
 
-    // Modules
-    Route::delete('modules/destroy', 'ModulesController@massDestroy')->name('modules.massDestroy');
-    Route::resource('modules', 'ModulesController');
+    // Individuals
+    Route::delete('individuals/destroy', 'IndividualsController@massDestroy')->name('individuals.massDestroy');
+    Route::resource('individuals', 'IndividualsController');
+
+    // Qualifications
+    Route::delete('qualifications/destroy', 'QualificationsController@massDestroy')->name('qualifications.massDestroy');
+    Route::resource('qualifications', 'QualificationsController');
+
+    // Grades
+    Route::delete('grades/destroy', 'GradesController@massDestroy')->name('grades.massDestroy');
+    Route::resource('grades', 'GradesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
