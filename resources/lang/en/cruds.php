@@ -241,4 +241,20 @@ return [
             'deleted_at_helper'        => ' ',
         ],
     ],
+    'membership' => [
+        'title'          => 'Memberships',
+        'title_singular' => 'Membership',
+        'fields'         => [
+            'id'                   => 'ID',
+            'id_helper'            => ' ',
+            'membership_no'        => 'Membership No.',
+            'membership_no_helper' => ' ',
+            'created_at'           => 'Created at',
+            'created_at_helper'    => ' ',
+            'updated_at'           => 'Updated at',
+            'updated_at_helper'    => ' ',
+            'deleted_at'           => 'Deleted at',
+            'deleted_at_helper'    => ' ',
+        ],
+    ],
 ];

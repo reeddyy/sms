@@ -80,6 +80,18 @@
                         </a>
                     </li>
                 @endcan
+                @can('membership_access')
+                    <li class="nav-item">
+                        <a href="{{ route("admin.memberships.index") }}" class="nav-link {{ request()->is("admin/memberships") || request()->is("admin/memberships/*") ? "active" : "" }}">
+                            <i class="fa-fw nav-icon fas fa-globe-americas">
+
+                            </i>
+                            <p>
+                                {{ trans('cruds.membership.title') }}
+                            </p>
+                        </a>
+                    </li>
+                @endcan
                 @can('user_management_access')
                     <li class="nav-item has-treeview {{ request()->is("admin/permissions*") ? "menu-open" : "" }} {{ request()->is("admin/roles*") ? "menu-open" : "" }} {{ request()->is("admin/users*") ? "menu-open" : "" }}">
                         <a class="nav-link nav-dropdown-toggle" href="#">

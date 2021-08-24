@@ -4,15 +4,14 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermissionsTable extends Migration
+class CreateMembershipsTable extends Migration
 {
     public function up()
     {
-        Schema::create('permissions', function (Blueprint $table) {
+        Schema::create('memberships', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();
+            $table->string('membership_no')->unique();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }
