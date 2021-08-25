@@ -44,6 +44,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Grades
     Route::delete('grades/destroy', 'GradesController@massDestroy')->name('grades.massDestroy');
     Route::resource('grades', 'GradesController');
+
+    // Memberships
+    Route::delete('memberships/destroy', 'MembershipsController@massDestroy')->name('memberships.massDestroy');
+    Route::resource('memberships', 'MembershipsController');
+
+    // Training Credits
+    Route::delete('training-credits/destroy', 'TrainingCreditsController@massDestroy')->name('training-credits.massDestroy');
+    Route::resource('training-credits', 'TrainingCreditsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

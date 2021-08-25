@@ -26,6 +26,9 @@
                             {{ trans('cruds.individual.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.individual.fields.title') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.individual.fields.name') }}
                         </th>
                         <th>
@@ -50,6 +53,9 @@
                             </td>
                             <td>
                                 {{ $individual->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Individual::TITLE_SELECT[$individual->title] ?? '' }}
                             </td>
                             <td>
                                 {{ $individual->name ?? '' }}

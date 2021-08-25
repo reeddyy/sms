@@ -29,7 +29,37 @@
                             {{ trans('cruds.qualification.fields.student_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.individual.fields.nric_fin') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.email_address') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.qualification.fields.course_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_total_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.m_el_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.examination_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.registration_fee') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_fee_1st') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_fee_2nd') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.instalment_fee_3rd') }}
                         </th>
                         <th>
                             {{ trans('cruds.qualification.fields.course_start_date') }}
@@ -89,7 +119,7 @@
                             {{ trans('cruds.qualification.fields.tc_utilised_amount') }}
                         </th>
                         <th>
-                            {{ trans('cruds.qualification.fields.instalment_amount') }}
+                            {{ trans('cruds.qualification.fields.payment_amount') }}
                         </th>
                         <th>
                             {{ trans('cruds.qualification.fields.payment_date') }}
@@ -98,10 +128,64 @@
                             {{ trans('cruds.qualification.fields.receipt_no') }}
                         </th>
                         <th>
-                            {{ trans('cruds.qualification.fields.module_name') }}
+                            {{ trans('cruds.qualification.fields.payment_note') }}
                         </th>
                         <th>
-                            {{ trans('cruds.qualification.fields.module_grade') }}
+                            {{ trans('cruds.qualification.fields.amount_paid') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.outstanding_balance') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.results_release_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_1_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.module.fields.module_code') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_1_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.grade.fields.grade_description') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_2_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_2_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_3_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_3_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_4_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_4_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_5_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_5_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_6_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_6_grade') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.transcript_1_release_date') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.qualification.fields.transcript_2_release_date') }}
                         </th>
                         <th>
                             {{ trans('cruds.qualification.fields.note') }}
@@ -124,7 +208,37 @@
                                 {{ $qualification->student_name->name ?? '' }}
                             </td>
                             <td>
+                                {{ $qualification->student_name->nric_fin ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->student_name->email_address ?? '' }}
+                            </td>
+                            <td>
                                 {{ $qualification->course_name->course_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->course_total_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->course_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->m_el_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->examination_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->registration_fee ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->instalment_fee_1st ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->instalment_fee_2nd ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->course_name->instalment_fee_3rd ?? '' }}
                             </td>
                             <td>
                                 {{ $qualification->course_start_date ?? '' }}
@@ -184,7 +298,7 @@
                                 {{ $qualification->tc_utilised_amount ?? '' }}
                             </td>
                             <td>
-                                {{ $qualification->instalment_amount ?? '' }}
+                                {{ $qualification->payment_amount ?? '' }}
                             </td>
                             <td>
                                 {{ $qualification->payment_date ?? '' }}
@@ -193,10 +307,64 @@
                                 {{ $qualification->receipt_no ?? '' }}
                             </td>
                             <td>
-                                {{ $qualification->module_name->module_name ?? '' }}
+                                {{ $qualification->payment_note ?? '' }}
                             </td>
                             <td>
-                                {{ $qualification->module_grade->grade ?? '' }}
+                                {{ $qualification->amount_paid ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->outstanding_balance ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->results_release_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_1_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_1_name->module_code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_1_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_1_grade->grade_description ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_2_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_2_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_3_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_3_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_4_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_4_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_5_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_5_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_6_name->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->module_6_grade->grade ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->transcript_1_release_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $qualification->transcript_2_release_date ?? '' }}
                             </td>
                             <td>
                                 {{ $qualification->note ?? '' }}

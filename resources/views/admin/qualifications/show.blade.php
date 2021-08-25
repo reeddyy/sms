@@ -193,10 +193,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.qualification.fields.instalment_amount') }}
+                            {{ trans('cruds.qualification.fields.payment_amount') }}
                         </th>
                         <td>
-                            {{ $qualification->instalment_amount }}
+                            {{ $qualification->payment_amount }}
                         </td>
                     </tr>
                     <tr>
@@ -217,18 +217,146 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.qualification.fields.module_name') }}
+                            {{ trans('cruds.qualification.fields.payment_note') }}
                         </th>
                         <td>
-                            {{ $qualification->module_name->module_name ?? '' }}
+                            {{ $qualification->payment_note }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.qualification.fields.module_grade') }}
+                            {{ trans('cruds.qualification.fields.amount_paid') }}
                         </th>
                         <td>
-                            {{ $qualification->module_grade->grade ?? '' }}
+                            {{ $qualification->amount_paid }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.outstanding_balance') }}
+                        </th>
+                        <td>
+                            {{ $qualification->outstanding_balance }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.results_release_date') }}
+                        </th>
+                        <td>
+                            {{ $qualification->results_release_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_1_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_1_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_1_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_1_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_2_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_2_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_2_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_2_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_3_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_3_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_3_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_3_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_4_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_4_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_4_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_4_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_5_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_5_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_5_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_5_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_6_name') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_6_name->module_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.module_6_grade') }}
+                        </th>
+                        <td>
+                            {{ $qualification->module_6_grade->grade ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.transcript_1_release_date') }}
+                        </th>
+                        <td>
+                            {{ $qualification->transcript_1_release_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.qualification.fields.transcript_2_release_date') }}
+                        </th>
+                        <td>
+                            {{ $qualification->transcript_2_release_date }}
                         </td>
                     </tr>
                     <tr>

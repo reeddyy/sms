@@ -10,6 +10,11 @@ class Course extends Model
 {
     use HasFactory;
 
+    public const COURSE_STATUS_RADIO = [
+        'Active'   => 'Active',
+        'Inactive' => 'Inactive',
+    ];
+
     public const COURSE_LEVEL_RADIO = [
         'Foundation' => 'Foundation',
         'Managerial' => 'Managerial',
@@ -35,9 +40,10 @@ class Course extends Model
         'examination_fee',
         'registration_fee',
         'no_of_instalment',
-        'instalment_1_fee',
-        'instalment_2_fee',
-        'instalment_3_fee',
+        'instalment_fee_1st',
+        'instalment_fee_2nd',
+        'instalment_fee_3rd',
+        'course_status',
         'created_at',
         'updated_at',
         'deleted_at',

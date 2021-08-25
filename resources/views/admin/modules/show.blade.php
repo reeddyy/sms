@@ -47,6 +47,14 @@
                             {{ $module->module_code }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.module.fields.module_status') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Module::MODULE_STATUS_RADIO[$module->module_status] ?? '' }}
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

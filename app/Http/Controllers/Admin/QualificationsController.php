@@ -21,7 +21,7 @@ class QualificationsController extends Controller
     {
         abort_if(Gate::denies('qualification_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $qualifications = Qualification::with(['student_name', 'course_name', 'module_name', 'module_grade'])->get();
+        $qualifications = Qualification::with(['student_name', 'course_name', 'module_1_name', 'module_1_grade', 'module_2_name', 'module_2_grade', 'module_3_name', 'module_3_grade', 'module_4_name', 'module_4_grade', 'module_5_name', 'module_5_grade', 'module_6_name', 'module_6_grade'])->get();
 
         return view('admin.qualifications.index', compact('qualifications'));
     }
@@ -34,11 +34,31 @@ class QualificationsController extends Controller
 
         $course_names = Course::pluck('course_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $module_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $module_1_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $module_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $module_1_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.qualifications.create', compact('student_names', 'course_names', 'module_names', 'module_grades'));
+        $module_2_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_2_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_3_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_3_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_4_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_4_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_5_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_5_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_6_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_6_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.qualifications.create', compact('student_names', 'course_names', 'module_1_names', 'module_1_grades', 'module_2_names', 'module_2_grades', 'module_3_names', 'module_3_grades', 'module_4_names', 'module_4_grades', 'module_5_names', 'module_5_grades', 'module_6_names', 'module_6_grades'));
     }
 
     public function store(StoreQualificationRequest $request)
@@ -56,13 +76,33 @@ class QualificationsController extends Controller
 
         $course_names = Course::pluck('course_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $module_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $module_1_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $module_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $module_1_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $qualification->load('student_name', 'course_name', 'module_name', 'module_grade');
+        $module_2_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.qualifications.edit', compact('student_names', 'course_names', 'module_names', 'module_grades', 'qualification'));
+        $module_2_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_3_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_3_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_4_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_4_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_5_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_5_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_6_names = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module_6_grades = Grade::pluck('grade', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $qualification->load('student_name', 'course_name', 'module_1_name', 'module_1_grade', 'module_2_name', 'module_2_grade', 'module_3_name', 'module_3_grade', 'module_4_name', 'module_4_grade', 'module_5_name', 'module_5_grade', 'module_6_name', 'module_6_grade');
+
+        return view('admin.qualifications.edit', compact('student_names', 'course_names', 'module_1_names', 'module_1_grades', 'module_2_names', 'module_2_grades', 'module_3_names', 'module_3_grades', 'module_4_names', 'module_4_grades', 'module_5_names', 'module_5_grades', 'module_6_names', 'module_6_grades', 'qualification'));
     }
 
     public function update(UpdateQualificationRequest $request, Qualification $qualification)
@@ -76,7 +116,7 @@ class QualificationsController extends Controller
     {
         abort_if(Gate::denies('qualification_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $qualification->load('student_name', 'course_name', 'module_name', 'module_grade');
+        $qualification->load('student_name', 'course_name', 'module_1_name', 'module_1_grade', 'module_2_name', 'module_2_grade', 'module_3_name', 'module_3_grade', 'module_4_name', 'module_4_grade', 'module_5_name', 'module_5_grade', 'module_6_name', 'module_6_grade');
 
         return view('admin.qualifications.show', compact('qualification'));
     }

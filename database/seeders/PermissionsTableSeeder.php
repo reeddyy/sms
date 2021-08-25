@@ -176,6 +176,46 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 42,
+                'title' => 'membership_create',
+            ],
+            [
+                'id'    => 43,
+                'title' => 'membership_edit',
+            ],
+            [
+                'id'    => 44,
+                'title' => 'membership_show',
+            ],
+            [
+                'id'    => 45,
+                'title' => 'membership_delete',
+            ],
+            [
+                'id'    => 46,
+                'title' => 'membership_access',
+            ],
+            [
+                'id'    => 47,
+                'title' => 'training_credit_create',
+            ],
+            [
+                'id'    => 48,
+                'title' => 'training_credit_edit',
+            ],
+            [
+                'id'    => 49,
+                'title' => 'training_credit_show',
+            ],
+            [
+                'id'    => 50,
+                'title' => 'training_credit_delete',
+            ],
+            [
+                'id'    => 51,
+                'title' => 'training_credit_access',
+            ],
+            [
+                'id'    => 52,
                 'title' => 'profile_password_edit',
             ],
         ];

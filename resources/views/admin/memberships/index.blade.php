@@ -1,74 +1,65 @@
 @extends('layouts.admin')
 @section('content')
-@can('course_create')
+@can('membership_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.courses.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.course.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.memberships.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.membership.title_singular') }}
             </a>
         </div>
     </div>
 @endcan
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.course.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.membership.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-Course">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-Membership">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.id') }}
+                            {{ trans('cruds.membership.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_name') }}
+                            {{ trans('cruds.membership.fields.membership_no') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_abbr') }}
+                            {{ trans('cruds.membership.fields.member_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_level') }}
+                            {{ trans('cruds.individual.fields.email_address') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_modules') }}
+                            {{ trans('cruds.membership.fields.member_class') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_duration') }}
+                            {{ trans('cruds.membership.fields.membership_start_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_total_fee') }}
+                            {{ trans('cruds.membership.fields.membership_expiry_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_fee') }}
+                            {{ trans('cruds.membership.fields.membership_validity') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.m_el_fee') }}
+                            {{ trans('cruds.membership.fields.no_of_renewal') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.examination_fee') }}
+                            {{ trans('cruds.membership.fields.payment_amount') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.registration_fee') }}
+                            {{ trans('cruds.membership.fields.payment_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.no_of_instalment') }}
+                            {{ trans('cruds.membership.fields.payment_receipt_no') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_fee_1st') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.course.fields.instalment_fee_2nd') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.course.fields.instalment_fee_3rd') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.course.fields.course_status') }}
+                            {{ trans('cruds.membership.fields.payment_note') }}
                         </th>
                         <th>
                             &nbsp;
@@ -76,76 +67,65 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($courses as $key => $course)
-                        <tr data-entry-id="{{ $course->id }}">
+                    @foreach($memberships as $key => $membership)
+                        <tr data-entry-id="{{ $membership->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $course->id ?? '' }}
+                                {{ $membership->id ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_name ?? '' }}
+                                {{ $membership->membership_no ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_abbr ?? '' }}
+                                {{ $membership->member_name->name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Course::COURSE_LEVEL_RADIO[$course->course_level] ?? '' }}
+                                {{ $membership->member_name->email_address ?? '' }}
                             </td>
                             <td>
-                                @foreach($course->course_modules as $key => $item)
-                                    <span class="badge badge-info">{{ $item->module_name }}</span>
-                                @endforeach
+                                {{ App\Models\Membership::MEMBER_CLASS_RADIO[$membership->member_class] ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_duration ?? '' }}
+                                {{ $membership->membership_start_date ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_total_fee ?? '' }}
+                                {{ $membership->membership_expiry_date ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_fee ?? '' }}
+                                {{ App\Models\Membership::MEMBERSHIP_VALIDITY_RADIO[$membership->membership_validity] ?? '' }}
                             </td>
                             <td>
-                                {{ $course->m_el_fee ?? '' }}
+                                {{ $membership->no_of_renewal ?? '' }}
                             </td>
                             <td>
-                                {{ $course->examination_fee ?? '' }}
+                                {{ $membership->payment_amount ?? '' }}
                             </td>
                             <td>
-                                {{ $course->registration_fee ?? '' }}
+                                {{ $membership->payment_date ?? '' }}
                             </td>
                             <td>
-                                {{ $course->no_of_instalment ?? '' }}
+                                {{ $membership->payment_receipt_no ?? '' }}
                             </td>
                             <td>
-                                {{ $course->instalment_fee_1st ?? '' }}
+                                {{ $membership->payment_note ?? '' }}
                             </td>
                             <td>
-                                {{ $course->instalment_fee_2nd ?? '' }}
-                            </td>
-                            <td>
-                                {{ $course->instalment_fee_3rd ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}
-                            </td>
-                            <td>
-                                @can('course_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.courses.show', $course->id) }}">
+                                @can('membership_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.memberships.show', $membership->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('course_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.courses.edit', $course->id) }}">
+                                @can('membership_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.memberships.edit', $membership->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('course_delete')
-                                    <form action="{{ route('admin.courses.destroy', $course->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('membership_delete')
+                                    <form action="{{ route('admin.memberships.destroy', $membership->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -170,11 +150,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('course_delete')
+@can('membership_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.courses.massDestroy') }}",
+    url: "{{ route('admin.memberships.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -205,7 +185,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-Course:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-Membership:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

@@ -11,8 +11,10 @@ class CreateModulesTable extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('module_name')->unique();
+            $table->string('module_abbr')->unique();
+            $table->string('module_code')->unique();
+            $table->string('module_status');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }

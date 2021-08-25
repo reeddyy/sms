@@ -10,6 +10,11 @@ class Module extends Model
 {
     use HasFactory;
 
+    public const MODULE_STATUS_RADIO = [
+        'Active'   => 'Active',
+        'Inactive' => 'Inactive',
+    ];
+
     public $table = 'modules';
 
     protected $dates = [
@@ -22,6 +27,7 @@ class Module extends Model
         'module_name',
         'module_abbr',
         'module_code',
+        'module_status',
         'created_at',
         'updated_at',
         'deleted_at',

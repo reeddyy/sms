@@ -10,6 +10,15 @@ class Individual extends Model
 {
     use HasFactory;
 
+    public const TITLE_SELECT = [
+        'Mr'   => 'Mr',
+        'Ms'   => 'Ms',
+        'Miss' => 'Miss',
+        'Mrs'  => 'Mrs',
+        'Dr'   => 'Dr',
+        'Prof' => 'Prof',
+    ];
+
     public $table = 'individuals';
 
     protected $dates = [
@@ -19,6 +28,7 @@ class Individual extends Model
     ];
 
     protected $fillable = [
+        'title',
         'name',
         'nric_fin',
         'email_address',

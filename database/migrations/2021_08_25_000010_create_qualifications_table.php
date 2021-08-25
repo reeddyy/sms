@@ -29,9 +29,15 @@ class CreateQualificationsTable extends Migration
             $table->string('ssg_receipt_no')->nullable();
             $table->decimal('waive_amount', 15, 2)->nullable();
             $table->decimal('tc_utilised_amount', 15, 2)->nullable();
-            $table->decimal('instalment_amount', 15, 2)->nullable();
+            $table->decimal('payment_amount', 15, 2)->nullable();
             $table->date('payment_date')->nullable();
             $table->string('receipt_no')->nullable();
+            $table->string('payment_note')->nullable();
+            $table->decimal('amount_paid', 15, 2)->nullable();
+            $table->decimal('outstanding_balance', 15, 2)->nullable();
+            $table->date('results_release_date')->nullable();
+            $table->date('transcript_1_release_date')->nullable();
+            $table->date('transcript_2_release_date')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.individual.fields.title') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Individual::TITLE_SELECT[$individual->title] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.individual.fields.name') }}
                         </th>
                         <td>

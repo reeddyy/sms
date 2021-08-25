@@ -20,9 +20,10 @@ class CreateCoursesTable extends Migration
             $table->decimal('examination_fee', 15, 2)->nullable();
             $table->decimal('registration_fee', 15, 2)->nullable();
             $table->integer('no_of_instalment')->nullable();
-            $table->decimal('instalment_1_fee', 15, 2)->nullable();
-            $table->decimal('instalment_2_fee', 15, 2)->nullable();
-            $table->decimal('instalment_3_fee', 15, 2)->nullable();
+            $table->decimal('instalment_fee_1st', 15, 2)->nullable();
+            $table->decimal('instalment_fee_2nd', 15, 2)->nullable();
+            $table->decimal('instalment_fee_3rd', 15, 2)->nullable();
+            $table->string('course_status');
             $table->timestamps();
         });
     }

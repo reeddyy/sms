@@ -115,26 +115,34 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_1_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_1st') }}
                         </th>
                         <td>
-                            {{ $course->instalment_1_fee }}
+                            {{ $course->instalment_fee_1st }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_2_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <td>
-                            {{ $course->instalment_2_fee }}
+                            {{ $course->instalment_fee_2nd }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_3_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_3rd') }}
                         </th>
                         <td>
-                            {{ $course->instalment_3_fee }}
+                            {{ $course->instalment_fee_3rd }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.course_status') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>

@@ -93,6 +93,22 @@ class UpdateQualificationRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'payment_note' => [
+                'string',
+                'nullable',
+            ],
+            'results_release_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'transcript_1_release_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'transcript_2_release_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
         ];
     }
 }

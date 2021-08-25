@@ -33,6 +33,9 @@ class Qualification extends Model
         'course_end_date',
         'ssg_payment_date',
         'payment_date',
+        'results_release_date',
+        'transcript_1_release_date',
+        'transcript_2_release_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -60,11 +63,27 @@ class Qualification extends Model
         'ssg_receipt_no',
         'waive_amount',
         'tc_utilised_amount',
-        'instalment_amount',
+        'payment_amount',
         'payment_date',
         'receipt_no',
-        'module_name_id',
-        'module_grade_id',
+        'payment_note',
+        'amount_paid',
+        'outstanding_balance',
+        'results_release_date',
+        'module_1_name_id',
+        'module_1_grade_id',
+        'module_2_name_id',
+        'module_2_grade_id',
+        'module_3_name_id',
+        'module_3_grade_id',
+        'module_4_name_id',
+        'module_4_grade_id',
+        'module_5_name_id',
+        'module_5_grade_id',
+        'module_6_name_id',
+        'module_6_grade_id',
+        'transcript_1_release_date',
+        'transcript_2_release_date',
         'note',
         'created_at',
         'updated_at',
@@ -121,14 +140,94 @@ class Qualification extends Model
         $this->attributes['payment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
-    public function module_name()
+    public function getResultsReleaseDateAttribute($value)
     {
-        return $this->belongsTo(Module::class, 'module_name_id');
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
     }
 
-    public function module_grade()
+    public function setResultsReleaseDateAttribute($value)
     {
-        return $this->belongsTo(Grade::class, 'module_grade_id');
+        $this->attributes['results_release_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function module_1_name()
+    {
+        return $this->belongsTo(Module::class, 'module_1_name_id');
+    }
+
+    public function module_1_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_1_grade_id');
+    }
+
+    public function module_2_name()
+    {
+        return $this->belongsTo(Module::class, 'module_2_name_id');
+    }
+
+    public function module_2_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_2_grade_id');
+    }
+
+    public function module_3_name()
+    {
+        return $this->belongsTo(Module::class, 'module_3_name_id');
+    }
+
+    public function module_3_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_3_grade_id');
+    }
+
+    public function module_4_name()
+    {
+        return $this->belongsTo(Module::class, 'module_4_name_id');
+    }
+
+    public function module_4_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_4_grade_id');
+    }
+
+    public function module_5_name()
+    {
+        return $this->belongsTo(Module::class, 'module_5_name_id');
+    }
+
+    public function module_5_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_5_grade_id');
+    }
+
+    public function module_6_name()
+    {
+        return $this->belongsTo(Module::class, 'module_6_name_id');
+    }
+
+    public function module_6_grade()
+    {
+        return $this->belongsTo(Grade::class, 'module_6_grade_id');
+    }
+
+    public function getTranscript1ReleaseDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setTranscript1ReleaseDateAttribute($value)
+    {
+        $this->attributes['transcript_1_release_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getTranscript2ReleaseDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setTranscript2ReleaseDateAttribute($value)
+    {
+        $this->attributes['transcript_2_release_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)
