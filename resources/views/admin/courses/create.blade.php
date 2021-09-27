@@ -10,71 +10,112 @@
         <form method="POST" action="{{ route("admin.courses.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="course_name">{{ trans('cruds.course.fields.course_name') }}</label>
-                <input class="form-control {{ $errors->has('course_name') ? 'is-invalid' : '' }}" type="text" name="course_name" id="course_name" value="{{ old('course_name', '') }}" required>
-                @if($errors->has('course_name'))
-                    <span class="text-danger">{{ $errors->first('course_name') }}</span>
+                <label class="required" for="course_title">{{ trans('cruds.course.fields.course_title') }}</label>
+                <input class="form-control {{ $errors->has('course_title') ? 'is-invalid' : '' }}" type="text" name="course_title" id="course_title" value="{{ old('course_title', '') }}" required>
+                @if($errors->has('course_title'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('course_title') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.course_name_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.course_title_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="course_abbr">{{ trans('cruds.course.fields.course_abbr') }}</label>
                 <input class="form-control {{ $errors->has('course_abbr') ? 'is-invalid' : '' }}" type="text" name="course_abbr" id="course_abbr" value="{{ old('course_abbr', '') }}" required>
                 @if($errors->has('course_abbr'))
-                    <span class="text-danger">{{ $errors->first('course_abbr') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('course_abbr') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.course_abbr_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required">{{ trans('cruds.course.fields.course_level') }}</label>
-                @foreach(App\Models\Course::COURSE_LEVEL_RADIO as $key => $label)
-                    <div class="form-check {{ $errors->has('course_level') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="course_level_{{ $key }}" name="course_level" value="{{ $key }}" {{ old('course_level', '') === (string) $key ? 'checked' : '' }} required>
-                        <label class="form-check-label" for="course_level_{{ $key }}">{{ $label }}</label>
+                <label for="duration_month">{{ trans('cruds.course.fields.duration_month') }}</label>
+                <input class="form-control {{ $errors->has('duration_month') ? 'is-invalid' : '' }}" type="text" name="duration_month" id="duration_month" value="{{ old('duration_month', '') }}">
+                @if($errors->has('duration_month'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('duration_month') }}
                     </div>
-                @endforeach
-                @if($errors->has('course_level'))
-                    <span class="text-danger">{{ $errors->first('course_level') }}</span>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.course_level_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.duration_month_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="course_modules">{{ trans('cruds.course.fields.course_modules') }}</label>
+                <label for="level_id">{{ trans('cruds.course.fields.level') }}</label>
+                <select class="form-control select2 {{ $errors->has('level') ? 'is-invalid' : '' }}" name="level_id" id="level_id">
+                    @foreach($levels as $id => $entry)
+                        <option value="{{ $id }}" {{ old('level_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('level'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('level') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.level_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_s">{{ trans('cruds.course.fields.module_s') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('course_modules') ? 'is-invalid' : '' }}" name="course_modules[]" id="course_modules" multiple required>
-                    @foreach($course_modules as $id => $course_module)
-                        <option value="{{ $id }}" {{ in_array($id, old('course_modules', [])) ? 'selected' : '' }}>{{ $course_module }}</option>
+                <select class="form-control select2 {{ $errors->has('module_s') ? 'is-invalid' : '' }}" name="module_s[]" id="module_s" multiple>
+                    @foreach($module_s as $id => $module_)
+                        <option value="{{ $id }}" {{ in_array($id, old('module_s', [])) ? 'selected' : '' }}>{{ $module_ }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('course_modules'))
-                    <span class="text-danger">{{ $errors->first('course_modules') }}</span>
+                @if($errors->has('module_s'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_s') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.course_modules_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.module_s_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="course_duration">{{ trans('cruds.course.fields.course_duration') }}</label>
-                <input class="form-control {{ $errors->has('course_duration') ? 'is-invalid' : '' }}" type="text" name="course_duration" id="course_duration" value="{{ old('course_duration', '') }}">
-                @if($errors->has('course_duration'))
-                    <span class="text-danger">{{ $errors->first('course_duration') }}</span>
+                <label for="digital_module_s">{{ trans('cruds.course.fields.digital_module_s') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('digital_module_s') ? 'is-invalid' : '' }}" name="digital_module_s[]" id="digital_module_s" multiple>
+                    @foreach($digital_module_s as $id => $digital_module_)
+                        <option value="{{ $id }}" {{ in_array($id, old('digital_module_s', [])) ? 'selected' : '' }}>{{ $digital_module_ }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('digital_module_s'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('digital_module_s') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.course_duration_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.digital_module_s_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="course_total_fee">{{ trans('cruds.course.fields.course_total_fee') }}</label>
-                <input class="form-control {{ $errors->has('course_total_fee') ? 'is-invalid' : '' }}" type="number" name="course_total_fee" id="course_total_fee" value="{{ old('course_total_fee', '0') }}" step="0.01">
-                @if($errors->has('course_total_fee'))
-                    <span class="text-danger">{{ $errors->first('course_total_fee') }}</span>
+                <label for="member_rate">{{ trans('cruds.course.fields.member_rate') }}</label>
+                <input class="form-control {{ $errors->has('member_rate') ? 'is-invalid' : '' }}" type="number" name="member_rate" id="member_rate" value="{{ old('member_rate', '0') }}" step="0.01">
+                @if($errors->has('member_rate'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('member_rate') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.course_total_fee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.member_rate_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="public_rate">{{ trans('cruds.course.fields.public_rate') }}</label>
+                <input class="form-control {{ $errors->has('public_rate') ? 'is-invalid' : '' }}" type="number" name="public_rate" id="public_rate" value="{{ old('public_rate', '0') }}" step="0.01">
+                @if($errors->has('public_rate'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('public_rate') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.public_rate_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="course_fee">{{ trans('cruds.course.fields.course_fee') }}</label>
                 <input class="form-control {{ $errors->has('course_fee') ? 'is-invalid' : '' }}" type="number" name="course_fee" id="course_fee" value="{{ old('course_fee', '0') }}" step="0.01">
                 @if($errors->has('course_fee'))
-                    <span class="text-danger">{{ $errors->first('course_fee') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('course_fee') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.course_fee_helper') }}</span>
             </div>
@@ -82,7 +123,9 @@
                 <label for="m_el_fee">{{ trans('cruds.course.fields.m_el_fee') }}</label>
                 <input class="form-control {{ $errors->has('m_el_fee') ? 'is-invalid' : '' }}" type="number" name="m_el_fee" id="m_el_fee" value="{{ old('m_el_fee', '0') }}" step="0.01">
                 @if($errors->has('m_el_fee'))
-                    <span class="text-danger">{{ $errors->first('m_el_fee') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('m_el_fee') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.m_el_fee_helper') }}</span>
             </div>
@@ -90,7 +133,9 @@
                 <label for="examination_fee">{{ trans('cruds.course.fields.examination_fee') }}</label>
                 <input class="form-control {{ $errors->has('examination_fee') ? 'is-invalid' : '' }}" type="number" name="examination_fee" id="examination_fee" value="{{ old('examination_fee', '0') }}" step="0.01">
                 @if($errors->has('examination_fee'))
-                    <span class="text-danger">{{ $errors->first('examination_fee') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('examination_fee') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.examination_fee_helper') }}</span>
             </div>
@@ -98,7 +143,9 @@
                 <label for="registration_fee">{{ trans('cruds.course.fields.registration_fee') }}</label>
                 <input class="form-control {{ $errors->has('registration_fee') ? 'is-invalid' : '' }}" type="number" name="registration_fee" id="registration_fee" value="{{ old('registration_fee', '0') }}" step="0.01">
                 @if($errors->has('registration_fee'))
-                    <span class="text-danger">{{ $errors->first('registration_fee') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('registration_fee') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.registration_fee_helper') }}</span>
             </div>
@@ -106,33 +153,66 @@
                 <label for="no_of_instalment">{{ trans('cruds.course.fields.no_of_instalment') }}</label>
                 <input class="form-control {{ $errors->has('no_of_instalment') ? 'is-invalid' : '' }}" type="number" name="no_of_instalment" id="no_of_instalment" value="{{ old('no_of_instalment', '1') }}" step="1">
                 @if($errors->has('no_of_instalment'))
-                    <span class="text-danger">{{ $errors->first('no_of_instalment') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('no_of_instalment') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.no_of_instalment_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="instalment_1_fee">{{ trans('cruds.course.fields.instalment_1_fee') }}</label>
-                <input class="form-control {{ $errors->has('instalment_1_fee') ? 'is-invalid' : '' }}" type="number" name="instalment_1_fee" id="instalment_1_fee" value="{{ old('instalment_1_fee', '0') }}" step="0.01">
-                @if($errors->has('instalment_1_fee'))
-                    <span class="text-danger">{{ $errors->first('instalment_1_fee') }}</span>
+                <label for="instalment_fee_1st">{{ trans('cruds.course.fields.instalment_fee_1st') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_1st') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_1st" id="instalment_fee_1st" value="{{ old('instalment_fee_1st', '0') }}" step="0.01">
+                @if($errors->has('instalment_fee_1st'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_1st') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.instalment_1_fee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_1st_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="instalment_2_fee">{{ trans('cruds.course.fields.instalment_2_fee') }}</label>
-                <input class="form-control {{ $errors->has('instalment_2_fee') ? 'is-invalid' : '' }}" type="number" name="instalment_2_fee" id="instalment_2_fee" value="{{ old('instalment_2_fee', '0') }}" step="0.01">
-                @if($errors->has('instalment_2_fee'))
-                    <span class="text-danger">{{ $errors->first('instalment_2_fee') }}</span>
+                <label for="instalment_fee_2nd">{{ trans('cruds.course.fields.instalment_fee_2nd') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_2nd') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_2nd" id="instalment_fee_2nd" value="{{ old('instalment_fee_2nd', '0') }}" step="0.01">
+                @if($errors->has('instalment_fee_2nd'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_2nd') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.instalment_2_fee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_2nd_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="instalment_3_fee">{{ trans('cruds.course.fields.instalment_3_fee') }}</label>
-                <input class="form-control {{ $errors->has('instalment_3_fee') ? 'is-invalid' : '' }}" type="number" name="instalment_3_fee" id="instalment_3_fee" value="{{ old('instalment_3_fee', '0') }}" step="0.01">
-                @if($errors->has('instalment_3_fee'))
-                    <span class="text-danger">{{ $errors->first('instalment_3_fee') }}</span>
+                <label for="instalment_fee_3rd">{{ trans('cruds.course.fields.instalment_fee_3rd') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_3rd') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_3rd" id="instalment_fee_3rd" value="{{ old('instalment_fee_3rd', '0') }}" step="0.01">
+                @if($errors->has('instalment_fee_3rd'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_3rd') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.instalment_3_fee_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_3rd_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required">{{ trans('cruds.course.fields.course_status') }}</label>
+                @foreach(App\Models\Course::COURSE_STATUS_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('course_status') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="course_status_{{ $key }}" name="course_status" value="{{ $key }}" {{ old('course_status', 'Active') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="course_status_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
+                @if($errors->has('course_status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('course_status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.course_status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="note">{{ trans('cruds.course.fields.note') }}</label>
+                <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note') }}</textarea>
+                @if($errors->has('note'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('note') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.note_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
