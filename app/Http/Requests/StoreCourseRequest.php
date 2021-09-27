@@ -17,7 +17,7 @@ class StoreCourseRequest extends FormRequest
     public function rules()
     {
         return [
-            'course_name' => [
+            'course_title' => [
                 'string',
                 'required',
                 'unique:courses',
@@ -27,25 +27,30 @@ class StoreCourseRequest extends FormRequest
                 'required',
                 'unique:courses',
             ],
-            'course_level' => [
-                'required',
-            ],
-            'course_modules.*' => [
-                'integer',
-            ],
-            'course_modules' => [
-                'required',
-                'array',
-            ],
-            'course_duration' => [
+            'duration_month' => [
                 'string',
                 'nullable',
+            ],
+            'module_s.*' => [
+                'integer',
+            ],
+            'module_s' => [
+                'array',
+            ],
+            'digital_module_s.*' => [
+                'integer',
+            ],
+            'digital_module_s' => [
+                'array',
             ],
             'no_of_instalment' => [
                 'nullable',
                 'integer',
                 'min:-2147483648',
                 'max:2147483647',
+            ],
+            'course_status' => [
+                'required',
             ],
         ];
     }

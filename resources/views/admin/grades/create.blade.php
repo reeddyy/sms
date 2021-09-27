@@ -10,41 +10,54 @@
         <form method="POST" action="{{ route("admin.grades.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required">{{ trans('cruds.grade.fields.grade') }}</label>
-                <select class="form-control {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade" id="grade" required>
-                    <option value disabled {{ old('grade', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\Models\Grade::GRADE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('grade', '') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('grade'))
-                    <span class="text-danger">{{ $errors->first('grade') }}</span>
+                <label class="required" for="grade_letter">{{ trans('cruds.grade.fields.grade_letter') }}</label>
+                <input class="form-control {{ $errors->has('grade_letter') ? 'is-invalid' : '' }}" type="text" name="grade_letter" id="grade_letter" value="{{ old('grade_letter', '') }}" required>
+                @if($errors->has('grade_letter'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_letter') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.grade.fields.grade_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.grade.fields.grade_letter_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="grade_description">{{ trans('cruds.grade.fields.grade_description') }}</label>
                 <input class="form-control {{ $errors->has('grade_description') ? 'is-invalid' : '' }}" type="text" name="grade_description" id="grade_description" value="{{ old('grade_description', '') }}">
                 @if($errors->has('grade_description'))
-                    <span class="text-danger">{{ $errors->first('grade_description') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_description') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.grade.fields.grade_description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="grade_point">{{ trans('cruds.grade.fields.grade_point') }}</label>
-                <input class="form-control {{ $errors->has('grade_point') ? 'is-invalid' : '' }}" type="number" name="grade_point" id="grade_point" value="{{ old('grade_point', '') }}" step="1">
-                @if($errors->has('grade_point'))
-                    <span class="text-danger">{{ $errors->first('grade_point') }}</span>
+                <label for="grade_point_s">{{ trans('cruds.grade.fields.grade_point_s') }}</label>
+                <input class="form-control {{ $errors->has('grade_point_s') ? 'is-invalid' : '' }}" type="number" name="grade_point_s" id="grade_point_s" value="{{ old('grade_point_s', '') }}" step="1">
+                @if($errors->has('grade_point_s'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_point_s') }}
+                    </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.grade.fields.grade_point_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.grade.fields.grade_point_s_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="grade_marks">{{ trans('cruds.grade.fields.grade_marks') }}</label>
                 <input class="form-control {{ $errors->has('grade_marks') ? 'is-invalid' : '' }}" type="text" name="grade_marks" id="grade_marks" value="{{ old('grade_marks', '') }}">
                 @if($errors->has('grade_marks'))
-                    <span class="text-danger">{{ $errors->first('grade_marks') }}</span>
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_marks') }}
+                    </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.grade.fields.grade_marks_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="note">{{ trans('cruds.grade.fields.note') }}</label>
+                <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note') }}</textarea>
+                @if($errors->has('note'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('note') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.grade.fields.note_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

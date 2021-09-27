@@ -32,6 +32,9 @@ class StoreModuleRequest extends FormRequest
                 'required',
                 'unique:modules',
             ],
+            'module_status' => [
+                'required',
+            ],
         ];
     }
 }

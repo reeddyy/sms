@@ -17,14 +17,16 @@ class UpdateGradeRequest extends FormRequest
     public function rules()
     {
         return [
-            'grade' => [
+            'grade_letter' => [
+                'string',
                 'required',
+                'unique:grades,grade_letter,' . request()->route('grade')->id,
             ],
             'grade_description' => [
                 'string',
                 'nullable',
             ],
-            'grade_point' => [
+            'grade_point_s' => [
                 'nullable',
                 'integer',
                 'min:-2147483648',

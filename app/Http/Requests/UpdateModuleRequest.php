@@ -32,6 +32,9 @@ class UpdateModuleRequest extends FormRequest
                 'required',
                 'unique:modules,module_code,' . request()->route('module')->id,
             ],
+            'module_status' => [
+                'required',
+            ],
         ];
     }
 }
