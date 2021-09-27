@@ -26,22 +26,28 @@
                             {{ trans('cruds.course.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_name') }}
+                            {{ trans('cruds.course.fields.course_title') }}
                         </th>
                         <th>
                             {{ trans('cruds.course.fields.course_abbr') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_level') }}
+                            {{ trans('cruds.course.fields.duration_month') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_modules') }}
+                            {{ trans('cruds.course.fields.level') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_duration') }}
+                            {{ trans('cruds.course.fields.module_s') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.course_total_fee') }}
+                            {{ trans('cruds.course.fields.digital_module_s') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.member_rate') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.public_rate') }}
                         </th>
                         <th>
                             {{ trans('cruds.course.fields.course_fee') }}
@@ -59,17 +65,106 @@
                             {{ trans('cruds.course.fields.no_of_instalment') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_1_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_1st') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_2_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_3_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_3rd') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.course_status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.note') }}
                         </th>
                         <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($levels as $key => $item)
+                                    <option value="{{ $item->level_name }}">{{ $item->level_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($modules as $key => $item)
+                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($digital_modules as $key => $item)
+                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\Course::COURSE_STATUS_RADIO as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -82,24 +177,32 @@
                                 {{ $course->id ?? '' }}
                             </td>
                             <td>
-                                {{ $course->course_name ?? '' }}
+                                {{ $course->course_title ?? '' }}
                             </td>
                             <td>
                                 {{ $course->course_abbr ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Course::COURSE_LEVEL_RADIO[$course->course_level] ?? '' }}
+                                {{ $course->duration_month ?? '' }}
                             </td>
                             <td>
-                                @foreach($course->course_modules as $key => $item)
+                                {{ $course->level->level_name ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($course->module_s as $key => $item)
                                     <span class="badge badge-info">{{ $item->module_name }}</span>
                                 @endforeach
                             </td>
                             <td>
-                                {{ $course->course_duration ?? '' }}
+                                @foreach($course->digital_module_s as $key => $item)
+                                    <span class="badge badge-info">{{ $item->module_name }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                {{ $course->course_total_fee ?? '' }}
+                                {{ $course->member_rate ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->public_rate ?? '' }}
                             </td>
                             <td>
                                 {{ $course->course_fee ?? '' }}
@@ -117,13 +220,19 @@
                                 {{ $course->no_of_instalment ?? '' }}
                             </td>
                             <td>
-                                {{ $course->instalment_1_fee ?? '' }}
+                                {{ $course->instalment_fee_1st ?? '' }}
                             </td>
                             <td>
-                                {{ $course->instalment_2_fee ?? '' }}
+                                {{ $course->instalment_fee_2nd ?? '' }}
                             </td>
                             <td>
-                                {{ $course->instalment_3_fee ?? '' }}
+                                {{ $course->instalment_fee_3rd ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->note ?? '' }}
                             </td>
                             <td>
                                 @can('course_show')
@@ -205,6 +314,27 @@
           .columns.adjust();
   });
   
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

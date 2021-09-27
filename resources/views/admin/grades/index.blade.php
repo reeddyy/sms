@@ -26,20 +26,47 @@
                             {{ trans('cruds.grade.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.grade') }}
+                            {{ trans('cruds.grade.fields.grade_letter') }}
                         </th>
                         <th>
                             {{ trans('cruds.grade.fields.grade_description') }}
                         </th>
                         <th>
-                            {{ trans('cruds.grade.fields.grade_point') }}
+                            {{ trans('cruds.grade.fields.grade_point_s') }}
                         </th>
                         <th>
                             {{ trans('cruds.grade.fields.grade_marks') }}
                         </th>
                         <th>
+                            {{ trans('cruds.grade.fields.note') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,16 +79,19 @@
                                 {{ $grade->id ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\Grade::GRADE_SELECT[$grade->grade] ?? '' }}
+                                {{ $grade->grade_letter ?? '' }}
                             </td>
                             <td>
                                 {{ $grade->grade_description ?? '' }}
                             </td>
                             <td>
-                                {{ $grade->grade_point ?? '' }}
+                                {{ $grade->grade_point_s ?? '' }}
                             </td>
                             <td>
                                 {{ $grade->grade_marks ?? '' }}
+                            </td>
+                            <td>
+                                {{ $grade->note ?? '' }}
                             </td>
                             <td>
                                 @can('grade_show')
@@ -143,6 +173,27 @@
           .columns.adjust();
   });
   
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

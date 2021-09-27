@@ -57,14 +57,6 @@
                             @endforeach
                         </td>
                     </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.user.fields.note') }}
-                        </th>
-                        <td>
-                            {{ $user->note }}
-                        </td>
-                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

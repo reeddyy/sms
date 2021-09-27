@@ -54,6 +54,8 @@ class ModulesController extends Controller
     {
         abort_if(Gate::denies('module_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $module->load('moduleResultsModules', 'moduleSCourses');
+
         return view('admin.modules.show', compact('module'));
     }
 

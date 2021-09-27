@@ -3,23 +3,16 @@
 namespace App\Models;
 
 use \DateTimeInterface;
+use App\Traits\Auditable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Grade extends Model
 {
+    use SoftDeletes;
+    use Auditable;
     use HasFactory;
-
-    public const GRADE_SELECT = [
-        'A*' => 'A*',
-        'A'  => 'A',
-        'B'  => 'B',
-        'C'  => 'C',
-        'D'  => 'D',
-        'E'  => 'E',
-        'F'  => 'F',
-        'NG' => 'NG',
-    ];
 
     public $table = 'grades';
 
@@ -30,14 +23,25 @@ class Grade extends Model
     ];
 
     protected $fillable = [
-        'grade',
+        'grade_letter',
         'grade_description',
-        'grade_point',
+        'grade_point_s',
         'grade_marks',
+        'note',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+
+    public function gradeResultsModules()
+    {
+        return $this->hasMany(ResultsModule::class, 'grade_id', 'id');
+    }
+
+    public function gradeResultsDigitalModules()
+    {
+        return $this->hasMany(ResultsDigitalModule::class, 'grade_id', 'id');
+    }
 
     protected function serializeDate(DateTimeInterface $date)
     {

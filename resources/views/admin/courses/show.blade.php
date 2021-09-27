@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_name') }}
+                            {{ trans('cruds.course.fields.course_title') }}
                         </th>
                         <td>
-                            {{ $course->course_name }}
+                            {{ $course->course_title }}
                         </td>
                     </tr>
                     <tr>
@@ -41,36 +41,54 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_level') }}
+                            {{ trans('cruds.course.fields.duration_month') }}
                         </th>
                         <td>
-                            {{ App\Models\Course::COURSE_LEVEL_RADIO[$course->course_level] ?? '' }}
+                            {{ $course->duration_month }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_modules') }}
+                            {{ trans('cruds.course.fields.level') }}
                         </th>
                         <td>
-                            @foreach($course->course_modules as $key => $course_modules)
-                                <span class="label label-info">{{ $course_modules->module_name }}</span>
+                            {{ $course->level->level_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.module_s') }}
+                        </th>
+                        <td>
+                            @foreach($course->module_s as $key => $module_s)
+                                <span class="label label-info">{{ $module_s->module_name }}</span>
                             @endforeach
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_duration') }}
+                            {{ trans('cruds.course.fields.digital_module_s') }}
                         </th>
                         <td>
-                            {{ $course->course_duration }}
+                            @foreach($course->digital_module_s as $key => $digital_module_s)
+                                <span class="label label-info">{{ $digital_module_s->module_name }}</span>
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.course_total_fee') }}
+                            {{ trans('cruds.course.fields.member_rate') }}
                         </th>
                         <td>
-                            {{ $course->course_total_fee }}
+                            {{ $course->member_rate }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.public_rate') }}
+                        </th>
+                        <td>
+                            {{ $course->public_rate }}
                         </td>
                     </tr>
                     <tr>
@@ -115,26 +133,42 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_1_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_1st') }}
                         </th>
                         <td>
-                            {{ $course->instalment_1_fee }}
+                            {{ $course->instalment_fee_1st }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_2_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <td>
-                            {{ $course->instalment_2_fee }}
+                            {{ $course->instalment_fee_2nd }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.instalment_3_fee') }}
+                            {{ trans('cruds.course.fields.instalment_fee_3rd') }}
                         </th>
                         <td>
-                            {{ $course->instalment_3_fee }}
+                            {{ $course->instalment_fee_3rd }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.course_status') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.note') }}
+                        </th>
+                        <td>
+                            {{ $course->note }}
                         </td>
                     </tr>
                 </tbody>
@@ -148,6 +182,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#course_title_enrolments_qualifications" role="tab" data-toggle="tab">
+                {{ trans('cruds.enrolmentsQualification.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="course_title_enrolments_qualifications">
+            @includeIf('admin.courses.relationships.courseTitleEnrolmentsQualifications', ['enrolmentsQualifications' => $course->courseTitleEnrolmentsQualifications])
+        </div>
+    </div>
+</div>
 
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyIndividualRequest;
 use App\Http\Requests\StoreIndividualRequest;
 use App\Http\Requests\UpdateIndividualRequest;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class IndividualsController extends Controller
 {
+    use CsvImportTrait;
+
     public function index()
     {
         abort_if(Gate::denies('individual_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -53,6 +56,8 @@ class IndividualsController extends Controller
     public function show(Individual $individual)
     {
         abort_if(Gate::denies('individual_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $individual->load('memberNameMembershipsIndividuals', 'recipientNameCertificates', 'studentNameEnrolmentsQualifications', 'applicantNameApplicantsAdas', 'participantNameAdmissionsEdps');
 
         return view('admin.individuals.show', compact('individual'));
     }
