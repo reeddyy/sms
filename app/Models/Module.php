@@ -38,11 +38,6 @@ class Module extends Model
         'deleted_at',
     ];
 
-    public function moduleResultsModules()
-    {
-        return $this->hasMany(ResultsModule::class, 'module_id', 'id');
-    }
-
     public function moduleSCourses()
     {
         return $this->belongsToMany(Course::class);

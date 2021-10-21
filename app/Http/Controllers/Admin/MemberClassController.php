@@ -54,7 +54,7 @@ class MemberClassController extends Controller
     {
         abort_if(Gate::denies('member_class_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $memberClass->load('memberClassMembershipsIndividuals');
+        $memberClass->load('memberClassMembershipsIndividuals', 'memberClassMembershipsCorporates');
 
         return view('admin.memberClasses.show', compact('memberClass'));
     }

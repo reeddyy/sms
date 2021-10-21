@@ -32,17 +32,16 @@ class EnrolmentsQualification extends Model
 
     protected $fillable = [
         'enrolment_status_id',
-        'enrolment_no',
-        'student_name_id',
         'course_title_id',
         'start_date',
         'end_date',
+        'enrolment_no',
+        'student_name_id',
         'company_sponsored',
         'officer_name_id',
         'total_fees',
         'amount_paid',
         'outstanding_balance',
-        'result_points',
         'note',
         'created_at',
         'updated_at',
@@ -59,19 +58,9 @@ class EnrolmentsQualification extends Model
         return $this->hasMany(ResultsModule::class, 'enrolment_no_id', 'id');
     }
 
-    public function enrolmentNoResultsDigitalModules()
-    {
-        return $this->hasMany(ResultsDigitalModule::class, 'enrolment_no_id', 'id');
-    }
-
     public function enrolment_status()
     {
         return $this->belongsTo(Status::class, 'enrolment_status_id');
-    }
-
-    public function student_name()
-    {
-        return $this->belongsTo(Individual::class, 'student_name_id');
     }
 
     public function course_title()
@@ -97,6 +86,16 @@ class EnrolmentsQualification extends Model
     public function setEndDateAttribute($value)
     {
         $this->attributes['end_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function classes()
+    {
+        return $this->belongsToMany(ClassIntake::class);
+    }
+
+    public function student_name()
+    {
+        return $this->belongsTo(Individual::class, 'student_name_id');
     }
 
     public function officer_name()

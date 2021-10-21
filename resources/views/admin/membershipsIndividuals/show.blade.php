@@ -41,10 +41,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.start_date') }}
+                            {{ trans('cruds.membershipsIndividual.fields.valid_from') }}
                         </th>
                         <td>
-                            {{ $membershipsIndividual->start_date }}
+                            {{ $membershipsIndividual->valid_from }}
                         </td>
                     </tr>
                     <tr>
@@ -89,6 +89,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.membershipsIndividual.fields.admission_date') }}
+                        </th>
+                        <td>
+                            {{ $membershipsIndividual->admission_date }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.membershipsIndividual.fields.note') }}
                         </th>
                         <td>
@@ -112,30 +120,30 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#member_no_tc_individuals" role="tab" data-toggle="tab">
-                {{ trans('cruds.tcIndividual.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#member_no_payments_individuals" role="tab" data-toggle="tab">
                 {{ trans('cruds.paymentsIndividual.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#member_no_sf_individuals" role="tab" data-toggle="tab">
-                {{ trans('cruds.sfIndividual.title') }}
+            <a class="nav-link" href="#member_no_training_credits_individuals" role="tab" data-toggle="tab">
+                {{ trans('cruds.trainingCreditsIndividual.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#member_no_support_funds_individuals" role="tab" data-toggle="tab">
+                {{ trans('cruds.supportFundsIndividual.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="member_no_tc_individuals">
-            @includeIf('admin.membershipsIndividuals.relationships.memberNoTcIndividuals', ['tcIndividuals' => $membershipsIndividual->memberNoTcIndividuals])
-        </div>
         <div class="tab-pane" role="tabpanel" id="member_no_payments_individuals">
             @includeIf('admin.membershipsIndividuals.relationships.memberNoPaymentsIndividuals', ['paymentsIndividuals' => $membershipsIndividual->memberNoPaymentsIndividuals])
         </div>
-        <div class="tab-pane" role="tabpanel" id="member_no_sf_individuals">
-            @includeIf('admin.membershipsIndividuals.relationships.memberNoSfIndividuals', ['sfIndividuals' => $membershipsIndividual->memberNoSfIndividuals])
+        <div class="tab-pane" role="tabpanel" id="member_no_training_credits_individuals">
+            @includeIf('admin.membershipsIndividuals.relationships.memberNoTrainingCreditsIndividuals', ['trainingCreditsIndividuals' => $membershipsIndividual->memberNoTrainingCreditsIndividuals])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="member_no_support_funds_individuals">
+            @includeIf('admin.membershipsIndividuals.relationships.memberNoSupportFundsIndividuals', ['supportFundsIndividuals' => $membershipsIndividual->memberNoSupportFundsIndividuals])
         </div>
     </div>
 </div>

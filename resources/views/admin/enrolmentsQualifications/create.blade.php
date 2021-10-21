@@ -58,6 +58,24 @@
                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.end_date_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="classes">{{ trans('cruds.enrolmentsQualification.fields.classes') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('classes') ? 'is-invalid' : '' }}" name="classes[]" id="classes" multiple>
+                    @foreach($classes as $id => $class)
+                        <option value="{{ $id }}" {{ in_array($id, old('classes', [])) ? 'selected' : '' }}>{{ $class }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('classes'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('classes') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.classes_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="enrolment_no">{{ trans('cruds.enrolmentsQualification.fields.enrolment_no') }}</label>
                 <input class="form-control {{ $errors->has('enrolment_no') ? 'is-invalid' : '' }}" type="text" name="enrolment_no" id="enrolment_no" value="{{ old('enrolment_no', '') }}" required>
                 @if($errors->has('enrolment_no'))
@@ -139,16 +157,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.outstanding_balance_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="result_points">{{ trans('cruds.enrolmentsQualification.fields.result_points') }}</label>
-                <input class="form-control {{ $errors->has('result_points') ? 'is-invalid' : '' }}" type="number" name="result_points" id="result_points" value="{{ old('result_points', '') }}" step="1">
-                @if($errors->has('result_points'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('result_points') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.result_points_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="note">{{ trans('cruds.enrolmentsQualification.fields.note') }}</label>

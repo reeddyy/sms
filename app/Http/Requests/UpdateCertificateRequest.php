@@ -17,26 +17,30 @@ class UpdateCertificateRequest extends FormRequest
     public function rules()
     {
         return [
-            'credential_reference' => [
-                'string',
-                'required',
-                'unique:certificates,credential_reference,' . request()->route('certificate')->id,
-            ],
             'award_name' => [
                 'string',
                 'required',
             ],
-            'recipient_name_id' => [
-                'required',
-                'integer',
+            'awarded_by' => [
+                'string',
+                'nullable',
             ],
             'date_awarded' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
-            'awarded_by' => [
-                'string',
+            'date_printed' => [
+                'date_format:' . config('panel.date_format'),
                 'nullable',
+            ],
+            'recipient_name_id' => [
+                'required',
+                'integer',
+            ],
+            'credential_reference' => [
+                'string',
+                'required',
+                'unique:certificates,credential_reference,' . request()->route('certificate')->id,
             ],
         ];
     }

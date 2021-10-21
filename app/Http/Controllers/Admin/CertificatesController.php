@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyCertificateRequest;
 use App\Http\Requests\StoreCertificateRequest;
 use App\Http\Requests\UpdateCertificateRequest;
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class CertificatesController extends Controller
 {
+    use CsvImportTrait;
+
     public function index()
     {
         abort_if(Gate::denies('certificate_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');

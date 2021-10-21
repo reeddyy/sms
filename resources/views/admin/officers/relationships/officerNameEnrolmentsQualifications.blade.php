@@ -37,6 +37,9 @@
                             {{ trans('cruds.enrolmentsQualification.fields.end_date') }}
                         </th>
                         <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.classes') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.enrolment_no') }}
                         </th>
                         <th>
@@ -56,9 +59,6 @@
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.outstanding_balance') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.result_points') }}
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.note') }}
@@ -90,6 +90,11 @@
                                 {{ $enrolmentsQualification->end_date ?? '' }}
                             </td>
                             <td>
+                                @foreach($enrolmentsQualification->classes as $key => $item)
+                                    <span class="badge badge-info">{{ $item->class_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
                                 {{ $enrolmentsQualification->enrolment_no ?? '' }}
                             </td>
                             <td>
@@ -109,9 +114,6 @@
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->outstanding_balance ?? '' }}
-                            </td>
-                            <td>
-                                {{ $enrolmentsQualification->result_points ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->note ?? '' }}

@@ -36,8 +36,8 @@
                 <span class="help-block">{{ trans('cruds.individual.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="nric_fin">{{ trans('cruds.individual.fields.nric_fin') }}</label>
-                <input class="form-control {{ $errors->has('nric_fin') ? 'is-invalid' : '' }}" type="text" name="nric_fin" id="nric_fin" value="{{ old('nric_fin', $individual->nric_fin) }}" required>
+                <label for="nric_fin">{{ trans('cruds.individual.fields.nric_fin') }}</label>
+                <input class="form-control {{ $errors->has('nric_fin') ? 'is-invalid' : '' }}" type="text" name="nric_fin" id="nric_fin" value="{{ old('nric_fin', $individual->nric_fin) }}">
                 @if($errors->has('nric_fin'))
                     <div class="invalid-feedback">
                         {{ $errors->first('nric_fin') }}

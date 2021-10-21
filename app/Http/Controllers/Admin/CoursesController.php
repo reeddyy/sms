@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyCourseRequest;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\ClassIntake;
 use App\Models\Course;
-use App\Models\DigitalModule;
 use App\Models\Level;
 use App\Models\Module;
 use Gate;
@@ -20,15 +20,15 @@ class CoursesController extends Controller
     {
         abort_if(Gate::denies('course_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $courses = Course::with(['level', 'module_s', 'digital_module_s'])->get();
+        $courses = Course::with(['level', 'module_s', 'classes'])->get();
 
         $levels = Level::get();
 
         $modules = Module::get();
 
-        $digital_modules = DigitalModule::get();
+        $class_intakes = ClassIntake::get();
 
-        return view('admin.courses.index', compact('courses', 'levels', 'modules', 'digital_modules'));
+        return view('admin.courses.index', compact('courses', 'levels', 'modules', 'class_intakes'));
     }
 
     public function create()
@@ -39,16 +39,16 @@ class CoursesController extends Controller
 
         $module_s = Module::pluck('module_name', 'id');
 
-        $digital_module_s = DigitalModule::pluck('module_name', 'id');
+        $classes = ClassIntake::pluck('class_name', 'id');
 
-        return view('admin.courses.create', compact('levels', 'module_s', 'digital_module_s'));
+        return view('admin.courses.create', compact('levels', 'module_s', 'classes'));
     }
 
     public function store(StoreCourseRequest $request)
     {
         $course = Course::create($request->all());
         $course->module_s()->sync($request->input('module_s', []));
-        $course->digital_module_s()->sync($request->input('digital_module_s', []));
+        $course->classes()->sync($request->input('classes', []));
 
         return redirect()->route('admin.courses.index');
     }
@@ -61,18 +61,18 @@ class CoursesController extends Controller
 
         $module_s = Module::pluck('module_name', 'id');
 
-        $digital_module_s = DigitalModule::pluck('module_name', 'id');
+        $classes = ClassIntake::pluck('class_name', 'id');
 
-        $course->load('level', 'module_s', 'digital_module_s');
+        $course->load('level', 'module_s', 'classes');
 
-        return view('admin.courses.edit', compact('levels', 'module_s', 'digital_module_s', 'course'));
+        return view('admin.courses.edit', compact('levels', 'module_s', 'classes', 'course'));
     }
 
     public function update(UpdateCourseRequest $request, Course $course)
     {
         $course->update($request->all());
         $course->module_s()->sync($request->input('module_s', []));
-        $course->digital_module_s()->sync($request->input('digital_module_s', []));
+        $course->classes()->sync($request->input('classes', []));
 
         return redirect()->route('admin.courses.index');
     }
@@ -81,7 +81,7 @@ class CoursesController extends Controller
     {
         abort_if(Gate::denies('course_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $course->load('level', 'module_s', 'digital_module_s', 'courseTitleEnrolmentsQualifications');
+        $course->load('level', 'module_s', 'classes', 'courseTitleEnrolmentsQualifications');
 
         return view('admin.courses.show', compact('course'));
     }

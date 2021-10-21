@@ -311,13 +311,13 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#applicant_name_applicants_adas" role="tab" data-toggle="tab">
-                {{ trans('cruds.applicantsAda.title') }}
+            <a class="nav-link" href="#participant_name_admissions_edps" role="tab" data-toggle="tab">
+                {{ trans('cruds.admissionsEdp.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#participant_name_admissions_edps" role="tab" data-toggle="tab">
-                {{ trans('cruds.admissionsEdp.title') }}
+            <a class="nav-link" href="#applicant_name_applicants_adas" role="tab" data-toggle="tab">
+                {{ trans('cruds.applicantsAda.title') }}
             </a>
         </li>
     </ul>
@@ -331,11 +331,11 @@
         <div class="tab-pane" role="tabpanel" id="student_name_enrolments_qualifications">
             @includeIf('admin.individuals.relationships.studentNameEnrolmentsQualifications', ['enrolmentsQualifications' => $individual->studentNameEnrolmentsQualifications])
         </div>
-        <div class="tab-pane" role="tabpanel" id="applicant_name_applicants_adas">
-            @includeIf('admin.individuals.relationships.applicantNameApplicantsAdas', ['applicantsAdas' => $individual->applicantNameApplicantsAdas])
-        </div>
         <div class="tab-pane" role="tabpanel" id="participant_name_admissions_edps">
             @includeIf('admin.individuals.relationships.participantNameAdmissionsEdps', ['admissionsEdps' => $individual->participantNameAdmissionsEdps])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="applicant_name_applicants_adas">
+            @includeIf('admin.individuals.relationships.applicantNameApplicantsAdas', ['applicantsAdas' => $individual->applicantNameApplicantsAdas])
         </div>
     </div>
 </div>

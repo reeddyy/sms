@@ -41,7 +41,7 @@
                             {{ trans('cruds.course.fields.module_s') }}
                         </th>
                         <th>
-                            {{ trans('cruds.course.fields.digital_module_s') }}
+                            {{ trans('cruds.course.fields.classes') }}
                         </th>
                         <th>
                             {{ trans('cruds.course.fields.member_rate') }}
@@ -117,8 +117,8 @@
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach($digital_modules as $key => $item)
-                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
+                                @foreach($class_intakes as $key => $item)
+                                    <option value="{{ $item->class_name }}">{{ $item->class_name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -194,8 +194,8 @@
                                 @endforeach
                             </td>
                             <td>
-                                @foreach($course->digital_module_s as $key => $item)
-                                    <span class="badge badge-info">{{ $item->module_name }}</span>
+                                @foreach($course->classes as $key => $item)
+                                    <span class="badge badge-info">{{ $item->class_name }}</span>
                                 @endforeach
                             </td>
                             <td>

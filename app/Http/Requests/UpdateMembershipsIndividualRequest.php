@@ -21,6 +21,18 @@ class UpdateMembershipsIndividualRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'member_class_id' => [
+                'required',
+                'integer',
+            ],
+            'valid_from' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'valid_till' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
             'member_no' => [
                 'string',
                 'required',
@@ -30,15 +42,7 @@ class UpdateMembershipsIndividualRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'member_class_id' => [
-                'required',
-                'integer',
-            ],
-            'start_date' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-            'valid_till' => [
+            'admission_date' => [
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],

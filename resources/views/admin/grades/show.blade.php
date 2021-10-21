@@ -74,30 +74,6 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
-    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#grade_results_modules" role="tab" data-toggle="tab">
-                {{ trans('cruds.resultsModule.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#grade_results_digital_modules" role="tab" data-toggle="tab">
-                {{ trans('cruds.resultsDigitalModule.title') }}
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="grade_results_modules">
-            @includeIf('admin.grades.relationships.gradeResultsModules', ['resultsModules' => $grade->gradeResultsModules])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="grade_results_digital_modules">
-            @includeIf('admin.grades.relationships.gradeResultsDigitalModules', ['resultsDigitalModules' => $grade->gradeResultsDigitalModules])
-        </div>
-    </div>
-</div>
+
 
 @endsection

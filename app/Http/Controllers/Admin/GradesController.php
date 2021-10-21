@@ -54,8 +54,6 @@ class GradesController extends Controller
     {
         abort_if(Gate::denies('grade_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $grade->load('gradeResultsModules', 'gradeResultsDigitalModules');
-
         return view('admin.grades.show', compact('grade'));
     }
 

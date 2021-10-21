@@ -37,10 +37,10 @@ class StoreCourseRequest extends FormRequest
             'module_s' => [
                 'array',
             ],
-            'digital_module_s.*' => [
+            'classes.*' => [
                 'integer',
             ],
-            'digital_module_s' => [
+            'classes' => [
                 'array',
             ],
             'no_of_instalment' => [

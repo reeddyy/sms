@@ -33,16 +33,6 @@ class Grade extends Model
         'deleted_at',
     ];
 
-    public function gradeResultsModules()
-    {
-        return $this->hasMany(ResultsModule::class, 'grade_id', 'id');
-    }
-
-    public function gradeResultsDigitalModules()
-    {
-        return $this->hasMany(ResultsDigitalModule::class, 'grade_id', 'id');
-    }
-
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

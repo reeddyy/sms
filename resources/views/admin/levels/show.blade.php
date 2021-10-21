@@ -56,11 +56,6 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#level_digital_modules" role="tab" data-toggle="tab">
-                {{ trans('cruds.digitalModule.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#level_courses" role="tab" data-toggle="tab">
                 {{ trans('cruds.course.title') }}
             </a>
@@ -72,9 +67,6 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="level_digital_modules">
-            @includeIf('admin.levels.relationships.levelDigitalModules', ['digitalModules' => $level->levelDigitalModules])
-        </div>
         <div class="tab-pane" role="tabpanel" id="level_courses">
             @includeIf('admin.levels.relationships.levelCourses', ['courses' => $level->levelCourses])
         </div>

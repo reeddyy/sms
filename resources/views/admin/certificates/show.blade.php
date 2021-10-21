@@ -25,14 +25,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.certificate.fields.credential_reference') }}
-                        </th>
-                        <td>
-                            {{ $certificate->credential_reference }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.certificate.fields.award_name') }}
                         </th>
                         <td>
@@ -41,10 +33,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                            {{ trans('cruds.certificate.fields.awarded_by') }}
                         </th>
                         <td>
-                            {{ $certificate->recipient_name->name ?? '' }}
+                            {{ $certificate->awarded_by }}
                         </td>
                     </tr>
                     <tr>
@@ -57,10 +49,26 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.certificate.fields.awarded_by') }}
+                            {{ trans('cruds.certificate.fields.date_printed') }}
                         </th>
                         <td>
-                            {{ $certificate->awarded_by }}
+                            {{ $certificate->date_printed }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                        </th>
+                        <td>
+                            {{ $certificate->recipient_name->name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.certificate.fields.credential_reference') }}
+                        </th>
+                        <td>
+                            {{ $certificate->credential_reference }}
                         </td>
                     </tr>
                     <tr>

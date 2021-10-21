@@ -80,20 +80,12 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#module_results_modules" role="tab" data-toggle="tab">
-                {{ trans('cruds.resultsModule.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#module_s_courses" role="tab" data-toggle="tab">
                 {{ trans('cruds.course.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="module_results_modules">
-            @includeIf('admin.modules.relationships.moduleResultsModules', ['resultsModules' => $module->moduleResultsModules])
-        </div>
         <div class="tab-pane" role="tabpanel" id="module_s_courses">
             @includeIf('admin.modules.relationships.moduleSCourses', ['courses' => $module->moduleSCourses])
         </div>
