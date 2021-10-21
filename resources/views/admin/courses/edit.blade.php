@@ -73,22 +73,22 @@
                 <span class="help-block">{{ trans('cruds.course.fields.module_s_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="digital_module_s">{{ trans('cruds.course.fields.digital_module_s') }}</label>
+                <label for="classes">{{ trans('cruds.course.fields.classes') }}</label>
                 <div style="padding-bottom: 4px">
                     <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
                     <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
                 </div>
-                <select class="form-control select2 {{ $errors->has('digital_module_s') ? 'is-invalid' : '' }}" name="digital_module_s[]" id="digital_module_s" multiple>
-                    @foreach($digital_module_s as $id => $digital_module_)
-                        <option value="{{ $id }}" {{ (in_array($id, old('digital_module_s', [])) || $course->digital_module_s->contains($id)) ? 'selected' : '' }}>{{ $digital_module_ }}</option>
+                <select class="form-control select2 {{ $errors->has('classes') ? 'is-invalid' : '' }}" name="classes[]" id="classes" multiple>
+                    @foreach($classes as $id => $class)
+                        <option value="{{ $id }}" {{ (in_array($id, old('classes', [])) || $course->classes->contains($id)) ? 'selected' : '' }}>{{ $class }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('digital_module_s'))
+                @if($errors->has('classes'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('digital_module_s') }}
+                        {{ $errors->first('classes') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.course.fields.digital_module_s_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.course.fields.classes_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="member_rate">{{ trans('cruds.course.fields.member_rate') }}</label>

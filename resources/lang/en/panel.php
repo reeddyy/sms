@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'site_title' => 'ADMIN3',
+    'site_title' => 'ADMIN',
 ];

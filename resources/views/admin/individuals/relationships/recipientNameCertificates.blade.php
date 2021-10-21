@@ -25,19 +25,22 @@
                             {{ trans('cruds.certificate.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.credential_reference') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.certificate.fields.award_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                            {{ trans('cruds.certificate.fields.awarded_by') }}
                         </th>
                         <th>
                             {{ trans('cruds.certificate.fields.date_awarded') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.awarded_by') }}
+                            {{ trans('cruds.certificate.fields.date_printed') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.certificate.fields.credential_reference') }}
                         </th>
                         <th>
                             {{ trans('cruds.certificate.fields.note') }}
@@ -57,19 +60,22 @@
                                 {{ $certificate->id ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->credential_reference ?? '' }}
-                            </td>
-                            <td>
                                 {{ $certificate->award_name ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->recipient_name->name ?? '' }}
+                                {{ $certificate->awarded_by ?? '' }}
                             </td>
                             <td>
                                 {{ $certificate->date_awarded ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->awarded_by ?? '' }}
+                                {{ $certificate->date_printed ?? '' }}
+                            </td>
+                            <td>
+                                {{ $certificate->recipient_name->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $certificate->credential_reference ?? '' }}
                             </td>
                             <td>
                                 {{ $certificate->note ?? '' }}

@@ -67,11 +67,11 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.course.fields.digital_module_s') }}
+                            {{ trans('cruds.course.fields.classes') }}
                         </th>
                         <td>
-                            @foreach($course->digital_module_s as $key => $digital_module_s)
-                                <span class="label label-info">{{ $digital_module_s->module_name }}</span>
+                            @foreach($course->classes as $key => $classes)
+                                <span class="label label-info">{{ $classes->class_name }}</span>
                             @endforeach
                         </td>
                     </tr>

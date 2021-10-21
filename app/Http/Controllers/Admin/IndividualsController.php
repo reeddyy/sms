@@ -57,7 +57,7 @@ class IndividualsController extends Controller
     {
         abort_if(Gate::denies('individual_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $individual->load('memberNameMembershipsIndividuals', 'recipientNameCertificates', 'studentNameEnrolmentsQualifications', 'applicantNameApplicantsAdas', 'participantNameAdmissionsEdps');
+        $individual->load('memberNameMembershipsIndividuals', 'recipientNameCertificates', 'studentNameEnrolmentsQualifications', 'participantNameAdmissionsEdps', 'applicantNameApplicantsAdas');
 
         return view('admin.individuals.show', compact('individual'));
     }

@@ -68,7 +68,7 @@
             </li>
         @endcan
         @can('profile_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates*") ? "c-show" : "" }} {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
 
@@ -76,6 +76,16 @@
                     {{ trans('cruds.profile.title') }}
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
+                    @can('corporate_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/corporates") || request()->is("admin/corporates/*") ? "c-active" : "" }}">
+                                <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.corporate.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('individual_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/individuals") || request()->is("admin/individuals/*") ? "c-active" : "" }}">
@@ -110,7 +120,7 @@
             </li>
         @endcan
         @can('qualification_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/enrolments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/payments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/results-modules*") ? "c-show" : "" }} {{ request()->is("admin/results-digital-modules*") ? "c-show" : "" }} {{ request()->is("admin/courses*") ? "c-show" : "" }} {{ request()->is("admin/modules*") ? "c-show" : "" }} {{ request()->is("admin/digital-modules*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/enrolments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/payments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/results-modules*") ? "c-show" : "" }} {{ request()->is("admin/courses*") ? "c-show" : "" }} {{ request()->is("admin/class-intakes*") ? "c-show" : "" }} {{ request()->is("admin/modules*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }} {{ request()->is("admin/achievements*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-graduation-cap c-sidebar-nav-icon">
 
@@ -148,16 +158,6 @@
                             </a>
                         </li>
                     @endcan
-                    @can('results_digital_module_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.results-digital-modules.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/results-digital-modules") || request()->is("admin/results-digital-modules/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-chart-line c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.resultsDigitalModule.title') }}
-                            </a>
-                        </li>
-                    @endcan
                     @can('course_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.courses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "c-active" : "" }}">
@@ -165,6 +165,16 @@
 
                                 </i>
                                 {{ trans('cruds.course.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('class_intake_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.class-intakes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/class-intakes") || request()->is("admin/class-intakes/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-chalkboard c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.classIntake.title') }}
                             </a>
                         </li>
                     @endcan
@@ -178,16 +188,6 @@
                             </a>
                         </li>
                     @endcan
-                    @can('digital_module_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.digital-modules.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/digital-modules") || request()->is("admin/digital-modules/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-laptop c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.digitalModule.title') }}
-                            </a>
-                        </li>
-                    @endcan
                     @can('grade_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.grades.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/grades") || request()->is("admin/grades/*") ? "c-active" : "" }}">
@@ -195,6 +195,16 @@
 
                                 </i>
                                 {{ trans('cruds.grade.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('achievement_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.achievements.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/achievements") || request()->is("admin/achievements/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-trophy c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.achievement.title') }}
                             </a>
                         </li>
                     @endcan
@@ -243,6 +253,16 @@
                 </ul>
             </li>
         @endcan
+        @can('certificate_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.certificates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/certificates") || request()->is("admin/certificates/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-certificate c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.certificate.title') }}
+                </a>
+            </li>
+        @endcan
         @can('payment_source_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.payment-sources.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payment-sources") || request()->is("admin/payment-sources/*") ? "c-active" : "" }}">
@@ -274,7 +294,7 @@
             </li>
         @endcan
         @can('membership_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/memberships-individuals*") ? "c-show" : "" }} {{ request()->is("admin/payments-individuals*") ? "c-show" : "" }} {{ request()->is("admin/tc-individuals*") ? "c-show" : "" }} {{ request()->is("admin/sf-individuals*") ? "c-show" : "" }} {{ request()->is("admin/member-classes*") ? "c-show" : "" }} {{ request()->is("admin/cf-purposes*") ? "c-show" : "" }} {{ request()->is("admin/support-funds*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/credits-funds-purposes*") ? "c-show" : "" }} {{ request()->is("admin/support-funds*") ? "c-show" : "" }} {{ request()->is("admin/member-classes*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
 
@@ -282,63 +302,117 @@
                     {{ trans('cruds.membership.title') }}
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
-                    @can('memberships_individual_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.memberships-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/memberships-individuals") || request()->is("admin/memberships-individuals/*") ? "c-active" : "" }}">
+                    @can('corporate_membership_access')
+                        <li class="c-sidebar-nav-dropdown {{ request()->is("admin/memberships-corporates*") ? "c-show" : "" }} {{ request()->is("admin/payments-corporates*") ? "c-show" : "" }} {{ request()->is("admin/training-credits-corporates*") ? "c-show" : "" }} {{ request()->is("admin/support-funds-corporates*") ? "c-show" : "" }}">
+                            <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                                <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.corporateMembership.title') }}
+                            </a>
+                            <ul class="c-sidebar-nav-dropdown-items">
+                                @can('memberships_corporate_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.memberships-corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/memberships-corporates") || request()->is("admin/memberships-corporates/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-building c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.membershipsCorporate.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('payments_corporate_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.payments-corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payments-corporates") || request()->is("admin/payments-corporates/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw far fa-money-bill-alt c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.paymentsCorporate.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('training_credits_corporate_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.training-credits-corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/training-credits-corporates") || request()->is("admin/training-credits-corporates/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.trainingCreditsCorporate.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('support_funds_corporate_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.support-funds-corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/support-funds-corporates") || request()->is("admin/support-funds-corporates/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.supportFundsCorporate.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('individual_membership_access')
+                        <li class="c-sidebar-nav-dropdown {{ request()->is("admin/memberships-individuals*") ? "c-show" : "" }} {{ request()->is("admin/payments-individuals*") ? "c-show" : "" }} {{ request()->is("admin/training-credits-individuals*") ? "c-show" : "" }} {{ request()->is("admin/support-funds-individuals*") ? "c-show" : "" }}">
+                            <a class="c-sidebar-nav-dropdown-toggle" href="#">
                                 <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.membershipsIndividual.title') }}
+                                {{ trans('cruds.individualMembership.title') }}
                             </a>
-                        </li>
-                    @endcan
-                    @can('payments_individual_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.payments-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payments-individuals") || request()->is("admin/payments-individuals/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
+                            <ul class="c-sidebar-nav-dropdown-items">
+                                @can('memberships_individual_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.memberships-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/memberships-individuals") || request()->is("admin/memberships-individuals/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.paymentsIndividual.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('tc_individual_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.tc-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/tc-individuals") || request()->is("admin/tc-individuals/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
+                                            </i>
+                                            {{ trans('cruds.membershipsIndividual.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('payments_individual_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.payments-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payments-individuals") || request()->is("admin/payments-individuals/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-shopping-cart c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.tcIndividual.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('sf_individual_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.sf-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/sf-individuals") || request()->is("admin/sf-individuals/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
+                                            </i>
+                                            {{ trans('cruds.paymentsIndividual.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('training_credits_individual_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.training-credits-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/training-credits-individuals") || request()->is("admin/training-credits-individuals/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.sfIndividual.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('member_class_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.member-classes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/member-classes") || request()->is("admin/member-classes/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+                                            </i>
+                                            {{ trans('cruds.trainingCreditsIndividual.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('support_funds_individual_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.support-funds-individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/support-funds-individuals") || request()->is("admin/support-funds-individuals/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-hand-holding-usd c-sidebar-nav-icon">
 
-                                </i>
-                                {{ trans('cruds.memberClass.title') }}
-                            </a>
+                                            </i>
+                                            {{ trans('cruds.supportFundsIndividual.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
                         </li>
                     @endcan
-                    @can('cf_purpose_access')
+                    @can('credits_funds_purpose_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.cf-purposes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/cf-purposes") || request()->is("admin/cf-purposes/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.credits-funds-purposes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/credits-funds-purposes") || request()->is("admin/credits-funds-purposes/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-file-invoice-dollar c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.cfPurpose.title') }}
+                                {{ trans('cruds.creditsFundsPurpose.title') }}
                             </a>
                         </li>
                     @endcan
@@ -349,6 +423,16 @@
 
                                 </i>
                                 {{ trans('cruds.supportFund.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('member_class_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.member-classes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/member-classes") || request()->is("admin/member-classes/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.memberClass.title') }}
                             </a>
                         </li>
                     @endcan
@@ -385,16 +469,6 @@
                         </li>
                     @endcan
                 </ul>
-            </li>
-        @endcan
-        @can('certificate_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.certificates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/certificates") || request()->is("admin/certificates/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-certificate c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.certificate.title') }}
-                </a>
             </li>
         @endcan
         @can('status_access')

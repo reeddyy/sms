@@ -23,8 +23,7 @@ class UpdateIndividualRequest extends FormRequest
             ],
             'nric_fin' => [
                 'string',
-                'required',
-                'unique:individuals,nric_fin,' . request()->route('individual')->id,
+                'nullable',
             ],
             'residential_address' => [
                 'string',
@@ -50,6 +49,7 @@ class UpdateIndividualRequest extends FormRequest
             ],
             'email_address' => [
                 'required',
+                'unique:individuals,email_address,' . request()->route('individual')->id,
             ],
             'company_name_1' => [
                 'string',

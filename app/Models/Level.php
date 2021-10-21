@@ -30,11 +30,6 @@ class Level extends Model
         'deleted_at',
     ];
 
-    public function levelDigitalModules()
-    {
-        return $this->hasMany(DigitalModule::class, 'level_id', 'id');
-    }
-
     public function levelCourses()
     {
         return $this->hasMany(Course::class, 'level_id', 'id');

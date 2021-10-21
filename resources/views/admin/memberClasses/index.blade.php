@@ -29,6 +29,9 @@
                             {{ trans('cruds.memberClass.fields.member_class_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.memberClass.fields.member_category') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.memberClass.fields.note') }}
                         </th>
                         <th>
@@ -43,6 +46,14 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\MemberClass::MEMBER_CATEGORY_RADIO as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -62,6 +73,9 @@
                             </td>
                             <td>
                                 {{ $memberClass->member_class_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\MemberClass::MEMBER_CATEGORY_RADIO[$memberClass->member_category] ?? '' }}
                             </td>
                             <td>
                                 {{ $memberClass->note ?? '' }}

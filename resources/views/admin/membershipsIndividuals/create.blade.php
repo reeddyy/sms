@@ -38,14 +38,14 @@
                 <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.member_class_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="start_date">{{ trans('cruds.membershipsIndividual.fields.start_date') }}</label>
-                <input class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}" type="text" name="start_date" id="start_date" value="{{ old('start_date') }}">
-                @if($errors->has('start_date'))
+                <label for="valid_from">{{ trans('cruds.membershipsIndividual.fields.valid_from') }}</label>
+                <input class="form-control date {{ $errors->has('valid_from') ? 'is-invalid' : '' }}" type="text" name="valid_from" id="valid_from" value="{{ old('valid_from') }}">
+                @if($errors->has('valid_from'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('start_date') }}
+                        {{ $errors->first('valid_from') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.start_date_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.valid_from_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="valid_till">{{ trans('cruds.membershipsIndividual.fields.valid_till') }}</label>
@@ -100,6 +100,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.support_funds_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="admission_date">{{ trans('cruds.membershipsIndividual.fields.admission_date') }}</label>
+                <input class="form-control date {{ $errors->has('admission_date') ? 'is-invalid' : '' }}" type="text" name="admission_date" id="admission_date" value="{{ old('admission_date') }}">
+                @if($errors->has('admission_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('admission_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.admission_date_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="note">{{ trans('cruds.membershipsIndividual.fields.note') }}</label>
