@@ -54,7 +54,7 @@ class SupportFundsController extends Controller
     {
         abort_if(Gate::denies('support_fund_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $supportFund->load('fundNameSfIndividuals');
+        $supportFund->load('fundNameSupportFundsIndividuals', 'fundNameSupportFundsCorporates', 'supportFundsMembershipsCorporates');
 
         return view('admin.supportFunds.show', compact('supportFund'));
     }

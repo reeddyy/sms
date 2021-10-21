@@ -40,14 +40,19 @@ class Status extends Model
         return $this->hasMany(EnrolmentsQualification::class, 'enrolment_status_id', 'id');
     }
 
+    public function admissionStatusAdmissionsEdps()
+    {
+        return $this->hasMany(AdmissionsEdp::class, 'admission_status_id', 'id');
+    }
+
     public function adaStatusApplicantsAdas()
     {
         return $this->hasMany(ApplicantsAda::class, 'ada_status_id', 'id');
     }
 
-    public function admissionStatusAdmissionsEdps()
+    public function memberStatusMembershipsCorporates()
     {
-        return $this->hasMany(AdmissionsEdp::class, 'admission_status_id', 'id');
+        return $this->hasMany(MembershipsCorporate::class, 'member_status_id', 'id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

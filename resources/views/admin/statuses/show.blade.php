@@ -66,13 +66,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#admission_status_admissions_edps" role="tab" data-toggle="tab">
+                {{ trans('cruds.admissionsEdp.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#ada_status_applicants_adas" role="tab" data-toggle="tab">
                 {{ trans('cruds.applicantsAda.title') }}
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#admission_status_admissions_edps" role="tab" data-toggle="tab">
-                {{ trans('cruds.admissionsEdp.title') }}
+            <a class="nav-link" href="#member_status_memberships_corporates" role="tab" data-toggle="tab">
+                {{ trans('cruds.membershipsCorporate.title') }}
             </a>
         </li>
     </ul>
@@ -83,11 +88,14 @@
         <div class="tab-pane" role="tabpanel" id="enrolment_status_enrolments_qualifications">
             @includeIf('admin.statuses.relationships.enrolmentStatusEnrolmentsQualifications', ['enrolmentsQualifications' => $status->enrolmentStatusEnrolmentsQualifications])
         </div>
+        <div class="tab-pane" role="tabpanel" id="admission_status_admissions_edps">
+            @includeIf('admin.statuses.relationships.admissionStatusAdmissionsEdps', ['admissionsEdps' => $status->admissionStatusAdmissionsEdps])
+        </div>
         <div class="tab-pane" role="tabpanel" id="ada_status_applicants_adas">
             @includeIf('admin.statuses.relationships.adaStatusApplicantsAdas', ['applicantsAdas' => $status->adaStatusApplicantsAdas])
         </div>
-        <div class="tab-pane" role="tabpanel" id="admission_status_admissions_edps">
-            @includeIf('admin.statuses.relationships.admissionStatusAdmissionsEdps', ['admissionsEdps' => $status->admissionStatusAdmissionsEdps])
+        <div class="tab-pane" role="tabpanel" id="member_status_memberships_corporates">
+            @includeIf('admin.statuses.relationships.memberStatusMembershipsCorporates', ['membershipsCorporates' => $status->memberStatusMembershipsCorporates])
         </div>
     </div>
 </div>

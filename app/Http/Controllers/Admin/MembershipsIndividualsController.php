@@ -77,7 +77,7 @@ class MembershipsIndividualsController extends Controller
     {
         abort_if(Gate::denies('memberships_individual_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $membershipsIndividual->load('member_status', 'member_class', 'member_name', 'memberNoTcIndividuals', 'memberNoPaymentsIndividuals', 'memberNoSfIndividuals');
+        $membershipsIndividual->load('member_status', 'member_class', 'member_name', 'memberNoPaymentsIndividuals', 'memberNoTrainingCreditsIndividuals', 'memberNoSupportFundsIndividuals');
 
         return view('admin.membershipsIndividuals.show', compact('membershipsIndividual'));
     }

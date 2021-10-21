@@ -24,8 +24,8 @@
                 <span class="help-block">{{ trans('cruds.resultsModule.fields.enrolment_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="date_release">{{ trans('cruds.resultsModule.fields.date_release') }}</label>
-                <input class="form-control date {{ $errors->has('date_release') ? 'is-invalid' : '' }}" type="text" name="date_release" id="date_release" value="{{ old('date_release') }}" required>
+                <label for="date_release">{{ trans('cruds.resultsModule.fields.date_release') }}</label>
+                <input class="form-control date {{ $errors->has('date_release') ? 'is-invalid' : '' }}" type="text" name="date_release" id="date_release" value="{{ old('date_release') }}">
                 @if($errors->has('date_release'))
                     <div class="invalid-feedback">
                         {{ $errors->first('date_release') }}
@@ -34,32 +34,216 @@
                 <span class="help-block">{{ trans('cruds.resultsModule.fields.date_release_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="module_id">{{ trans('cruds.resultsModule.fields.module') }}</label>
-                <select class="form-control select2 {{ $errors->has('module') ? 'is-invalid' : '' }}" name="module_id" id="module_id" required>
-                    @foreach($modules as $id => $entry)
-                        <option value="{{ $id }}" {{ old('module_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label for="module_1_id">{{ trans('cruds.resultsModule.fields.module_1') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_1') ? 'is-invalid' : '' }}" name="module_1_id" id="module_1_id">
+                    @foreach($module_1s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_1_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('module'))
+                @if($errors->has('module_1'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('module') }}
+                        {{ $errors->first('module_1') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_1_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="grade_id">{{ trans('cruds.resultsModule.fields.grade') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade') ? 'is-invalid' : '' }}" name="grade_id" id="grade_id">
-                    @foreach($grades as $id => $entry)
-                        <option value="{{ $id }}" {{ old('grade_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label for="grade_1_id">{{ trans('cruds.resultsModule.fields.grade_1') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_1') ? 'is-invalid' : '' }}" name="grade_1_id" id="grade_1_id">
+                    @foreach($grade_1s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_1_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('grade'))
+                @if($errors->has('grade_1'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('grade') }}
+                        {{ $errors->first('grade_1') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_1_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_2_id">{{ trans('cruds.resultsModule.fields.module_2') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_2') ? 'is-invalid' : '' }}" name="module_2_id" id="module_2_id">
+                    @foreach($module_2s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_2_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_2_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_2_id">{{ trans('cruds.resultsModule.fields.grade_2') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_2') ? 'is-invalid' : '' }}" name="grade_2_id" id="grade_2_id">
+                    @foreach($grade_2s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_2_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade_2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_2_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_3_id">{{ trans('cruds.resultsModule.fields.module_3') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_3') ? 'is-invalid' : '' }}" name="module_3_id" id="module_3_id">
+                    @foreach($module_3s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_3_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_3'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_3') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_3_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_3_id">{{ trans('cruds.resultsModule.fields.grade_3') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_3') ? 'is-invalid' : '' }}" name="grade_3_id" id="grade_3_id">
+                    @foreach($grade_3s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_3_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade_3'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_3') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_3_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_4_id">{{ trans('cruds.resultsModule.fields.module_4') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_4') ? 'is-invalid' : '' }}" name="module_4_id" id="module_4_id">
+                    @foreach($module_4s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_4_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_4'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_4') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_4_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_4_id">{{ trans('cruds.resultsModule.fields.grade_4') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_4') ? 'is-invalid' : '' }}" name="grade_4_id" id="grade_4_id">
+                    @foreach($grade_4s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_4_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade_4'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_4') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_4_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_5_id">{{ trans('cruds.resultsModule.fields.module_5') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_5') ? 'is-invalid' : '' }}" name="module_5_id" id="module_5_id">
+                    @foreach($module_5s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_5_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_5'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_5') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_5_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_5_id">{{ trans('cruds.resultsModule.fields.grade_5') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_5') ? 'is-invalid' : '' }}" name="grade_5_id" id="grade_5_id">
+                    @foreach($grade_5s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_5_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade_5'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_5') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_5_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="module_6_id">{{ trans('cruds.resultsModule.fields.module_6') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_6') ? 'is-invalid' : '' }}" name="module_6_id" id="module_6_id">
+                    @foreach($module_6s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_6_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_6'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_6') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.module_6_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="grade_6_id">{{ trans('cruds.resultsModule.fields.grade_6') }}</label>
+                <select class="form-control select2 {{ $errors->has('grade_6') ? 'is-invalid' : '' }}" name="grade_6_id" id="grade_6_id">
+                    @foreach($grade_6s as $id => $entry)
+                        <option value="{{ $id }}" {{ old('grade_6_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('grade_6'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('grade_6') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.grade_6_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="total_result_points">{{ trans('cruds.resultsModule.fields.total_result_points') }}</label>
+                <input class="form-control {{ $errors->has('total_result_points') ? 'is-invalid' : '' }}" type="number" name="total_result_points" id="total_result_points" value="{{ old('total_result_points', '') }}" step="1">
+                @if($errors->has('total_result_points'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('total_result_points') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.total_result_points_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="achievement_title_id">{{ trans('cruds.resultsModule.fields.achievement_title') }}</label>
+                <select class="form-control select2 {{ $errors->has('achievement_title') ? 'is-invalid' : '' }}" name="achievement_title_id" id="achievement_title_id">
+                    @foreach($achievement_titles as $id => $entry)
+                        <option value="{{ $id }}" {{ old('achievement_title_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('achievement_title'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('achievement_title') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.achievement_title_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="date_transcript_sent_1">{{ trans('cruds.resultsModule.fields.date_transcript_sent_1') }}</label>
+                <input class="form-control date {{ $errors->has('date_transcript_sent_1') ? 'is-invalid' : '' }}" type="text" name="date_transcript_sent_1" id="date_transcript_sent_1" value="{{ old('date_transcript_sent_1') }}">
+                @if($errors->has('date_transcript_sent_1'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_transcript_sent_1') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.date_transcript_sent_1_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="date_transcript_sent_2">{{ trans('cruds.resultsModule.fields.date_transcript_sent_2') }}</label>
+                <input class="form-control date {{ $errors->has('date_transcript_sent_2') ? 'is-invalid' : '' }}" type="text" name="date_transcript_sent_2" id="date_transcript_sent_2" value="{{ old('date_transcript_sent_2') }}">
+                @if($errors->has('date_transcript_sent_2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('date_transcript_sent_2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.resultsModule.fields.date_transcript_sent_2_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="note">{{ trans('cruds.resultsModule.fields.note') }}</label>

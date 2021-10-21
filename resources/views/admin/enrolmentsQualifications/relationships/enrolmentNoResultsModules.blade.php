@@ -31,10 +31,52 @@
                             {{ trans('cruds.resultsModule.fields.date_release') }}
                         </th>
                         <th>
-                            {{ trans('cruds.resultsModule.fields.module') }}
+                            {{ trans('cruds.resultsModule.fields.module_1') }}
                         </th>
                         <th>
-                            {{ trans('cruds.resultsModule.fields.grade') }}
+                            {{ trans('cruds.resultsModule.fields.grade_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.module_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.grade_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.module_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.grade_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.module_4') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.grade_4') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.module_5') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.grade_5') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.module_6') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.grade_6') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.total_result_points') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.achievement_title') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.date_transcript_sent_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.resultsModule.fields.date_transcript_sent_2') }}
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.note') }}
@@ -60,10 +102,52 @@
                                 {{ $resultsModule->date_release ?? '' }}
                             </td>
                             <td>
-                                {{ $resultsModule->module->module_name ?? '' }}
+                                {{ $resultsModule->module_1->module_name ?? '' }}
                             </td>
                             <td>
-                                {{ $resultsModule->grade->grade_letter ?? '' }}
+                                {{ $resultsModule->grade_1->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_2->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_2->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_3->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_3->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_4->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_4->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_5->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_5->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_6->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_6->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->total_result_points ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->achievement_title->achievement_title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->date_transcript_sent_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->date_transcript_sent_2 ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->note ?? '' }}

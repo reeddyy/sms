@@ -64,9 +64,9 @@ class Course extends Model
         return $this->belongsToMany(Module::class);
     }
 
-    public function digital_module_s()
+    public function classes()
     {
-        return $this->belongsToMany(DigitalModule::class);
+        return $this->belongsToMany(ClassIntake::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

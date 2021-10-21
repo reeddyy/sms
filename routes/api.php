@@ -9,4 +9,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Facilitators
     Route::apiResource('facilitators', 'FacilitatorsApiController');
+
+    // Corporates
+    Route::apiResource('corporates', 'CorporatesApiController');
 });

@@ -84,14 +84,14 @@ class Individual extends Model
         return $this->hasMany(EnrolmentsQualification::class, 'student_name_id', 'id');
     }
 
-    public function applicantNameApplicantsAdas()
-    {
-        return $this->hasMany(ApplicantsAda::class, 'applicant_name_id', 'id');
-    }
-
     public function participantNameAdmissionsEdps()
     {
         return $this->hasMany(AdmissionsEdp::class, 'participant_name_id', 'id');
+    }
+
+    public function applicantNameApplicantsAdas()
+    {
+        return $this->hasMany(ApplicantsAda::class, 'applicant_name_id', 'id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

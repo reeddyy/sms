@@ -30,9 +30,19 @@ class SupportFund extends Model
         'deleted_at',
     ];
 
-    public function fundNameSfIndividuals()
+    public function fundNameSupportFundsIndividuals()
     {
-        return $this->hasMany(SfIndividual::class, 'fund_name_id', 'id');
+        return $this->hasMany(SupportFundsIndividual::class, 'fund_name_id', 'id');
+    }
+
+    public function fundNameSupportFundsCorporates()
+    {
+        return $this->hasMany(SupportFundsCorporate::class, 'fund_name_id', 'id');
+    }
+
+    public function supportFundsMembershipsCorporates()
+    {
+        return $this->belongsToMany(MembershipsCorporate::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

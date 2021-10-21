@@ -6,6 +6,10 @@
             <a class="btn btn-success" href="{{ route('admin.certificates.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.certificate.title_singular') }}
             </a>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#csvImportModal">
+                {{ trans('global.app_csvImport') }}
+            </button>
+            @include('csvImport.modal', ['model' => 'Certificate', 'route' => 'admin.certificates.parseCsvImport'])
         </div>
     </div>
 @endcan
@@ -26,19 +30,22 @@
                             {{ trans('cruds.certificate.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.credential_reference') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.certificate.fields.award_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                            {{ trans('cruds.certificate.fields.awarded_by') }}
                         </th>
                         <th>
                             {{ trans('cruds.certificate.fields.date_awarded') }}
                         </th>
                         <th>
-                            {{ trans('cruds.certificate.fields.awarded_by') }}
+                            {{ trans('cruds.certificate.fields.date_printed') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.certificate.fields.recipient_name') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.certificate.fields.credential_reference') }}
                         </th>
                         <th>
                             {{ trans('cruds.certificate.fields.note') }}
@@ -60,14 +67,16 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach($individuals as $key => $item)
                                     <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
-                        </td>
-                        <td>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -89,19 +98,22 @@
                                 {{ $certificate->id ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->credential_reference ?? '' }}
-                            </td>
-                            <td>
                                 {{ $certificate->award_name ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->recipient_name->name ?? '' }}
+                                {{ $certificate->awarded_by ?? '' }}
                             </td>
                             <td>
                                 {{ $certificate->date_awarded ?? '' }}
                             </td>
                             <td>
-                                {{ $certificate->awarded_by ?? '' }}
+                                {{ $certificate->date_printed ?? '' }}
+                            </td>
+                            <td>
+                                {{ $certificate->recipient_name->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $certificate->credential_reference ?? '' }}
                             </td>
                             <td>
                                 {{ $certificate->note ?? '' }}

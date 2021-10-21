@@ -57,6 +57,16 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.classes') }}
+                        </th>
+                        <td>
+                            @foreach($enrolmentsQualification->classes as $key => $classes)
+                                <span class="label label-info">{{ $classes->class_name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.enrolment_no') }}
                         </th>
                         <td>
@@ -113,14 +123,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.result_points') }}
-                        </th>
-                        <td>
-                            {{ $enrolmentsQualification->result_points }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.note') }}
                         </th>
                         <td>
@@ -153,11 +155,6 @@
                 {{ trans('cruds.resultsModule.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#enrolment_no_results_digital_modules" role="tab" data-toggle="tab">
-                {{ trans('cruds.resultsDigitalModule.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="enrolment_no_payments_qualifications">
@@ -165,9 +162,6 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="enrolment_no_results_modules">
             @includeIf('admin.enrolmentsQualifications.relationships.enrolmentNoResultsModules', ['resultsModules' => $enrolmentsQualification->enrolmentNoResultsModules])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="enrolment_no_results_digital_modules">
-            @includeIf('admin.enrolmentsQualifications.relationships.enrolmentNoResultsDigitalModules', ['resultsDigitalModules' => $enrolmentsQualification->enrolmentNoResultsDigitalModules])
         </div>
     </div>
 </div>

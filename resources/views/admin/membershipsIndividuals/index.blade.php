@@ -32,7 +32,7 @@
                             {{ trans('cruds.membershipsIndividual.fields.member_class') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.start_date') }}
+                            {{ trans('cruds.membershipsIndividual.fields.valid_from') }}
                         </th>
                         <th>
                             {{ trans('cruds.membershipsIndividual.fields.valid_till') }}
@@ -48,6 +48,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.membershipsIndividual.fields.support_funds') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.membershipsIndividual.fields.admission_date') }}
                         </th>
                         <th>
                             {{ trans('cruds.membershipsIndividual.fields.note') }}
@@ -100,6 +103,8 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                        </td>
+                        <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
@@ -122,7 +127,7 @@
                                 {{ $membershipsIndividual->member_class->member_class_name ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->start_date ?? '' }}
+                                {{ $membershipsIndividual->valid_from ?? '' }}
                             </td>
                             <td>
                                 {{ $membershipsIndividual->valid_till ?? '' }}
@@ -138,6 +143,9 @@
                             </td>
                             <td>
                                 {{ $membershipsIndividual->support_funds ?? '' }}
+                            </td>
+                            <td>
+                                {{ $membershipsIndividual->admission_date ?? '' }}
                             </td>
                             <td>
                                 {{ $membershipsIndividual->note ?? '' }}

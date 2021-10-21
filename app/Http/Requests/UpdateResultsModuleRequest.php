@@ -22,12 +22,22 @@ class UpdateResultsModuleRequest extends FormRequest
                 'integer',
             ],
             'date_release' => [
-                'required',
                 'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
-            'module_id' => [
-                'required',
+            'total_result_points' => [
+                'nullable',
                 'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'date_transcript_sent_1' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'date_transcript_sent_2' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
             ],
         ];
     }

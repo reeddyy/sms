@@ -21,15 +21,6 @@ class StoreEnrolmentsQualificationRequest extends FormRequest
                 'required',
                 'integer',
             ],
-            'enrolment_no' => [
-                'string',
-                'required',
-                'unique:enrolments_qualifications',
-            ],
-            'student_name_id' => [
-                'required',
-                'integer',
-            ],
             'course_title_id' => [
                 'required',
                 'integer',
@@ -42,14 +33,23 @@ class StoreEnrolmentsQualificationRequest extends FormRequest
                 'date_format:' . config('panel.date_format'),
                 'nullable',
             ],
+            'classes.*' => [
+                'integer',
+            ],
+            'classes' => [
+                'array',
+            ],
+            'enrolment_no' => [
+                'string',
+                'required',
+                'unique:enrolments_qualifications',
+            ],
+            'student_name_id' => [
+                'required',
+                'integer',
+            ],
             'company_sponsored' => [
                 'required',
-            ],
-            'result_points' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
         ];
     }
