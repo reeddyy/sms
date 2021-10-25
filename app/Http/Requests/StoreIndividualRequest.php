@@ -23,7 +23,8 @@ class StoreIndividualRequest extends FormRequest
             ],
             'nric_fin' => [
                 'string',
-                'nullable',
+                'required',
+                'unique:individuals',
             ],
             'residential_address' => [
                 'string',
@@ -49,7 +50,6 @@ class StoreIndividualRequest extends FormRequest
             ],
             'email_address' => [
                 'required',
-                'unique:individuals',
             ],
             'company_name_1' => [
                 'string',
