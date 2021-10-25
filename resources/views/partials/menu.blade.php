@@ -442,7 +442,7 @@
         @can('ada_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/applicants-adas*") ? "c-show" : "" }} {{ request()->is("admin/awards*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-trophy c-sidebar-nav-icon">
+                    <i class="fa-fw fas fa-award c-sidebar-nav-icon">
 
                     </i>
                     {{ trans('cruds.ada.title') }}
