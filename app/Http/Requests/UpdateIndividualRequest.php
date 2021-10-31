@@ -151,6 +151,10 @@ class UpdateIndividualRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'special_dietary' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }
