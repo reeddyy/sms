@@ -46,6 +46,7 @@ class CreateCorporatesTable extends Migration
             $table->string('email_address')->nullable();
             $table->string('office_no')->nullable();
             $table->string('mobile_no')->nullable();
+            $table->string('hear_about_us')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
             $table->softDeletes();

@@ -138,6 +138,9 @@
                             {{ trans('cruds.corporate.fields.mobile_no') }}
                         </th>
                         <th>
+                            {{ trans('cruds.corporate.fields.hear_about_us') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.corporate.fields.note') }}
                         </th>
                         <th>
@@ -277,6 +280,9 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -396,6 +402,9 @@
                             </td>
                             <td>
                                 {{ $corporate->mobile_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ $corporate->hear_about_us ?? '' }}
                             </td>
                             <td>
                                 {{ $corporate->note ?? '' }}
