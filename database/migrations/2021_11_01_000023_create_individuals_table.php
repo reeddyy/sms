@@ -42,6 +42,7 @@ class CreateIndividualsTable extends Migration
             $table->string('institute_name_3')->nullable();
             $table->string('year_attained_3')->nullable();
             $table->string('special_dietary')->nullable();
+            $table->string('hear_about_us')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
             $table->softDeletes();
