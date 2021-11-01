@@ -333,9 +333,6 @@
         <div class="tab-pane" role="tabpanel" id="member_name_memberships_individuals">
             @includeIf('admin.individuals.relationships.memberNameMembershipsIndividuals', ['membershipsIndividuals' => $individual->memberNameMembershipsIndividuals])
         </div>
-        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
-            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
-        </div>
         <div class="tab-pane" role="tabpanel" id="student_name_enrolments_qualifications">
             @includeIf('admin.individuals.relationships.studentNameEnrolmentsQualifications', ['enrolmentsQualifications' => $individual->studentNameEnrolmentsQualifications])
         </div>
@@ -344,6 +341,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="applicant_name_applicants_adas">
             @includeIf('admin.individuals.relationships.applicantNameApplicantsAdas', ['applicantsAdas' => $individual->applicantNameApplicantsAdas])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
+            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
         </div>
     </div>
 </div>
