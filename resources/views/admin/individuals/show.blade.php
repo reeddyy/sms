@@ -309,11 +309,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
-                {{ trans('cruds.certificate.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#student_name_enrolments_qualifications" role="tab" data-toggle="tab">
                 {{ trans('cruds.enrolmentsQualification.title') }}
             </a>
@@ -326,6 +321,11 @@
         <li class="nav-item">
             <a class="nav-link" href="#applicant_name_applicants_adas" role="tab" data-toggle="tab">
                 {{ trans('cruds.applicantsAda.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
+                {{ trans('cruds.certificate.title') }}
             </a>
         </li>
     </ul>
