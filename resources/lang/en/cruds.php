@@ -169,6 +169,8 @@ return [
             'unit_no_helper'                       => ' ',
             'postal_code'                          => 'Postal Code',
             'postal_code_helper'                   => ' ',
+            'special_dietary'                      => 'Special Dietary',
+            'special_dietary_helper'               => ' ',
         ],
     ],
     'level' => [

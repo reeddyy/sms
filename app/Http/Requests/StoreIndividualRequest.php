@@ -151,6 +151,10 @@ class StoreIndividualRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'special_dietary' => [
+                'string',
+                'nullable',
+            ],
         ];
     }
 }

@@ -273,6 +273,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.individual.fields.special_dietary') }}
+                        </th>
+                        <td>
+                            {{ $individual->special_dietary }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.individual.fields.note') }}
                         </th>
                         <td>
