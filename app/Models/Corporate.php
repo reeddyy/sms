@@ -86,7 +86,6 @@ class Corporate extends Model
         'email_address',
         'office_no',
         'mobile_no',
-        'hear_about_us',
         'note',
         'created_at',
         'updated_at',

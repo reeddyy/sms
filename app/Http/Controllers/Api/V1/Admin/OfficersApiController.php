@@ -10,6 +10,7 @@ use App\Models\Officer;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Log;
 
 class OfficersApiController extends Controller
 {
@@ -22,11 +23,27 @@ class OfficersApiController extends Controller
 
     public function store(StoreOfficerRequest $request)
     {
-        $officer = Officer::create($request->all());
+        try{
+            Log::info("Officer addition started.");
 
-        return (new OfficerResource($officer))
+            $officer_email_address = $request->officer_email_address;
+
+            $request_params = clone $request;
+            unset($request_params->officer_email_address);
+
+            $officer = Officer::updateOrCreate([
+                'officer_email_address'   => $officer_email_address,
+            ],$request_params->toArray()
+            
+            );
+            
+            Log::info("Officer added successsfully.");
+            return (new OfficerResource($officer))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     public function show(Officer $officer)

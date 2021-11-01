@@ -169,10 +169,6 @@ return [
             'unit_no_helper'                       => ' ',
             'postal_code'                          => 'Postal Code',
             'postal_code_helper'                   => ' ',
-            'special_dietary'                      => 'Special Dietary',
-            'special_dietary_helper'               => ' ',
-            'hear_about_us'                        => 'Hear About Us',
-            'hear_about_us_helper'                 => ' ',
         ],
     ],
     'level' => [
@@ -1019,8 +1015,6 @@ return [
             'title_helper'           => ' ',
             'business_reg_no'        => 'Business Reg No.',
             'business_reg_no_helper' => ' ',
-            'hear_about_us'          => 'Hear About Us',
-            'hear_about_us_helper'   => ' ',
         ],
     ],
     'corporateMembership' => [

@@ -313,14 +313,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.corporate.fields.hear_about_us') }}
-                        </th>
-                        <td>
-                            {{ $corporate->hear_about_us }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.corporate.fields.note') }}
                         </th>
                         <td>

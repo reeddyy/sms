@@ -386,16 +386,6 @@
                 <span class="help-block">{{ trans('cruds.corporate.fields.mobile_no_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="hear_about_us">{{ trans('cruds.corporate.fields.hear_about_us') }}</label>
-                <input class="form-control {{ $errors->has('hear_about_us') ? 'is-invalid' : '' }}" type="text" name="hear_about_us" id="hear_about_us" value="{{ old('hear_about_us', $corporate->hear_about_us) }}">
-                @if($errors->has('hear_about_us'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('hear_about_us') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.corporate.fields.hear_about_us_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="note">{{ trans('cruds.corporate.fields.note') }}</label>
                 <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note', $corporate->note) }}</textarea>
                 @if($errors->has('note'))

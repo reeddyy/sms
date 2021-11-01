@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\V1\Admin\BaseController;
 use App\Http\Requests\StoreCorporateRequest;
 use App\Http\Requests\UpdateCorporateRequest;
 use App\Http\Resources\Admin\CorporateResource;
@@ -10,8 +10,9 @@ use App\Models\Corporate;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Log;
 
-class CorporatesApiController extends Controller
+class CorporatesApiController extends BaseController
 {
     public function index()
     {
@@ -22,11 +23,28 @@ class CorporatesApiController extends Controller
 
     public function store(StoreCorporateRequest $request)
     {
-        $corporate = Corporate::create($request->all());
+        try{
+            Log::info("Corporate Membership Started");
 
-        return (new CorporateResource($corporate))
+            $business_reg_no = $request->business_reg_no;
+
+            $request_params = clone $request;
+            unset($request_params->business_reg_no);
+
+            $corporate = Corporate::updateOrCreate([
+                'business_reg_no'   => $business_reg_no,
+            ],$request_params->toArray()
+            
+            );
+            
+            Log::info("Corporate Membership Completed");
+            return (new CorporateResource($corporate))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
+        
     }
 
     public function show(Corporate $corporate)

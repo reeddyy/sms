@@ -123,12 +123,6 @@
                             {{ trans('cruds.individual.fields.year_attained_3') }}
                         </th>
                         <th>
-                            {{ trans('cruds.individual.fields.special_dietary') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.individual.fields.hear_about_us') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.individual.fields.note') }}
                         </th>
                         <th>
@@ -148,12 +142,6 @@
                                     <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -353,12 +341,6 @@
                             </td>
                             <td>
                                 {{ $individual->year_attained_3 ?? '' }}
-                            </td>
-                            <td>
-                                {{ $individual->special_dietary ?? '' }}
-                            </td>
-                            <td>
-                                {{ $individual->hear_about_us ?? '' }}
                             </td>
                             <td>
                                 {{ $individual->note ?? '' }}

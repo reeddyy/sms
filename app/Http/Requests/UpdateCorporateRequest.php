@@ -128,10 +128,6 @@ class UpdateCorporateRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'hear_about_us' => [
-                'string',
-                'nullable',
-            ],
         ];
     }
 }
