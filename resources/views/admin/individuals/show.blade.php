@@ -281,6 +281,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.individual.fields.hear_about_us') }}
+                        </th>
+                        <td>
+                            {{ $individual->hear_about_us }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.individual.fields.note') }}
                         </th>
                         <td>
