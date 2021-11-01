@@ -326,6 +326,16 @@
                 <span class="help-block">{{ trans('cruds.individual.fields.year_attained_3_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="special_dietary">{{ trans('cruds.individual.fields.special_dietary') }}</label>
+                <input class="form-control {{ $errors->has('special_dietary') ? 'is-invalid' : '' }}" type="text" name="special_dietary" id="special_dietary" value="{{ old('special_dietary', $individual->special_dietary) }}">
+                @if($errors->has('special_dietary'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('special_dietary') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.individual.fields.special_dietary_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="note">{{ trans('cruds.individual.fields.note') }}</label>
                 <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note', $individual->note) }}</textarea>
                 @if($errors->has('note'))

@@ -63,6 +63,7 @@ class Individual extends Model
         'qual_level_3',
         'institute_name_3',
         'year_attained_3',
+        'special_dietary',
         'note',
         'created_at',
         'updated_at',
