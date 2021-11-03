@@ -56,6 +56,9 @@
                         <th>
                             {{ trans('cruds.individual.fields.email_address') }}
                         </th>
+                         <th>
+                            {{ trans('cruds.individual.fields.special_dietary') }}
+                        </th>
                         <th>
                             {{ trans('cruds.individual.fields.company_name_1') }}
                         </th>
@@ -237,6 +240,9 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -275,6 +281,9 @@
                             </td>
                             <td>
                                 {{ $individual->email_address ?? '' }}
+                            </td>
+                             <td>
+                                {{ $individual->special_dietary ?? '' }}
                             </td>
                             <td>
                                 {{ $individual->company_name_1 ?? '' }}
