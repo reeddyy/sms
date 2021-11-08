@@ -6,6 +6,7 @@ use App\Models\Officer;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
+use Illuminate\Contracts\Validation\Validator;
 
 class StoreOfficerRequest extends FormRequest
 {
@@ -56,5 +57,17 @@ class StoreOfficerRequest extends FormRequest
                 'max:2147483647',
             ],
         ];
+    }
+    
+    public function failedValidation(Validator $validator)
+    {
+        $errors = $validator->errors(); // Here is your array of errors
+
+        $response = response()->json([
+            'message' => 'Invalid data send',
+            'details' => $errors->messages(),
+        ], 422);
+
+        return $response;
     }
 }

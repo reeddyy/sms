@@ -5,7 +5,11 @@ namespace App\Http\Requests;
 use App\Models\Corporate;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Resources\Admin\CorporateResource;
+use Illuminate\Http\Response as HttpResponseException;
+use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Response;
+use Log;
 
 class StoreCorporateRequest extends FormRequest
 {
@@ -16,6 +20,8 @@ class StoreCorporateRequest extends FormRequest
 
     public function rules()
     {
+        try{
+            Log::info("Corporate Membership Rules Check started");
         return [
             'company_name' => [
                 'string',
@@ -133,5 +139,21 @@ class StoreCorporateRequest extends FormRequest
                 'nullable',
             ],
         ];
+    }catch(\Exception $e){
+        $error = $e->getMessage();
+        Log::info($error);
+    }
+}
+
+public function failedValidation(Validator $validator)
+{
+    $errors = $validator->errors(); // Here is your array of errors
+
+    $response = response()->json([
+        'message' => 'Invalid data send',
+        'details' => $errors->messages(),
+    ], 422);
+
+    return $response;
     }
 }

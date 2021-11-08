@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\V1\Admin\BaseController;
 use App\Http\Requests\StoreIndividualRequest;
 use App\Http\Requests\UpdateIndividualRequest;
 use App\Http\Resources\Admin\IndividualResource;
 use App\Models\Individual;
 use Gate;
+use Log;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndividualsApiController extends Controller
+class IndividualsApiController extends BaseController
 {
     public function index()
     {
@@ -22,11 +23,27 @@ class IndividualsApiController extends Controller
 
     public function store(StoreIndividualRequest $request)
     {
-        $individual = Individual::create($request->all());
+        try{
+            Log::info("Individual Membership Started");
 
-        return (new IndividualResource($individual))
+            $nric_fin = $request->nric_fin;
+
+            $request_params = clone $request;
+            unset($request_params->nric_fin);
+
+            $individual = Individual::updateOrCreate([
+                'nric_fin'   => $nric_fin,
+            ],$request_params->toArray()
+
+            );
+
+            Log::info("Individual Membership Completed");
+            return (new IndividualResource($individual))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
+        }catch(\Exception $e){
+            return $e->getMessage();
+        }
     }
 
     public function show(Individual $individual)
