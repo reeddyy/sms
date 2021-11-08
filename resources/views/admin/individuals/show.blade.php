@@ -273,6 +273,22 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.individual.fields.special_dietary') }}
+                        </th>
+                        <td>
+                            {{ $individual->special_dietary }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.hear_about_us') }}
+                        </th>
+                        <td>
+                            {{ $individual->hear_about_us }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.individual.fields.note') }}
                         </th>
                         <td>
@@ -301,11 +317,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
-                {{ trans('cruds.certificate.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#student_name_enrolments_qualifications" role="tab" data-toggle="tab">
                 {{ trans('cruds.enrolmentsQualification.title') }}
             </a>
@@ -320,13 +331,15 @@
                 {{ trans('cruds.applicantsAda.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
+                {{ trans('cruds.certificate.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="member_name_memberships_individuals">
             @includeIf('admin.individuals.relationships.memberNameMembershipsIndividuals', ['membershipsIndividuals' => $individual->memberNameMembershipsIndividuals])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
-            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
         </div>
         <div class="tab-pane" role="tabpanel" id="student_name_enrolments_qualifications">
             @includeIf('admin.individuals.relationships.studentNameEnrolmentsQualifications', ['enrolmentsQualifications' => $individual->studentNameEnrolmentsQualifications])
@@ -336,6 +349,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="applicant_name_applicants_adas">
             @includeIf('admin.individuals.relationships.applicantNameApplicantsAdas', ['applicantsAdas' => $individual->applicantNameApplicantsAdas])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
+            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
         </div>
     </div>
 </div>
