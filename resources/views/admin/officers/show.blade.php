@@ -105,6 +105,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.officer.fields.hear_about_us') }}
+                        </th>
+                        <td>
+                            {{ $officer->hear_about_us }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.officer.fields.note') }}
                         </th>
                         <td>
