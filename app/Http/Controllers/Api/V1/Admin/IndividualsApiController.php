@@ -26,13 +26,13 @@ class IndividualsApiController extends BaseController
         try{
             Log::info("Individual Membership Started");
 
-            $nric_fin = $request->nric_fin;
+            $id_no = $request->id_no;
 
             $request_params = clone $request;
-            unset($request_params->nric_fin);
+            unset($request_params->id_no);
 
             $individual = Individual::updateOrCreate([
-                'nric_fin'   => $nric_fin,
+                'id_no'   => $id_no,
             ],$request_params->toArray()
 
             );

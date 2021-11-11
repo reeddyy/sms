@@ -44,7 +44,7 @@ class OfficersApiController extends Controller
 
                 $name_field_name = 'name_'.$i;
                 $name_field_gender = 'gender_'.$i;
-                $name_field_nric_fin = 'nric_fin_'.$i;
+                $name_field_id_no = 'id_no_'.$i;
                 $name_field_job_designation = 'job_designation_1_'.$i;
                 $name_field_contact_no = 'contact_no_'.$i;
                 $name_field_email_address = 'email_address_'.$i;
@@ -53,7 +53,7 @@ class OfficersApiController extends Controller
                 if(isset($request_data_individuals[$name_field_name]) && $request_data_individuals[$name_field_name]!=''){
                     $name = $request_data_individuals[$name_field_name];
                     $gender = $request_data_individuals[$name_field_gender];
-                    $nric_fin = $request_data_individuals[$name_field_nric_fin];
+                    $id_no = $request_data_individuals[$name_field_id_no];
                     $job_designation = $request_data_individuals[$name_field_job_designation];
                     $contact_no = $request_data_individuals[$name_field_contact_no];
                     $email_address = $request_data_individuals[$name_field_email_address];
@@ -61,7 +61,7 @@ class OfficersApiController extends Controller
 
                     $individual_data = array(
                         "name" => $name,
-                        //"nric_fin" => $nric_fin,
+                        //"id_no" => $id_no,
                         "job_designation_1" => $job_designation,
                         "contact_no" => $contact_no,
                         "email_address" => $email_address,
@@ -69,7 +69,7 @@ class OfficersApiController extends Controller
                     );
 
                     $individual = Individual::updateOrCreate([
-                        'nric_fin'   => $nric_fin,
+                        'id_no'   => $id_no,
                     ],$individual_data);
 
                 }
