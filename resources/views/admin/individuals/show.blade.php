@@ -41,10 +41,50 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.individual.fields.nric_fin') }}
+                            {{ trans('cruds.individual.fields.id_type') }}
                         </th>
                         <td>
-                            {{ $individual->nric_fin }}
+                            {{ App\Models\Individual::ID_TYPE_SELECT[$individual->id_type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.id_no') }}
+                        </th>
+                        <td>
+                            {{ $individual->id_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.gender') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Individual::GENDER_RADIO[$individual->gender] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.dob') }}
+                        </th>
+                        <td>
+                            {{ $individual->dob }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.age') }}
+                        </th>
+                        <td>
+                            {{ $individual->age }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.nationality') }}
+                        </th>
+                        <td>
+                            {{ $individual->nationality }}
                         </td>
                     </tr>
                     <tr>
@@ -317,6 +357,11 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
+                {{ trans('cruds.certificate.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link" href="#student_name_enrolments_qualifications" role="tab" data-toggle="tab">
                 {{ trans('cruds.enrolmentsQualification.title') }}
             </a>
@@ -331,15 +376,13 @@
                 {{ trans('cruds.applicantsAda.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#recipient_name_certificates" role="tab" data-toggle="tab">
-                {{ trans('cruds.certificate.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="member_name_memberships_individuals">
             @includeIf('admin.individuals.relationships.memberNameMembershipsIndividuals', ['membershipsIndividuals' => $individual->memberNameMembershipsIndividuals])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
+            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
         </div>
         <div class="tab-pane" role="tabpanel" id="student_name_enrolments_qualifications">
             @includeIf('admin.individuals.relationships.studentNameEnrolmentsQualifications', ['enrolmentsQualifications' => $individual->studentNameEnrolmentsQualifications])
@@ -349,9 +392,6 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="applicant_name_applicants_adas">
             @includeIf('admin.individuals.relationships.applicantNameApplicantsAdas', ['applicantsAdas' => $individual->applicantNameApplicantsAdas])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="recipient_name_certificates">
-            @includeIf('admin.individuals.relationships.recipientNameCertificates', ['certificates' => $individual->recipientNameCertificates])
         </div>
     </div>
 </div>

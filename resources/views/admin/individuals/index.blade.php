@@ -36,7 +36,22 @@
                             {{ trans('cruds.individual.fields.name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.individual.fields.nric_fin') }}
+                            {{ trans('cruds.individual.fields.id_type') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.id_no') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.gender') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.dob') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.age') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individual.fields.nationality') }}
                         </th>
                         <th>
                             {{ trans('cruds.individual.fields.residential_address') }}
@@ -148,6 +163,30 @@
                                     <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\Individual::ID_TYPE_SELECT as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\Individual::GENDER_RADIO as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -268,7 +307,22 @@
                                 {{ $individual->name ?? '' }}
                             </td>
                             <td>
-                                {{ $individual->nric_fin ?? '' }}
+                                {{ App\Models\Individual::ID_TYPE_SELECT[$individual->id_type] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $individual->id_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Models\Individual::GENDER_RADIO[$individual->gender] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $individual->dob ?? '' }}
+                            </td>
+                            <td>
+                                {{ $individual->age ?? '' }}
+                            </td>
+                            <td>
+                                {{ $individual->nationality ?? '' }}
                             </td>
                             <td>
                                 {{ $individual->residential_address ?? '' }}

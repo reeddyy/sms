@@ -42,6 +42,7 @@ class Officer extends Model
         'unit_no',
         'country',
         'postal_code',
+        'hear_about_us',
         'note',
         'created_at',
         'updated_at',

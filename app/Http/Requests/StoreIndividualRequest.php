@@ -6,7 +6,6 @@ use App\Models\Individual;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Validation\Validator;
 
 class StoreIndividualRequest extends FormRequest
 {
@@ -22,10 +21,24 @@ class StoreIndividualRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'nric_fin' => [
+            'id_no' => [
                 'string',
                 'required',
                 'unique:individuals',
+            ],
+            'dob' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'age' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'nationality' => [
+                'string',
+                'nullable',
             ],
             'residential_address' => [
                 'string',
@@ -161,17 +174,5 @@ class StoreIndividualRequest extends FormRequest
                 'nullable',
             ],
         ];
-    }
-
-    public function failedValidation(Validator $validator)
-    {
-        $errors = $validator->errors(); // Here is your array of errors
-
-        $response = response()->json([
-            'message' => 'Invalid data send',
-            'details' => $errors->messages(),
-        ], 422);
-
-        return $response;
     }
 }
