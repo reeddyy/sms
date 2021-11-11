@@ -4,6 +4,7 @@ namespace App\Models;
 
 use \DateTimeInterface;
 use App\Traits\Auditable;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -14,6 +15,12 @@ class Individual extends Model
     use Auditable;
     use HasFactory;
 
+    
+    public const GENDER_RADIO = [
+        'Male'   => 'Male',
+        'Female' => 'Female',
+    ];
+
     public const TITLE_SELECT = [
         'Mr'   => 'Mr',
         'Ms'   => 'Ms',
@@ -23,9 +30,17 @@ class Individual extends Model
         'Prof' => 'Prof',
     ];
 
+    public const ID_TYPE_SELECT = [
+        'Singaporean'  => 'Singaporean',
+        'Singapore PR' => 'Singapore PR',
+        'Work Pass'    => 'Work Pass',
+        'Others'       => 'Others',
+    ];
+
     public $table = 'individuals';
 
     protected $dates = [
+        'dob',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -34,7 +49,12 @@ class Individual extends Model
     protected $fillable = [
         'title',
         'name',
-        'nric_fin',
+        'id_type',
+        'id_no',
+        'gender',
+        'dob',
+        'age',
+        'nationality',
         'residential_address',
         'unit_no',
         'country',
@@ -94,6 +114,16 @@ class Individual extends Model
     public function applicantNameApplicantsAdas()
     {
         return $this->hasMany(ApplicantsAda::class, 'applicant_name_id', 'id');
+    }
+
+    public function getDobAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDobAttribute($value)
+    {
+        $this->attributes['dob'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 
     protected function serializeDate(DateTimeInterface $date)

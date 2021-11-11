@@ -21,10 +21,24 @@ class UpdateIndividualRequest extends FormRequest
                 'string',
                 'required',
             ],
-            'nric_fin' => [
+            'id_no' => [
                 'string',
                 'required',
-                'unique:individuals,nric_fin,' . request()->route('individual')->id,
+                'unique:individuals,id_no,' . request()->route('individual')->id,
+            ],
+            'dob' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'age' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'nationality' => [
+                'string',
+                'nullable',
             ],
             'residential_address' => [
                 'string',
