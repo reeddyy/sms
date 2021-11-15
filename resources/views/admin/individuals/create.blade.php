@@ -186,7 +186,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_of_year_s_1">{{ trans('cruds.individual.fields.duration_of_year_s_1') }}</label>
-                <input class="form-control {{ $errors->has('duration_of_year_s_1') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_1" id="duration_of_year_s_1" value="{{ old('duration_of_year_s_1', '') }}" step="1">
+                <input onkeyup="updateRelevantExp()" class="form-control {{ $errors->has('duration_of_year_s_1') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_1" id="duration_of_year_s_1" value="{{ old('duration_of_year_s_1', '') }}" step="1">
                 @if($errors->has('duration_of_year_s_1'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_of_year_s_1') }}
@@ -216,7 +216,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_of_year_s_2">{{ trans('cruds.individual.fields.duration_of_year_s_2') }}</label>
-                <input class="form-control {{ $errors->has('duration_of_year_s_2') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_2" id="duration_of_year_s_2" value="{{ old('duration_of_year_s_2', '') }}" step="1">
+                <input onkeyup="updateRelevantExp()" class="form-control {{ $errors->has('duration_of_year_s_2') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_2" id="duration_of_year_s_2" value="{{ old('duration_of_year_s_2', '') }}" step="1">
                 @if($errors->has('duration_of_year_s_2'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_of_year_s_2') }}
@@ -246,7 +246,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_of_year_s_3">{{ trans('cruds.individual.fields.duration_of_year_s_3') }}</label>
-                <input class="form-control {{ $errors->has('duration_of_year_s_3') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_3" id="duration_of_year_s_3" value="{{ old('duration_of_year_s_3', '') }}" step="1">
+                <input onkeyup="updateRelevantExp()" class="form-control {{ $errors->has('duration_of_year_s_3') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_3" id="duration_of_year_s_3" value="{{ old('duration_of_year_s_3', '') }}" step="1">
                 @if($errors->has('duration_of_year_s_3'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_of_year_s_3') }}
@@ -256,7 +256,7 @@
             </div>
             <div class="form-group">
                 <label for="total_year_s_related_work_exp">{{ trans('cruds.individual.fields.total_year_s_related_work_exp') }}</label>
-                <input class="form-control {{ $errors->has('total_year_s_related_work_exp') ? 'is-invalid' : '' }}" type="number" name="total_year_s_related_work_exp" id="total_year_s_related_work_exp" value="{{ old('total_year_s_related_work_exp', '') }}" step="1">
+                <input readonly="true" class="form-control {{ $errors->has('total_year_s_related_work_exp') ? 'is-invalid' : '' }}" type="number" name="total_year_s_related_work_exp" id="total_year_s_related_work_exp" value="{{ old('total_year_s_related_work_exp', '') }}" step="1">
                 @if($errors->has('total_year_s_related_work_exp'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_year_s_related_work_exp') }}
@@ -423,6 +423,15 @@
     </div>
 </div>
 
-
+<script type="text/javascript">
+    function updateRelevantExp(){
+        var duration_of_year_s_1 = $("#duration_of_year_s_1").val();
+        var duration_of_year_s_2 = $("#duration_of_year_s_2").val();
+        var duration_of_year_s_3 = $("#duration_of_year_s_3").val();
+        
+        var relevant_exp = parseFloat(duration_of_year_s_1) + parseFloat(duration_of_year_s_2) + parseFloat(duration_of_year_s_3);
+        $("#total_year_s_related_work_exp").val(relevant_exp);
+    }
+</script>
 
 @endsection

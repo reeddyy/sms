@@ -56,6 +56,9 @@ class EnrolmentsQualificationsController extends Controller
 
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
+        $outstanding_balance = $request->total_fees - $request->amount_paid;
+        $request['outstanding_balance'] = $outstanding_balance;
+        
         $enrolmentsQualification = EnrolmentsQualification::create($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
@@ -76,13 +79,21 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name');
+        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications');
 
-        return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification'));
+        $total_fees = $enrolmentsQualification->total_fees;
+        $amount_paid = $enrolmentsQualification->enrolmentNoPaymentsQualifications->sum('payment_amount');
+
+        $outstanding_balance = $total_fees - $amount_paid;
+
+        return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification', 'outstanding_balance', 'amount_paid'));
     }
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
     {
+        $outstanding_balance = $request->total_fees - $request->amount_paid;
+        $request['outstanding_balance'] = $outstanding_balance;
+        
         $enrolmentsQualification->update($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
