@@ -15,7 +15,6 @@ class Individual extends Model
     use Auditable;
     use HasFactory;
 
-    
     public const GENDER_RADIO = [
         'Male'   => 'Male',
         'Female' => 'Female',
