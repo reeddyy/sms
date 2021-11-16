@@ -195,15 +195,15 @@
             success: function(data) {
                 if(data.data.public_rate){
                     course_fee = data.data.public_rate;
+
                 } 
-
+                
                 $("#total_fees").val(course_fee);
-
                 var amount_paid = $("#amount_paid").val();
                 var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-
+                
                 $("#outstanding_balance").val(outstanding_balance);
-
+            
              
             }
         });

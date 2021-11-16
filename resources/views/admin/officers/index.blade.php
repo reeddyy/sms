@@ -60,6 +60,9 @@
                             {{ trans('cruds.officer.fields.postal_code') }}
                         </th>
                         <th>
+                            {{ trans('cruds.officer.fields.hear_about_us') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.officer.fields.note') }}
                         </th>
                         <th>
@@ -79,6 +82,9 @@
                                     <option value="{{ $item }}">{{ $item }}</option>
                                 @endforeach
                             </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -152,6 +158,9 @@
                             </td>
                             <td>
                                 {{ $officer->postal_code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $officer->hear_about_us ?? '' }}
                             </td>
                             <td>
                                 {{ $officer->note ?? '' }}

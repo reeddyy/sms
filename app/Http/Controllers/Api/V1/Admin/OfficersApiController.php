@@ -44,32 +44,42 @@ class OfficersApiController extends Controller
 
                 $name_field_name = 'name_'.$i;
                 $name_field_gender = 'gender_'.$i;
-                $name_field_nric_fin = 'nric_fin_'.$i;
+                $name_field_id_no = 'id_no_'.$i;
+                $name_field_company_name = 'company_name_1_'.$i;
                 $name_field_job_designation = 'job_designation_1_'.$i;
+                $name_field_duration_of_year_s = 'duration_of_year_s_1_'.$i;
                 $name_field_contact_no = 'contact_no_'.$i;
                 $name_field_email_address = 'email_address_'.$i;
                 $name_field_special_dietary = 'special_dietary_'.$i;
+                $name_field_hear_about_us = 'hear_about_us_'.$i;
 
                 if(isset($request_data_individuals[$name_field_name]) && $request_data_individuals[$name_field_name]!=''){
                     $name = $request_data_individuals[$name_field_name];
                     $gender = $request_data_individuals[$name_field_gender];
-                    $nric_fin = $request_data_individuals[$name_field_nric_fin];
+                    $id_no = $request_data_individuals[$name_field_id_no];
+                    $company_name = $request_data_individuals[$name_field_company_name];
                     $job_designation = $request_data_individuals[$name_field_job_designation];
+                    $duration_of_year_s = $request_data_individuals[$name_field_duration_of_year_s];
                     $contact_no = $request_data_individuals[$name_field_contact_no];
                     $email_address = $request_data_individuals[$name_field_email_address];
                     $special_dietary = $request_data_individuals[$name_field_special_dietary];
+                    $hear_about_us = $request_data_individuals[$name_field_hear_about_us];
 
                     $individual_data = array(
                         "name" => $name,
-                        //"nric_fin" => $nric_fin,
+                        "gender" => $gender,
+                        //"id_no" => $id_no,
+                        "company_name_1" => $company_name,
                         "job_designation_1" => $job_designation,
+                        "duration_of_year_s_1" => $duration_of_year_s,
                         "contact_no" => $contact_no,
                         "email_address" => $email_address,
                         "special_dietary" => $special_dietary,
+                        "hear_about_us" => $hear_about_us,
                     );
 
                     $individual = Individual::updateOrCreate([
-                        'nric_fin'   => $nric_fin,
+                        'id_no'   => $id_no,
                     ],$individual_data);
 
                 }

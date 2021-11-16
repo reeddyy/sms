@@ -84,6 +84,7 @@ class EnrolmentsQualificationsController extends Controller
         $total_fees = $enrolmentsQualification->total_fees;
         $amount_paid = $enrolmentsQualification->enrolmentNoPaymentsQualifications->sum('payment_amount');
 
+
         $outstanding_balance = $total_fees - $amount_paid;
 
         return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification', 'outstanding_balance', 'amount_paid'));
@@ -93,7 +94,6 @@ class EnrolmentsQualificationsController extends Controller
     {
         $outstanding_balance = $request->total_fees - $request->amount_paid;
         $request['outstanding_balance'] = $outstanding_balance;
-
         $enrolmentsQualification->update($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 

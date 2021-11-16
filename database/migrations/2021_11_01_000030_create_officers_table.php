@@ -20,6 +20,7 @@ class CreateOfficersTable extends Migration
             $table->string('unit_no')->nullable();
             $table->string('country')->nullable();
             $table->integer('postal_code')->nullable();
+            $table->string('hear_about_us')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
             $table->softDeletes();

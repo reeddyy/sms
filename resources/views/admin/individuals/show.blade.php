@@ -41,10 +41,50 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.individual.fields.nric_fin') }}
+                        {{ trans('cruds.individual.fields.id_type') }}
                         </th>
                         <td>
-                            {{ $individual->nric_fin }}
+                            {{ App\Models\Individual::ID_TYPE_SELECT[$individual->id_type] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.id_no') }}
+                        </th>
+                        <td>
+                            {{ $individual->id_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.gender') }}
+                        </th>
+                        <td>
+                            {{ App\Models\Individual::GENDER_RADIO[$individual->gender] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.dob') }}
+                        </th>
+                        <td>
+                            {{ $individual->dob }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.age') }}
+                        </th>
+                        <td>
+                            {{ $individual->age }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individual.fields.nationality') }}
+                        </th>
+                        <td>
+                            {{ $individual->nationality }}
                         </td>
                     </tr>
                     <tr>

@@ -12,7 +12,12 @@ class CreateIndividualsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title')->nullable();
             $table->string('name');
-            $table->string('nric_fin')->unique();
+            $table->string('id_type')->nullable();
+            $table->string('id_no')->unique();
+            $table->string('gender')->nullable();
+            $table->date('dob')->nullable();
+            $table->integer('age')->nullable();
+            $table->string('nationality')->nullable();
             $table->string('residential_address')->nullable();
             $table->string('unit_no')->nullable();
             $table->string('country')->nullable();

@@ -203,7 +203,6 @@
 
                 $("#outstanding_balance").val(outstanding_balance);
 
-             
             }
         });
         
