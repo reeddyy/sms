@@ -179,33 +179,40 @@
 
 <script type="text/javascript">
     function updateCourseFees(){
-        var course_title_id = $("#course_title_id").val();
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        var courseurl = '{{ url('api/v1/course') }}/'+course_title_id;
         var course_fee = 0;
 
-        $.ajax({
-            url: courseurl,
-            type: 'get',
-            data: {
-                "_token": CSRF_TOKEN
-            },
-            dataType: 'JSON',
-            success: function(data) {
-                if(data.data.public_rate){
-                    course_fee = data.data.public_rate;
-                } 
+        var course_title_id = $("#course_title_id").val();
+        if(course_title_id){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var courseurl = '{{ route("admin.enrolments-qualifications.getCourseFees", ":id") }}';
+            url = courseurl.replace(":id",course_title_id);
+            
 
-                $("#total_fees").val(course_fee);
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'JSON',
+                success: function(data) {
 
-                var amount_paid = $("#amount_paid").val();
-                var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+                    console.log(data.course_fee);
 
-                $("#outstanding_balance").val(outstanding_balance);
+                    if(data.course_fee){
+                        course_fee = data.course_fee;
+                    }
+                    $("#total_fees").val(course_fee);
+                    var amount_paid = $("#amount_paid").val();
+                    var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+                    $("#outstanding_balance").val(outstanding_balance);
+                }
+            });
+        } else{
+            $("#total_fees").val(0);
 
-            }
-        });
-        
+            var amount_paid = $("#amount_paid").val();
+            var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+            $("#outstanding_balance").val(outstanding_balance);
+
+        }
     }
 </script>
 

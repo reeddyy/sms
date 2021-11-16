@@ -190,7 +190,7 @@
                                 {{ $enrolmentsQualification->amount_paid ?? '' }}
                             </td>
                             <td>
-                                {{ $enrolmentsQualification->outstanding_balance ?? '' }}
+                                {{  $enrolmentsQualification->total_fees - $enrolmentsQualification->amount_paid }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->note ?? '' }}

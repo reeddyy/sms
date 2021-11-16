@@ -35,13 +35,14 @@ class IndividualsController extends Controller
     public function store(StoreIndividualRequest $request)
     {
 
-        
-        $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
-        $request['total_year_s_related_work_exp'] = $related_work_exp;
-        
-        $individual = Individual::create($request->all());
+        $validatedData = $request->validated();
 
-        return redirect()->route('admin.individuals.index');
+            $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
+            $request['total_year_s_related_work_exp'] = $related_work_exp;
+            
+            $individual = Individual::create($request->all());
+
+            return redirect()->route('admin.individuals.index');
     }
 
     public function edit(Individual $individual)
