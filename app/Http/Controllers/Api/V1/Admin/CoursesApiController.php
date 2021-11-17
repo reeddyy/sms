@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\MassDestroyCourseRequest;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\ClassIntake;
 use App\Http\Resources\Admin\CourseResource;
 use App\Models\Course;
+use App\Models\Level;
+use App\Models\Module;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +41,7 @@ class CoursesApiController extends Controller
 
         return new CourseResource($course->load(['level', 'module_s', 'classes']));
     }
+
 
     public function update(UpdateCourseRequest $request, Course $course)
     {

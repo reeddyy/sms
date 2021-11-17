@@ -28,8 +28,14 @@ class IndividualsApiController extends BaseController
 
             $id_no = $request->id_no;
 
-            $request_params = clone $request;
+            $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
+            $request['total_year_s_related_work_exp'] = $related_work_exp;
+
+            $request_params = clone $request;           
+
             unset($request_params->id_no);
+
+            $request_params->total_year_s_related_work_exp = $related_work_exp;
 
             $individual = Individual::updateOrCreate([
                 'id_no'   => $id_no,
@@ -55,6 +61,12 @@ class IndividualsApiController extends BaseController
 
     public function update(UpdateIndividualRequest $request, Individual $individual)
     {
+
+        $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
+        $request['total_year_s_related_work_exp'] = $related_work_exp;
+
+        $request_params->total_year_s_related_work_exp = $related_work_exp;
+
         $individual->update($request->all());
 
         return (new IndividualResource($individual))

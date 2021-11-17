@@ -34,6 +34,7 @@ class CorporatesController extends Controller
 
     public function store(StoreCorporateRequest $request)
     {
+        $validatedData = $request->validated();
         $corporate = Corporate::create($request->all());
 
         return redirect()->route('admin.corporates.index');

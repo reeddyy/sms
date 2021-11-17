@@ -428,9 +428,12 @@
         var duration_of_year_s_1 = $("#duration_of_year_s_1").val();
         var duration_of_year_s_2 = $("#duration_of_year_s_2").val();
         var duration_of_year_s_3 = $("#duration_of_year_s_3").val();
-        
+
         var relevant_exp = parseFloat(duration_of_year_s_1) + parseFloat(duration_of_year_s_2) + parseFloat(duration_of_year_s_3);
+
         $("#total_year_s_related_work_exp").val(relevant_exp);
+
+
     }
 </script>
 
