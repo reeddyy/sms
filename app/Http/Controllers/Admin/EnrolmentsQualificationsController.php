@@ -129,9 +129,9 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $public_rate = 0;    
-        $course = Course::find($course_id);
+        $course = Course::where('id', $course_id);
         if(!empty($course)){    
-            $public_rate = Course::find($course_id)->pluck('public_rate')->first();
+            $public_rate = $course->pluck('public_rate')->first();
         }
 
         return json_encode(array("course_fee" => $public_rate));
