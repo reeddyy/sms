@@ -130,7 +130,7 @@
             </div>
             <div class="form-group">
                 <label for="total_fees">{{ trans('cruds.enrolmentsQualification.fields.total_fees') }}</label>
-                <input readonly="true" class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', '0') }}" step="0.01">
+                <input onkeyup="updateOutstanding()" class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', '0') }}" step="0.01">
                 @if($errors->has('total_fees'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_fees') }}
@@ -213,6 +213,13 @@
             $("#outstanding_balance").val(outstanding_balance);
 
         }
+    }
+
+    function updateOutstanding(){
+        var course_fee = $("#total_fees").val();
+        var amount_paid = $("#amount_paid").val();
+        var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+        $("#outstanding_balance").val(outstanding_balance);
     }
 </script>
 
