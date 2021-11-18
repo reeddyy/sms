@@ -151,7 +151,7 @@
             </div>
             <div class="form-group">
                 <label for="outstanding_balance">{{ trans('cruds.enrolmentsQualification.fields.outstanding_balance') }}</label>
-                <input readonly="true" class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', $outstanding_balance) }}" step="0.01">
+                <input readonly="true" class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', round($outstanding_balance, 2)) }}" step="0.01">
                 @if($errors->has('outstanding_balance'))
                     <div class="invalid-feedback">
                         {{ $errors->first('outstanding_balance') }}
@@ -203,7 +203,7 @@
                     $("#total_fees").val(course_fee);
                     var amount_paid = $("#amount_paid").val();
                     var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-                    $("#outstanding_balance").val(outstanding_balance);
+                    $("#outstanding_balance").val(outstanding_balance.toFixed(2));
                 }
             });
         } else{
@@ -211,7 +211,7 @@
 
             var amount_paid = $("#amount_paid").val();
             var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-            $("#outstanding_balance").val(outstanding_balance);
+            $("#outstanding_balance").val(outstanding_balance.toFixed(2));
 
         }
     }
@@ -220,7 +220,7 @@
         var course_fee = $("#total_fees").val();
         var amount_paid = $("#amount_paid").val();
         var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-        $("#outstanding_balance").val(outstanding_balance);
+        $("#outstanding_balance").val(outstanding_balance.toFixed(2));
     }
 
 </script>

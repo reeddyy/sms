@@ -193,24 +193,21 @@
                 type: 'get',
                 dataType: 'JSON',
                 success: function(data) {
-
-                    console.log(data.course_fee);
-
                     if(data.course_fee){
                         course_fee = data.course_fee;
                     }
                     $("#total_fees").val(course_fee);
                     var amount_paid = $("#amount_paid").val();
-                    var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-                    $("#outstanding_balance").val(outstanding_balance);
+                    var outstanding_balance = parseFloat(course_fee).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+                    $("#outstanding_balance").val(outstanding_balance.toFixed(2));
                 }
             });
         } else{
             $("#total_fees").val(0);
 
             var amount_paid = $("#amount_paid").val();
-            var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-            $("#outstanding_balance").val(outstanding_balance);
+            var outstanding_balance = parseFloat(course_fee).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+            $("#outstanding_balance").val(outstanding_balance.toFixed(2));
 
         }
     }
@@ -218,8 +215,8 @@
     function updateOutstanding(){
         var course_fee = $("#total_fees").val();
         var amount_paid = $("#amount_paid").val();
-        var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
-        $("#outstanding_balance").val(outstanding_balance);
+        var outstanding_balance = parseFloat(course_fee).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+        $("#outstanding_balance").val(outstanding_balance.toFixed(2));
     }
 </script>
 
