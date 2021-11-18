@@ -56,8 +56,8 @@ class EnrolmentsQualificationsController extends Controller
 
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
-        $outstanding_balance = $request->total_fees - $request->amount_paid;
-        $request['outstanding_balance'] = $outstanding_balance;
+        $outstanding_balance = round($request->total_fees, 2) - round($request->amount_paid,2);
+        $request['outstanding_balance'] = round($outstanding_balance, 2);
 
         $enrolmentsQualification = EnrolmentsQualification::create($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
@@ -92,8 +92,8 @@ class EnrolmentsQualificationsController extends Controller
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
     {
-        $outstanding_balance = $request->total_fees - $request->amount_paid;
-        $request['outstanding_balance'] = $outstanding_balance;
+        $outstanding_balance = round($request->total_fees, 2) - round($request->amount_paid,2);
+        $request['outstanding_balance'] = round($outstanding_balance, 2);
         $enrolmentsQualification->update($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 

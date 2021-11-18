@@ -113,4 +113,8 @@ class EnrolmentsQualification extends Model
         return $this->hasMany(PaymentsQualification::class, 'enrolment_no_id', 'id')->sum('payment_amount');
     }
 
+    public function getOutstandingBalanceAttribute($value){
+        return round($value, 2);
+    }
+
 }
