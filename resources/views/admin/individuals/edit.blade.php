@@ -77,7 +77,7 @@
             </div>
             <div class="form-group">
                 <label for="dob">{{ trans('cruds.individual.fields.dob') }}</label>
-                <input class="form-control date {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob', $individual->dob) }}">
+                <input class="form-control {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob', $individual->dob) }}">
                 @if($errors->has('dob'))
                     <div class="invalid-feedback">
                         {{ $errors->first('dob') }}
@@ -436,6 +436,33 @@
 
 
     }
+
+    $(document).ready(function(){
+        $('#dob').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'en',
+            maxDate:new Date(),
+            icons: {
+              up: 'fas fa-chevron-up',
+              down: 'fas fa-chevron-down',
+              previous: 'fas fa-chevron-left',
+              next: 'fas fa-chevron-right'
+            }
+          }).on('dp.change', function (ev) {
+                calculateAge() ;//your function call
+            });
+
+        
+    });
+
+    function calculateAge(){
+        dob = new Date($("#dob").val());
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        $('#age').val(age);
+    }
+    
+
 </script>
 
 @endsection

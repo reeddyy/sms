@@ -76,7 +76,7 @@
             </div>
             <div class="form-group">
                 <label for="dob">{{ trans('cruds.individual.fields.dob') }}</label>
-                <input class="form-control date {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob') }}">
+                <input onchange="getIndividualAge()" class="form-control {{ $errors->has('dob') ? 'is-invalid' : '' }}" type="text" name="dob" id="dob" value="{{ old('dob') }}">
                 @if($errors->has('dob'))
                     <div class="invalid-feedback">
                         {{ $errors->first('dob') }}
@@ -423,6 +423,7 @@
     </div>
 </div>
 
+
 <script type="text/javascript">
     function updateRelevantExp(){
         var duration_of_year_s_1 = $("#duration_of_year_s_1").val();
@@ -432,9 +433,34 @@
         var relevant_exp = parseFloat(duration_of_year_s_1) + parseFloat(duration_of_year_s_2) + parseFloat(duration_of_year_s_3);
 
         $("#total_year_s_related_work_exp").val(relevant_exp);
-
-
     }
+
+    $(document).ready(function(){
+        $('#dob').datetimepicker({
+            format: 'YYYY-MM-DD',
+            locale: 'en',
+            maxDate:new Date(),
+            icons: {
+              up: 'fas fa-chevron-up',
+              down: 'fas fa-chevron-down',
+              previous: 'fas fa-chevron-left',
+              next: 'fas fa-chevron-right'
+            }
+          }).on('dp.change', function (ev) {
+                calculateAge() ;//your function call
+            });
+
+        
+    });
+
+    function calculateAge(){
+        dob = new Date($("#dob").val());
+        var today = new Date();
+        var age = Math.floor((today-dob) / (365.25 * 24 * 60 * 60 * 1000));
+        $('#age').val(age);
+    }
+    
+
 </script>
 
 @endsection
