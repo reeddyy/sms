@@ -11,6 +11,7 @@ use Gate;
 use Log;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use DateTime;
 
 class IndividualsApiController extends BaseController
 {
@@ -31,12 +32,18 @@ class IndividualsApiController extends BaseController
             $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
             $request['total_year_s_related_work_exp'] = $related_work_exp;
 
-            $request_params = clone $request;           
+            // Calculate age as per date of birth
+            $dob = (isset($request->dob)) ? $request->dob : '';
 
+            if($dob && $dob!=''){
+                $from = new DateTime($dob);
+                $to   = new DateTime('today');
+                $request["age"] = $from->diff($to)->y;
+            }
+
+            $request_params = clone $request; 
             unset($request_params->id_no);
-
-            $request_params->total_year_s_related_work_exp = $related_work_exp;
-
+            
             $individual = Individual::updateOrCreate([
                 'id_no'   => $id_no,
             ],$request_params->toArray()
@@ -65,7 +72,14 @@ class IndividualsApiController extends BaseController
         $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
         $request['total_year_s_related_work_exp'] = $related_work_exp;
 
-        $request_params->total_year_s_related_work_exp = $related_work_exp;
+        // Calculate age as per date of birth
+        $dob = (isset($request->dob)) ? $request->dob : '';
+
+        if($dob && $dob!=''){
+            $from = new DateTime($dob);
+            $to   = new DateTime('today');
+            $request["age"] = $from->diff($to)->y;
+        }
 
         $individual->update($request->all());
 
