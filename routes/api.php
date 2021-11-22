@@ -36,4 +36,7 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Memberships Corporates
     Route::apiResource('memberships-corporates', 'MembershipsCorporatesApiController');
+
+    // Qualifications App
+    Route::apiResource('qualifications-apps', 'QualificationsAppApiController');
 });

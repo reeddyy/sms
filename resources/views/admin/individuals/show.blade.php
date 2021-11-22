@@ -41,7 +41,7 @@
                     </tr>
                     <tr>
                         <th>
-                        {{ trans('cruds.individual.fields.id_type') }}
+                            {{ trans('cruds.individual.fields.id_type') }}
                         </th>
                         <td>
                             {{ App\Models\Individual::ID_TYPE_SELECT[$individual->id_type] ?? '' }}

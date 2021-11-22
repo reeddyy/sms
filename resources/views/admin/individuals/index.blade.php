@@ -36,7 +36,7 @@
                             {{ trans('cruds.individual.fields.name') }}
                         </th>
                         <th>
-                        {{ trans('cruds.individual.fields.id_type') }}
+                            {{ trans('cruds.individual.fields.id_type') }}
                         </th>
                         <th>
                             {{ trans('cruds.individual.fields.id_no') }}
