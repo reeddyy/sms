@@ -72,6 +72,7 @@ class OfficersApiController extends Controller
                         "company_name_1" => $company_name,
                         "job_designation_1" => $job_designation,
                         "duration_of_year_s_1" => $duration_of_year_s,
+                        "total_year_s_related_work_exp" => $duration_of_year_s,
                         "contact_no" => $contact_no,
                         "email_address" => $email_address,
                         "special_dietary" => $special_dietary,
