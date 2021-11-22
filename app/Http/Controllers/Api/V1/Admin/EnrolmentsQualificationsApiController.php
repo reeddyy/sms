@@ -17,12 +17,13 @@ class EnrolmentsQualificationsApiController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EnrolmentsQualificationResource(EnrolmentsQualification::with(['enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name'])->get());
+        return new EnrolmentsQualificationResource(EnrolmentsQualification::with(['statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get());
     }
 
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
         $enrolmentsQualification = EnrolmentsQualification::create($request->all());
+        $enrolmentsQualification->statuses()->sync($request->input('statuses', []));
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
         return (new EnrolmentsQualificationResource($enrolmentsQualification))
@@ -34,12 +35,13 @@ class EnrolmentsQualificationsApiController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new EnrolmentsQualificationResource($enrolmentsQualification->load(['enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name']));
+        return new EnrolmentsQualificationResource($enrolmentsQualification->load(['statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name']));
     }
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
     {
         $enrolmentsQualification->update($request->all());
+        $enrolmentsQualification->statuses()->sync($request->input('statuses', []));
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
         return (new EnrolmentsQualificationResource($enrolmentsQualification))

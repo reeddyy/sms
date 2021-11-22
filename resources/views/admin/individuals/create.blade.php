@@ -35,7 +35,7 @@
                 <span class="help-block">{{ trans('cruds.individual.fields.name_helper') }}</span>
             </div>
             <div class="form-group">
-            <label>{{ trans('cruds.individual.fields.id_type') }}</label>
+                <label>{{ trans('cruds.individual.fields.id_type') }}</label>
                 <select class="form-control {{ $errors->has('id_type') ? 'is-invalid' : '' }}" name="id_type" id="id_type">
                     <option value disabled {{ old('id_type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
                     @foreach(App\Models\Individual::ID_TYPE_SELECT as $key => $label)

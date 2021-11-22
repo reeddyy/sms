@@ -61,11 +61,6 @@
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#enrolment_status_enrolments_qualifications" role="tab" data-toggle="tab">
-                {{ trans('cruds.enrolmentsQualification.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#admission_status_admissions_edps" role="tab" data-toggle="tab">
                 {{ trans('cruds.admissionsEdp.title') }}
             </a>
@@ -84,9 +79,6 @@
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="member_status_memberships_individuals">
             @includeIf('admin.statuses.relationships.memberStatusMembershipsIndividuals', ['membershipsIndividuals' => $status->memberStatusMembershipsIndividuals])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="enrolment_status_enrolments_qualifications">
-            @includeIf('admin.statuses.relationships.enrolmentStatusEnrolmentsQualifications', ['enrolmentsQualifications' => $status->enrolmentStatusEnrolmentsQualifications])
         </div>
         <div class="tab-pane" role="tabpanel" id="admission_status_admissions_edps">
             @includeIf('admin.statuses.relationships.admissionStatusAdmissionsEdps', ['admissionsEdps' => $status->admissionStatusAdmissionsEdps])
