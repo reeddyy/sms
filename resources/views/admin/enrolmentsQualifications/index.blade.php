@@ -189,8 +189,9 @@
                             <td>
                                 {{ $enrolmentsQualification->amount_paid ?? '' }}
                             </td>
-                            <td>
-                                {{ $enrolmentsQualification->outstanding_balance ?? '' }}
+                            <td> 
+                                {{  number_format((float)($enrolmentsQualification->total_fees - $enrolmentsQualification->amount_paid), 2, '.', '');
+                                 }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->note ?? '' }}

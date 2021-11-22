@@ -56,6 +56,9 @@ class EnrolmentsQualificationsController extends Controller
 
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
+        $outstanding_balance = round($request->total_fees, 2) - round($request->amount_paid,2);
+        $request['outstanding_balance'] = round($outstanding_balance, 2);
+
         $enrolmentsQualification = EnrolmentsQualification::create($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
@@ -76,13 +79,21 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name');
+        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications');
 
-        return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification'));
+        $total_fees = $enrolmentsQualification->total_fees;
+        $amount_paid = $enrolmentsQualification->enrolmentNoPaymentsQualifications->sum('payment_amount');
+
+
+        $outstanding_balance = $total_fees - $amount_paid;
+
+        return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification', 'outstanding_balance', 'amount_paid'));
     }
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
     {
+        $outstanding_balance = round($request->total_fees, 2) - round($request->amount_paid,2);
+        $request['outstanding_balance'] = round($outstanding_balance, 2);
         $enrolmentsQualification->update($request->all());
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
@@ -112,5 +123,19 @@ class EnrolmentsQualificationsController extends Controller
         EnrolmentsQualification::whereIn('id', request('ids'))->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    public function getCourseFees($course_id)
+    {
+        abort_if(Gate::denies('enrolments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $public_rate = 0;    
+        $course = Course::where('id', $course_id);
+        if(!empty($course)){    
+            $public_rate = $course->pluck('public_rate')->first();
+        }
+
+        return json_encode(array("course_fee" => $public_rate));
+
+
     }
 }

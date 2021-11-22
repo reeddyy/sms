@@ -370,7 +370,7 @@
                                 {{ $individual->duration_of_year_s_3 ?? '' }}
                             </td>
                             <td>
-                                {{ $individual->total_year_s_related_work_exp ?? '' }}
+                                {{ $individual->duration_of_year_s_1 + $individual->duration_of_year_s_2 + $individual->duration_of_year_s_3 }}
                             </td>
                             <td>
                                 {{ $individual->qual_title_1 ?? '' }}

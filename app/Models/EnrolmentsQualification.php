@@ -107,4 +107,14 @@ class EnrolmentsQualification extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function getAmountPaidAttribute($value)
+    {
+        return $this->hasMany(PaymentsQualification::class, 'enrolment_no_id', 'id')->sum('payment_amount');
+    }
+
+    public function getOutstandingBalanceAttribute($value){
+        return round($value, 2);
+    }
+
 }

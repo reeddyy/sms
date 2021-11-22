@@ -26,7 +26,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="course_title_id">{{ trans('cruds.enrolmentsQualification.fields.course_title') }}</label>
-                <select class="form-control select2 {{ $errors->has('course_title') ? 'is-invalid' : '' }}" name="course_title_id" id="course_title_id" required>
+                <select onchange="updateCourseFees()" class="form-control select2 {{ $errors->has('course_title') ? 'is-invalid' : '' }}" name="course_title_id" id="course_title_id" required>
                     @foreach($course_titles as $id => $entry)
                         <option value="{{ $id }}" {{ (old('course_title_id') ? old('course_title_id') : $enrolmentsQualification->course_title->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -131,7 +131,7 @@
             </div>
             <div class="form-group">
                 <label for="total_fees">{{ trans('cruds.enrolmentsQualification.fields.total_fees') }}</label>
-                <input class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', $enrolmentsQualification->total_fees) }}" step="0.01">
+                <input onkeyup="updateOutstanding()" class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', $enrolmentsQualification->total_fees) }}" step="0.01">
                 @if($errors->has('total_fees'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_fees') }}
@@ -141,7 +141,7 @@
             </div>
             <div class="form-group">
                 <label for="amount_paid">{{ trans('cruds.enrolmentsQualification.fields.amount_paid') }}</label>
-                <input class="form-control {{ $errors->has('amount_paid') ? 'is-invalid' : '' }}" type="number" name="amount_paid" id="amount_paid" value="{{ old('amount_paid', $enrolmentsQualification->amount_paid) }}" step="0.01">
+                <input readonly="true" class="form-control {{ $errors->has('amount_paid') ? 'is-invalid' : '' }}" type="number" name="amount_paid" id="amount_paid" value="{{ old('amount_paid', $amount_paid) }}" step="0.01">
                 @if($errors->has('amount_paid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('amount_paid') }}
@@ -151,7 +151,7 @@
             </div>
             <div class="form-group">
                 <label for="outstanding_balance">{{ trans('cruds.enrolmentsQualification.fields.outstanding_balance') }}</label>
-                <input class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', $enrolmentsQualification->outstanding_balance) }}" step="0.01">
+                <input readonly="true" class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', round($outstanding_balance, 2)) }}" step="0.01">
                 @if($errors->has('outstanding_balance'))
                     <div class="invalid-feedback">
                         {{ $errors->first('outstanding_balance') }}
@@ -178,6 +178,51 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    function updateCourseFees(){
+        var course_fee = 0;
 
+        var course_title_id = $("#course_title_id").val();
+        if(course_title_id){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var courseurl = '{{ route("admin.enrolments-qualifications.getCourseFees", ":id") }}';
+            url = courseurl.replace(":id",course_title_id);
+            
+
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'JSON',
+                success: function(data) {
+
+                    console.log(data.course_fee);
+
+                    if(data.course_fee){
+                        course_fee = data.course_fee;
+                    }
+                    $("#total_fees").val(course_fee);
+                    var amount_paid = $("#amount_paid").val();
+                    var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+                    $("#outstanding_balance").val(outstanding_balance.toFixed(2));
+                }
+            });
+        } else{
+            $("#total_fees").val(0);
+
+            var amount_paid = $("#amount_paid").val();
+            var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+            $("#outstanding_balance").val(outstanding_balance.toFixed(2));
+
+        }
+    }
+
+    function updateOutstanding(){
+        var course_fee = $("#total_fees").val();
+        var amount_paid = $("#amount_paid").val();
+        var outstanding_balance = parseFloat(course_fee) - parseFloat(amount_paid);
+        $("#outstanding_balance").val(outstanding_balance.toFixed(2));
+    }
+
+</script>
 
 @endsection
