@@ -25,7 +25,10 @@
                             {{ trans('cruds.enrolmentsQualification.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.enrolment_status') }}
+                            {{ trans('cruds.enrolmentsQualification.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.app_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.course_title') }}
@@ -78,7 +81,12 @@
                                 {{ $enrolmentsQualification->id ?? '' }}
                             </td>
                             <td>
-                                {{ $enrolmentsQualification->enrolment_status->status_name ?? '' }}
+                                @foreach($enrolmentsQualification->statuses as $key => $item)
+                                    <span class="badge badge-info">{{ $item->status_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->app_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->course_title->course_title ?? '' }}

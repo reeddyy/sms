@@ -17,7 +17,13 @@ class StoreEnrolmentsQualificationRequest extends FormRequest
     public function rules()
     {
         return [
-            'enrolment_status_id' => [
+            'statuses.*' => [
+                'integer',
+            ],
+            'statuses' => [
+                'array',
+            ],
+            'app_no_id' => [
                 'required',
                 'integer',
             ],

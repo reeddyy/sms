@@ -11,7 +11,8 @@ use App\Models\Course;
 use App\Models\EnrolmentsQualification;
 use App\Models\Individual;
 use App\Models\Officer;
-use App\Models\Status;
+use App\Models\QualificationsApp;
+use App\Models\StatusQualification;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +23,11 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolmentsQualifications = EnrolmentsQualification::with(['enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
+        $enrolmentsQualifications = EnrolmentsQualification::with(['statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
 
-        $statuses = Status::get();
+        $status_qualifications = StatusQualification::get();
+
+        $qualifications_apps = QualificationsApp::get();
 
         $courses = Course::get();
 
@@ -34,14 +37,16 @@ class EnrolmentsQualificationsController extends Controller
 
         $officers = Officer::get();
 
-        return view('admin.enrolmentsQualifications.index', compact('enrolmentsQualifications', 'statuses', 'courses', 'class_intakes', 'individuals', 'officers'));
+        return view('admin.enrolmentsQualifications.index', compact('enrolmentsQualifications', 'status_qualifications', 'qualifications_apps', 'courses', 'class_intakes', 'individuals', 'officers'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('enrolments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_statuses = Status::pluck('status_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = StatusQualification::pluck('status_name', 'id');
+
+        $app_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -51,12 +56,13 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.enrolmentsQualifications.create', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names'));
+        return view('admin.enrolmentsQualifications.create', compact('statuses', 'app_nos', 'course_titles', 'classes', 'student_names', 'officer_names'));
     }
 
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
         $enrolmentsQualification = EnrolmentsQualification::create($request->all());
+        $enrolmentsQualification->statuses()->sync($request->input('statuses', []));
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
         return redirect()->route('admin.enrolments-qualifications.index');
@@ -66,7 +72,9 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_statuses = Status::pluck('status_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = StatusQualification::pluck('status_name', 'id');
+
+        $app_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -76,14 +84,15 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name');
+        $enrolmentsQualification->load('statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name');
 
-        return view('admin.enrolmentsQualifications.edit', compact('enrolment_statuses', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification'));
+        return view('admin.enrolmentsQualifications.edit', compact('statuses', 'app_nos', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification'));
     }
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
     {
         $enrolmentsQualification->update($request->all());
+        $enrolmentsQualification->statuses()->sync($request->input('statuses', []));
         $enrolmentsQualification->classes()->sync($request->input('classes', []));
 
         return redirect()->route('admin.enrolments-qualifications.index');
@@ -93,7 +102,7 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolmentsQualification->load('enrolment_status', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications', 'enrolmentNoResultsModules');
+        $enrolmentsQualification->load('statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications', 'enrolmentNoResultsModules');
 
         return view('admin.enrolmentsQualifications.show', compact('enrolmentsQualification'));
     }

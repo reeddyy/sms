@@ -772,6 +772,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 191,
+                'title' => 'application_access',
+            ],
+            [
+                'id'    => 192,
+                'title' => 'qualifications_app_create',
+            ],
+            [
+                'id'    => 193,
+                'title' => 'qualifications_app_edit',
+            ],
+            [
+                'id'    => 194,
+                'title' => 'qualifications_app_show',
+            ],
+            [
+                'id'    => 195,
+                'title' => 'qualifications_app_delete',
+            ],
+            [
+                'id'    => 196,
+                'title' => 'qualifications_app_access',
+            ],
+            [
+                'id'    => 197,
+                'title' => 'status_app_create',
+            ],
+            [
+                'id'    => 198,
+                'title' => 'status_app_edit',
+            ],
+            [
+                'id'    => 199,
+                'title' => 'status_app_show',
+            ],
+            [
+                'id'    => 200,
+                'title' => 'status_app_delete',
+            ],
+            [
+                'id'    => 201,
+                'title' => 'status_app_access',
+            ],
+            [
+                'id'    => 202,
+                'title' => 'status_qualification_create',
+            ],
+            [
+                'id'    => 203,
+                'title' => 'status_qualification_edit',
+            ],
+            [
+                'id'    => 204,
+                'title' => 'status_qualification_show',
+            ],
+            [
+                'id'    => 205,
+                'title' => 'status_qualification_delete',
+            ],
+            [
+                'id'    => 206,
+                'title' => 'status_qualification_access',
+            ],
+            [
+                'id'    => 207,
                 'title' => 'profile_password_edit',
             ],
         ];
