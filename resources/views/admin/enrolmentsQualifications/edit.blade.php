@@ -29,18 +29,18 @@
                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="app_no_id">{{ trans('cruds.enrolmentsQualification.fields.app_no') }}</label>
-                <select class="form-control select2 {{ $errors->has('app_no') ? 'is-invalid' : '' }}" name="app_no_id" id="app_no_id" required>
-                    @foreach($app_nos as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('app_no_id') ? old('app_no_id') : $enrolmentsQualification->app_no->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                <label class="required" for="application_no_id">{{ trans('cruds.enrolmentsQualification.fields.application_no') }}</label>
+                <select class="form-control select2 {{ $errors->has('application_no') ? 'is-invalid' : '' }}" name="application_no_id" id="application_no_id" required>
+                    @foreach($application_nos as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('application_no_id') ? old('application_no_id') : $enrolmentsQualification->application_no->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('app_no'))
+                @if($errors->has('application_no'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('app_no') }}
+                        {{ $errors->first('application_no') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.app_no_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.application_no_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="course_title_id">{{ trans('cruds.enrolmentsQualification.fields.course_title') }}</label>

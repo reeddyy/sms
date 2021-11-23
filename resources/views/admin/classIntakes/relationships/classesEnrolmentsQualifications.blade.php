@@ -28,7 +28,7 @@
                         {{ trans('cruds.enrolmentsQualification.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.app_no') }}
+                            {{ trans('cruds.enrolmentsQualification.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.course_title') }}
@@ -86,7 +86,7 @@
                                 @endforeach
                             </td>
                             <td>
-                                {{ $enrolmentsQualification->app_no->application_no ?? '' }}
+                                {{ $enrolmentsQualification->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->course_title->course_title ?? '' }}

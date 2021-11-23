@@ -450,13 +450,13 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#app_no_enrolments_qualifications" role="tab" data-toggle="tab">
+            <a class="nav-link" href="#application_no_enrolments_qualifications" role="tab" data-toggle="tab">
                 {{ trans('cruds.enrolmentsQualification.title') }}
             </a>
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="app_no_enrolments_qualifications">
+        <div class="tab-pane" role="tabpanel" id="application_no_enrolments_qualifications">
             @includeIf('admin.qualificationsApps.relationships.appNoEnrolmentsQualifications', ['enrolmentsQualifications' => $qualificationsApp->appNoEnrolmentsQualifications])
         </div>
     </div>

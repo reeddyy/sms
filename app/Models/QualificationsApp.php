@@ -82,7 +82,7 @@ class QualificationsApp extends Model
 
     public function appNoEnrolmentsQualifications()
     {
-        return $this->hasMany(EnrolmentsQualification::class, 'app_no_id', 'id');
+        return $this->hasMany(EnrolmentsQualification::class, 'application_no_id', 'id');
     }
 
     public function statuses()
