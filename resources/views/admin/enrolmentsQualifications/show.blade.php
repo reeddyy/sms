@@ -35,10 +35,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.app_no') }}
+                            {{ trans('cruds.enrolmentsQualification.fields.application_no') }}
                         </th>
                         <td>
-                            {{ $enrolmentsQualification->app_no->application_no ?? '' }}
+                            {{ $enrolmentsQualification->application_no->application_no ?? '' }}
                         </td>
                     </tr>
                     <tr>

@@ -23,7 +23,7 @@ class UpdateEnrolmentsQualificationRequest extends FormRequest
             'statuses' => [
                 'array',
             ],
-            'app_no_id' => [
+            'application_no_id' => [
                 'required',
                 'integer',
             ],

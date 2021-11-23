@@ -23,7 +23,7 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolmentsQualifications = EnrolmentsQualification::with(['statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
+        $enrolmentsQualifications = EnrolmentsQualification::with(['statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
 
         $status_qualifications = StatusQualification::get();
 
@@ -46,7 +46,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $statuses = StatusQualification::pluck('status_name', 'id');
 
-        $app_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $application_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -56,7 +56,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.enrolmentsQualifications.create', compact('statuses', 'app_nos', 'course_titles', 'classes', 'student_names', 'officer_names'));
+        return view('admin.enrolmentsQualifications.create', compact('statuses', 'application_nos', 'course_titles', 'classes', 'student_names', 'officer_names'));
     }
 
     public function store(StoreEnrolmentsQualificationRequest $request)
@@ -77,7 +77,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $statuses = StatusQualification::pluck('status_name', 'id');
 
-        $app_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $application_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -87,7 +87,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $enrolmentsQualification->load('statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications');
+        $enrolmentsQualification->load('statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications');
 
         $total_fees = $enrolmentsQualification->total_fees;
         $amount_paid = $enrolmentsQualification->enrolmentNoPaymentsQualifications->sum('payment_amount');
@@ -95,7 +95,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $outstanding_balance = $total_fees - $amount_paid;
 
-        return view('admin.enrolmentsQualifications.edit', compact('statuses', 'app_nos', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification', 'outstanding_balance', 'amount_paid'));
+        return view('admin.enrolmentsQualifications.edit', compact('statuses', 'application_nos', 'course_titles', 'classes', 'student_names', 'officer_names', 'enrolmentsQualification', 'outstanding_balance', 'amount_paid'));
     }
 
     public function update(UpdateEnrolmentsQualificationRequest $request, EnrolmentsQualification $enrolmentsQualification)
@@ -113,7 +113,7 @@ class EnrolmentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('enrolments_qualification_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolmentsQualification->load('statuses', 'app_no', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications', 'enrolmentNoResultsModules');
+        $enrolmentsQualification->load('statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name', 'enrolmentNoPaymentsQualifications', 'enrolmentNoResultsModules');
 
         return view('admin.enrolmentsQualifications.show', compact('enrolmentsQualification'));
     }

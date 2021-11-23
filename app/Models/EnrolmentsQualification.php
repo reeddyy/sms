@@ -31,7 +31,7 @@ class EnrolmentsQualification extends Model
     ];
 
     protected $fillable = [
-        'app_no_id',
+        'application_no_id',
         'course_title_id',
         'start_date',
         'end_date',
@@ -63,9 +63,9 @@ class EnrolmentsQualification extends Model
         return $this->belongsToMany(StatusQualification::class);
     }
 
-    public function app_no()
+    public function application_no()
     {
-        return $this->belongsTo(QualificationsApp::class, 'app_no_id');
+        return $this->belongsTo(QualificationsApp::class, 'application_no_id');
     }
 
     public function course_title()
