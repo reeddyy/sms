@@ -9,8 +9,8 @@ class AddRelationshipFieldsToEnrolmentsQualificationsTable extends Migration
     public function up()
     {
         Schema::table('enrolments_qualifications', function (Blueprint $table) {
-            $table->unsignedBigInteger('enrolment_status_id');
-            $table->foreign('enrolment_status_id', 'enrolment_status_fk_5157970')->references('id')->on('statuses');
+            $table->unsignedBigInteger('application_no_id');
+            $table->foreign('application_no_id', 'application_no_fk_5397073')->references('id')->on('qualifications_apps');
             $table->unsignedBigInteger('course_title_id');
             $table->foreign('course_title_id', 'course_title_fk_5157972')->references('id')->on('courses');
             $table->unsignedBigInteger('student_name_id');

@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Http\Controllers\Api\V1\Admin\BaseController;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreIndividualRequest;
 use App\Http\Requests\UpdateIndividualRequest;
 use App\Http\Resources\Admin\IndividualResource;
 use App\Models\Individual;
 use Gate;
-use Log;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use DateTime;
 
-class IndividualsApiController extends BaseController
+class IndividualsApiController extends Controller
 {
     public function index()
     {
@@ -24,39 +22,11 @@ class IndividualsApiController extends BaseController
 
     public function store(StoreIndividualRequest $request)
     {
-        try{
-            Log::info("Individual Membership Started");
+        $individual = Individual::create($request->all());
 
-            $id_no = $request->id_no;
-
-            $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
-            $request['total_year_s_related_work_exp'] = $related_work_exp;
-
-            // Calculate age as per date of birth
-            $dob = (isset($request->dob)) ? $request->dob : '';
-
-            if($dob && $dob!=''){
-                $from = new DateTime($dob);
-                $to   = new DateTime('today');
-                $request["age"] = $from->diff($to)->y;
-            }
-
-            $request_params = clone $request; 
-            unset($request_params->id_no);
-            
-            $individual = Individual::updateOrCreate([
-                'id_no'   => $id_no,
-            ],$request_params->toArray()
-
-            );
-
-            Log::info("Individual Membership Completed");
-            return (new IndividualResource($individual))
+        return (new IndividualResource($individual))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
-        }catch(\Exception $e){
-            return $e->getMessage();
-        }
     }
 
     public function show(Individual $individual)
@@ -68,19 +38,6 @@ class IndividualsApiController extends BaseController
 
     public function update(UpdateIndividualRequest $request, Individual $individual)
     {
-
-        $related_work_exp = $request->duration_of_year_s_1 + $request->duration_of_year_s_2 + $request->duration_of_year_s_3;
-        $request['total_year_s_related_work_exp'] = $related_work_exp;
-
-        // Calculate age as per date of birth
-        $dob = (isset($request->dob)) ? $request->dob : '';
-
-        if($dob && $dob!=''){
-            $from = new DateTime($dob);
-            $to   = new DateTime('today');
-            $request["age"] = $from->diff($to)->y;
-        }
-
         $individual->update($request->all());
 
         return (new IndividualResource($individual))

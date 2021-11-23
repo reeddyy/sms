@@ -35,11 +35,6 @@ class Status extends Model
         return $this->hasMany(MembershipsIndividual::class, 'member_status_id', 'id');
     }
 
-    public function enrolmentStatusEnrolmentsQualifications()
-    {
-        return $this->hasMany(EnrolmentsQualification::class, 'enrolment_status_id', 'id');
-    }
-
     public function admissionStatusAdmissionsEdps()
     {
         return $this->hasMany(AdmissionsEdp::class, 'admission_status_id', 'id');
