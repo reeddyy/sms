@@ -1,12 +1,9 @@
 <?php
 
-Route::post('login', 'Api\V1\Admin\AuthController@login');
-
 Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', 'middleware' => ['auth:sanctum']], function () {
-    
     // Individuals
     Route::apiResource('individuals', 'IndividualsApiController');
-    
+
     // Courses
     Route::apiResource('courses', 'CoursesApiController');
 
@@ -36,4 +33,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Memberships Corporates
     Route::apiResource('memberships-corporates', 'MembershipsCorporatesApiController');
+
+    // Qualifications App
+    Route::apiResource('qualifications-apps', 'QualificationsAppApiController');
+
+    // Edp App
+    Route::apiResource('edp-apps', 'EdpAppApiController');
+
+    // Corporates App
+    Route::apiResource('corporates-apps', 'CorporatesAppApiController');
 });

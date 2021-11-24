@@ -36,7 +36,7 @@
                             {{ trans('cruds.individual.fields.name') }}
                         </th>
                         <th>
-                        {{ trans('cruds.individual.fields.id_type') }}
+                            {{ trans('cruds.individual.fields.id_type') }}
                         </th>
                         <th>
                             {{ trans('cruds.individual.fields.id_no') }}
@@ -370,7 +370,7 @@
                                 {{ $individual->duration_of_year_s_3 ?? '' }}
                             </td>
                             <td>
-                                {{ $individual->duration_of_year_s_1 + $individual->duration_of_year_s_2 + $individual->duration_of_year_s_3 }}
+                                {{ $individual->total_year_s_related_work_exp ?? '' }}
                             </td>
                             <td>
                                 {{ $individual->qual_title_1 ?? '' }}

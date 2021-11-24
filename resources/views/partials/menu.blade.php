@@ -67,6 +67,70 @@
                 </ul>
             </li>
         @endcan
+        @can('application_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-file-signature c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.application.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('qualifications_app_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.qualifications-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/qualifications-apps") || request()->is("admin/qualifications-apps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-graduation-cap c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.qualificationsApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('edp_app_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.edp-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/edp-apps") || request()->is("admin/edp-apps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-chalkboard-teacher c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.edpApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('memberships_app_access')
+                        <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates-apps*") ? "c-show" : "" }}">
+                            <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                                <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.membershipsApp.title') }}
+                            </a>
+                            <ul class="c-sidebar-nav-dropdown-items">
+                                @can('corporates_app_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.corporates-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/corporates-apps") || request()->is("admin/corporates-apps/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.corporatesApp.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('status_app_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-apps") || request()->is("admin/status-apps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('profile_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates*") ? "c-show" : "" }} {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -120,7 +184,7 @@
             </li>
         @endcan
         @can('qualification_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/enrolments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/payments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/results-modules*") ? "c-show" : "" }} {{ request()->is("admin/courses*") ? "c-show" : "" }} {{ request()->is("admin/class-intakes*") ? "c-show" : "" }} {{ request()->is("admin/modules*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }} {{ request()->is("admin/achievements*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/enrolments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/payments-qualifications*") ? "c-show" : "" }} {{ request()->is("admin/results-modules*") ? "c-show" : "" }} {{ request()->is("admin/class-intakes*") ? "c-show" : "" }} {{ request()->is("admin/courses*") ? "c-show" : "" }} {{ request()->is("admin/modules*") ? "c-show" : "" }} {{ request()->is("admin/grades*") ? "c-show" : "" }} {{ request()->is("admin/achievements*") ? "c-show" : "" }} {{ request()->is("admin/status-qualifications*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-graduation-cap c-sidebar-nav-icon">
 
@@ -158,16 +222,6 @@
                             </a>
                         </li>
                     @endcan
-                    @can('course_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.courses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-book c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.course.title') }}
-                            </a>
-                        </li>
-                    @endcan
                     @can('class_intake_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.class-intakes.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/class-intakes") || request()->is("admin/class-intakes/*") ? "c-active" : "" }}">
@@ -175,6 +229,16 @@
 
                                 </i>
                                 {{ trans('cruds.classIntake.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('course_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.courses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/courses") || request()->is("admin/courses/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-book c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.course.title') }}
                             </a>
                         </li>
                     @endcan
@@ -205,6 +269,16 @@
 
                                 </i>
                                 {{ trans('cruds.achievement.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('status_qualification_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-qualifications.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-qualifications") || request()->is("admin/status-qualifications/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusQualification.title') }}
                             </a>
                         </li>
                     @endcan

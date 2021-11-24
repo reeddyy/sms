@@ -31,7 +31,7 @@ class EnrolmentsQualification extends Model
     ];
 
     protected $fillable = [
-        'enrolment_status_id',
+        'application_no_id',
         'course_title_id',
         'start_date',
         'end_date',
@@ -58,9 +58,14 @@ class EnrolmentsQualification extends Model
         return $this->hasMany(ResultsModule::class, 'enrolment_no_id', 'id');
     }
 
-    public function enrolment_status()
+    public function statuses()
     {
-        return $this->belongsTo(Status::class, 'enrolment_status_id');
+        return $this->belongsToMany(StatusQualification::class);
+    }
+
+    public function application_no()
+    {
+        return $this->belongsTo(QualificationsApp::class, 'application_no_id');
     }
 
     public function course_title()
@@ -107,14 +112,4 @@ class EnrolmentsQualification extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
-
-    public function getAmountPaidAttribute($value)
-    {
-        return $this->hasMany(PaymentsQualification::class, 'enrolment_no_id', 'id')->sum('payment_amount');
-    }
-
-    public function getOutstandingBalanceAttribute($value){
-        return round($value, 2);
-    }
-
 }

@@ -6,7 +6,6 @@ use App\Models\Individual;
 use Gate;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Response;
-use Illuminate\Contracts\Validation\Validator;
 
 class StoreIndividualRequest extends FormRequest
 {
@@ -175,17 +174,5 @@ class StoreIndividualRequest extends FormRequest
                 'nullable',
             ],
         ];
-    }
-
-    public function failedValidation(Validator $validator)
-    {
-        $errors = $validator->errors(); // Here is your array of errors
-
-        $response = response()->json([
-            'message' => 'Invalid data send',
-            'details' => $errors->messages(),
-        ], 422);
-
-        return $response;
     }
 }

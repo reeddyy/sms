@@ -26,7 +26,10 @@
                             {{ trans('cruds.enrolmentsQualification.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.enrolmentsQualification.fields.enrolment_status') }}
+                            {{ trans('cruds.enrolmentsQualification.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.course_title') }}
@@ -77,8 +80,16 @@
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach($statuses as $key => $item)
+                                @foreach($status_qualifications as $key => $item)
                                     <option value="{{ $item->status_name }}">{{ $item->status_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($qualifications_apps as $key => $item)
+                                    <option value="{{ $item->application_no }}">{{ $item->application_no }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -155,7 +166,12 @@
                                 {{ $enrolmentsQualification->id ?? '' }}
                             </td>
                             <td>
-                                {{ $enrolmentsQualification->enrolment_status->status_name ?? '' }}
+                                @foreach($enrolmentsQualification->statuses as $key => $item)
+                                    <span class="badge badge-info">{{ $item->status_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->course_title->course_title ?? '' }}
@@ -189,9 +205,8 @@
                             <td>
                                 {{ $enrolmentsQualification->amount_paid ?? '' }}
                             </td>
-                            <td> 
-                                {{  number_format((float)($enrolmentsQualification->total_fees - $enrolmentsQualification->amount_paid), 2, '.', '');
-                                 }}
+                            <td>
+                                {{ $enrolmentsQualification->outstanding_balance ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->note ?? '' }}
