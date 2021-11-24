@@ -35,6 +35,26 @@ class StatusApp extends Model
         return $this->belongsToMany(QualificationsApp::class);
     }
 
+    public function statusEdpApps()
+    {
+        return $this->belongsToMany(EdpApp::class);
+    }
+
+    public function statusCorporatesApps()
+    {
+        return $this->belongsToMany(CorporatesApp::class);
+    }
+
+    public function statusIndividualsApps()
+    {
+        return $this->belongsToMany(IndividualsApp::class);
+    }
+
+    public function statusAdaApps()
+    {
+        return $this->belongsToMany(AdaApp::class);
+    }
+
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

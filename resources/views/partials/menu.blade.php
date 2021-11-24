@@ -68,7 +68,7 @@
             </li>
         @endcan
         @can('application_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/ada-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-file-signature c-sidebar-nav-icon">
 
@@ -83,6 +83,58 @@
 
                                 </i>
                                 {{ trans('cruds.qualificationsApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('edp_app_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.edp-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/edp-apps") || request()->is("admin/edp-apps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-chalkboard-teacher c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.edpApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('memberships_app_access')
+                        <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates-apps*") ? "c-show" : "" }} {{ request()->is("admin/individuals-apps*") ? "c-show" : "" }}">
+                            <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                                <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.membershipsApp.title') }}
+                            </a>
+                            <ul class="c-sidebar-nav-dropdown-items">
+                                @can('corporates_app_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.corporates-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/corporates-apps") || request()->is("admin/corporates-apps/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.corporatesApp.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                                @can('individuals_app_access')
+                                    <li class="c-sidebar-nav-item">
+                                        <a href="{{ route("admin.individuals-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/individuals-apps") || request()->is("admin/individuals-apps/*") ? "c-active" : "" }}">
+                                            <i class="fa-fw fas fa-users c-sidebar-nav-icon">
+
+                                            </i>
+                                            {{ trans('cruds.individualsApp.title') }}
+                                        </a>
+                                    </li>
+                                @endcan
+                            </ul>
+                        </li>
+                    @endcan
+                    @can('ada_app_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.ada-apps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/ada-apps") || request()->is("admin/ada-apps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-award c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.adaApp.title') }}
                             </a>
                         </li>
                     @endcan

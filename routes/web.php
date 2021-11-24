@@ -194,6 +194,30 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Status Qualifications
     Route::delete('status-qualifications/destroy', 'StatusQualificationsController@massDestroy')->name('status-qualifications.massDestroy');
     Route::resource('status-qualifications', 'StatusQualificationsController');
+
+    // Edp App
+    Route::delete('edp-apps/destroy', 'EdpAppController@massDestroy')->name('edp-apps.massDestroy');
+    Route::post('edp-apps/parse-csv-import', 'EdpAppController@parseCsvImport')->name('edp-apps.parseCsvImport');
+    Route::post('edp-apps/process-csv-import', 'EdpAppController@processCsvImport')->name('edp-apps.processCsvImport');
+    Route::resource('edp-apps', 'EdpAppController');
+
+    // Corporates App
+    Route::delete('corporates-apps/destroy', 'CorporatesAppController@massDestroy')->name('corporates-apps.massDestroy');
+    Route::post('corporates-apps/parse-csv-import', 'CorporatesAppController@parseCsvImport')->name('corporates-apps.parseCsvImport');
+    Route::post('corporates-apps/process-csv-import', 'CorporatesAppController@processCsvImport')->name('corporates-apps.processCsvImport');
+    Route::resource('corporates-apps', 'CorporatesAppController');
+
+    // Individuals App
+    Route::delete('individuals-apps/destroy', 'IndividualsAppController@massDestroy')->name('individuals-apps.massDestroy');
+    Route::post('individuals-apps/parse-csv-import', 'IndividualsAppController@parseCsvImport')->name('individuals-apps.parseCsvImport');
+    Route::post('individuals-apps/process-csv-import', 'IndividualsAppController@processCsvImport')->name('individuals-apps.processCsvImport');
+    Route::resource('individuals-apps', 'IndividualsAppController');
+
+    // Ada App
+    Route::delete('ada-apps/destroy', 'AdaAppController@massDestroy')->name('ada-apps.massDestroy');
+    Route::post('ada-apps/parse-csv-import', 'AdaAppController@parseCsvImport')->name('ada-apps.parseCsvImport');
+    Route::post('ada-apps/process-csv-import', 'AdaAppController@processCsvImport')->name('ada-apps.processCsvImport');
+    Route::resource('ada-apps', 'AdaAppController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

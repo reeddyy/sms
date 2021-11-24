@@ -836,6 +836,90 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 207,
+                'title' => 'edp_app_create',
+            ],
+            [
+                'id'    => 208,
+                'title' => 'edp_app_edit',
+            ],
+            [
+                'id'    => 209,
+                'title' => 'edp_app_show',
+            ],
+            [
+                'id'    => 210,
+                'title' => 'edp_app_delete',
+            ],
+            [
+                'id'    => 211,
+                'title' => 'edp_app_access',
+            ],
+            [
+                'id'    => 212,
+                'title' => 'memberships_app_access',
+            ],
+            [
+                'id'    => 213,
+                'title' => 'corporates_app_create',
+            ],
+            [
+                'id'    => 214,
+                'title' => 'corporates_app_edit',
+            ],
+            [
+                'id'    => 215,
+                'title' => 'corporates_app_show',
+            ],
+            [
+                'id'    => 216,
+                'title' => 'corporates_app_delete',
+            ],
+            [
+                'id'    => 217,
+                'title' => 'corporates_app_access',
+            ],
+            [
+                'id'    => 218,
+                'title' => 'individuals_app_create',
+            ],
+            [
+                'id'    => 219,
+                'title' => 'individuals_app_edit',
+            ],
+            [
+                'id'    => 220,
+                'title' => 'individuals_app_show',
+            ],
+            [
+                'id'    => 221,
+                'title' => 'individuals_app_delete',
+            ],
+            [
+                'id'    => 222,
+                'title' => 'individuals_app_access',
+            ],
+            [
+                'id'    => 223,
+                'title' => 'ada_app_create',
+            ],
+            [
+                'id'    => 224,
+                'title' => 'ada_app_edit',
+            ],
+            [
+                'id'    => 225,
+                'title' => 'ada_app_show',
+            ],
+            [
+                'id'    => 226,
+                'title' => 'ada_app_delete',
+            ],
+            [
+                'id'    => 227,
+                'title' => 'ada_app_access',
+            ],
+            [
+                'id'    => 228,
                 'title' => 'profile_password_edit',
             ],
         ];

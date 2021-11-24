@@ -78,10 +78,6 @@ class StoreQualificationsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'officer_email' => [
-                'string',
-                'nullable',
-            ],
             'applicant_name' => [
                 'string',
                 'nullable',
@@ -121,10 +117,6 @@ class StoreQualificationsAppRequest extends FormRequest
                 'max:2147483647',
             ],
             'contact_no' => [
-                'string',
-                'nullable',
-            ],
-            'email' => [
                 'string',
                 'nullable',
             ],

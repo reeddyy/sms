@@ -39,4 +39,16 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Qualifications App
     Route::apiResource('qualifications-apps', 'QualificationsAppApiController');
+
+    // Edp App
+    Route::apiResource('edp-apps', 'EdpAppApiController');
+
+    // Corporates App
+    Route::apiResource('corporates-apps', 'CorporatesAppApiController');
+
+    // Individuals App
+    Route::apiResource('individuals-apps', 'IndividualsAppApiController');
+
+    // Ada App
+    Route::apiResource('ada-apps', 'AdaAppApiController');
 });
