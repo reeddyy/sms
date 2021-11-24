@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyProgrammeRequest;
 use App\Http\Requests\StoreProgrammeRequest;
 use App\Http\Requests\UpdateProgrammeRequest;
@@ -14,6 +15,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ProgrammesController extends Controller
 {
+    use CsvImportTrait;
+
     public function index()
     {
         abort_if(Gate::denies('programme_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');

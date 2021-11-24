@@ -34,8 +34,6 @@ class OfficersController extends Controller
 
     public function store(StoreOfficerRequest $request)
     {
-
-        $validatedData = $request->validated();
         $officer = Officer::create($request->all());
 
         return redirect()->route('admin.officers.index');

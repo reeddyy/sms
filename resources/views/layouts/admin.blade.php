@@ -22,8 +22,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/css/perfect-scrollbar.min.css" rel="stylesheet" />
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     @yield('styles')
 </head>
 
@@ -91,7 +89,7 @@
             </form>
         </div>
     </div>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.perfect-scrollbar/1.5.0/perfect-scrollbar.min.js"></script>
@@ -112,7 +110,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/min/dropzone.min.js"></script>
-    <script src="{{ asset('js/main.js?ver=123456') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script>
         $(function() {
   let copyButtonTrans = '{{ trans('global.datatables.copy') }}'
@@ -148,16 +146,6 @@
     },
     order: [],
     scrollX: true,
-    "fnInitComplete": function(){
-
-        // Enable THEAD scroll bars
-        $('.dataTables_scrollHead').css('overflow', 'auto');
-
-        // Sync THEAD scrolling with TBODY
-        $('.dataTables_scrollHead').on('scroll', function () {
-            $('.dataTables_scrollBody').scrollLeft($(this).scrollLeft());
-        });                    
-    },
     pageLength: 100,
     dom: 'lBfrtip<"actions">',
     buttons: [
