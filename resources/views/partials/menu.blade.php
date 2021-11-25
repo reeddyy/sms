@@ -15,58 +15,6 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
-        @can('profile_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates*") ? "c-show" : "" }} {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.profile.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('corporate_access')
-                        <li class="c-sidebar-nav-item">
-                        <a href="{{ route("admin.corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/corporates") || request()->is("admin/corporates/*") ? "c-active" : "" }}">
-                                <i class="fa-fw far fa-building c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.corporate.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('individual_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/individuals") || request()->is("admin/individuals/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.individual.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('user_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.officers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/officers") || request()->is("admin/officers/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user-secret c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.officer.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('audit_log_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.facilitators.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/facilitators") || request()->is("admin/facilitators/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-user-astronaut c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.facilitator.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
         @can('application_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/ada-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
@@ -145,6 +93,58 @@
 
                                 </i>
                                 {{ trans('cruds.statusApp.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
+        @can('profile_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates*") ? "c-show" : "" }} {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.profile.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('corporate_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.corporates.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/corporates") || request()->is("admin/corporates/*") ? "c-active" : "" }}">
+                                <i class="fa-fw far fa-building c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.corporate.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('individual_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.individuals.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/individuals") || request()->is("admin/individuals/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.individual.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('officer_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.officers.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/officers") || request()->is("admin/officers/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user-secret c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.officer.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('facilitator_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.facilitators.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/facilitators") || request()->is("admin/facilitators/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-user-astronaut c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.facilitator.title') }}
                             </a>
                         </li>
                     @endcan
