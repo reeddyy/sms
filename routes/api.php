@@ -51,4 +51,10 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
 
     // Ada App
     Route::apiResource('ada-apps', 'AdaAppApiController');
+
+    // Qualifications Req
+    Route::apiResource('qualifications-reqs', 'QualificationsReqApiController');
+
+    // Edp Req
+    Route::apiResource('edp-reqs', 'EdpReqApiController');
 });

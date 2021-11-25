@@ -920,6 +920,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 228,
+                'title' => 'lead_access',
+            ],
+            [
+                'id'    => 229,
+                'title' => 'status_lead_create',
+            ],
+            [
+                'id'    => 230,
+                'title' => 'status_lead_edit',
+            ],
+            [
+                'id'    => 231,
+                'title' => 'status_lead_show',
+            ],
+            [
+                'id'    => 232,
+                'title' => 'status_lead_delete',
+            ],
+            [
+                'id'    => 233,
+                'title' => 'status_lead_access',
+            ],
+            [
+                'id'    => 234,
+                'title' => 'qualifications_req_create',
+            ],
+            [
+                'id'    => 235,
+                'title' => 'qualifications_req_edit',
+            ],
+            [
+                'id'    => 236,
+                'title' => 'qualifications_req_show',
+            ],
+            [
+                'id'    => 237,
+                'title' => 'qualifications_req_delete',
+            ],
+            [
+                'id'    => 238,
+                'title' => 'qualifications_req_access',
+            ],
+            [
+                'id'    => 239,
+                'title' => 'edp_req_create',
+            ],
+            [
+                'id'    => 240,
+                'title' => 'edp_req_edit',
+            ],
+            [
+                'id'    => 241,
+                'title' => 'edp_req_show',
+            ],
+            [
+                'id'    => 242,
+                'title' => 'edp_req_delete',
+            ],
+            [
+                'id'    => 243,
+                'title' => 'edp_req_access',
+            ],
+            [
+                'id'    => 244,
                 'title' => 'profile_password_edit',
             ],
         ];

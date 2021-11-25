@@ -15,6 +15,48 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
+        @can('lead_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/qualifications-reqs*") ? "c-show" : "" }} {{ request()->is("admin/edp-reqs*") ? "c-show" : "" }} {{ request()->is("admin/status-leads*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-user-plus c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.lead.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('qualifications_req_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.qualifications-reqs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/qualifications-reqs") || request()->is("admin/qualifications-reqs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-graduation-cap c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.qualificationsReq.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('edp_req_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.edp-reqs.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/edp-reqs") || request()->is("admin/edp-reqs/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-chalkboard-teacher c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.edpReq.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('status_lead_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-leads.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-leads") || request()->is("admin/status-leads/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusLead.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('application_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/ada-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
