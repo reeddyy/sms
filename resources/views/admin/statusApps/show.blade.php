@@ -56,16 +56,6 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#status_qualifications_apps" role="tab" data-toggle="tab">
-                {{ trans('cruds.qualificationsApp.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#status_edp_apps" role="tab" data-toggle="tab">
-                {{ trans('cruds.edpApp.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#status_corporates_apps" role="tab" data-toggle="tab">
                 {{ trans('cruds.corporatesApp.title') }}
             </a>
@@ -73,6 +63,16 @@
         <li class="nav-item">
             <a class="nav-link" href="#status_individuals_apps" role="tab" data-toggle="tab">
                 {{ trans('cruds.individualsApp.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#status_qualifications_apps" role="tab" data-toggle="tab">
+                {{ trans('cruds.qualificationsApp.title') }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#status_edp_apps" role="tab" data-toggle="tab">
+                {{ trans('cruds.edpApp.title') }}
             </a>
         </li>
         <li class="nav-item">
