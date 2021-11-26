@@ -82,17 +82,17 @@
         </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="status_qualifications_apps">
-            @includeIf('admin.statusApps.relationships.statusQualificationsApps', ['qualificationsApps' => $statusApp->statusQualificationsApps])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="status_edp_apps">
-            @includeIf('admin.statusApps.relationships.statusEdpApps', ['edpApps' => $statusApp->statusEdpApps])
-        </div>
         <div class="tab-pane" role="tabpanel" id="status_corporates_apps">
             @includeIf('admin.statusApps.relationships.statusCorporatesApps', ['corporatesApps' => $statusApp->statusCorporatesApps])
         </div>
         <div class="tab-pane" role="tabpanel" id="status_individuals_apps">
             @includeIf('admin.statusApps.relationships.statusIndividualsApps', ['individualsApps' => $statusApp->statusIndividualsApps])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="status_qualifications_apps">
+            @includeIf('admin.statusApps.relationships.statusQualificationsApps', ['qualificationsApps' => $statusApp->statusQualificationsApps])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="status_edp_apps">
+            @includeIf('admin.statusApps.relationships.statusEdpApps', ['edpApps' => $statusApp->statusEdpApps])
         </div>
         <div class="tab-pane" role="tabpanel" id="status_ada_apps">
             @includeIf('admin.statusApps.relationships.statusAdaApps', ['adaApps' => $statusApp->statusAdaApps])
