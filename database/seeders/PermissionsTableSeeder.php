@@ -984,6 +984,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 244,
+                'title' => 'status_membership_create',
+            ],
+            [
+                'id'    => 245,
+                'title' => 'status_membership_edit',
+            ],
+            [
+                'id'    => 246,
+                'title' => 'status_membership_show',
+            ],
+            [
+                'id'    => 247,
+                'title' => 'status_membership_delete',
+            ],
+            [
+                'id'    => 248,
+                'title' => 'status_membership_access',
+            ],
+            [
+                'id'    => 249,
                 'title' => 'profile_password_edit',
             ],
         ];

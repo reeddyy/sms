@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Status extends Model
+class StatusMembership extends Model
 {
     use SoftDeletes;
     use Auditable;
     use HasFactory;
 
-    public $table = 'statuses';
+    public $table = 'status_memberships';
 
     protected $dates = [
         'created_at',
@@ -30,14 +30,14 @@ class Status extends Model
         'deleted_at',
     ];
 
-    public function admissionStatusAdmissionsEdps()
+    public function statusMembershipsCorporates()
     {
-        return $this->hasMany(AdmissionsEdp::class, 'admission_status_id', 'id');
+        return $this->belongsToMany(MembershipsCorporate::class);
     }
 
-    public function adaStatusApplicantsAdas()
+    public function statusMembershipsIndividuals()
     {
-        return $this->hasMany(ApplicantsAda::class, 'ada_status_id', 'id');
+        return $this->belongsToMany(MembershipsIndividual::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

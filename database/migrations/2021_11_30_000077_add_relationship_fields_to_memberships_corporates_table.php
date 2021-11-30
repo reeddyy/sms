@@ -9,8 +9,8 @@ class AddRelationshipFieldsToMembershipsCorporatesTable extends Migration
     public function up()
     {
         Schema::table('memberships_corporates', function (Blueprint $table) {
-            $table->unsignedBigInteger('member_status_id');
-            $table->foreign('member_status_id', 'member_status_fk_5158182')->references('id')->on('statuses');
+            $table->unsignedBigInteger('application_no_id')->nullable();
+            $table->foreign('application_no_id', 'application_no_fk_5460222')->references('id')->on('corporates_apps');
             $table->unsignedBigInteger('member_class_id');
             $table->foreign('member_class_id', 'member_class_fk_5158183')->references('id')->on('member_classes');
             $table->unsignedBigInteger('company_name_id');

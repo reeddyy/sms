@@ -68,7 +68,7 @@ class CorporatesAppController extends Controller
     {
         abort_if(Gate::denies('corporates_app_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $corporatesApp->load('statuses');
+        $corporatesApp->load('statuses', 'applicationNoMembershipsCorporates');
 
         return view('admin.corporatesApps.show', compact('corporatesApp'));
     }

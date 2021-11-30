@@ -444,6 +444,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#application_no_memberships_individuals" role="tab" data-toggle="tab">
+                {{ trans('cruds.membershipsIndividual.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="application_no_memberships_individuals">
+            @includeIf('admin.individualsApps.relationships.applicationNoMembershipsIndividuals', ['membershipsIndividuals' => $individualsApp->applicationNoMembershipsIndividuals])
+        </div>
+    </div>
+</div>
 
 @endsection

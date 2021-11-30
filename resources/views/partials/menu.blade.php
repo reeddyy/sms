@@ -194,7 +194,7 @@
             </li>
         @endcan
         @can('membership_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/credits-funds-purposes*") ? "c-show" : "" }} {{ request()->is("admin/support-funds*") ? "c-show" : "" }} {{ request()->is("admin/member-classes*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/credits-funds-purposes*") ? "c-show" : "" }} {{ request()->is("admin/support-funds*") ? "c-show" : "" }} {{ request()->is("admin/member-classes*") ? "c-show" : "" }} {{ request()->is("admin/status-memberships*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
 
@@ -333,6 +333,16 @@
 
                                 </i>
                                 {{ trans('cruds.memberClass.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('status_membership_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-memberships.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-memberships") || request()->is("admin/status-memberships/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusMembership.title') }}
                             </a>
                         </li>
                     @endcan

@@ -87,6 +87,11 @@ class CorporatesApp extends Model
         'deleted_at',
     ];
 
+    public function applicationNoMembershipsCorporates()
+    {
+        return $this->hasMany(MembershipsCorporate::class, 'application_no_id', 'id');
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(StatusApp::class);

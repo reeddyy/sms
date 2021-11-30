@@ -234,6 +234,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('edp-reqs/parse-csv-import', 'EdpReqController@parseCsvImport')->name('edp-reqs.parseCsvImport');
     Route::post('edp-reqs/process-csv-import', 'EdpReqController@processCsvImport')->name('edp-reqs.processCsvImport');
     Route::resource('edp-reqs', 'EdpReqController');
+
+    // Status Memberships
+    Route::delete('status-memberships/destroy', 'StatusMembershipsController@massDestroy')->name('status-memberships.massDestroy');
+    Route::resource('status-memberships', 'StatusMembershipsController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

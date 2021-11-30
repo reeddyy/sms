@@ -1,8 +1,8 @@
-@can('memberships_individual_create')
+@can('memberships_corporate_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.memberships-individuals.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.membershipsIndividual.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.memberships-corporates.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.membershipsCorporate.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,52 +10,52 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.membershipsIndividual.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.membershipsCorporate.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-memberClassMembershipsIndividuals">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-statusMembershipsCorporates">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.id') }}
+                            {{ trans('cruds.membershipsCorporate.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.status') }}
+                            {{ trans('cruds.membershipsCorporate.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.application_no') }}
+                            {{ trans('cruds.membershipsCorporate.fields.application_no') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.member_class') }}
+                            {{ trans('cruds.membershipsCorporate.fields.member_class') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.valid_from') }}
+                            {{ trans('cruds.membershipsCorporate.fields.valid_from') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.valid_till') }}
+                            {{ trans('cruds.membershipsCorporate.fields.valid_till') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.member_no') }}
+                            {{ trans('cruds.membershipsCorporate.fields.member_no') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.member_name') }}
+                            {{ trans('cruds.membershipsCorporate.fields.company_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.training_credits') }}
+                            {{ trans('cruds.membershipsCorporate.fields.training_credits') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.support_funds') }}
+                            {{ trans('cruds.membershipsCorporate.fields.support_funds') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.admission_date') }}
+                            {{ trans('cruds.membershipsCorporate.fields.admission_date') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsIndividual.fields.note') }}
+                            {{ trans('cruds.membershipsCorporate.fields.note') }}
                         </th>
                         <th>
                             &nbsp;
@@ -63,64 +63,66 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($membershipsIndividuals as $key => $membershipsIndividual)
-                        <tr data-entry-id="{{ $membershipsIndividual->id }}">
+                    @foreach($membershipsCorporates as $key => $membershipsCorporate)
+                        <tr data-entry-id="{{ $membershipsCorporate->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $membershipsIndividual->id ?? '' }}
+                                {{ $membershipsCorporate->id ?? '' }}
                             </td>
                             <td>
-                                @foreach($membershipsIndividual->statuses as $key => $item)
+                                @foreach($membershipsCorporate->statuses as $key => $item)
                                     <span class="badge badge-info">{{ $item->status_name }}</span>
                                 @endforeach
                             </td>
                             <td>
-                                {{ $membershipsIndividual->application_no->application_no ?? '' }}
+                                {{ $membershipsCorporate->application_no->application_no ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->member_class->member_class_name ?? '' }}
+                                {{ $membershipsCorporate->member_class->member_class_name ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->valid_from ?? '' }}
+                                {{ $membershipsCorporate->valid_from ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->valid_till ?? '' }}
+                                {{ $membershipsCorporate->valid_till ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->member_no ?? '' }}
+                                {{ $membershipsCorporate->member_no ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->member_name->name ?? '' }}
+                                {{ $membershipsCorporate->company_name->company_name ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->training_credits ?? '' }}
+                                {{ $membershipsCorporate->training_credits ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->support_funds ?? '' }}
+                                @foreach($membershipsCorporate->support_funds as $key => $item)
+                                    <span class="badge badge-info">{{ $item->fund_name }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                {{ $membershipsIndividual->admission_date ?? '' }}
+                                {{ $membershipsCorporate->admission_date ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->note ?? '' }}
+                                {{ $membershipsCorporate->note ?? '' }}
                             </td>
                             <td>
-                                @can('memberships_individual_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.memberships-individuals.show', $membershipsIndividual->id) }}">
+                                @can('memberships_corporate_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.memberships-corporates.show', $membershipsCorporate->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('memberships_individual_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.memberships-individuals.edit', $membershipsIndividual->id) }}">
+                                @can('memberships_corporate_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.memberships-corporates.edit', $membershipsCorporate->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('memberships_individual_delete')
-                                    <form action="{{ route('admin.memberships-individuals.destroy', $membershipsIndividual->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('memberships_corporate_delete')
+                                    <form action="{{ route('admin.memberships-corporates.destroy', $membershipsCorporate->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -142,11 +144,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('memberships_individual_delete')
+@can('memberships_corporate_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.memberships-individuals.massDestroy') }}",
+    url: "{{ route('admin.memberships-corporates.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -177,7 +179,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-memberClassMembershipsIndividuals:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-statusMembershipsCorporates:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

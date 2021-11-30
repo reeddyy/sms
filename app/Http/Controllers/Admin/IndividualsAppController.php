@@ -68,7 +68,7 @@ class IndividualsAppController extends Controller
     {
         abort_if(Gate::denies('individuals_app_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $individualsApp->load('statuses');
+        $individualsApp->load('statuses', 'applicationNoMembershipsIndividuals');
 
         return view('admin.individualsApps.show', compact('individualsApp'));
     }

@@ -56,11 +56,6 @@
     </div>
     <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
         <li class="nav-item">
-            <a class="nav-link" href="#member_status_memberships_individuals" role="tab" data-toggle="tab">
-                {{ trans('cruds.membershipsIndividual.title') }}
-            </a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link" href="#admission_status_admissions_edps" role="tab" data-toggle="tab">
                 {{ trans('cruds.admissionsEdp.title') }}
             </a>
@@ -70,24 +65,13 @@
                 {{ trans('cruds.applicantsAda.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#member_status_memberships_corporates" role="tab" data-toggle="tab">
-                {{ trans('cruds.membershipsCorporate.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="member_status_memberships_individuals">
-            @includeIf('admin.statuses.relationships.memberStatusMembershipsIndividuals', ['membershipsIndividuals' => $status->memberStatusMembershipsIndividuals])
-        </div>
         <div class="tab-pane" role="tabpanel" id="admission_status_admissions_edps">
             @includeIf('admin.statuses.relationships.admissionStatusAdmissionsEdps', ['admissionsEdps' => $status->admissionStatusAdmissionsEdps])
         </div>
         <div class="tab-pane" role="tabpanel" id="ada_status_applicants_adas">
             @includeIf('admin.statuses.relationships.adaStatusApplicantsAdas', ['applicantsAdas' => $status->adaStatusApplicantsAdas])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="member_status_memberships_corporates">
-            @includeIf('admin.statuses.relationships.memberStatusMembershipsCorporates', ['membershipsCorporates' => $status->memberStatusMembershipsCorporates])
         </div>
     </div>
 </div>

@@ -9,8 +9,8 @@ class AddRelationshipFieldsToMembershipsIndividualsTable extends Migration
     public function up()
     {
         Schema::table('memberships_individuals', function (Blueprint $table) {
-            $table->unsignedBigInteger('member_status_id');
-            $table->foreign('member_status_id', 'member_status_fk_5157941')->references('id')->on('statuses');
+            $table->unsignedBigInteger('application_no_id')->nullable();
+            $table->foreign('application_no_id', 'application_no_fk_5460224')->references('id')->on('individuals_apps');
             $table->unsignedBigInteger('member_class_id');
             $table->foreign('member_class_id', 'member_class_fk_5157934')->references('id')->on('member_classes');
             $table->unsignedBigInteger('member_name_id');

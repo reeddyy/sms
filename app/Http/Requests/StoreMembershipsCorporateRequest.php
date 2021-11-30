@@ -17,9 +17,11 @@ class StoreMembershipsCorporateRequest extends FormRequest
     public function rules()
     {
         return [
-            'member_status_id' => [
-                'required',
+            'statuses.*' => [
                 'integer',
+            ],
+            'statuses' => [
+                'array',
             ],
             'member_class_id' => [
                 'required',
