@@ -256,670 +256,774 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 62,
-                'title' => 'status_create',
-            ],
-            [
-                'id'    => 63,
-                'title' => 'status_edit',
-            ],
-            [
-                'id'    => 64,
-                'title' => 'status_show',
-            ],
-            [
-                'id'    => 65,
-                'title' => 'status_delete',
-            ],
-            [
-                'id'    => 66,
-                'title' => 'status_access',
-            ],
-            [
-                'id'    => 67,
                 'title' => 'individual_membership_access',
             ],
             [
-                'id'    => 68,
+                'id'    => 63,
                 'title' => 'memberships_individual_create',
             ],
             [
-                'id'    => 69,
+                'id'    => 64,
                 'title' => 'memberships_individual_edit',
             ],
             [
-                'id'    => 70,
+                'id'    => 65,
                 'title' => 'memberships_individual_show',
             ],
             [
-                'id'    => 71,
+                'id'    => 66,
                 'title' => 'memberships_individual_delete',
             ],
             [
-                'id'    => 72,
+                'id'    => 67,
                 'title' => 'memberships_individual_access',
             ],
             [
-                'id'    => 73,
+                'id'    => 68,
                 'title' => 'certificate_create',
             ],
             [
-                'id'    => 74,
+                'id'    => 69,
                 'title' => 'certificate_edit',
             ],
             [
-                'id'    => 75,
+                'id'    => 70,
                 'title' => 'certificate_show',
             ],
             [
-                'id'    => 76,
+                'id'    => 71,
                 'title' => 'certificate_delete',
             ],
             [
-                'id'    => 77,
+                'id'    => 72,
                 'title' => 'certificate_access',
             ],
             [
-                'id'    => 78,
+                'id'    => 73,
                 'title' => 'edp_access',
             ],
             [
-                'id'    => 79,
+                'id'    => 74,
                 'title' => 'programme_create',
             ],
             [
-                'id'    => 80,
+                'id'    => 75,
                 'title' => 'programme_edit',
             ],
             [
-                'id'    => 81,
+                'id'    => 76,
                 'title' => 'programme_show',
             ],
             [
-                'id'    => 82,
+                'id'    => 77,
                 'title' => 'programme_delete',
             ],
             [
-                'id'    => 83,
+                'id'    => 78,
                 'title' => 'programme_access',
             ],
             [
-                'id'    => 84,
+                'id'    => 79,
                 'title' => 'enrolments_qualification_create',
             ],
             [
-                'id'    => 85,
+                'id'    => 80,
                 'title' => 'enrolments_qualification_edit',
             ],
             [
-                'id'    => 86,
+                'id'    => 81,
                 'title' => 'enrolments_qualification_show',
             ],
             [
-                'id'    => 87,
+                'id'    => 82,
                 'title' => 'enrolments_qualification_delete',
             ],
             [
-                'id'    => 88,
+                'id'    => 83,
                 'title' => 'enrolments_qualification_access',
             ],
             [
-                'id'    => 89,
+                'id'    => 84,
                 'title' => 'payment_source_create',
             ],
             [
-                'id'    => 90,
+                'id'    => 85,
                 'title' => 'payment_source_edit',
             ],
             [
-                'id'    => 91,
+                'id'    => 86,
                 'title' => 'payment_source_show',
             ],
             [
-                'id'    => 92,
+                'id'    => 87,
                 'title' => 'payment_source_delete',
             ],
             [
-                'id'    => 93,
+                'id'    => 88,
                 'title' => 'payment_source_access',
             ],
             [
-                'id'    => 94,
+                'id'    => 89,
                 'title' => 'payments_qualification_create',
             ],
             [
-                'id'    => 95,
+                'id'    => 90,
                 'title' => 'payments_qualification_edit',
             ],
             [
-                'id'    => 96,
+                'id'    => 91,
                 'title' => 'payments_qualification_show',
             ],
             [
-                'id'    => 97,
+                'id'    => 92,
                 'title' => 'payments_qualification_delete',
             ],
             [
-                'id'    => 98,
+                'id'    => 93,
                 'title' => 'payments_qualification_access',
             ],
             [
-                'id'    => 99,
+                'id'    => 94,
                 'title' => 'payments_individual_create',
             ],
             [
-                'id'    => 100,
+                'id'    => 95,
                 'title' => 'payments_individual_edit',
             ],
             [
-                'id'    => 101,
+                'id'    => 96,
                 'title' => 'payments_individual_show',
             ],
             [
-                'id'    => 102,
+                'id'    => 97,
                 'title' => 'payments_individual_delete',
             ],
             [
-                'id'    => 103,
+                'id'    => 98,
                 'title' => 'payments_individual_access',
             ],
             [
-                'id'    => 104,
+                'id'    => 99,
                 'title' => 'achievement_create',
             ],
             [
-                'id'    => 105,
+                'id'    => 100,
                 'title' => 'achievement_edit',
             ],
             [
-                'id'    => 106,
+                'id'    => 101,
                 'title' => 'achievement_show',
             ],
             [
-                'id'    => 107,
+                'id'    => 102,
                 'title' => 'achievement_delete',
             ],
             [
-                'id'    => 108,
+                'id'    => 103,
                 'title' => 'achievement_access',
             ],
             [
-                'id'    => 109,
+                'id'    => 104,
                 'title' => 'results_module_create',
             ],
             [
-                'id'    => 110,
+                'id'    => 105,
                 'title' => 'results_module_edit',
             ],
             [
-                'id'    => 111,
+                'id'    => 106,
                 'title' => 'results_module_show',
             ],
             [
-                'id'    => 112,
+                'id'    => 107,
                 'title' => 'results_module_delete',
             ],
             [
-                'id'    => 113,
+                'id'    => 108,
                 'title' => 'results_module_access',
             ],
             [
-                'id'    => 114,
+                'id'    => 109,
                 'title' => 'support_fund_create',
             ],
             [
-                'id'    => 115,
+                'id'    => 110,
                 'title' => 'support_fund_edit',
             ],
             [
-                'id'    => 116,
+                'id'    => 111,
                 'title' => 'support_fund_show',
             ],
             [
-                'id'    => 117,
+                'id'    => 112,
                 'title' => 'support_fund_delete',
             ],
             [
-                'id'    => 118,
+                'id'    => 113,
                 'title' => 'support_fund_access',
             ],
             [
-                'id'    => 119,
+                'id'    => 114,
                 'title' => 'facilitator_create',
             ],
             [
-                'id'    => 120,
+                'id'    => 115,
                 'title' => 'facilitator_edit',
             ],
             [
-                'id'    => 121,
+                'id'    => 116,
                 'title' => 'facilitator_show',
             ],
             [
-                'id'    => 122,
+                'id'    => 117,
                 'title' => 'facilitator_delete',
             ],
             [
-                'id'    => 123,
+                'id'    => 118,
                 'title' => 'facilitator_access',
             ],
             [
-                'id'    => 124,
+                'id'    => 119,
                 'title' => 'venue_create',
             ],
             [
-                'id'    => 125,
+                'id'    => 120,
                 'title' => 'venue_edit',
             ],
             [
-                'id'    => 126,
+                'id'    => 121,
                 'title' => 'venue_show',
             ],
             [
-                'id'    => 127,
+                'id'    => 122,
                 'title' => 'venue_delete',
             ],
             [
-                'id'    => 128,
+                'id'    => 123,
                 'title' => 'venue_access',
             ],
             [
-                'id'    => 129,
+                'id'    => 124,
                 'title' => 'admissions_edp_create',
             ],
             [
-                'id'    => 130,
+                'id'    => 125,
                 'title' => 'admissions_edp_edit',
             ],
             [
-                'id'    => 131,
+                'id'    => 126,
                 'title' => 'admissions_edp_show',
             ],
             [
-                'id'    => 132,
+                'id'    => 127,
                 'title' => 'admissions_edp_delete',
             ],
             [
-                'id'    => 133,
+                'id'    => 128,
                 'title' => 'admissions_edp_access',
             ],
             [
-                'id'    => 134,
+                'id'    => 129,
                 'title' => 'payments_edp_create',
             ],
             [
-                'id'    => 135,
+                'id'    => 130,
                 'title' => 'payments_edp_edit',
             ],
             [
-                'id'    => 136,
+                'id'    => 131,
                 'title' => 'payments_edp_show',
             ],
             [
-                'id'    => 137,
+                'id'    => 132,
                 'title' => 'payments_edp_delete',
             ],
             [
-                'id'    => 138,
+                'id'    => 133,
                 'title' => 'payments_edp_access',
             ],
             [
-                'id'    => 139,
+                'id'    => 134,
                 'title' => 'ada_access',
             ],
             [
-                'id'    => 140,
+                'id'    => 135,
                 'title' => 'award_create',
             ],
             [
-                'id'    => 141,
+                'id'    => 136,
                 'title' => 'award_edit',
             ],
             [
-                'id'    => 142,
+                'id'    => 137,
                 'title' => 'award_show',
             ],
             [
-                'id'    => 143,
+                'id'    => 138,
                 'title' => 'award_delete',
             ],
             [
-                'id'    => 144,
+                'id'    => 139,
                 'title' => 'award_access',
             ],
             [
-                'id'    => 145,
+                'id'    => 140,
                 'title' => 'applicants_ada_create',
             ],
             [
-                'id'    => 146,
+                'id'    => 141,
                 'title' => 'applicants_ada_edit',
             ],
             [
-                'id'    => 147,
+                'id'    => 142,
                 'title' => 'applicants_ada_show',
             ],
             [
-                'id'    => 148,
+                'id'    => 143,
                 'title' => 'applicants_ada_delete',
             ],
             [
-                'id'    => 149,
+                'id'    => 144,
                 'title' => 'applicants_ada_access',
             ],
             [
-                'id'    => 150,
+                'id'    => 145,
                 'title' => 'credits_funds_purpose_create',
             ],
             [
-                'id'    => 151,
+                'id'    => 146,
                 'title' => 'credits_funds_purpose_edit',
             ],
             [
-                'id'    => 152,
+                'id'    => 147,
                 'title' => 'credits_funds_purpose_show',
             ],
             [
-                'id'    => 153,
+                'id'    => 148,
                 'title' => 'credits_funds_purpose_delete',
             ],
             [
-                'id'    => 154,
+                'id'    => 149,
                 'title' => 'credits_funds_purpose_access',
             ],
             [
-                'id'    => 155,
+                'id'    => 150,
                 'title' => 'training_credits_individual_create',
             ],
             [
-                'id'    => 156,
+                'id'    => 151,
                 'title' => 'training_credits_individual_edit',
             ],
             [
-                'id'    => 157,
+                'id'    => 152,
                 'title' => 'training_credits_individual_show',
             ],
             [
-                'id'    => 158,
+                'id'    => 153,
                 'title' => 'training_credits_individual_delete',
             ],
             [
-                'id'    => 159,
+                'id'    => 154,
                 'title' => 'training_credits_individual_access',
             ],
             [
-                'id'    => 160,
+                'id'    => 155,
                 'title' => 'support_funds_individual_create',
             ],
             [
-                'id'    => 161,
+                'id'    => 156,
                 'title' => 'support_funds_individual_edit',
             ],
             [
-                'id'    => 162,
+                'id'    => 157,
                 'title' => 'support_funds_individual_show',
             ],
             [
-                'id'    => 163,
+                'id'    => 158,
                 'title' => 'support_funds_individual_delete',
             ],
             [
-                'id'    => 164,
+                'id'    => 159,
                 'title' => 'support_funds_individual_access',
             ],
             [
-                'id'    => 165,
+                'id'    => 160,
                 'title' => 'corporate_create',
             ],
             [
-                'id'    => 166,
+                'id'    => 161,
                 'title' => 'corporate_edit',
             ],
             [
-                'id'    => 167,
+                'id'    => 162,
                 'title' => 'corporate_show',
             ],
             [
-                'id'    => 168,
+                'id'    => 163,
                 'title' => 'corporate_delete',
             ],
             [
-                'id'    => 169,
+                'id'    => 164,
                 'title' => 'corporate_access',
             ],
             [
-                'id'    => 170,
+                'id'    => 165,
                 'title' => 'corporate_membership_access',
             ],
             [
-                'id'    => 171,
+                'id'    => 166,
                 'title' => 'memberships_corporate_create',
             ],
             [
-                'id'    => 172,
+                'id'    => 167,
                 'title' => 'memberships_corporate_edit',
             ],
             [
-                'id'    => 173,
+                'id'    => 168,
                 'title' => 'memberships_corporate_show',
             ],
             [
-                'id'    => 174,
+                'id'    => 169,
                 'title' => 'memberships_corporate_delete',
             ],
             [
-                'id'    => 175,
+                'id'    => 170,
                 'title' => 'memberships_corporate_access',
             ],
             [
-                'id'    => 176,
+                'id'    => 171,
                 'title' => 'payments_corporate_create',
             ],
             [
-                'id'    => 177,
+                'id'    => 172,
                 'title' => 'payments_corporate_edit',
             ],
             [
-                'id'    => 178,
+                'id'    => 173,
                 'title' => 'payments_corporate_show',
             ],
             [
-                'id'    => 179,
+                'id'    => 174,
                 'title' => 'payments_corporate_delete',
             ],
             [
-                'id'    => 180,
+                'id'    => 175,
                 'title' => 'payments_corporate_access',
             ],
             [
-                'id'    => 181,
+                'id'    => 176,
                 'title' => 'training_credits_corporate_create',
             ],
             [
-                'id'    => 182,
+                'id'    => 177,
                 'title' => 'training_credits_corporate_edit',
             ],
             [
-                'id'    => 183,
+                'id'    => 178,
                 'title' => 'training_credits_corporate_show',
             ],
             [
-                'id'    => 184,
+                'id'    => 179,
                 'title' => 'training_credits_corporate_delete',
             ],
             [
-                'id'    => 185,
+                'id'    => 180,
                 'title' => 'training_credits_corporate_access',
             ],
             [
-                'id'    => 186,
+                'id'    => 181,
                 'title' => 'support_funds_corporate_create',
             ],
             [
-                'id'    => 187,
+                'id'    => 182,
                 'title' => 'support_funds_corporate_edit',
             ],
             [
-                'id'    => 188,
+                'id'    => 183,
                 'title' => 'support_funds_corporate_show',
             ],
             [
-                'id'    => 189,
+                'id'    => 184,
                 'title' => 'support_funds_corporate_delete',
             ],
             [
-                'id'    => 190,
+                'id'    => 185,
                 'title' => 'support_funds_corporate_access',
             ],
             [
-                'id'    => 191,
+                'id'    => 186,
                 'title' => 'application_access',
             ],
             [
-                'id'    => 192,
+                'id'    => 187,
                 'title' => 'qualifications_app_create',
             ],
             [
-                'id'    => 193,
+                'id'    => 188,
                 'title' => 'qualifications_app_edit',
             ],
             [
-                'id'    => 194,
+                'id'    => 189,
                 'title' => 'qualifications_app_show',
             ],
             [
-                'id'    => 195,
+                'id'    => 190,
                 'title' => 'qualifications_app_delete',
             ],
             [
-                'id'    => 196,
+                'id'    => 191,
                 'title' => 'qualifications_app_access',
             ],
             [
-                'id'    => 197,
+                'id'    => 192,
                 'title' => 'status_app_create',
             ],
             [
-                'id'    => 198,
+                'id'    => 193,
                 'title' => 'status_app_edit',
             ],
             [
-                'id'    => 199,
+                'id'    => 194,
                 'title' => 'status_app_show',
             ],
             [
-                'id'    => 200,
+                'id'    => 195,
                 'title' => 'status_app_delete',
             ],
             [
-                'id'    => 201,
+                'id'    => 196,
                 'title' => 'status_app_access',
             ],
             [
-                'id'    => 202,
+                'id'    => 197,
                 'title' => 'status_qualification_create',
             ],
             [
-                'id'    => 203,
+                'id'    => 198,
                 'title' => 'status_qualification_edit',
             ],
             [
-                'id'    => 204,
+                'id'    => 199,
                 'title' => 'status_qualification_show',
             ],
             [
-                'id'    => 205,
+                'id'    => 200,
                 'title' => 'status_qualification_delete',
             ],
             [
-                'id'    => 206,
+                'id'    => 201,
                 'title' => 'status_qualification_access',
             ],
             [
-                'id'    => 207,
+                'id'    => 202,
                 'title' => 'edp_app_create',
             ],
             [
-                'id'    => 208,
+                'id'    => 203,
                 'title' => 'edp_app_edit',
             ],
             [
-                'id'    => 209,
+                'id'    => 204,
                 'title' => 'edp_app_show',
             ],
             [
-                'id'    => 210,
+                'id'    => 205,
                 'title' => 'edp_app_delete',
             ],
             [
-                'id'    => 211,
+                'id'    => 206,
                 'title' => 'edp_app_access',
             ],
             [
-                'id'    => 212,
+                'id'    => 207,
                 'title' => 'memberships_app_access',
             ],
             [
-                'id'    => 213,
+                'id'    => 208,
                 'title' => 'corporates_app_create',
             ],
             [
-                'id'    => 214,
+                'id'    => 209,
                 'title' => 'corporates_app_edit',
             ],
             [
-                'id'    => 215,
+                'id'    => 210,
                 'title' => 'corporates_app_show',
             ],
             [
-                'id'    => 216,
+                'id'    => 211,
                 'title' => 'corporates_app_delete',
             ],
             [
-                'id'    => 217,
+                'id'    => 212,
                 'title' => 'corporates_app_access',
             ],
             [
-                'id'    => 218,
+                'id'    => 213,
                 'title' => 'individuals_app_create',
             ],
             [
-                'id'    => 219,
+                'id'    => 214,
                 'title' => 'individuals_app_edit',
             ],
             [
-                'id'    => 220,
+                'id'    => 215,
                 'title' => 'individuals_app_show',
             ],
             [
-                'id'    => 221,
+                'id'    => 216,
                 'title' => 'individuals_app_delete',
             ],
             [
-                'id'    => 222,
+                'id'    => 217,
                 'title' => 'individuals_app_access',
             ],
             [
-                'id'    => 223,
+                'id'    => 218,
                 'title' => 'ada_app_create',
             ],
             [
-                'id'    => 224,
+                'id'    => 219,
                 'title' => 'ada_app_edit',
             ],
             [
-                'id'    => 225,
+                'id'    => 220,
                 'title' => 'ada_app_show',
             ],
             [
-                'id'    => 226,
+                'id'    => 221,
                 'title' => 'ada_app_delete',
             ],
             [
-                'id'    => 227,
+                'id'    => 222,
                 'title' => 'ada_app_access',
             ],
             [
+                'id'    => 223,
+                'title' => 'lead_access',
+            ],
+            [
+                'id'    => 224,
+                'title' => 'status_lead_create',
+            ],
+            [
+                'id'    => 225,
+                'title' => 'status_lead_edit',
+            ],
+            [
+                'id'    => 226,
+                'title' => 'status_lead_show',
+            ],
+            [
+                'id'    => 227,
+                'title' => 'status_lead_delete',
+            ],
+            [
                 'id'    => 228,
+                'title' => 'status_lead_access',
+            ],
+            [
+                'id'    => 229,
+                'title' => 'qualifications_req_create',
+            ],
+            [
+                'id'    => 230,
+                'title' => 'qualifications_req_edit',
+            ],
+            [
+                'id'    => 231,
+                'title' => 'qualifications_req_show',
+            ],
+            [
+                'id'    => 232,
+                'title' => 'qualifications_req_delete',
+            ],
+            [
+                'id'    => 233,
+                'title' => 'qualifications_req_access',
+            ],
+            [
+                'id'    => 234,
+                'title' => 'edp_req_create',
+            ],
+            [
+                'id'    => 235,
+                'title' => 'edp_req_edit',
+            ],
+            [
+                'id'    => 236,
+                'title' => 'edp_req_show',
+            ],
+            [
+                'id'    => 237,
+                'title' => 'edp_req_delete',
+            ],
+            [
+                'id'    => 238,
+                'title' => 'edp_req_access',
+            ],
+            [
+                'id'    => 239,
+                'title' => 'status_membership_create',
+            ],
+            [
+                'id'    => 240,
+                'title' => 'status_membership_edit',
+            ],
+            [
+                'id'    => 241,
+                'title' => 'status_membership_show',
+            ],
+            [
+                'id'    => 242,
+                'title' => 'status_membership_delete',
+            ],
+            [
+                'id'    => 243,
+                'title' => 'status_membership_access',
+            ],
+            [
+                'id'    => 244,
+                'title' => 'status_edp_create',
+            ],
+            [
+                'id'    => 245,
+                'title' => 'status_edp_edit',
+            ],
+            [
+                'id'    => 246,
+                'title' => 'status_edp_show',
+            ],
+            [
+                'id'    => 247,
+                'title' => 'status_edp_delete',
+            ],
+            [
+                'id'    => 248,
+                'title' => 'status_edp_access',
+            ],
+            [
+                'id'    => 249,
+                'title' => 'status_ada_create',
+            ],
+            [
+                'id'    => 250,
+                'title' => 'status_ada_edit',
+            ],
+            [
+                'id'    => 251,
+                'title' => 'status_ada_show',
+            ],
+            [
+                'id'    => 252,
+                'title' => 'status_ada_delete',
+            ],
+            [
+                'id'    => 253,
+                'title' => 'status_ada_access',
+            ],
+            [
+                'id'    => 254,
                 'title' => 'profile_password_edit',
             ],
         ];

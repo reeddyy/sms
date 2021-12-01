@@ -27,7 +27,7 @@ class MembershipsIndividual extends Model
     ];
 
     protected $fillable = [
-        'member_status_id',
+        'application_no_id',
         'member_class_id',
         'valid_from',
         'valid_till',
@@ -57,9 +57,14 @@ class MembershipsIndividual extends Model
         return $this->hasMany(SupportFundsIndividual::class, 'member_no_id', 'id');
     }
 
-    public function member_status()
+    public function statuses()
     {
-        return $this->belongsTo(Status::class, 'member_status_id');
+        return $this->belongsToMany(StatusMembership::class);
+    }
+
+    public function application_no()
+    {
+        return $this->belongsTo(IndividualsApp::class, 'application_no_id');
     }
 
     public function member_class()

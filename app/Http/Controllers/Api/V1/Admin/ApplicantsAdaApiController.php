@@ -17,12 +17,13 @@ class ApplicantsAdaApiController extends Controller
     {
         abort_if(Gate::denies('applicants_ada_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ApplicantsAdaResource(ApplicantsAda::with(['ada_status', 'award_name', 'applicant_name'])->get());
+        return new ApplicantsAdaResource(ApplicantsAda::with(['statuses', 'application_no', 'award_name', 'applicant_name'])->get());
     }
 
     public function store(StoreApplicantsAdaRequest $request)
     {
         $applicantsAda = ApplicantsAda::create($request->all());
+        $applicantsAda->statuses()->sync($request->input('statuses', []));
 
         return (new ApplicantsAdaResource($applicantsAda))
             ->response()
@@ -33,12 +34,13 @@ class ApplicantsAdaApiController extends Controller
     {
         abort_if(Gate::denies('applicants_ada_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new ApplicantsAdaResource($applicantsAda->load(['ada_status', 'award_name', 'applicant_name']));
+        return new ApplicantsAdaResource($applicantsAda->load(['statuses', 'application_no', 'award_name', 'applicant_name']));
     }
 
     public function update(UpdateApplicantsAdaRequest $request, ApplicantsAda $applicantsAda)
     {
         $applicantsAda->update($request->all());
+        $applicantsAda->statuses()->sync($request->input('statuses', []));
 
         return (new ApplicantsAdaResource($applicantsAda))
             ->response()

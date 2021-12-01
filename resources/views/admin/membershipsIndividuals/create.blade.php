@@ -10,18 +10,36 @@
         <form method="POST" action="{{ route("admin.memberships-individuals.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="member_status_id">{{ trans('cruds.membershipsIndividual.fields.member_status') }}</label>
-                <select class="form-control select2 {{ $errors->has('member_status') ? 'is-invalid' : '' }}" name="member_status_id" id="member_status_id" required>
-                    @foreach($member_statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('member_status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+            <label for="statuses">{{ trans('cruds.membershipsIndividual.fields.status') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('statuses') ? 'is-invalid' : '' }}" name="statuses[]" id="statuses" multiple>
+                    @foreach($statuses as $id => $status)
+                        <option value="{{ $id }}" {{ in_array($id, old('statuses', [])) ? 'selected' : '' }}>{{ $status }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('member_status'))
+                @if($errors->has('statuses'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('member_status') }}
+                        {{ $errors->first('statuses') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.member_status_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="application_no_id">{{ trans('cruds.membershipsIndividual.fields.application_no') }}</label>
+                <select class="form-control select2 {{ $errors->has('application_no') ? 'is-invalid' : '' }}" name="application_no_id" id="application_no_id">
+                    @foreach($application_nos as $id => $entry)
+                        <option value="{{ $id }}" {{ old('application_no_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('application_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('application_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.membershipsIndividual.fields.application_no_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="member_class_id">{{ trans('cruds.membershipsIndividual.fields.member_class') }}</label>

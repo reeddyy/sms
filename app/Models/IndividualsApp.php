@@ -80,6 +80,11 @@ class IndividualsApp extends Model
         'deleted_at',
     ];
 
+    public function applicationNoMembershipsIndividuals()
+    {
+        return $this->hasMany(MembershipsIndividual::class, 'application_no_id', 'id');
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(StatusApp::class);

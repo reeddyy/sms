@@ -72,6 +72,11 @@ class AdaApp extends Model
         'deleted_at',
     ];
 
+    public function applicationNoApplicantsAdas()
+    {
+        return $this->hasMany(ApplicantsAda::class, 'application_no_id', 'id');
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(StatusApp::class);

@@ -492,6 +492,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#application_no_admissions_edps" role="tab" data-toggle="tab">
+                {{ trans('cruds.admissionsEdp.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="application_no_admissions_edps">
+            @includeIf('admin.edpApps.relationships.applicationNoAdmissionsEdps', ['admissionsEdps' => $edpApp->applicationNoAdmissionsEdps])
+        </div>
+    </div>
+</div>
 
 @endsection

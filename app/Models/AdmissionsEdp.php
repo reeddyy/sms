@@ -31,7 +31,7 @@ class AdmissionsEdp extends Model
     ];
 
     protected $fillable = [
-        'admission_status_id',
+        'application_no_id',
         'edp_title_id',
         'start_date',
         'end_date',
@@ -55,9 +55,14 @@ class AdmissionsEdp extends Model
         return $this->hasMany(PaymentsEdp::class, 'admission_no_id', 'id');
     }
 
-    public function admission_status()
+    public function statuses()
     {
-        return $this->belongsTo(Status::class, 'admission_status_id');
+        return $this->belongsToMany(StatusEdp::class);
+    }
+
+    public function application_no()
+    {
+        return $this->belongsTo(EdpApp::class, 'application_no_id');
     }
 
     public function edp_title()

@@ -70,10 +70,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('member-classes/destroy', 'MemberClassController@massDestroy')->name('member-classes.massDestroy');
     Route::resource('member-classes', 'MemberClassController');
 
-    // Status
-    Route::delete('statuses/destroy', 'StatusController@massDestroy')->name('statuses.massDestroy');
-    Route::resource('statuses', 'StatusController');
-
     // Memberships Individuals
     Route::delete('memberships-individuals/destroy', 'MembershipsIndividualsController@massDestroy')->name('memberships-individuals.massDestroy');
     Route::resource('memberships-individuals', 'MembershipsIndividualsController');
@@ -218,6 +214,34 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('ada-apps/parse-csv-import', 'AdaAppController@parseCsvImport')->name('ada-apps.parseCsvImport');
     Route::post('ada-apps/process-csv-import', 'AdaAppController@processCsvImport')->name('ada-apps.processCsvImport');
     Route::resource('ada-apps', 'AdaAppController');
+
+    // Status Leads
+    Route::delete('status-leads/destroy', 'StatusLeadsController@massDestroy')->name('status-leads.massDestroy');
+    Route::resource('status-leads', 'StatusLeadsController');
+
+    // Qualifications Req
+    Route::delete('qualifications-reqs/destroy', 'QualificationsReqController@massDestroy')->name('qualifications-reqs.massDestroy');
+    Route::post('qualifications-reqs/parse-csv-import', 'QualificationsReqController@parseCsvImport')->name('qualifications-reqs.parseCsvImport');
+    Route::post('qualifications-reqs/process-csv-import', 'QualificationsReqController@processCsvImport')->name('qualifications-reqs.processCsvImport');
+    Route::resource('qualifications-reqs', 'QualificationsReqController');
+
+    // Edp Req
+    Route::delete('edp-reqs/destroy', 'EdpReqController@massDestroy')->name('edp-reqs.massDestroy');
+    Route::post('edp-reqs/parse-csv-import', 'EdpReqController@parseCsvImport')->name('edp-reqs.parseCsvImport');
+    Route::post('edp-reqs/process-csv-import', 'EdpReqController@processCsvImport')->name('edp-reqs.processCsvImport');
+    Route::resource('edp-reqs', 'EdpReqController');
+
+    // Status Memberships
+    Route::delete('status-memberships/destroy', 'StatusMembershipsController@massDestroy')->name('status-memberships.massDestroy');
+    Route::resource('status-memberships', 'StatusMembershipsController');
+
+    // Status Edp
+    Route::delete('status-edps/destroy', 'StatusEdpController@massDestroy')->name('status-edps.massDestroy');
+    Route::resource('status-edps', 'StatusEdpController');
+
+    // Status Ada
+    Route::delete('status-adas/destroy', 'StatusAdaController@massDestroy')->name('status-adas.massDestroy');
+    Route::resource('status-adas', 'StatusAdaController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
