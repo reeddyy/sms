@@ -27,7 +27,7 @@ class ApplicantsAda extends Model
     ];
 
     protected $fillable = [
-        'ada_status_id',
+        'application_no_id',
         'award_name_id',
         'validity_start',
         'validity_end',
@@ -42,9 +42,14 @@ class ApplicantsAda extends Model
         'deleted_at',
     ];
 
-    public function ada_status()
+    public function statuses()
     {
-        return $this->belongsTo(Status::class, 'ada_status_id');
+        return $this->belongsToMany(StatusAda::class);
+    }
+
+    public function application_no()
+    {
+        return $this->belongsTo(AdaApp::class, 'application_no_id');
     }
 
     public function award_name()

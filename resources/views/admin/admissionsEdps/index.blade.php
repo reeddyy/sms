@@ -26,7 +26,10 @@
                             {{ trans('cruds.admissionsEdp.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.admissionsEdp.fields.admission_status') }}
+                            {{ trans('cruds.admissionsEdp.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionsEdp.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.admissionsEdp.fields.edp_title') }}
@@ -80,8 +83,16 @@
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach($statuses as $key => $item)
+                                @foreach($status_edps as $key => $item)
                                     <option value="{{ $item->status_name }}">{{ $item->status_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($edp_apps as $key => $item)
+                                    <option value="{{ $item->application_no }}">{{ $item->application_no }}</option>
                                 @endforeach
                             </select>
                         </td>

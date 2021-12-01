@@ -17,9 +17,11 @@ class UpdateAdmissionsEdpRequest extends FormRequest
     public function rules()
     {
         return [
-            'admission_status_id' => [
-                'required',
+            'statuses.*' => [
                 'integer',
+            ],
+            'statuses' => [
+                'array',
             ],
             'edp_title_id' => [
                 'required',

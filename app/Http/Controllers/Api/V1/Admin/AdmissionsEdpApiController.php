@@ -17,12 +17,13 @@ class AdmissionsEdpApiController extends Controller
     {
         abort_if(Gate::denies('admissions_edp_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new AdmissionsEdpResource(AdmissionsEdp::with(['admission_status', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name'])->get());
+        return new AdmissionsEdpResource(AdmissionsEdp::with(['statuses', 'application_no', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name'])->get());
     }
 
     public function store(StoreAdmissionsEdpRequest $request)
     {
         $admissionsEdp = AdmissionsEdp::create($request->all());
+        $admissionsEdp->statuses()->sync($request->input('statuses', []));
 
         return (new AdmissionsEdpResource($admissionsEdp))
             ->response()
@@ -33,12 +34,13 @@ class AdmissionsEdpApiController extends Controller
     {
         abort_if(Gate::denies('admissions_edp_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new AdmissionsEdpResource($admissionsEdp->load(['admission_status', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name']));
+        return new AdmissionsEdpResource($admissionsEdp->load(['statuses', 'application_no', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name']));
     }
 
     public function update(UpdateAdmissionsEdpRequest $request, AdmissionsEdp $admissionsEdp)
     {
         $admissionsEdp->update($request->all());
+        $admissionsEdp->statuses()->sync($request->input('statuses', []));
 
         return (new AdmissionsEdpResource($admissionsEdp))
             ->response()

@@ -68,7 +68,7 @@ class EdpAppController extends Controller
     {
         abort_if(Gate::denies('edp_app_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $edpApp->load('statuses');
+        $edpApp->load('statuses', 'applicationNoAdmissionsEdps');
 
         return view('admin.edpApps.show', compact('edpApp'));
     }

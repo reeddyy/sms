@@ -452,7 +452,7 @@
             </li>
         @endcan
         @can('edp_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/admissions-edps*") ? "c-show" : "" }} {{ request()->is("admin/payments-edps*") ? "c-show" : "" }} {{ request()->is("admin/programmes*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/admissions-edps*") ? "c-show" : "" }} {{ request()->is("admin/payments-edps*") ? "c-show" : "" }} {{ request()->is("admin/programmes*") ? "c-show" : "" }} {{ request()->is("admin/status-edps*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-chalkboard-teacher c-sidebar-nav-icon">
 
@@ -490,11 +490,21 @@
                             </a>
                         </li>
                     @endcan
+                    @can('status_edp_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-edps.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-edps") || request()->is("admin/status-edps/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusEdp.title') }}
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endcan
         @can('ada_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/applicants-adas*") ? "c-show" : "" }} {{ request()->is("admin/awards*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/applicants-adas*") ? "c-show" : "" }} {{ request()->is("admin/awards*") ? "c-show" : "" }} {{ request()->is("admin/status-adas*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-award c-sidebar-nav-icon">
 
@@ -519,6 +529,16 @@
 
                                 </i>
                                 {{ trans('cruds.award.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('status_ada_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.status-adas.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/status-adas") || request()->is("admin/status-adas/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.statusAda.title') }}
                             </a>
                         </li>
                     @endcan
@@ -562,16 +582,6 @@
 
                     </i>
                     {{ trans('cruds.venue.title') }}
-                </a>
-            </li>
-        @endcan
-        @can('status_access')
-            <li class="c-sidebar-nav-item">
-                <a href="{{ route("admin.statuses.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/statuses") || request()->is("admin/statuses/*") ? "c-active" : "" }}">
-                    <i class="fa-fw fas fa-clipboard-list c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.status.title') }}
                 </a>
             </li>
         @endcan

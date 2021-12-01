@@ -84,6 +84,11 @@ class EdpApp extends Model
         'deleted_at',
     ];
 
+    public function applicationNoAdmissionsEdps()
+    {
+        return $this->hasMany(AdmissionsEdp::class, 'application_no_id', 'id');
+    }
+
     public function statuses()
     {
         return $this->belongsToMany(StatusApp::class);

@@ -17,9 +17,11 @@ class UpdateApplicantsAdaRequest extends FormRequest
     public function rules()
     {
         return [
-            'ada_status_id' => [
-                'required',
+            'statuses.*' => [
                 'integer',
+            ],
+            'statuses' => [
+                'array',
             ],
             'award_name_id' => [
                 'required',

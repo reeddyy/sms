@@ -68,7 +68,7 @@ class AdaAppController extends Controller
     {
         abort_if(Gate::denies('ada_app_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $adaApp->load('statuses');
+        $adaApp->load('statuses', 'applicationNoApplicantsAdas');
 
         return view('admin.adaApps.show', compact('adaApp'));
     }

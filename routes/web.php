@@ -70,10 +70,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('member-classes/destroy', 'MemberClassController@massDestroy')->name('member-classes.massDestroy');
     Route::resource('member-classes', 'MemberClassController');
 
-    // Status
-    Route::delete('statuses/destroy', 'StatusController@massDestroy')->name('statuses.massDestroy');
-    Route::resource('statuses', 'StatusController');
-
     // Memberships Individuals
     Route::delete('memberships-individuals/destroy', 'MembershipsIndividualsController@massDestroy')->name('memberships-individuals.massDestroy');
     Route::resource('memberships-individuals', 'MembershipsIndividualsController');
@@ -238,6 +234,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Status Memberships
     Route::delete('status-memberships/destroy', 'StatusMembershipsController@massDestroy')->name('status-memberships.massDestroy');
     Route::resource('status-memberships', 'StatusMembershipsController');
+
+    // Status Edp
+    Route::delete('status-edps/destroy', 'StatusEdpController@massDestroy')->name('status-edps.massDestroy');
+    Route::resource('status-edps', 'StatusEdpController');
+
+    // Status Ada
+    Route::delete('status-adas/destroy', 'StatusAdaController@massDestroy')->name('status-adas.massDestroy');
+    Route::resource('status-adas', 'StatusAdaController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
