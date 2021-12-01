@@ -9,8 +9,8 @@ class AddRelationshipFieldsToAdmissionsEdpsTable extends Migration
     public function up()
     {
         Schema::table('admissions_edps', function (Blueprint $table) {
-            $table->unsignedBigInteger('admission_status_id');
-            $table->foreign('admission_status_id', 'admission_status_fk_5158063')->references('id')->on('statuses');
+            $table->unsignedBigInteger('application_no_id')->nullable();
+            $table->foreign('application_no_id', 'application_no_fk_5461102')->references('id')->on('edp_apps');
             $table->unsignedBigInteger('edp_title_id');
             $table->foreign('edp_title_id', 'edp_title_fk_5158064')->references('id')->on('programmes');
             $table->unsignedBigInteger('facilitator_name_id')->nullable();

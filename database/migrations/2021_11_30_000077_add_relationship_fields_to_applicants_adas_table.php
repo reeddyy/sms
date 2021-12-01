@@ -9,8 +9,8 @@ class AddRelationshipFieldsToApplicantsAdasTable extends Migration
     public function up()
     {
         Schema::table('applicants_adas', function (Blueprint $table) {
-            $table->unsignedBigInteger('ada_status_id');
-            $table->foreign('ada_status_id', 'ada_status_fk_5158111')->references('id')->on('statuses');
+            $table->unsignedBigInteger('application_no_id')->nullable();
+            $table->foreign('application_no_id', 'application_no_fk_5461104')->references('id')->on('ada_apps');
             $table->unsignedBigInteger('award_name_id');
             $table->foreign('award_name_id', 'award_name_fk_5158104')->references('id')->on('awards');
             $table->unsignedBigInteger('applicant_name_id');
