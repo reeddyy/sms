@@ -25,7 +25,10 @@
                             {{ trans('cruds.applicantsAda.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.applicantsAda.fields.ada_status') }}
+                            {{ trans('cruds.applicantsAda.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.applicantsAda.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.applicantsAda.fields.award_name') }}
@@ -69,7 +72,12 @@
                                 {{ $applicantsAda->id ?? '' }}
                             </td>
                             <td>
-                                {{ $applicantsAda->ada_status->status_name ?? '' }}
+                                @foreach($applicantsAda->statuses as $key => $item)
+                                    <span class="badge badge-info">{{ $item->status_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $applicantsAda->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $applicantsAda->award_name->award_name ?? '' }}

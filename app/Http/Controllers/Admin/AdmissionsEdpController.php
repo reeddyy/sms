@@ -7,11 +7,12 @@ use App\Http\Requests\MassDestroyAdmissionsEdpRequest;
 use App\Http\Requests\StoreAdmissionsEdpRequest;
 use App\Http\Requests\UpdateAdmissionsEdpRequest;
 use App\Models\AdmissionsEdp;
+use App\Models\EdpApp;
 use App\Models\Facilitator;
 use App\Models\Individual;
 use App\Models\Officer;
 use App\Models\Programme;
-use App\Models\Status;
+use App\Models\StatusEdp;
 use App\Models\Venue;
 use Gate;
 use Illuminate\Http\Request;
@@ -23,9 +24,11 @@ class AdmissionsEdpController extends Controller
     {
         abort_if(Gate::denies('admissions_edp_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admissionsEdps = AdmissionsEdp::with(['admission_status', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name'])->get();
+        $admissionsEdps = AdmissionsEdp::with(['statuses', 'application_no', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name'])->get();
 
-        $statuses = Status::get();
+        $status_edps = StatusEdp::get();
+
+        $edp_apps = EdpApp::get();
 
         $programmes = Programme::get();
 
@@ -37,14 +40,16 @@ class AdmissionsEdpController extends Controller
 
         $officers = Officer::get();
 
-        return view('admin.admissionsEdps.index', compact('admissionsEdps', 'statuses', 'programmes', 'facilitators', 'venues', 'individuals', 'officers'));
+        return view('admin.admissionsEdps.index', compact('admissionsEdps', 'status_edps', 'edp_apps', 'programmes', 'facilitators', 'venues', 'individuals', 'officers'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('admissions_edp_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_statuses = Status::pluck('status_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = StatusEdp::pluck('status_name', 'id');
+
+        $application_nos = EdpApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $edp_titles = Programme::pluck('edp_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -56,12 +61,13 @@ class AdmissionsEdpController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.admissionsEdps.create', compact('admission_statuses', 'edp_titles', 'facilitator_names', 'venues', 'participant_names', 'officer_names'));
+        return view('admin.admissionsEdps.create', compact('statuses', 'application_nos', 'edp_titles', 'facilitator_names', 'venues', 'participant_names', 'officer_names'));
     }
 
     public function store(StoreAdmissionsEdpRequest $request)
     {
         $admissionsEdp = AdmissionsEdp::create($request->all());
+        $admissionsEdp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.admissions-edps.index');
     }
@@ -70,7 +76,9 @@ class AdmissionsEdpController extends Controller
     {
         abort_if(Gate::denies('admissions_edp_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_statuses = Status::pluck('status_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $statuses = StatusEdp::pluck('status_name', 'id');
+
+        $application_nos = EdpApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $edp_titles = Programme::pluck('edp_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -82,14 +90,15 @@ class AdmissionsEdpController extends Controller
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $admissionsEdp->load('admission_status', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name');
+        $admissionsEdp->load('statuses', 'application_no', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name');
 
-        return view('admin.admissionsEdps.edit', compact('admission_statuses', 'edp_titles', 'facilitator_names', 'venues', 'participant_names', 'officer_names', 'admissionsEdp'));
+        return view('admin.admissionsEdps.edit', compact('statuses', 'application_nos', 'edp_titles', 'facilitator_names', 'venues', 'participant_names', 'officer_names', 'admissionsEdp'));
     }
 
     public function update(UpdateAdmissionsEdpRequest $request, AdmissionsEdp $admissionsEdp)
     {
         $admissionsEdp->update($request->all());
+        $admissionsEdp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.admissions-edps.index');
     }
@@ -98,7 +107,7 @@ class AdmissionsEdpController extends Controller
     {
         abort_if(Gate::denies('admissions_edp_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admissionsEdp->load('admission_status', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name', 'admissionNoPaymentsEdps');
+        $admissionsEdp->load('statuses', 'application_no', 'edp_title', 'facilitator_name', 'venue', 'participant_name', 'officer_name', 'admissionNoPaymentsEdps');
 
         return view('admin.admissionsEdps.show', compact('admissionsEdp'));
     }

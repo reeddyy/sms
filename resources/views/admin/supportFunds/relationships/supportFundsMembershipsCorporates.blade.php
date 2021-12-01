@@ -25,7 +25,10 @@
                             {{ trans('cruds.membershipsCorporate.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.membershipsCorporate.fields.member_status') }}
+                            {{ trans('cruds.membershipsCorporate.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.membershipsCorporate.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.membershipsCorporate.fields.member_class') }}
@@ -69,7 +72,12 @@
                                 {{ $membershipsCorporate->id ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsCorporate->member_status->status_name ?? '' }}
+                                @foreach($membershipsCorporate->statuses as $key => $item)
+                                    <span class="badge badge-info">{{ $item->status_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $membershipsCorporate->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $membershipsCorporate->member_class->member_class_name ?? '' }}

@@ -10,18 +10,36 @@
         <form method="POST" action="{{ route("admin.enrolments-qualifications.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label class="required" for="enrolment_status_id">{{ trans('cruds.enrolmentsQualification.fields.enrolment_status') }}</label>
-                <select class="form-control select2 {{ $errors->has('enrolment_status') ? 'is-invalid' : '' }}" name="enrolment_status_id" id="enrolment_status_id" required>
-                    @foreach($enrolment_statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('enrolment_status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+            <label for="statuses">{{ trans('cruds.enrolmentsQualification.fields.status') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('statuses') ? 'is-invalid' : '' }}" name="statuses[]" id="statuses" multiple>
+                    @foreach($statuses as $id => $status)
+                        <option value="{{ $id }}" {{ in_array($id, old('statuses', [])) ? 'selected' : '' }}>{{ $status }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('enrolment_status'))
+                @if($errors->has('statuses'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('enrolment_status') }}
+                        {{ $errors->first('statuses') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.enrolment_status_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="application_no_id">{{ trans('cruds.enrolmentsQualification.fields.application_no') }}</label>
+                <select class="form-control select2 {{ $errors->has('application_no') ? 'is-invalid' : '' }}" name="application_no_id" id="application_no_id" required>
+                    @foreach($application_nos as $id => $entry)
+                        <option value="{{ $id }}" {{ old('application_no_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('application_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('application_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.application_no_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="course_title_id">{{ trans('cruds.enrolmentsQualification.fields.course_title') }}</label>

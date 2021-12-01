@@ -17,12 +17,13 @@ class MembershipsCorporatesApiController extends Controller
     {
         abort_if(Gate::denies('memberships_corporate_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MembershipsCorporateResource(MembershipsCorporate::with(['member_status', 'member_class', 'company_name', 'support_funds'])->get());
+        return new MembershipsCorporateResource(MembershipsCorporate::with(['statuses', 'application_no', 'member_class', 'company_name', 'support_funds'])->get());
     }
 
     public function store(StoreMembershipsCorporateRequest $request)
     {
         $membershipsCorporate = MembershipsCorporate::create($request->all());
+        $membershipsCorporate->statuses()->sync($request->input('statuses', []));
         $membershipsCorporate->support_funds()->sync($request->input('support_funds', []));
 
         return (new MembershipsCorporateResource($membershipsCorporate))
@@ -34,12 +35,13 @@ class MembershipsCorporatesApiController extends Controller
     {
         abort_if(Gate::denies('memberships_corporate_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MembershipsCorporateResource($membershipsCorporate->load(['member_status', 'member_class', 'company_name', 'support_funds']));
+        return new MembershipsCorporateResource($membershipsCorporate->load(['statuses', 'application_no', 'member_class', 'company_name', 'support_funds']));
     }
 
     public function update(UpdateMembershipsCorporateRequest $request, MembershipsCorporate $membershipsCorporate)
     {
         $membershipsCorporate->update($request->all());
+        $membershipsCorporate->statuses()->sync($request->input('statuses', []));
         $membershipsCorporate->support_funds()->sync($request->input('support_funds', []));
 
         return (new MembershipsCorporateResource($membershipsCorporate))

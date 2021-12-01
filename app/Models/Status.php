@@ -30,16 +30,6 @@ class Status extends Model
         'deleted_at',
     ];
 
-    public function memberStatusMembershipsIndividuals()
-    {
-        return $this->hasMany(MembershipsIndividual::class, 'member_status_id', 'id');
-    }
-
-    public function enrolmentStatusEnrolmentsQualifications()
-    {
-        return $this->hasMany(EnrolmentsQualification::class, 'enrolment_status_id', 'id');
-    }
-
     public function admissionStatusAdmissionsEdps()
     {
         return $this->hasMany(AdmissionsEdp::class, 'admission_status_id', 'id');
@@ -48,11 +38,6 @@ class Status extends Model
     public function adaStatusApplicantsAdas()
     {
         return $this->hasMany(ApplicantsAda::class, 'ada_status_id', 'id');
-    }
-
-    public function memberStatusMembershipsCorporates()
-    {
-        return $this->hasMany(MembershipsCorporate::class, 'member_status_id', 'id');
     }
 
     protected function serializeDate(DateTimeInterface $date)

@@ -25,10 +25,20 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.admissionsEdp.fields.admission_status') }}
+                            {{ trans('cruds.admissionsEdp.fields.status') }}
                         </th>
                         <td>
-                            {{ $admissionsEdp->admission_status->status_name ?? '' }}
+                            @foreach($admissionsEdp->statuses as $key => $status)
+                                <span class="label label-info">{{ $status->status_name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.admissionsEdp.fields.application_no') }}
+                        </th>
+                        <td>
+                            {{ $admissionsEdp->application_no->application_no ?? '' }}
                         </td>
                     </tr>
                     <tr>

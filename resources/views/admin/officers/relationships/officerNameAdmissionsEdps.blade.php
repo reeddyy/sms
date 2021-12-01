@@ -25,7 +25,10 @@
                             {{ trans('cruds.admissionsEdp.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.admissionsEdp.fields.admission_status') }}
+                            {{ trans('cruds.admissionsEdp.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.admissionsEdp.fields.application_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.admissionsEdp.fields.edp_title') }}
@@ -81,7 +84,12 @@
                                 {{ $admissionsEdp->id ?? '' }}
                             </td>
                             <td>
-                                {{ $admissionsEdp->admission_status->status_name ?? '' }}
+                                @foreach($admissionsEdp->statuses as $key => $item)
+                                    <span class="badge badge-info">{{ $item->status_name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                {{ $admissionsEdp->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $admissionsEdp->edp_title->edp_title ?? '' }}

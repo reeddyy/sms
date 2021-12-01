@@ -17,12 +17,13 @@ class MembershipsIndividualsApiController extends Controller
     {
         abort_if(Gate::denies('memberships_individual_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MembershipsIndividualResource(MembershipsIndividual::with(['member_status', 'member_class', 'member_name'])->get());
+        return new MembershipsIndividualResource(MembershipsIndividual::with(['statuses', 'application_no', 'member_class', 'member_name'])->get());
     }
 
     public function store(StoreMembershipsIndividualRequest $request)
     {
         $membershipsIndividual = MembershipsIndividual::create($request->all());
+        $membershipsIndividual->statuses()->sync($request->input('statuses', []));
 
         return (new MembershipsIndividualResource($membershipsIndividual))
             ->response()
@@ -33,12 +34,13 @@ class MembershipsIndividualsApiController extends Controller
     {
         abort_if(Gate::denies('memberships_individual_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new MembershipsIndividualResource($membershipsIndividual->load(['member_status', 'member_class', 'member_name']));
+        return new MembershipsIndividualResource($membershipsIndividual->load(['statuses', 'application_no', 'member_class', 'member_name']));
     }
 
     public function update(UpdateMembershipsIndividualRequest $request, MembershipsIndividual $membershipsIndividual)
     {
         $membershipsIndividual->update($request->all());
+        $membershipsIndividual->statuses()->sync($request->input('statuses', []));
 
         return (new MembershipsIndividualResource($membershipsIndividual))
             ->response()
