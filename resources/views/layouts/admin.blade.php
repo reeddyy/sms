@@ -141,6 +141,12 @@
         orderable: false,
         searchable: false,
         targets: -1
+    },
+    {
+      "targets": '_all',
+                "createdCell": function (td, cellData, rowData, row, col) {
+                    $(td).css('padding', '2px')
+                }
     }],
     select: {
       style:    'multi+shift',
