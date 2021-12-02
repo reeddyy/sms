@@ -142,7 +142,7 @@
             </li>
         @endcan
         @can('profile_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates*") ? "c-show" : "" }} {{ request()->is("admin/individuals*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/corporates/*") ? "c-show" : "" }} {{ request()->is("admin/individuals/*") ? "c-show" : "" }} {{ request()->is("admin/officers*") ? "c-show" : "" }} {{ request()->is("admin/facilitators*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw far fa-address-card c-sidebar-nav-icon">
 
