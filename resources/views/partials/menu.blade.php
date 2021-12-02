@@ -58,7 +58,7 @@
             </li>
         @endcan
         @can('application_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/ada-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/qualifications-apps*") ? "c-show" : "" }} {{ request()->is("admin/edp-apps*") ? "c-show" : "" }} {{ request()->is("admin/ada-apps*") ? "c-show" : "" }} {{ request()->is("admin/status-apps*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-file-signature c-sidebar-nav-icon">
 
@@ -194,7 +194,19 @@
             </li>
         @endcan
         @can('membership_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/*") ? "c-show" : "" }} {{ request()->is("admin/credits-funds-purposes*") ? "c-show" : "" }} {{ request()->is("admin/support-funds*") ? "c-show" : "" }} {{ request()->is("admin/member-classes*") ? "c-show" : "" }} {{ request()->is("admin/status-memberships*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown 
+            {{ request()->is("admin/memberships-corporates*") ? "c-show" : "" }} 
+            {{ request()->is("admin/payments-corporates*") ? "c-show" : "" }} 
+            {{ request()->is("admin/training-credits-corporates*") ? "c-show" : "" }} 
+            {{ request()->is("admin/support-funds-corporates*") ? "c-show" : "" }} 
+            {{ request()->is("admin/memberships-individuals*") ? "c-show" : "" }} 
+            {{ request()->is("admin/payments-individuals*") ? "c-show" : "" }} 
+            {{ request()->is("admin/training-credits-individuals*") ? "c-show" : "" }} 
+            {{ request()->is("admin/support-funds-individuals*") ? "c-show" : "" }} 
+            {{ request()->is("admin/credits-funds-purposes*") ? "c-show" : "" }} 
+            {{ request()->is("admin/support-funds*") ? "c-show" : "" }} 
+            {{ request()->is("admin/member-classes*") ? "c-show" : "" }} 
+            {{ request()->is("admin/status-memberships*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
 
