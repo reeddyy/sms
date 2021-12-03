@@ -23,6 +23,9 @@
             <table class=" table table-bordered table-striped table-hover datatable datatable-QualificationsReq">
                 <thead>
                     <tr>
+                        <th>
+                            &nbsp;
+                        </th>
                         <th width="10">
 
                         </th>
@@ -65,11 +68,10 @@
                         <th>
                             {{ trans('cruds.qualificationsReq.fields.note') }}
                         </th>
-                        <th>
-                            &nbsp;
-                        </th>
                     </tr>
                     <tr>
+                        <td>
+                        </td>
                         <td>
                         </td>
                         <td>
@@ -116,13 +118,33 @@
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
-                        <td>
-                        </td>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach($qualificationsReqs as $key => $qualificationsReq)
                         <tr data-entry-id="{{ $qualificationsReq->id }}">
+                            <td>
+                                @can('qualifications_req_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.qualifications-reqs.show', $qualificationsReq->id) }}">
+                                        {{ trans('global.view') }}
+                                    </a>
+                                @endcan
+
+                                @can('qualifications_req_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.qualifications-reqs.edit', $qualificationsReq->id) }}">
+                                        {{ trans('global.edit') }}
+                                    </a>
+                                @endcan
+
+                                @can('qualifications_req_delete')
+                                    <form action="{{ route('admin.qualifications-reqs.destroy', $qualificationsReq->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
+                                    </form>
+                                @endcan
+
+                            </td>
                             <td>
 
                             </td>
@@ -166,28 +188,6 @@
                             </td>
                             <td>
                                 {{ $qualificationsReq->note ?? '' }}
-                            </td>
-                            <td>
-                                @can('qualifications_req_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.qualifications-reqs.show', $qualificationsReq->id) }}">
-                                        {{ trans('global.view') }}
-                                    </a>
-                                @endcan
-
-                                @can('qualifications_req_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.qualifications-reqs.edit', $qualificationsReq->id) }}">
-                                        {{ trans('global.edit') }}
-                                    </a>
-                                @endcan
-
-                                @can('qualifications_req_delete')
-                                    <form action="{{ route('admin.qualifications-reqs.destroy', $qualificationsReq->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
-                                        <input type="hidden" name="_method" value="DELETE">
-                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                        <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
-                                    </form>
-                                @endcan
-
                             </td>
 
                         </tr>
