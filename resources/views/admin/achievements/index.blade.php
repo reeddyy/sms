@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            &nbsp;
-                        </th>
-                        <th>
                             {{ trans('cruds.achievement.fields.id') }}
                         </th>
                         <th>
@@ -34,13 +31,14 @@
                         <th>
                             {{ trans('cruds.achievement.fields.note') }}
                         </th>
+                        <th>
+                            &nbsp;
+                        </th>
                     </tr>
                     <tr>
                         <td>
                         </td>
                         <td>
-                        </td>
-                        <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
@@ -48,6 +46,8 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -56,6 +56,15 @@
                         <tr data-entry-id="{{ $achievement->id }}">
                             <td>
 
+                            </td>
+                            <td>
+                                {{ $achievement->id ?? '' }}
+                            </td>
+                            <td>
+                                {{ $achievement->achievement_title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $achievement->note ?? '' }}
                             </td>
                             <td>
                                 @can('achievement_show')
@@ -78,15 +87,6 @@
                                     </form>
                                 @endcan
 
-                            </td>
-                            <td>
-                                {{ $achievement->id ?? '' }}
-                            </td>
-                            <td>
-                                {{ $achievement->achievement_title ?? '' }}
-                            </td>
-                            <td>
-                                {{ $achievement->note ?? '' }}
                             </td>
 
                         </tr>
