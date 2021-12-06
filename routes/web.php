@@ -181,7 +181,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('qualifications-apps/destroy', 'QualificationsAppController@massDestroy')->name('qualifications-apps.massDestroy');
     Route::post('qualifications-apps/parse-csv-import', 'QualificationsAppController@parseCsvImport')->name('qualifications-apps.parseCsvImport');
     Route::post('qualifications-apps/process-csv-import', 'QualificationsAppController@processCsvImport')->name('qualifications-apps.processCsvImport');
+    Route::get('qualifications-apps/application-details/{id}', 'QualificationsAppController@getApplicationDetails')->name('qualifications-apps.getApplicationDetails');
     Route::resource('qualifications-apps', 'QualificationsAppController');
+    
 
     // Status App
     Route::delete('status-apps/destroy', 'StatusAppController@massDestroy')->name('status-apps.massDestroy');

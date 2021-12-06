@@ -52,11 +52,16 @@ class EnrolmentsQualificationsController extends Controller
 
         $classes = ClassIntake::pluck('class_name', 'id');
 
-        $student_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $students = Individual::select('id', 'name', 'id_no')->get();
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.enrolmentsQualifications.create', compact('statuses', 'application_nos', 'course_titles', 'classes', 'student_names', 'officer_names'));
+        return view('admin.enrolmentsQualifications.create', compact('statuses', 'application_nos', 'course_titles', 'classes', 'students', 'officer_names'));
+    }
+
+    public function getApplicationDetails($id = null)
+    {
+        return "hi";
     }
 
     public function store(StoreEnrolmentsQualificationRequest $request)
