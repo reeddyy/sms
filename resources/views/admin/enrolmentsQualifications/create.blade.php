@@ -109,7 +109,7 @@
                     <div class="form-group">
                         <label class="required" for="student_name_id">{{ trans('cruds.enrolmentsQualification.fields.student_name') }}</label>
                         <select class="form-control select2 {{ $errors->has('student_name') ? 'is-invalid' : '' }}" name="student_name_id" id="student_name_id" required>
-                            <option value="">Please select student</option>
+                            <option value="">Please select</option>
                             @foreach($students as $student)
                                 <option value="{{ $student->id }}" {{ old('student_name_id') == $student->id ? 'selected' : '' }}>{{ $student->name }} | {{ $student->id_no }}</option>
                             @endforeach
