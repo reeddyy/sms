@@ -35,6 +35,14 @@ class QualificationsAppController extends Controller
         $statuses = StatusApp::pluck('status_name', 'id');
 
         return view('admin.qualificationsApps.create', compact('statuses'));
+    }    
+
+    public function getApplicationDetails($id = null)
+    {
+        if($id != null){
+            $qualificationsApps = QualificationsApp::where('id', $id)->with(['statuses'])->first();
+            return $qualificationsApps;
+        }
     }
 
     public function store(StoreQualificationsAppRequest $request)
