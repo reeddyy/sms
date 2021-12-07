@@ -41,7 +41,7 @@ class ResultsModulesController extends Controller
     {
         abort_if(Gate::denies('results_module_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
 
         $module_1s = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -67,9 +67,11 @@ class ResultsModulesController extends Controller
 
         $grade_6s = Grade::pluck('grade_letter', 'id')->prepend(trans('global.pleaseSelect'), '');
 
+        $grade_points = Grade::select('id', 'grade_letter', 'grade_point_s')->get();
+
         $achievement_titles = Achievement::pluck('achievement_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.resultsModules.create', compact('enrolment_nos', 'module_1s', 'grade_1s', 'module_2s', 'grade_2s', 'module_3s', 'grade_3s', 'module_4s', 'grade_4s', 'module_5s', 'grade_5s', 'module_6s', 'grade_6s', 'achievement_titles'));
+        return view('admin.resultsModules.create', compact('enrolment_nos', 'module_1s', 'grade_points', 'grade_1s', 'module_2s', 'grade_2s', 'module_3s', 'grade_3s', 'module_4s', 'grade_4s', 'module_5s', 'grade_5s', 'module_6s', 'grade_6s', 'achievement_titles'));
     }
 
     public function store(StoreResultsModuleRequest $request)

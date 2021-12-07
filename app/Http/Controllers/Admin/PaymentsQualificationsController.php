@@ -32,7 +32,7 @@ class PaymentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('payments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
