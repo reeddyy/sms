@@ -108,11 +108,9 @@
                             </div>
                         @endif
                         <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.classes_helper') }}</span>
-                    </div>
-
-                                       
+                    </div>                                       
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="required" for="enrolment_no">{{ trans('cruds.enrolmentsQualification.fields.enrolment_no') }}</label>
                                 <input class="form-control {{ $errors->has('enrolment_no') ? 'is-invalid' : '' }}" type="text" name="enrolment_no" id="enrolment_no" value="{{ old('enrolment_no', '') }}" required>
@@ -124,7 +122,7 @@
                                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.enrolment_no_helper') }}</span>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                         <!-- Student Name with ID -->
                             <div class="form-group">
                                 <label class="required" for="student_name_id">{{ trans('cruds.enrolmentsQualification.fields.student_name') }}</label>
@@ -142,7 +140,9 @@
                                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.student_name_helper') }}</span>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="required">{{ trans('cruds.enrolmentsQualification.fields.company_sponsored') }}</label>
                                 @foreach(App\Models\EnrolmentsQualification::COMPANY_SPONSORED_RADIO as $key => $label)
@@ -159,21 +159,24 @@
                                 <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.company_sponsored_helper') }}</span>
                             </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="officer_name_id">{{ trans('cruds.enrolmentsQualification.fields.officer_name') }}</label>
-                        <select class="form-control select2 {{ $errors->has('officer_name') ? 'is-invalid' : '' }}" name="officer_name_id" id="officer_name_id">
-                            @foreach($officer_names as $id => $entry)
-                                <option value="{{ $id }}" {{ old('officer_name_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                            @endforeach
-                        </select>
-                        @if($errors->has('officer_name'))
-                            <div class="invalid-feedback">
-                                {{ $errors->first('officer_name') }}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="officer_name_id">{{ trans('cruds.enrolmentsQualification.fields.officer_name') }}</label>
+                                <select class="form-control select2 {{ $errors->has('officer_name') ? 'is-invalid' : '' }}" name="officer_name_id" id="officer_name_id">
+                                    @foreach($officer_names as $id => $entry)
+                                        <option value="{{ $id }}" {{ old('officer_name_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                    @endforeach
+                                </select>
+                                @if($errors->has('officer_name'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('officer_name') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.officer_name_helper') }}</span>
                             </div>
-                        @endif
-                        <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.officer_name_helper') }}</span>
-                    </div>                    
+                        </div>
+                    </div>
+                                        
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
