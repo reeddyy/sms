@@ -59,11 +59,6 @@ class EnrolmentsQualificationsController extends Controller
         return view('admin.enrolmentsQualifications.create', compact('statuses', 'application_nos', 'course_titles', 'classes', 'students', 'officer_names'));
     }
 
-    public function getApplicationDetails($id = null)
-    {
-        return "hi";
-    }
-
     public function store(StoreEnrolmentsQualificationRequest $request)
     {
         $outstanding_balance = round($request->total_fees, 2) - round($request->amount_paid,2);
