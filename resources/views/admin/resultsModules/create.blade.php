@@ -204,7 +204,7 @@
             </div>
             <div class="form-group">
                 <label for="total_result_points">{{ trans('cruds.resultsModule.fields.total_result_points') }}</label>
-                <input class="form-control {{ $errors->has('total_result_points') ? 'is-invalid' : '' }}" type="number" name="total_result_points" id="total_result_points" value="{{ old('total_result_points', '') }}" step="1">
+                <input disabled class="form-control {{ $errors->has('total_result_points') ? 'is-invalid' : '' }}" type="number" id="total_result_points" value="{{ old('total_result_points', '') }}" step="1">
                 @if($errors->has('total_result_points'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_result_points') }}
