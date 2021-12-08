@@ -83,7 +83,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $classes = ClassIntake::pluck('class_name', 'id');
 
-        $student_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $student_names = Individual::select('id', 'name', 'id_no')->get();
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
