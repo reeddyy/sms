@@ -50,7 +50,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_1_id">{{ trans('cruds.resultsModule.fields.grade_1') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_1') ? 'is-invalid' : '' }}" name="grade_1_id" id="grade_1_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_1') ? 'is-invalid' : '' }}" name="grade_1_id" id="grade_1_id">
                     @foreach($grade_1s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_1_id') ? old('grade_1_id') : $resultsModule->grade_1->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -78,7 +78,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_2_id">{{ trans('cruds.resultsModule.fields.grade_2') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_2') ? 'is-invalid' : '' }}" name="grade_2_id" id="grade_2_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_2') ? 'is-invalid' : '' }}" name="grade_2_id" id="grade_2_id">
                     @foreach($grade_2s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_2_id') ? old('grade_2_id') : $resultsModule->grade_2->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -106,7 +106,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_3_id">{{ trans('cruds.resultsModule.fields.grade_3') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_3') ? 'is-invalid' : '' }}" name="grade_3_id" id="grade_3_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_3') ? 'is-invalid' : '' }}" name="grade_3_id" id="grade_3_id">
                     @foreach($grade_3s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_3_id') ? old('grade_3_id') : $resultsModule->grade_3->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -134,7 +134,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_4_id">{{ trans('cruds.resultsModule.fields.grade_4') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_4') ? 'is-invalid' : '' }}" name="grade_4_id" id="grade_4_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_4') ? 'is-invalid' : '' }}" name="grade_4_id" id="grade_4_id">
                     @foreach($grade_4s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_4_id') ? old('grade_4_id') : $resultsModule->grade_4->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -162,7 +162,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_5_id">{{ trans('cruds.resultsModule.fields.grade_5') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_5') ? 'is-invalid' : '' }}" name="grade_5_id" id="grade_5_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_5') ? 'is-invalid' : '' }}" name="grade_5_id" id="grade_5_id">
                     @foreach($grade_5s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_5_id') ? old('grade_5_id') : $resultsModule->grade_5->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -190,7 +190,7 @@
             </div>
             <div class="form-group">
                 <label for="grade_6_id">{{ trans('cruds.resultsModule.fields.grade_6') }}</label>
-                <select class="form-control select2 {{ $errors->has('grade_6') ? 'is-invalid' : '' }}" name="grade_6_id" id="grade_6_id">
+                <select onchange="calculateTotalPoints();" class="form-control select2 {{ $errors->has('grade_6') ? 'is-invalid' : '' }}" name="grade_6_id" id="grade_6_id">
                     @foreach($grade_6s as $id => $entry)
                         <option value="{{ $id }}" {{ (old('grade_6_id') ? old('grade_6_id') : $resultsModule->grade_6->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -204,7 +204,7 @@
             </div>
             <div class="form-group">
                 <label for="total_result_points">{{ trans('cruds.resultsModule.fields.total_result_points') }}</label>
-                <input class="form-control {{ $errors->has('total_result_points') ? 'is-invalid' : '' }}" type="number" name="total_result_points" id="total_result_points" value="{{ old('total_result_points', $resultsModule->total_result_points) }}" step="1">
+                <input disabled class="form-control {{ $errors->has('total_result_points') ? 'is-invalid' : '' }}" type="number" id="total_result_points" value="{{ old('total_result_points', $resultsModule->total_result_points) }}" step="1">
                 @if($errors->has('total_result_points'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_result_points') }}
@@ -267,4 +267,37 @@
 
 
 
+@endsection
+
+@section('scripts')
+<script>
+$(document).ready(function(){
+    if({!! $grade_points !!}){
+        const grades = {!! $grade_points !!};
+        $(grades).each(function(index, value){
+            sessionStorage.setItem("grade_" + value.id,value.grade_point_s);
+        })
+    } 
+})
+
+function calculateTotalPoints(){
+    var grade1 = $('#grade_1_id').val();
+    var grade1_point = grade1 ? sessionStorage.getItem("grade_" + grade1) : 0;
+    var grade2 = $('#grade_2_id').val();
+    var grade2_point = grade2 ? sessionStorage.getItem("grade_" + grade2) : 0;
+    var grade3 = $('#grade_3_id').val();
+    var grade3_point = grade3 ? sessionStorage.getItem("grade_" + grade3) : 0;
+    var grade4 = $('#grade_4_id').val();
+    var grade4_point = grade4 ? sessionStorage.getItem("grade_" + grade4) : 0;
+    var grade5 = $('#grade_5_id').val();
+    var grade5_point = grade5 ? sessionStorage.getItem("grade_" + grade5) : 0;
+    var grade6 = $('#grade_6_id').val();
+    var grade6_point = grade6 ? sessionStorage.getItem("grade_" + grade6) : 0;
+
+
+    var total_points = parseInt(grade1_point) + parseInt(grade2_point) + parseInt(grade3_point) + parseInt(grade4_point) + parseInt(grade5_point) + parseInt(grade6_point);
+    $('#total_result_points').val(total_points);
+}
+    
+</script>
 @endsection
