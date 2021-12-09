@@ -98,7 +98,7 @@ class ResultsModulesController extends Controller
     {
         abort_if(Gate::denies('results_module_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
 
         $module_1s = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

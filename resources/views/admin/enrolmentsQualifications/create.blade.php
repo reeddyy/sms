@@ -89,8 +89,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    
                     <div class="form-group">
                         <label for="classes">{{ trans('cruds.enrolmentsQualification.fields.classes') }}</label>
                         <div style="padding-bottom: 4px">
@@ -233,92 +231,91 @@
                 </form>
             </div>
             <div class="col-md-4">
-                
-            <table class="table table-bordered table-striped">
-                <tbody id="table_message">
-                    <tr class="text-center">
-                        <th>
-                            Applicantion Details
-                        </th>
-                    </tr>
-                    <tr>
-                        <td>
-                            Select application no. to see the application details.
-                        </td>
-                    </tr>
-                </tbody>
-                <tbody id="application_details" style="display:none;">
-                    <tr class="text-center">
-                        <th colspan=2>
-                            Applicantion Details
-                        </th>
-                    </tr>
-                    <tr>
-                        <th width="25%">
-                            Status
-                        </th>
-                        <td id="status">
+                <table class="table table-bordered table-striped">
+                    <tbody id="table_message">
+                        <tr class="text-center">
+                            <th>
+                                Applicantion Details
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Select application no. to see the application details.
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody id="application_details" style="display:none;">
+                        <tr class="text-center">
+                            <th colspan=2>
+                                Applicantion Details
+                            </th>
+                        </tr>
+                        <tr>
+                            <th width="25%">
+                                Status
+                            </th>
+                            <td id="status">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%">
+                                Application No.
+                            </th>
+                            <td id="application_no">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%">
+                                Sponsorship
+                            </th>
+                            <td id="sponsorship">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%">
+                                Course
+                            </th>
+                            <td id="course">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Commencement
+                            </th>
+                            <td id="commencement">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Applicant Name
+                            </th>
+                            <td id="applicant_name">
+                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Applicant ID No.
+                            </th>
+                            <td id="applicant_id_no">
                             
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%">
-                            Application No.
-                        </th>
-                        <td id="application_no">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%">
-                            Sponsorship
-                        </th>
-                        <td id="sponsorship">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%">
-                            Course
-                        </th>
-                        <td id="course">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%"> 
-                            Commencement
-                        </th>
-                        <td id="commencement">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%"> 
-                            Applicant Name
-                        </th>
-                        <td id="applicant_name">
-                            
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%"> 
-                            Applicant ID No.
-                        </th>
-                        <td id="applicant_id_no">
-                        
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="25%"> 
-                            Officer Name
-                        </th>
-                        <td id="officer_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Officer Name
+                            </th>
+                            <td id="officer_name">
 
-                        </td>
-                    </tr>         
-                </tbody>
-            </table>
+                            </td>
+                        </tr>         
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
