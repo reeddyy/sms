@@ -36,40 +36,94 @@
                             {{ trans('cruds.resultsModule.fields.date_release') }}
                         </th>
                         <th>
+                            Student Name
+                        </th>
+                        <th>
+                            Student ID No.
+                        </th>
+                        <th>
+                            Course Title
+                        </th>
+                        <th>
+                            Start Date
+                        </th>
+                        <th>
+                            End Date
+                        </th>
+                        <th>
+                            Outstanding Balance
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_1') }}
+                        </th>
+                        <th>
+                            1. Code
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.grade_1') }}
                         </th>
                         <th>
+                            1. Description
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_2') }}
+                        </th>
+                        <th>
+                            2. Code
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.grade_2') }}
                         </th>
                         <th>
+                            2. Description
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_3') }}
+                        </th>
+                        <th>
+                            3. Code
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.grade_3') }}
                         </th>
                         <th>
+                            3. Description
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_4') }}
+                        </th>
+                        <th>
+                            4. Code
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.grade_4') }}
                         </th>
                         <th>
+                            4. Description
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_5') }}
+                        </th>
+                        <th>
+                            5. Code
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.grade_5') }}
                         </th>
                         <th>
+                            5. Description
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.module_6') }}
                         </th>
                         <th>
+                            6. Code
+                        </th>
+                        <th>
                             {{ trans('cruds.resultsModule.fields.grade_6') }}
+                        </th>
+                        <th>
+                            6. Description
                         </th>
                         <th>
                             {{ trans('cruds.resultsModule.fields.total_result_points') }}
@@ -107,20 +161,16 @@
                         <td>
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($modules as $key => $item)
-                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
-                                @endforeach
-                            </select>
                         </td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($grades as $key => $item)
-                                    <option value="{{ $item->grade_letter }}">{{ $item->grade_letter }}</option>
-                                @endforeach
-                            </select>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+                        <td>
                         </td>
                         <td>
                             <select class="search">
@@ -130,6 +180,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -138,6 +189,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -146,6 +198,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -154,6 +207,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -162,6 +216,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -170,6 +225,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -178,6 +234,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -186,6 +243,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -194,6 +252,7 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -202,6 +261,25 @@
                                 @endforeach
                             </select>
                         </td>
+                        <td></td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($modules as $key => $item)
+                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td></td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($grades as $key => $item)
+                                    <option value="{{ $item->grade_letter }}">{{ $item->grade_letter }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td></td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
@@ -240,40 +318,94 @@
                                 {{ $resultsModule->date_release ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->enrolment_no->student_name->name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->enrolment_no->student_name->id_no ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->enrolment_no->course_title->course_title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->enrolment_no->start_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->enrolment_no->end_date ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->enrolment_no->outstanding_balance ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_1->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_1->module_code ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->grade_1->grade_letter ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->grade_1->grade_description ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_2->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_2->module_code ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->grade_2->grade_letter ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->grade_2->grade_description ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_3->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_3->module_code ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->grade_3->grade_letter ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->grade_3->grade_description ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_4->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_4->module_code ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->grade_4->grade_letter ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->grade_4->grade_description ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_5->module_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->module_5->module_code ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->grade_5->grade_letter ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->grade_5->grade_description ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->module_6->module_name ?? '' }}
                             </td>
                             <td>
+                                {{ $resultsModule->module_6->module_code ?? '' }}
+                            </td>
+                            <td>
                                 {{ $resultsModule->grade_6->grade_letter ?? '' }}
+                            </td>
+                            <td>
+                                {{ $resultsModule->grade_6->grade_description ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->total_result_points ?? '' }}
