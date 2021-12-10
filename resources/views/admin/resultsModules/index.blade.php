@@ -333,7 +333,7 @@
                                 {{ $resultsModule->enrolment_no->end_date ?? '' }}
                             </td>
                             <td>
-                                {{ $resultsModule->enrolment_no->outstanding_balance ?? '' }}
+                                {{ number_format($resultsModule->enrolment_no->outstanding_balance, 2, '.', ',') ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->module_1->module_name ?? '' }}
