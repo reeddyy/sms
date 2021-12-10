@@ -159,18 +159,47 @@
                             </select>
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">                            
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">                            
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($modules as $key => $item)
+                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($grades as $key => $item)
+                                    <option value="{{ $item->grade_letter }}">{{ $item->grade_letter }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <select class="search">
@@ -180,7 +209,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -189,7 +220,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -198,7 +231,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -207,7 +242,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -216,7 +253,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">                            
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -225,7 +264,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -234,7 +275,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -243,7 +286,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -252,7 +297,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
                         <td>
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
@@ -261,25 +308,9 @@
                                 @endforeach
                             </select>
                         </td>
-                        <td></td>
                         <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($modules as $key => $item)
-                                    <option value="{{ $item->module_name }}">{{ $item->module_name }}</option>
-                                @endforeach
-                            </select>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
-                        <td></td>
-                        <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($grades as $key => $item)
-                                    <option value="{{ $item->grade_letter }}">{{ $item->grade_letter }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td></td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
@@ -333,7 +364,7 @@
                                 {{ $resultsModule->enrolment_no->end_date ?? '' }}
                             </td>
                             <td>
-                                {{ $resultsModule->enrolment_no->outstanding_balance ?? '' }}
+                                {{ number_format($resultsModule->enrolment_no->outstanding_balance, 2, '.', ',') ?? '' }}
                             </td>
                             <td>
                                 {{ $resultsModule->module_1->module_name ?? '' }}
