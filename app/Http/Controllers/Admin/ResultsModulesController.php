@@ -41,7 +41,9 @@ class ResultsModulesController extends Controller
     {
         abort_if(Gate::denies('results_module_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
+        $existing_enrolment_ids = ResultsModule::select('enrolment_no_id')->get()->toArray();
+
+        $enrolment_nos = EnrolmentsQualification::whereNotIn('id', $existing_enrolment_ids)->select('id', 'enrolment_no', 'student_name_id')->get();
 
         $module_1s = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -98,7 +100,9 @@ class ResultsModulesController extends Controller
     {
         abort_if(Gate::denies('results_module_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
+        $existing_enrolment_ids = ResultsModule::where('id', '!=', $resultsModule->id)->select('enrolment_no_id')->get()->toArray();
+
+        $enrolment_nos = EnrolmentsQualification::whereNotIn('id', $existing_enrolment_ids)->select('id', 'enrolment_no', 'student_name_id')->get();
 
         $module_1s = Module::pluck('module_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
