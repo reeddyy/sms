@@ -294,7 +294,7 @@
                             {{ trans('cruds.corporatesApp.fields.cold_chain') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $corporatesApp->cold_chain ? 'checked' : '' }}>
+                            {{ $corporatesApp->cold_chain }}
                         </td>
                     </tr>
                     <tr>
@@ -302,7 +302,7 @@
                             {{ trans('cruds.corporatesApp.fields.contract_law') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $corporatesApp->contract_law ? 'checked' : '' }}>
+                            {{ $corporatesApp->contract_law }}
                         </td>
                     </tr>
                     <tr>
