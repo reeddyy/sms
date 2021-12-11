@@ -42,8 +42,8 @@ class CreateCorporatesAppsTable extends Migration
             $table->string('name_5')->nullable();
             $table->string('email_5')->nullable();
             $table->string('business_profile')->nullable();
-            $table->boolean('cold_chain')->default(0)->nullable();
-            $table->boolean('contract_law')->default(0)->nullable();
+            $table->string('cold_chain')->nullable();
+            $table->string('contract_law')->nullable();
             $table->boolean('cost_price_analysis')->default(0)->nullable();
             $table->boolean('delivery_and_last_mile')->default(0)->nullable();
             $table->boolean('digital_technologies')->default(0)->nullable();
