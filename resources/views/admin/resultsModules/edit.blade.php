@@ -387,12 +387,8 @@
 @section('scripts')
 <script>
 $(document).ready(function() {
-    if ({
-            !!$grade_points!!
-        }) {
-        const grades = {
-            !!$grade_points!!
-        };
+    if ({!! $grade_points !!}) {
+        const grades = {!! $grade_points !!};
         $(grades).each(function(index, value) {
             sessionStorage.setItem("grade_" + value.id, value.grade_point_s);
         })
