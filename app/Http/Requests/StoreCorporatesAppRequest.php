@@ -134,6 +134,14 @@ class StoreCorporatesAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'cold_chain' => [
+                'string',
+                'nullable',
+            ],
+            'contract_law' => [
+                'string',
+                'nullable',
+            ],
             'others' => [
                 'string',
                 'nullable',
