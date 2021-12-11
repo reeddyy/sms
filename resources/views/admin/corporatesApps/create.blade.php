@@ -348,11 +348,8 @@
                 <span class="help-block">{{ trans('cruds.corporatesApp.fields.business_profile_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('cold_chain') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="cold_chain" value="0">
-                    <input class="form-check-input" type="checkbox" name="cold_chain" id="cold_chain" value="1" {{ old('cold_chain', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="cold_chain">{{ trans('cruds.corporatesApp.fields.cold_chain') }}</label>
-                </div>
+                <label for="cold_chain">{{ trans('cruds.corporatesApp.fields.cold_chain') }}</label>
+                <input class="form-control {{ $errors->has('cold_chain') ? 'is-invalid' : '' }}" type="text" name="cold_chain" id="cold_chain" value="{{ old('cold_chain', '') }}">
                 @if($errors->has('cold_chain'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cold_chain') }}
@@ -361,11 +358,8 @@
                 <span class="help-block">{{ trans('cruds.corporatesApp.fields.cold_chain_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('contract_law') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="contract_law" value="0">
-                    <input class="form-check-input" type="checkbox" name="contract_law" id="contract_law" value="1" {{ old('contract_law', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="contract_law">{{ trans('cruds.corporatesApp.fields.contract_law') }}</label>
-                </div>
+                <label for="contract_law">{{ trans('cruds.corporatesApp.fields.contract_law') }}</label>
+                <input class="form-control {{ $errors->has('contract_law') ? 'is-invalid' : '' }}" type="text" name="contract_law" id="contract_law" value="{{ old('contract_law', '') }}">
                 @if($errors->has('contract_law'))
                     <div class="invalid-feedback">
                         {{ $errors->first('contract_law') }}
