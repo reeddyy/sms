@@ -324,8 +324,10 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                         </td>
@@ -502,12 +504,10 @@
                                 {{ $corporatesApp->business_profile ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->cold_chain ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->cold_chain ? 'checked' : '' }}>
+                                {{ $corporatesApp->cold_chain ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->contract_law ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->contract_law ? 'checked' : '' }}>
+                                {{ $corporatesApp->contract_law ?? '' }}
                             </td>
                             <td>
                                 <span style="display:none">{{ $corporatesApp->cost_price_analysis ?? '' }}</span>
