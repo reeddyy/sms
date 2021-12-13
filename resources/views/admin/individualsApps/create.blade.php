@@ -328,11 +328,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.certificate_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('cold_chain') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="cold_chain" value="0">
-                    <input class="form-check-input" type="checkbox" name="cold_chain" id="cold_chain" value="1" {{ old('cold_chain', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="cold_chain">{{ trans('cruds.individualsApp.fields.cold_chain') }}</label>
-                </div>
+                <label for="cold_chain">{{ trans('cruds.individualsApp.fields.cold_chain') }}</label>
+                <input class="form-control {{ $errors->has('cold_chain') ? 'is-invalid' : '' }}" type="text" name="cold_chain" id="cold_chain" value="{{ old('cold_chain', '') }}">
                 @if($errors->has('cold_chain'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cold_chain') }}
@@ -341,24 +338,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.cold_chain_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('performance_evaluation') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="performance_evaluation" value="0">
-                    <input class="form-check-input" type="checkbox" name="performance_evaluation" id="performance_evaluation" value="1" {{ old('performance_evaluation', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="performance_evaluation">{{ trans('cruds.individualsApp.fields.performance_evaluation') }}</label>
-                </div>
-                @if($errors->has('performance_evaluation'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('performance_evaluation') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.individualsApp.fields.performance_evaluation_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <div class="form-check {{ $errors->has('contract_law') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="contract_law" value="0">
-                    <input class="form-check-input" type="checkbox" name="contract_law" id="contract_law" value="1" {{ old('contract_law', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="contract_law">{{ trans('cruds.individualsApp.fields.contract_law') }}</label>
-                </div>
+                <label for="contract_law">{{ trans('cruds.individualsApp.fields.contract_law') }}</label>
+                <input class="form-control {{ $errors->has('contract_law') ? 'is-invalid' : '' }}" type="text" name="contract_law" id="contract_law" value="{{ old('contract_law', '') }}">
                 @if($errors->has('contract_law'))
                     <div class="invalid-feedback">
                         {{ $errors->first('contract_law') }}
@@ -367,11 +348,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.contract_law_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('cost_price_analysis') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="cost_price_analysis" value="0">
-                    <input class="form-check-input" type="checkbox" name="cost_price_analysis" id="cost_price_analysis" value="1" {{ old('cost_price_analysis', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="cost_price_analysis">{{ trans('cruds.individualsApp.fields.cost_price_analysis') }}</label>
-                </div>
+                <label for="cost_price_analysis">{{ trans('cruds.individualsApp.fields.cost_price_analysis') }}</label>
+                <input class="form-control {{ $errors->has('cost_price_analysis') ? 'is-invalid' : '' }}" type="text" name="cost_price_analysis" id="cost_price_analysis" value="{{ old('cost_price_analysis', '') }}">
                 @if($errors->has('cost_price_analysis'))
                     <div class="invalid-feedback">
                         {{ $errors->first('cost_price_analysis') }}
@@ -380,11 +358,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.cost_price_analysis_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('delivery_and_last_mile') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="delivery_and_last_mile" value="0">
-                    <input class="form-check-input" type="checkbox" name="delivery_and_last_mile" id="delivery_and_last_mile" value="1" {{ old('delivery_and_last_mile', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="delivery_and_last_mile">{{ trans('cruds.individualsApp.fields.delivery_and_last_mile') }}</label>
-                </div>
+                <label for="delivery_and_last_mile">{{ trans('cruds.individualsApp.fields.delivery_and_last_mile') }}</label>
+                <input class="form-control {{ $errors->has('delivery_and_last_mile') ? 'is-invalid' : '' }}" type="text" name="delivery_and_last_mile" id="delivery_and_last_mile" value="{{ old('delivery_and_last_mile', '') }}">
                 @if($errors->has('delivery_and_last_mile'))
                     <div class="invalid-feedback">
                         {{ $errors->first('delivery_and_last_mile') }}
@@ -393,11 +368,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.delivery_and_last_mile_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('digital_technologies') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="digital_technologies" value="0">
-                    <input class="form-check-input" type="checkbox" name="digital_technologies" id="digital_technologies" value="1" {{ old('digital_technologies', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="digital_technologies">{{ trans('cruds.individualsApp.fields.digital_technologies') }}</label>
-                </div>
+                <label for="digital_technologies">{{ trans('cruds.individualsApp.fields.digital_technologies') }}</label>
+                <input class="form-control {{ $errors->has('digital_technologies') ? 'is-invalid' : '' }}" type="text" name="digital_technologies" id="digital_technologies" value="{{ old('digital_technologies', '') }}">
                 @if($errors->has('digital_technologies'))
                     <div class="invalid-feedback">
                         {{ $errors->first('digital_technologies') }}
@@ -406,11 +378,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.digital_technologies_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('integrated_logistics') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="integrated_logistics" value="0">
-                    <input class="form-check-input" type="checkbox" name="integrated_logistics" id="integrated_logistics" value="1" {{ old('integrated_logistics', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="integrated_logistics">{{ trans('cruds.individualsApp.fields.integrated_logistics') }}</label>
-                </div>
+                <label for="integrated_logistics">{{ trans('cruds.individualsApp.fields.integrated_logistics') }}</label>
+                <input class="form-control {{ $errors->has('integrated_logistics') ? 'is-invalid' : '' }}" type="text" name="integrated_logistics" id="integrated_logistics" value="{{ old('integrated_logistics', '') }}">
                 @if($errors->has('integrated_logistics'))
                     <div class="invalid-feedback">
                         {{ $errors->first('integrated_logistics') }}
@@ -419,11 +388,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.integrated_logistics_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('inventory') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="inventory" value="0">
-                    <input class="form-check-input" type="checkbox" name="inventory" id="inventory" value="1" {{ old('inventory', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="inventory">{{ trans('cruds.individualsApp.fields.inventory') }}</label>
-                </div>
+                <label for="inventory">{{ trans('cruds.individualsApp.fields.inventory') }}</label>
+                <input class="form-control {{ $errors->has('inventory') ? 'is-invalid' : '' }}" type="text" name="inventory" id="inventory" value="{{ old('inventory', '') }}">
                 @if($errors->has('inventory'))
                     <div class="invalid-feedback">
                         {{ $errors->first('inventory') }}
@@ -432,11 +398,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.inventory_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('lean_six_sigma') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="lean_six_sigma" value="0">
-                    <input class="form-check-input" type="checkbox" name="lean_six_sigma" id="lean_six_sigma" value="1" {{ old('lean_six_sigma', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="lean_six_sigma">{{ trans('cruds.individualsApp.fields.lean_six_sigma') }}</label>
-                </div>
+                <label for="lean_six_sigma">{{ trans('cruds.individualsApp.fields.lean_six_sigma') }}</label>
+                <input class="form-control {{ $errors->has('lean_six_sigma') ? 'is-invalid' : '' }}" type="text" name="lean_six_sigma" id="lean_six_sigma" value="{{ old('lean_six_sigma', '') }}">
                 @if($errors->has('lean_six_sigma'))
                     <div class="invalid-feedback">
                         {{ $errors->first('lean_six_sigma') }}
@@ -445,11 +408,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.lean_six_sigma_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('negotiation') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="negotiation" value="0">
-                    <input class="form-check-input" type="checkbox" name="negotiation" id="negotiation" value="1" {{ old('negotiation', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="negotiation">{{ trans('cruds.individualsApp.fields.negotiation') }}</label>
-                </div>
+                <label for="negotiation">{{ trans('cruds.individualsApp.fields.negotiation') }}</label>
+                <input class="form-control {{ $errors->has('negotiation') ? 'is-invalid' : '' }}" type="text" name="negotiation" id="negotiation" value="{{ old('negotiation', '') }}">
                 @if($errors->has('negotiation'))
                     <div class="invalid-feedback">
                         {{ $errors->first('negotiation') }}
@@ -458,11 +418,18 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.negotiation_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('professional_networking') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="professional_networking" value="0">
-                    <input class="form-check-input" type="checkbox" name="professional_networking" id="professional_networking" value="1" {{ old('professional_networking', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="professional_networking">{{ trans('cruds.individualsApp.fields.professional_networking') }}</label>
-                </div>
+                <label for="performance_evaluation">{{ trans('cruds.individualsApp.fields.performance_evaluation') }}</label>
+                <input class="form-control {{ $errors->has('performance_evaluation') ? 'is-invalid' : '' }}" type="text" name="performance_evaluation" id="performance_evaluation" value="{{ old('performance_evaluation', '') }}">
+                @if($errors->has('performance_evaluation'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('performance_evaluation') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.individualsApp.fields.performance_evaluation_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="professional_networking">{{ trans('cruds.individualsApp.fields.professional_networking') }}</label>
+                <input class="form-control {{ $errors->has('professional_networking') ? 'is-invalid' : '' }}" type="text" name="professional_networking" id="professional_networking" value="{{ old('professional_networking', '') }}">
                 @if($errors->has('professional_networking'))
                     <div class="invalid-feedback">
                         {{ $errors->first('professional_networking') }}
@@ -471,11 +438,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.professional_networking_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('shipping_and_freight') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="shipping_and_freight" value="0">
-                    <input class="form-check-input" type="checkbox" name="shipping_and_freight" id="shipping_and_freight" value="1" {{ old('shipping_and_freight', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="shipping_and_freight">{{ trans('cruds.individualsApp.fields.shipping_and_freight') }}</label>
-                </div>
+                <label for="shipping_and_freight">{{ trans('cruds.individualsApp.fields.shipping_and_freight') }}</label>
+                <input class="form-control {{ $errors->has('shipping_and_freight') ? 'is-invalid' : '' }}" type="text" name="shipping_and_freight" id="shipping_and_freight" value="{{ old('shipping_and_freight', '') }}">
                 @if($errors->has('shipping_and_freight'))
                     <div class="invalid-feedback">
                         {{ $errors->first('shipping_and_freight') }}
@@ -484,11 +448,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.shipping_and_freight_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('sourcing') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="sourcing" value="0">
-                    <input class="form-check-input" type="checkbox" name="sourcing" id="sourcing" value="1" {{ old('sourcing', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="sourcing">{{ trans('cruds.individualsApp.fields.sourcing') }}</label>
-                </div>
+                <label for="sourcing">{{ trans('cruds.individualsApp.fields.sourcing') }}</label>
+                <input class="form-control {{ $errors->has('sourcing') ? 'is-invalid' : '' }}" type="text" name="sourcing" id="sourcing" value="{{ old('sourcing', '') }}">
                 @if($errors->has('sourcing'))
                     <div class="invalid-feedback">
                         {{ $errors->first('sourcing') }}
@@ -497,11 +458,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.sourcing_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('supply_chain_management') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="supply_chain_management" value="0">
-                    <input class="form-check-input" type="checkbox" name="supply_chain_management" id="supply_chain_management" value="1" {{ old('supply_chain_management', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="supply_chain_management">{{ trans('cruds.individualsApp.fields.supply_chain_management') }}</label>
-                </div>
+                <label for="supply_chain_management">{{ trans('cruds.individualsApp.fields.supply_chain_management') }}</label>
+                <input class="form-control {{ $errors->has('supply_chain_management') ? 'is-invalid' : '' }}" type="text" name="supply_chain_management" id="supply_chain_management" value="{{ old('supply_chain_management', '') }}">
                 @if($errors->has('supply_chain_management'))
                     <div class="invalid-feedback">
                         {{ $errors->first('supply_chain_management') }}
@@ -510,11 +468,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.supply_chain_management_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('tender_and_contract') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="tender_and_contract" value="0">
-                    <input class="form-check-input" type="checkbox" name="tender_and_contract" id="tender_and_contract" value="1" {{ old('tender_and_contract', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="tender_and_contract">{{ trans('cruds.individualsApp.fields.tender_and_contract') }}</label>
-                </div>
+                <label for="tender_and_contract">{{ trans('cruds.individualsApp.fields.tender_and_contract') }}</label>
+                <input class="form-control {{ $errors->has('tender_and_contract') ? 'is-invalid' : '' }}" type="text" name="tender_and_contract" id="tender_and_contract" value="{{ old('tender_and_contract', '') }}">
                 @if($errors->has('tender_and_contract'))
                     <div class="invalid-feedback">
                         {{ $errors->first('tender_and_contract') }}
@@ -523,11 +478,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.tender_and_contract_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('transportation') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="transportation" value="0">
-                    <input class="form-check-input" type="checkbox" name="transportation" id="transportation" value="1" {{ old('transportation', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="transportation">{{ trans('cruds.individualsApp.fields.transportation') }}</label>
-                </div>
+                <label for="transportation">{{ trans('cruds.individualsApp.fields.transportation') }}</label>
+                <input class="form-control {{ $errors->has('transportation') ? 'is-invalid' : '' }}" type="text" name="transportation" id="transportation" value="{{ old('transportation', '') }}">
                 @if($errors->has('transportation'))
                     <div class="invalid-feedback">
                         {{ $errors->first('transportation') }}
@@ -536,11 +488,8 @@
                 <span class="help-block">{{ trans('cruds.individualsApp.fields.transportation_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('warehousing') ? 'is-invalid' : '' }}">
-                    <input type="hidden" name="warehousing" value="0">
-                    <input class="form-check-input" type="checkbox" name="warehousing" id="warehousing" value="1" {{ old('warehousing', 0) == 1 ? 'checked' : '' }}>
-                    <label class="form-check-label" for="warehousing">{{ trans('cruds.individualsApp.fields.warehousing') }}</label>
-                </div>
+                <label for="warehousing">{{ trans('cruds.individualsApp.fields.warehousing') }}</label>
+                <input class="form-control {{ $errors->has('warehousing') ? 'is-invalid' : '' }}" type="text" name="warehousing" id="warehousing" value="{{ old('warehousing', '') }}">
                 @if($errors->has('warehousing'))
                     <div class="invalid-feedback">
                         {{ $errors->first('warehousing') }}
