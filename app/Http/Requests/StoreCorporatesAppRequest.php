@@ -142,6 +142,66 @@ class StoreCorporatesAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'cost_price_analysis' => [
+                'string',
+                'nullable',
+            ],
+            'delivery_and_last_mile' => [
+                'string',
+                'nullable',
+            ],
+            'digital_technologies' => [
+                'string',
+                'nullable',
+            ],
+            'integrated_logistics' => [
+                'string',
+                'nullable',
+            ],
+            'inventory' => [
+                'string',
+                'nullable',
+            ],
+            'lean_six_sigma' => [
+                'string',
+                'nullable',
+            ],
+            'negotiation' => [
+                'string',
+                'nullable',
+            ],
+            'performance_evaluation' => [
+                'string',
+                'nullable',
+            ],
+            'professional_networking' => [
+                'string',
+                'nullable',
+            ],
+            'shipping_and_freight' => [
+                'string',
+                'nullable',
+            ],
+            'sourcing' => [
+                'string',
+                'nullable',
+            ],
+            'supply_chain_management' => [
+                'string',
+                'nullable',
+            ],
+            'tender_and_contract' => [
+                'string',
+                'nullable',
+            ],
+            'transportation' => [
+                'string',
+                'nullable',
+            ],
+            'warehousing' => [
+                'string',
+                'nullable',
+            ],
             'others' => [
                 'string',
                 'nullable',
