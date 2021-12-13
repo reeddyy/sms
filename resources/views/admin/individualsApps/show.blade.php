@@ -278,15 +278,7 @@
                             {{ trans('cruds.individualsApp.fields.cold_chain') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->cold_chain ? 'checked' : '' }}>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.individualsApp.fields.performance_evaluation') }}
-                        </th>
-                        <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->performance_evaluation ? 'checked' : '' }}>
+                            {{ $individualsApp->cold_chain }}
                         </td>
                     </tr>
                     <tr>
@@ -294,7 +286,7 @@
                             {{ trans('cruds.individualsApp.fields.contract_law') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->contract_law ? 'checked' : '' }}>
+                            {{ $individualsApp->contract_law }}
                         </td>
                     </tr>
                     <tr>
@@ -302,7 +294,7 @@
                             {{ trans('cruds.individualsApp.fields.cost_price_analysis') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->cost_price_analysis ? 'checked' : '' }}>
+                            {{ $individualsApp->cost_price_analysis }}
                         </td>
                     </tr>
                     <tr>
@@ -310,7 +302,7 @@
                             {{ trans('cruds.individualsApp.fields.delivery_and_last_mile') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->delivery_and_last_mile ? 'checked' : '' }}>
+                            {{ $individualsApp->delivery_and_last_mile }}
                         </td>
                     </tr>
                     <tr>
@@ -318,7 +310,7 @@
                             {{ trans('cruds.individualsApp.fields.digital_technologies') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->digital_technologies ? 'checked' : '' }}>
+                            {{ $individualsApp->digital_technologies }}
                         </td>
                     </tr>
                     <tr>
@@ -326,7 +318,7 @@
                             {{ trans('cruds.individualsApp.fields.integrated_logistics') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->integrated_logistics ? 'checked' : '' }}>
+                            {{ $individualsApp->integrated_logistics }}
                         </td>
                     </tr>
                     <tr>
@@ -334,7 +326,7 @@
                             {{ trans('cruds.individualsApp.fields.inventory') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->inventory ? 'checked' : '' }}>
+                            {{ $individualsApp->inventory }}
                         </td>
                     </tr>
                     <tr>
@@ -342,7 +334,7 @@
                             {{ trans('cruds.individualsApp.fields.lean_six_sigma') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->lean_six_sigma ? 'checked' : '' }}>
+                            {{ $individualsApp->lean_six_sigma }}
                         </td>
                     </tr>
                     <tr>
@@ -350,7 +342,15 @@
                             {{ trans('cruds.individualsApp.fields.negotiation') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->negotiation ? 'checked' : '' }}>
+                            {{ $individualsApp->negotiation }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.individualsApp.fields.performance_evaluation') }}
+                        </th>
+                        <td>
+                            {{ $individualsApp->performance_evaluation }}
                         </td>
                     </tr>
                     <tr>
@@ -358,7 +358,7 @@
                             {{ trans('cruds.individualsApp.fields.professional_networking') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->professional_networking ? 'checked' : '' }}>
+                            {{ $individualsApp->professional_networking }}
                         </td>
                     </tr>
                     <tr>
@@ -366,7 +366,7 @@
                             {{ trans('cruds.individualsApp.fields.shipping_and_freight') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->shipping_and_freight ? 'checked' : '' }}>
+                            {{ $individualsApp->shipping_and_freight }}
                         </td>
                     </tr>
                     <tr>
@@ -374,7 +374,7 @@
                             {{ trans('cruds.individualsApp.fields.sourcing') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->sourcing ? 'checked' : '' }}>
+                            {{ $individualsApp->sourcing }}
                         </td>
                     </tr>
                     <tr>
@@ -382,7 +382,7 @@
                             {{ trans('cruds.individualsApp.fields.supply_chain_management') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->supply_chain_management ? 'checked' : '' }}>
+                            {{ $individualsApp->supply_chain_management }}
                         </td>
                     </tr>
                     <tr>
@@ -390,7 +390,7 @@
                             {{ trans('cruds.individualsApp.fields.tender_and_contract') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->tender_and_contract ? 'checked' : '' }}>
+                            {{ $individualsApp->tender_and_contract }}
                         </td>
                     </tr>
                     <tr>
@@ -398,7 +398,7 @@
                             {{ trans('cruds.individualsApp.fields.transportation') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->transportation ? 'checked' : '' }}>
+                            {{ $individualsApp->transportation }}
                         </td>
                     </tr>
                     <tr>
@@ -406,7 +406,7 @@
                             {{ trans('cruds.individualsApp.fields.warehousing') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $individualsApp->warehousing ? 'checked' : '' }}>
+                            {{ $individualsApp->warehousing }}
                         </td>
                     </tr>
                     <tr>

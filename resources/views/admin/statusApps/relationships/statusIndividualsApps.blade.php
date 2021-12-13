@@ -121,9 +121,6 @@
                             {{ trans('cruds.individualsApp.fields.cold_chain') }}
                         </th>
                         <th>
-                            {{ trans('cruds.individualsApp.fields.performance_evaluation') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.individualsApp.fields.contract_law') }}
                         </th>
                         <th>
@@ -146,6 +143,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.individualsApp.fields.negotiation') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.individualsApp.fields.performance_evaluation') }}
                         </th>
                         <th>
                             {{ trans('cruds.individualsApp.fields.professional_networking') }}
@@ -287,72 +287,55 @@
                                 {{ $individualsApp->certificate ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->cold_chain ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->cold_chain ? 'checked' : '' }}>
+                                {{ $individualsApp->cold_chain ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->performance_evaluation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->performance_evaluation ? 'checked' : '' }}>
+                                {{ $individualsApp->contract_law ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->contract_law ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->contract_law ? 'checked' : '' }}>
+                                {{ $individualsApp->cost_price_analysis ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->cost_price_analysis ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->cost_price_analysis ? 'checked' : '' }}>
+                                {{ $individualsApp->delivery_and_last_mile ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->delivery_and_last_mile ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->delivery_and_last_mile ? 'checked' : '' }}>
+                                {{ $individualsApp->digital_technologies ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->digital_technologies ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->digital_technologies ? 'checked' : '' }}>
+                                {{ $individualsApp->integrated_logistics ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->integrated_logistics ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->integrated_logistics ? 'checked' : '' }}>
+                                {{ $individualsApp->inventory ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->inventory ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->inventory ? 'checked' : '' }}>
+                                {{ $individualsApp->lean_six_sigma ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->lean_six_sigma ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->lean_six_sigma ? 'checked' : '' }}>
+                                {{ $individualsApp->negotiation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->negotiation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->negotiation ? 'checked' : '' }}>
+                                {{ $individualsApp->performance_evaluation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->professional_networking ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->professional_networking ? 'checked' : '' }}>
+                                {{ $individualsApp->professional_networking ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->shipping_and_freight ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->shipping_and_freight ? 'checked' : '' }}>
+                                {{ $individualsApp->shipping_and_freight ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->sourcing ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->sourcing ? 'checked' : '' }}>
+                                {{ $individualsApp->sourcing ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->supply_chain_management ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->supply_chain_management ? 'checked' : '' }}>
+                                {{ $individualsApp->supply_chain_management ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->tender_and_contract ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->tender_and_contract ? 'checked' : '' }}>
+                                {{ $individualsApp->tender_and_contract ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->transportation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->transportation ? 'checked' : '' }}>
+                                {{ $individualsApp->transportation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $individualsApp->warehousing ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $individualsApp->warehousing ? 'checked' : '' }}>
+                                {{ $individualsApp->warehousing ?? '' }}
                             </td>
                             <td>
                                 {{ $individualsApp->others ?? '' }}

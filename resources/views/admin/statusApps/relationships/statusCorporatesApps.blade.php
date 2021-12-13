@@ -320,72 +320,55 @@
                                 {{ $corporatesApp->business_profile ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->cold_chain ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->cold_chain ? 'checked' : '' }}>
+                                {{ $corporatesApp->cold_chain ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->contract_law ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->contract_law ? 'checked' : '' }}>
+                                {{ $corporatesApp->contract_law ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->cost_price_analysis ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->cost_price_analysis ? 'checked' : '' }}>
+                                {{ $corporatesApp->cost_price_analysis ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->delivery_and_last_mile ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->delivery_and_last_mile ? 'checked' : '' }}>
+                                {{ $corporatesApp->delivery_and_last_mile ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->digital_technologies ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->digital_technologies ? 'checked' : '' }}>
+                                {{ $corporatesApp->digital_technologies ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->integrated_logistics ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->integrated_logistics ? 'checked' : '' }}>
+                                {{ $corporatesApp->integrated_logistics ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->inventory ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->inventory ? 'checked' : '' }}>
+                                {{ $corporatesApp->inventory ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->lean_six_sigma ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->lean_six_sigma ? 'checked' : '' }}>
+                                {{ $corporatesApp->lean_six_sigma ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->negotiation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->negotiation ? 'checked' : '' }}>
+                                {{ $corporatesApp->negotiation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->performance_evaluation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->performance_evaluation ? 'checked' : '' }}>
+                                {{ $corporatesApp->performance_evaluation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->professional_networking ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->professional_networking ? 'checked' : '' }}>
+                                {{ $corporatesApp->professional_networking ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->shipping_and_freight ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->shipping_and_freight ? 'checked' : '' }}>
+                                {{ $corporatesApp->shipping_and_freight ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->sourcing ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->sourcing ? 'checked' : '' }}>
+                                {{ $corporatesApp->sourcing ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->supply_chain_management ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->supply_chain_management ? 'checked' : '' }}>
+                                {{ $corporatesApp->supply_chain_management ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->tender_and_contract ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->tender_and_contract ? 'checked' : '' }}>
+                                {{ $corporatesApp->tender_and_contract ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->transportation ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->transportation ? 'checked' : '' }}>
+                                {{ $corporatesApp->transportation ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $corporatesApp->warehousing ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $corporatesApp->warehousing ? 'checked' : '' }}>
+                                {{ $corporatesApp->warehousing ?? '' }}
                             </td>
                             <td>
                                 {{ $corporatesApp->others ?? '' }}
