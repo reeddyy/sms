@@ -32,7 +32,7 @@ class PaymentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('payments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::select('id', 'enrolment_no', 'student_name_id')->get();
+        $enrolment_nos = EnrolmentsQualification::where('outstanding_balance', '!=', 0)->select('id', 'enrolment_no', 'student_name_id')->get();
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -44,14 +44,19 @@ class PaymentsQualificationsController extends Controller
         $paymentsQualification = PaymentsQualification::create($request->all());
 
         // add paid amounts sum for the enrolment as per enrolment id
+
         $enrolment_no = (isset($request->enrolment_no_id)) ? $request->enrolment_no_id : '';
+
         if($enrolment_no && $enrolment_no!=''){
-            $paid_amount = PaymentsQualification::where('enrolment_no_id', $enrolment_no)->sum('payment_amount');
+            
+            $paid_amount = PaymentsQualification::where('deleted_at', null)->where('enrolment_no_id', $enrolment_no)->sum('payment_amount');
 
             $enrolmentQualification = EnrolmentsQualification::find($enrolment_no);
+
             $enrolmentQualification->amount_paid = $paid_amount;
 
             $outstanding_balance = round($enrolmentQualification->total_fees, 2) - round($paid_amount,2);
+
             $enrolmentQualification->outstanding_balance = round($outstanding_balance, 2);
 
             $enrolmentQualification->save();
@@ -65,7 +70,7 @@ class PaymentsQualificationsController extends Controller
     {
         abort_if(Gate::denies('payments_qualification_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $enrolment_nos = EnrolmentsQualification::pluck('enrolment_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $enrolment_nos = EnrolmentsQualification::where('outstanding_balance', '=', 0)->orWhere('id', $paymentsQualification->enrolment_no_id)->select('id', 'enrolment_no', 'student_name_id')->get();
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -107,6 +112,18 @@ class PaymentsQualificationsController extends Controller
     public function destroy(PaymentsQualification $paymentsQualification)
     {
         abort_if(Gate::denies('payments_qualification_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $payments = PaymentsQualification::where('enrolment_no_id', $paymentsQualification->enrolment_no_id);
+
+        if($payments->count()){
+            $enrolmentQualification = EnrolmentsQualification::find($paymentsQualification->enrolment_no_id);
+            
+            //update amount paid by deducting the deleted amount
+            $enrolmentQualification->amount_paid = $enrolmentQualification->amount_paid - $paymentsQualification->payment_amount;
+            $enrolmentQualification->outstanding_balance = $enrolmentQualification->outstanding_balance + $paymentsQualification->payment_amount;
+
+            $enrolmentQualification->save();
+        }
 
         $paymentsQualification->delete();
 

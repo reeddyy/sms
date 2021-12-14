@@ -13,8 +13,9 @@
             <div class="form-group">
                 <label class="required" for="enrolment_no_id">{{ trans('cruds.paymentsQualification.fields.enrolment_no') }}</label>
                 <select class="form-control select2 {{ $errors->has('enrolment_no') ? 'is-invalid' : '' }}" name="enrolment_no_id" id="enrolment_no_id" required>
-                    @foreach($enrolment_nos as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('enrolment_no_id') ? old('enrolment_no_id') : $paymentsQualification->enrolment_no->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    <option value="">Please select</option>
+                    @foreach($enrolment_nos as $enrolment_no)
+                        <option value="{{ $enrolment_no->id }}" {{ (old('enrolment_no_id') ? old('enrolment_no_id') : $paymentsQualification->enrolment_no->id ?? '') == $enrolment_no->id ? 'selected' : '' }}>{{ $enrolment_no->enrolment_no }} | {{ $enrolment_no->student_name->name }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('enrolment_no'))
