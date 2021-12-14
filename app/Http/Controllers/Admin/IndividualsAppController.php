@@ -12,6 +12,7 @@ use App\Models\StatusApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class IndividualsAppController extends Controller
 {
@@ -39,7 +40,7 @@ class IndividualsAppController extends Controller
 
     public function store(StoreIndividualsAppRequest $request)
     {
-        $individualsApp = IndividualsApp::create($request->all());
+        $individualsApp = IndividualsApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('IndividualsApp')]);
         $individualsApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.individuals-apps.index');
@@ -58,7 +59,7 @@ class IndividualsAppController extends Controller
 
     public function update(UpdateIndividualsAppRequest $request, IndividualsApp $individualsApp)
     {
-        $individualsApp->update($request->all());
+        $individualsApp->update($request->except(['application_no']));
         $individualsApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.individuals-apps.index');

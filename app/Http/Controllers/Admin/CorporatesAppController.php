@@ -40,7 +40,6 @@ class CorporatesAppController extends Controller
 
     public function store(StoreCorporatesAppRequest $request)
     {
-        //$request->application_no = ApplicationNoHelper::getAppNo('CorporatesApp');
         $corporatesApp = CorporatesApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('CorporatesApp')]);
         $corporatesApp->statuses()->sync($request->input('statuses', []));
 
