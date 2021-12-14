@@ -25,7 +25,6 @@ class StoreQualificationsAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:qualifications_apps',
             ],
             'sponsorship' => [

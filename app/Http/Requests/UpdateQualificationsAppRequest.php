@@ -25,7 +25,6 @@ class UpdateQualificationsAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:qualifications_apps,application_no,' . request()->route('qualifications_app')->id,
             ],
             'sponsorship' => [
