@@ -25,7 +25,6 @@ class UpdateCorporatesAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:corporates_apps,application_no,' . request()->route('corporates_app')->id,
             ],
             'member_class' => [

@@ -12,6 +12,7 @@ use App\Models\StatusApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class CorporatesAppController extends Controller
 {
@@ -39,7 +40,8 @@ class CorporatesAppController extends Controller
 
     public function store(StoreCorporatesAppRequest $request)
     {
-        $corporatesApp = CorporatesApp::create($request->all());
+        //$request->application_no = ApplicationNoHelper::getAppNo('CorporatesApp');
+        $corporatesApp = CorporatesApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('CorporatesApp')]);
         $corporatesApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.corporates-apps.index');
@@ -58,7 +60,7 @@ class CorporatesAppController extends Controller
 
     public function update(UpdateCorporatesAppRequest $request, CorporatesApp $corporatesApp)
     {
-        $corporatesApp->update($request->all());
+        $corporatesApp->update($request->except(['application_no']));
         $corporatesApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.corporates-apps.index');
