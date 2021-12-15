@@ -10,6 +10,7 @@ use App\Models\CorporatesApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class CorporatesAppApiController extends Controller
 {
@@ -22,7 +23,7 @@ class CorporatesAppApiController extends Controller
 
     public function store(StoreCorporatesAppRequest $request)
     {
-        $corporatesApp = CorporatesApp::create($request->all());
+        $corporatesApp = CorporatesApp::create([$request->except('application_no'), 'application_no' => ApplicationNoHelper::getAppNo('CorporatesApp')]);
         $corporatesApp->statuses()->sync($request->input('statuses', []));
 
         return (new CorporatesAppResource($corporatesApp))

@@ -25,7 +25,6 @@ class UpdateAdaAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:ada_apps,application_no,' . request()->route('ada_app')->id,
             ],
             'award_name' => [

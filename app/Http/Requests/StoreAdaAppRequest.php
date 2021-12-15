@@ -25,7 +25,6 @@ class StoreAdaAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:ada_apps',
             ],
             'award_name' => [

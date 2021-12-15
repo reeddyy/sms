@@ -12,6 +12,7 @@ use App\Models\StatusApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class QualificationsAppController extends Controller
 {
@@ -47,7 +48,7 @@ class QualificationsAppController extends Controller
 
     public function store(StoreQualificationsAppRequest $request)
     {
-        $qualificationsApp = QualificationsApp::create($request->all());
+        $qualificationsApp = QualificationsApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('QualificationsApp')]);
         $qualificationsApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.qualifications-apps.index');
@@ -66,7 +67,7 @@ class QualificationsAppController extends Controller
 
     public function update(UpdateQualificationsAppRequest $request, QualificationsApp $qualificationsApp)
     {
-        $qualificationsApp->update($request->all());
+        $qualificationsApp->update($request->except(['application_no']));
         $qualificationsApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.qualifications-apps.index');
