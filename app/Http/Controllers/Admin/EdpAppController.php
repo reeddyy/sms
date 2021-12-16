@@ -40,7 +40,7 @@ class EdpAppController extends Controller
 
     public function store(StoreEdpAppRequest $request)
     {
-        $edpApp = EdpApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('EdpApp')]);
+        $edpApp = EdpApp::create(array_merge($request->except(['application_no']), ['application_no'=> ApplicationNoHelper::getAppNo('EdpApp')]));
         $edpApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.edp-apps.index');

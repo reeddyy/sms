@@ -48,7 +48,7 @@ class QualificationsAppController extends Controller
 
     public function store(StoreQualificationsAppRequest $request)
     {
-        $qualificationsApp = QualificationsApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('QualificationsApp')]);
+        $qualificationsApp = QualificationsApp::create(array_merge($request->except(['application_no']), ['application_no'=> ApplicationNoHelper::getAppNo('QualificationsApp')]));
         $qualificationsApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.qualifications-apps.index');

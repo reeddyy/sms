@@ -40,7 +40,7 @@ class AdaAppController extends Controller
 
     public function store(StoreAdaAppRequest $request)
     {
-        $adaApp = AdaApp::create([$request->except(['application_no']), 'application_no'=> ApplicationNoHelper::getAppNo('AdaApp')]);
+        $adaApp = AdaApp::create(array_merge($request->except(['application_no']), ['application_no'=> ApplicationNoHelper::getAppNo('AdaApp')]));
         $adaApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.ada-apps.index');
