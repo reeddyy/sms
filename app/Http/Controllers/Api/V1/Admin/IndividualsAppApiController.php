@@ -22,7 +22,7 @@ class IndividualsAppApiController extends Controller
 
     public function store(StoreIndividualsAppRequest $request)
     {
-        $individualsApp = IndividualsApp::create($request->all());
+        $individualsApp = IndividualsApp::create(array_merge($request->except('application_no'), ['application_no' => ApplicationNoHelper::getAppNo('IndividualsApp')]));
         $individualsApp->statuses()->sync($request->input('statuses', []));
 
         return (new IndividualsAppResource($individualsApp))
