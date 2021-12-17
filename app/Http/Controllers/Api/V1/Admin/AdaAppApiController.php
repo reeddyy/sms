@@ -10,6 +10,7 @@ use App\Models\AdaApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class AdaAppApiController extends Controller
 {

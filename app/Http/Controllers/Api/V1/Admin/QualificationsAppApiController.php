@@ -10,6 +10,7 @@ use App\Models\QualificationsApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class QualificationsAppApiController extends Controller
 {
