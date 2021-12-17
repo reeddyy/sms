@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Api\V1\Admin\BaseController;
 use App\Http\Requests\StoreQualificationsReqRequest;
 use App\Http\Requests\UpdateQualificationsReqRequest;
 use App\Http\Resources\Admin\QualificationsReqResource;
@@ -11,7 +11,7 @@ use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class QualificationsReqApiController extends Controller
+class QualificationsReqApiController extends BaseController
 {
     public function index()
     {
