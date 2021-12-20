@@ -479,7 +479,7 @@
             </div>
             <div class="form-group">
                 <label for="year_attained_3">{{ trans('cruds.qualificationsApp.fields.year_attained_3') }}</label>
-                <input class="form-control {{ $errors->has('year_attained_3') ? 'is-invalid' : '' }}" type="text" name="year_attained_3" id="year_attained_3" value="{{ old('year_attained_3', '') }}">
+                <input class="form-control {{ $errors->has('year_attained_3') ? 'is-invalid' : '' }}" type="number" name="year_attained_3" id="year_attained_3" value="{{ old('year_attained_3', '') }}" step="1">
                 @if($errors->has('year_attained_3'))
                     <div class="invalid-feedback">
                         {{ $errors->first('year_attained_3') }}
