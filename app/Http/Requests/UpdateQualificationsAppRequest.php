@@ -210,8 +210,10 @@ class UpdateQualificationsAppRequest extends FormRequest
                 'nullable',
             ],
             'year_attained_3' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'id_front' => [
                 'string',
