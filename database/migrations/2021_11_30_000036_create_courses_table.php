@@ -12,7 +12,7 @@ class CreateCoursesTable extends Migration
             $table->bigIncrements('id');
             $table->string('course_title')->unique();
             $table->string('course_abbr')->unique();
-            $table->string('duration_month')->nullable();
+            $table->integer('duration_month')->nullable();
             $table->decimal('member_rate', 15, 2)->nullable();
             $table->decimal('public_rate', 15, 2)->nullable();
             $table->decimal('course_fee', 15, 2)->nullable();

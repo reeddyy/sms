@@ -28,8 +28,10 @@ class UpdateCourseRequest extends FormRequest
                 'unique:courses,course_abbr,' . request()->route('course')->id,
             ],
             'duration_month' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'module_s.*' => [
                 'integer',
