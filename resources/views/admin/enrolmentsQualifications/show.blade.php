@@ -133,6 +133,54 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->instalment_fee_1 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_1') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->due_date_1 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->instalment_fee_2 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_2') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->due_date_2 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->instalment_fee_3 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_3') }}
+                        </th>
+                        <td>
+                            {{ $enrolmentsQualification->due_date_3 }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.note') }}
                         </th>
                         <td>
