@@ -141,6 +141,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_1st') }}
+                        </th>
+                        <td>
+                            {{ $course->due_day_s_1st }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <td>
@@ -149,10 +157,26 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_2nd') }}
+                        </th>
+                        <td>
+                            {{ $course->due_day_s_2nd }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_3rd') }}
                         </th>
                         <td>
                             {{ $course->instalment_fee_3rd }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.course.fields.due_day_s_3rd') }}
+                        </th>
+                        <td>
+                            {{ $course->due_day_s_3rd }}
                         </td>
                     </tr>
                     <tr>

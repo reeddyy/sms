@@ -67,10 +67,19 @@
                             {{ trans('cruds.course.fields.instalment_fee_1st') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_1st') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_2nd') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_3rd') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.due_day_s_3rd') }}
                         </th>
                         <th>
                             {{ trans('cruds.course.fields.course_status') }}
@@ -139,10 +148,19 @@
                                 {{ $course->instalment_fee_1st ?? '' }}
                             </td>
                             <td>
+                                {{ $course->due_day_s_1st ?? '' }}
+                            </td>
+                            <td>
                                 {{ $course->instalment_fee_2nd ?? '' }}
                             </td>
                             <td>
+                                {{ $course->due_day_s_2nd ?? '' }}
+                            </td>
+                            <td>
                                 {{ $course->instalment_fee_3rd ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->due_day_s_3rd ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}

@@ -49,6 +49,24 @@ class StoreCourseRequest extends FormRequest
                 'min:-2147483648',
                 'max:2147483647',
             ],
+            'due_day_s_1st' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'due_day_s_2nd' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'due_day_s_3rd' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
             'course_status' => [
                 'required',
             ],
