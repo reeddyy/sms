@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="application_no">{{ trans('cruds.corporatesApp.fields.application_no') }}</label>
-                <input class="form-control {{ $errors->has('application_no') ? 'is-invalid' : '' }}" type="text" name="application_no" id="application_no" value="{{ old('application_no', '') }}" required>
+                <input readonly class="form-control {{ $errors->has('application_no') ? 'is-invalid' : '' }}" type="text" name="application_no" id="application_no" value="{{ old('application_no', App\Helpers\ApplicationNoHelper::getAppNo('CorporatesApp')) }}" required>
                 @if($errors->has('application_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('application_no') }}

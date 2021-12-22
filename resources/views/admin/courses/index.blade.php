@@ -72,10 +72,19 @@
                             {{ trans('cruds.course.fields.instalment_fee_1st') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_1st') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_2nd') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.due_day_s_2nd') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.course.fields.instalment_fee_3rd') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.due_day_s_3rd') }}
                         </th>
                         <th>
                             {{ trans('cruds.course.fields.course_status') }}
@@ -125,6 +134,15 @@
                                     <option value="{{ $item->class_name }}">{{ $item->class_name }}</option>
                                 @endforeach
                             </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -227,10 +245,19 @@
                                 {{ $course->instalment_fee_1st ?? '' }}
                             </td>
                             <td>
+                                {{ $course->due_day_s_1st ?? '' }}
+                            </td>
+                            <td>
                                 {{ $course->instalment_fee_2nd ?? '' }}
                             </td>
                             <td>
+                                {{ $course->due_day_s_2nd ?? '' }}
+                            </td>
+                            <td>
                                 {{ $course->instalment_fee_3rd ?? '' }}
+                            </td>
+                            <td>
+                                {{ $course->due_day_s_3rd ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Course::COURSE_STATUS_RADIO[$course->course_status] ?? '' }}

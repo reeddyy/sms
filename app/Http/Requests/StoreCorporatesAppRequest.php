@@ -25,7 +25,6 @@ class StoreCorporatesAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:corporates_apps',
             ],
             'member_class' => [

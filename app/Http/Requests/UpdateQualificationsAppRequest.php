@@ -25,7 +25,6 @@ class UpdateQualificationsAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:qualifications_apps,application_no,' . request()->route('qualifications_app')->id,
             ],
             'sponsorship' => [
@@ -211,8 +210,10 @@ class UpdateQualificationsAppRequest extends FormRequest
                 'nullable',
             ],
             'year_attained_3' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'id_front' => [
                 'string',

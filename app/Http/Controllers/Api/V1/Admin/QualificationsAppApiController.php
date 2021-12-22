@@ -10,6 +10,7 @@ use App\Models\QualificationsApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class QualificationsAppApiController extends Controller
 {
@@ -22,7 +23,7 @@ class QualificationsAppApiController extends Controller
 
     public function store(StoreQualificationsAppRequest $request)
     {
-        $qualificationsApp = QualificationsApp::create($request->all());
+        $qualificationsApp = QualificationsApp::create(array_merge($request->except('application_no'), ['application_no' => ApplicationNoHelper::getAppNo('QualificationsApp')]));
         $qualificationsApp->statuses()->sync($request->input('statuses', []));
 
         return (new QualificationsAppResource($qualificationsApp))

@@ -31,7 +31,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_month">{{ trans('cruds.course.fields.duration_month') }}</label>
-                <input class="form-control {{ $errors->has('duration_month') ? 'is-invalid' : '' }}" type="text" name="duration_month" id="duration_month" value="{{ old('duration_month', '') }}">
+                <input class="form-control {{ $errors->has('duration_month') ? 'is-invalid' : '' }}" type="number" name="duration_month" id="duration_month" value="{{ old('duration_month', '') }}" step="1">
                 @if($errors->has('duration_month'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_month') }}
@@ -170,6 +170,16 @@
                 <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_1st_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="due_day_s_1st">{{ trans('cruds.course.fields.due_day_s_1st') }}</label>
+                <input class="form-control {{ $errors->has('due_day_s_1st') ? 'is-invalid' : '' }}" type="number" name="due_day_s_1st" id="due_day_s_1st" value="{{ old('due_day_s_1st', '') }}" step="1">
+                @if($errors->has('due_day_s_1st'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_day_s_1st') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.due_day_s_1st_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="instalment_fee_2nd">{{ trans('cruds.course.fields.instalment_fee_2nd') }}</label>
                 <input class="form-control {{ $errors->has('instalment_fee_2nd') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_2nd" id="instalment_fee_2nd" value="{{ old('instalment_fee_2nd', '0') }}" step="0.01">
                 @if($errors->has('instalment_fee_2nd'))
@@ -180,6 +190,16 @@
                 <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_2nd_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="due_day_s_2nd">{{ trans('cruds.course.fields.due_day_s_2nd') }}</label>
+                <input class="form-control {{ $errors->has('due_day_s_2nd') ? 'is-invalid' : '' }}" type="number" name="due_day_s_2nd" id="due_day_s_2nd" value="{{ old('due_day_s_2nd', '') }}" step="1">
+                @if($errors->has('due_day_s_2nd'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_day_s_2nd') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.due_day_s_2nd_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="instalment_fee_3rd">{{ trans('cruds.course.fields.instalment_fee_3rd') }}</label>
                 <input class="form-control {{ $errors->has('instalment_fee_3rd') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_3rd" id="instalment_fee_3rd" value="{{ old('instalment_fee_3rd', '0') }}" step="0.01">
                 @if($errors->has('instalment_fee_3rd'))
@@ -188,6 +208,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.course.fields.instalment_fee_3rd_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="due_day_s_3rd">{{ trans('cruds.course.fields.due_day_s_3rd') }}</label>
+                <input class="form-control {{ $errors->has('due_day_s_3rd') ? 'is-invalid' : '' }}" type="number" name="due_day_s_3rd" id="due_day_s_3rd" value="{{ old('due_day_s_3rd', '') }}" step="1">
+                @if($errors->has('due_day_s_3rd'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_day_s_3rd') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.course.fields.due_day_s_3rd_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required">{{ trans('cruds.course.fields.course_status') }}</label>

@@ -25,7 +25,6 @@ class StoreIndividualsAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
                 'unique:individuals_apps',
             ],
             'member_class' => [

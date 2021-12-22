@@ -46,7 +46,9 @@ class EnrolmentsQualificationsController extends Controller
 
         $statuses = StatusQualification::pluck('status_name', 'id');
 
-        $application_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $existing_application_no_ids = EnrolmentsQualification::select('application_no_id')->get()->toArray();
+
+        $application_nos = QualificationsApp::whereNotIn('id', $existing_application_no_ids)->pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -77,7 +79,9 @@ class EnrolmentsQualificationsController extends Controller
 
         $statuses = StatusQualification::pluck('status_name', 'id');
 
-        $application_nos = QualificationsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $existing_application_no_ids = EnrolmentsQualification::where('application_no_id', '!=', $enrolmentsQualification->application_no_id)->select('application_no_id')->get()->toArray();
+
+        $application_nos = QualificationsApp::whereNotIn('id', $existing_application_no_ids)->pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $course_titles = Course::pluck('course_title', 'id')->prepend(trans('global.pleaseSelect'), '');
 

@@ -30,7 +30,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="application_no">{{ trans('cruds.qualificationsApp.fields.application_no') }}</label>
-                <input class="form-control {{ $errors->has('application_no') ? 'is-invalid' : '' }}" type="text" name="application_no" id="application_no" value="{{ old('application_no', $qualificationsApp->application_no) }}" required>
+                <input readonly class="form-control {{ $errors->has('application_no') ? 'is-invalid' : '' }}" type="text" name="application_no" id="application_no" value="{{ old('application_no', $qualificationsApp->application_no) }}" required>
                 @if($errors->has('application_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('application_no') }}
@@ -480,7 +480,7 @@
             </div>
             <div class="form-group">
                 <label for="year_attained_3">{{ trans('cruds.qualificationsApp.fields.year_attained_3') }}</label>
-                <input class="form-control {{ $errors->has('year_attained_3') ? 'is-invalid' : '' }}" type="text" name="year_attained_3" id="year_attained_3" value="{{ old('year_attained_3', $qualificationsApp->year_attained_3) }}">
+                <input class="form-control {{ $errors->has('year_attained_3') ? 'is-invalid' : '' }}" type="number" name="year_attained_3" id="year_attained_3" value="{{ old('year_attained_3', $qualificationsApp->year_attained_3) }}" step="1">
                 @if($errors->has('year_attained_3'))
                     <div class="invalid-feedback">
                         {{ $errors->first('year_attained_3') }}

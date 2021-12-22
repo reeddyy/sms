@@ -28,8 +28,10 @@ class StoreCourseRequest extends FormRequest
                 'unique:courses',
             ],
             'duration_month' => [
-                'string',
                 'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
             ],
             'module_s.*' => [
                 'integer',
@@ -44,6 +46,24 @@ class StoreCourseRequest extends FormRequest
                 'array',
             ],
             'no_of_instalment' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'due_day_s_1st' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'due_day_s_2nd' => [
+                'nullable',
+                'integer',
+                'min:-2147483648',
+                'max:2147483647',
+            ],
+            'due_day_s_3rd' => [
                 'nullable',
                 'integer',
                 'min:-2147483648',

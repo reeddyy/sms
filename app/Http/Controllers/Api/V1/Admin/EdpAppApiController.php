@@ -10,6 +10,7 @@ use App\Models\EdpApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class EdpAppApiController extends Controller
 {
@@ -22,7 +23,7 @@ class EdpAppApiController extends Controller
 
     public function store(StoreEdpAppRequest $request)
     {
-        $edpApp = EdpApp::create($request->all());
+        $edpApp = EdpApp::create(array_merge($request->except('application_no'), ['application_no' => ApplicationNoHelper::getAppNo('EdpApp')]));
         $edpApp->statuses()->sync($request->input('statuses', []));
 
         return (new EdpAppResource($edpApp))

@@ -25,7 +25,6 @@ class StoreEdpAppRequest extends FormRequest
             ],
             'application_no' => [
                 'string',
-                'required',
             ],
             'sponsorship' => [
                 'string',

@@ -55,7 +55,7 @@ class CreateQualificationsAppsTable extends Migration
             $table->string('qualification_3')->nullable();
             $table->string('level_3')->nullable();
             $table->string('institute_3')->nullable();
-            $table->string('year_attained_3')->nullable();
+            $table->integer('year_attained_3')->nullable();
             $table->string('id_front')->nullable();
             $table->string('id_back')->nullable();
             $table->string('certificate')->nullable();

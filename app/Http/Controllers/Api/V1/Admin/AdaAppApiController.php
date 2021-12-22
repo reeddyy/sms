@@ -10,6 +10,7 @@ use App\Models\AdaApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class AdaAppApiController extends Controller
 {
@@ -22,7 +23,7 @@ class AdaAppApiController extends Controller
 
     public function store(StoreAdaAppRequest $request)
     {
-        $adaApp = AdaApp::create($request->all());
+        $adaApp = AdaApp::create(array_merge($request->except('application_no'), ['application_no' => ApplicationNoHelper::getAppNo('AdaApp')]));
         $adaApp->statuses()->sync($request->input('statuses', []));
 
         return (new AdaAppResource($adaApp))

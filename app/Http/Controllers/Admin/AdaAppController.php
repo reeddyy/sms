@@ -12,6 +12,7 @@ use App\Models\StatusApp;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Helpers\ApplicationNoHelper;
 
 class AdaAppController extends Controller
 {
@@ -39,7 +40,7 @@ class AdaAppController extends Controller
 
     public function store(StoreAdaAppRequest $request)
     {
-        $adaApp = AdaApp::create($request->all());
+        $adaApp = AdaApp::create(array_merge($request->except(['application_no']), ['application_no'=> ApplicationNoHelper::getAppNo('AdaApp')]));
         $adaApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.ada-apps.index');
@@ -58,7 +59,7 @@ class AdaAppController extends Controller
 
     public function update(UpdateAdaAppRequest $request, AdaApp $adaApp)
     {
-        $adaApp->update($request->all());
+        $adaApp->update($request->except(['application_no']));
         $adaApp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.ada-apps.index');
