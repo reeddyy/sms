@@ -25,6 +25,9 @@ class EnrolmentsQualification extends Model
     protected $dates = [
         'start_date',
         'end_date',
+        'due_date_1',
+        'due_date_2',
+        'due_date_3',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -42,6 +45,12 @@ class EnrolmentsQualification extends Model
         'total_fees',
         'amount_paid',
         'outstanding_balance',
+        'instalment_fee_1',
+        'due_date_1',
+        'instalment_fee_2',
+        'due_date_2',
+        'instalment_fee_3',
+        'due_date_3',
         'note',
         'created_at',
         'updated_at',
@@ -108,6 +117,36 @@ class EnrolmentsQualification extends Model
         return $this->belongsTo(Officer::class, 'officer_name_id');
     }
 
+    public function getDueDate1Attribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDueDate1Attribute($value)
+    {
+        $this->attributes['due_date_1'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getDueDate2Attribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDueDate2Attribute($value)
+    {
+        $this->attributes['due_date_2'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+
+    public function getDueDate3Attribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+    public function setDueDate3Attribute($value)
+    {
+        $this->attributes['due_date_3'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
+    }
+    
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

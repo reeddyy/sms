@@ -57,6 +57,18 @@ class UpdateEnrolmentsQualificationRequest extends FormRequest
             'company_sponsored' => [
                 'required',
             ],
+            'due_date_1' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'due_date_2' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
+            'due_date_3' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
         ];
     }
 }

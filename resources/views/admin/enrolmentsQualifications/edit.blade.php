@@ -212,6 +212,66 @@
                         </div>
                     </div>
                     <div class="form-group">
+                <label for="instalment_fee_1">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_1') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_1" id="instalment_fee_1" value="{{ old('instalment_fee_1', $enrolmentsQualification->instalment_fee_1) }}" step="0.01">
+                @if($errors->has('instalment_fee_1'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_1') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="due_date_1">{{ trans('cruds.enrolmentsQualification.fields.due_date_1') }}</label>
+                <input class="form-control date {{ $errors->has('due_date_1') ? 'is-invalid' : '' }}" type="text" name="due_date_1" id="due_date_1" value="{{ old('due_date_1', $enrolmentsQualification->due_date_1) }}">
+                @if($errors->has('due_date_1'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_date_1') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_1_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="instalment_fee_2">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_2') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_2" id="instalment_fee_2" value="{{ old('instalment_fee_2', $enrolmentsQualification->instalment_fee_2) }}" step="0.01">
+                @if($errors->has('instalment_fee_2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="due_date_2">{{ trans('cruds.enrolmentsQualification.fields.due_date_2') }}</label>
+                <input class="form-control date {{ $errors->has('due_date_2') ? 'is-invalid' : '' }}" type="text" name="due_date_2" id="due_date_2" value="{{ old('due_date_2', $enrolmentsQualification->due_date_2) }}">
+                @if($errors->has('due_date_2'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_date_2') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_2_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="instalment_fee_3">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3') }}</label>
+                <input class="form-control {{ $errors->has('instalment_fee_3') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_3" id="instalment_fee_3" value="{{ old('instalment_fee_3', $enrolmentsQualification->instalment_fee_3) }}" step="0.01">
+                @if($errors->has('instalment_fee_3'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('instalment_fee_3') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="due_date_3">{{ trans('cruds.enrolmentsQualification.fields.due_date_3') }}</label>
+                <input class="form-control date {{ $errors->has('due_date_3') ? 'is-invalid' : '' }}" type="text" name="due_date_3" id="due_date_3" value="{{ old('due_date_3', $enrolmentsQualification->due_date_3) }}">
+                @if($errors->has('due_date_3'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('due_date_3') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_3_helper') }}</span>
+            </div>
+                    <div class="form-group">
                         <label for="note">{{ trans('cruds.enrolmentsQualification.fields.note') }}</label>
                         <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note', $enrolmentsQualification->note) }}</textarea>
                         @if($errors->has('note'))

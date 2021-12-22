@@ -64,6 +64,24 @@
                             {{ trans('cruds.enrolmentsQualification.fields.outstanding_balance') }}
                         </th>
                         <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_1') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_2') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.enrolmentsQualification.fields.due_date_3') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.note') }}
                         </th>
                         <th>
@@ -122,6 +140,24 @@
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->outstanding_balance ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->instalment_fee_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->due_date_1 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->instalment_fee_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->due_date_2 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->instalment_fee_3 ?? '' }}
+                            </td>
+                            <td>
+                                {{ $enrolmentsQualification->due_date_3 ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->note ?? '' }}
