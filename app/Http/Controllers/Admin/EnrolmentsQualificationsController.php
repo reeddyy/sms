@@ -141,13 +141,31 @@ class EnrolmentsQualificationsController extends Controller
     public function getCourseFees($course_id)
     {
         abort_if(Gate::denies('enrolments_qualification_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
         $public_rate = 0;    
-        $course = Course::where('id', $course_id);
+        $course = Course::where('id', $course_id)->firstOrFail();
+
         if(!empty($course)){    
-            $public_rate = $course->pluck('public_rate')->first();
+            $public_rate = $course->public_rate;
+
+            $installment_fee_1st = $course->instalment_fee_1st;
+            $installment_fee_2nd = $course->instalment_fee_2nd;
+            $installment_fee_3rd = $course->instalment_fee_3rd;
+
+            $due_days_1 = $course->due_day_s_1st;
+            $due_days_2 = $course->due_day_s_2nd;
+            $due_days_3 = $course->due_day_s_3rd;
         }
 
-        return json_encode(array("course_fee" => $public_rate));
+        return json_encode(array(
+            "course_fee" => $public_rate,
+            "installment_fee_1" => $installment_fee_1st,
+            "installment_fee_2" => $installment_fee_2nd,
+            "installment_fee_3" => $installment_fee_3rd,
+            "due_days_1" => $due_days_1,
+            "due_days_2" => $due_days_2,
+            "due_days_3" => $due_days_3,
+        ));
 
 
     }

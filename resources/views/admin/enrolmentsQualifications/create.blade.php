@@ -67,7 +67,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="start_date">{{ trans('cruds.enrolmentsQualification.fields.start_date') }}</label>
-                                <input class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}" type="text" name="start_date" id="start_date" value="{{ old('start_date') }}">
+                                <input disabled class="form-control date {{ $errors->has('start_date') ? 'is-invalid' : '' }}" type="text" name="start_date" id="start_date" value="{{ old('start_date') }}">
                                 @if($errors->has('start_date'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('start_date') }}
@@ -213,66 +213,89 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                <label for="instalment_fee_1">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}</label>
-                <input class="form-control {{ $errors->has('instalment_fee_1') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_1" id="instalment_fee_1" value="{{ old('instalment_fee_1', '') }}" step="0.01">
-                @if($errors->has('instalment_fee_1'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('instalment_fee_1') }}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="instalment_fee_1">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}</label>
+                                <input class="form-control {{ $errors->has('instalment_fee_1') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_1" id="instalment_fee_1" value="{{ old('instalment_fee_1', '') }}" step="0.01">
+                                @if($errors->has('instalment_fee_1'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instalment_fee_1') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1_helper') }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="due_date_1">{{ trans('cruds.enrolmentsQualification.fields.due_date_1') }}</label>
+                                <input class="form-control date {{ $errors->has('due_date_1') ? 'is-invalid' : '' }}" type="text" name="due_date_1" id="due_date_1" value="{{ old('due_date_1') }}">
+                                @if($errors->has('due_date_1'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('due_date_1') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_1_helper') }}</span>
+                            </div>
+                        </div>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="due_date_1">{{ trans('cruds.enrolmentsQualification.fields.due_date_1') }}</label>
-                <input class="form-control date {{ $errors->has('due_date_1') ? 'is-invalid' : '' }}" type="text" name="due_date_1" id="due_date_1" value="{{ old('due_date_1') }}">
-                @if($errors->has('due_date_1'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('due_date_1') }}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="instalment_fee_2">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2') }}</label>
+                                <input class="form-control {{ $errors->has('instalment_fee_2') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_2" id="instalment_fee_2" value="{{ old('instalment_fee_2', '') }}" step="0.01">
+                                @if($errors->has('instalment_fee_2'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instalment_fee_2') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2_helper') }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="due_date_2">{{ trans('cruds.enrolmentsQualification.fields.due_date_2') }}</label>
+                                <input class="form-control date {{ $errors->has('due_date_2') ? 'is-invalid' : '' }}" type="text" name="due_date_2" id="due_date_2" value="{{ old('due_date_2') }}">
+                                @if($errors->has('due_date_2'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('due_date_2') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_2_helper') }}</span>
+                            </div>
+                        </div>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_1_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="instalment_fee_2">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2') }}</label>
-                <input class="form-control {{ $errors->has('instalment_fee_2') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_2" id="instalment_fee_2" value="{{ old('instalment_fee_2', '') }}" step="0.01">
-                @if($errors->has('instalment_fee_2'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('instalment_fee_2') }}
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="instalment_fee_3">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3') }}</label>
+                                <input class="form-control {{ $errors->has('instalment_fee_3') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_3" id="instalment_fee_3" value="{{ old('instalment_fee_3', '') }}" step="0.01">
+                                @if($errors->has('instalment_fee_3'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('instalment_fee_3') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3_helper') }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="due_date_3">{{ trans('cruds.enrolmentsQualification.fields.due_date_3') }}</label>
+                                <input class="form-control date {{ $errors->has('due_date_3') ? 'is-invalid' : '' }}" type="text" name="due_date_3" id="due_date_3" value="{{ old('due_date_3') }}">
+                                @if($errors->has('due_date_3'))
+                                    <div class="invalid-feedback">
+                                        {{ $errors->first('due_date_3') }}
+                                    </div>
+                                @endif
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_3_helper') }}</span>
+                            </div>
+                        </div>
                     </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_2_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="due_date_2">{{ trans('cruds.enrolmentsQualification.fields.due_date_2') }}</label>
-                <input class="form-control date {{ $errors->has('due_date_2') ? 'is-invalid' : '' }}" type="text" name="due_date_2" id="due_date_2" value="{{ old('due_date_2') }}">
-                @if($errors->has('due_date_2'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('due_date_2') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_2_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="instalment_fee_3">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3') }}</label>
-                <input class="form-control {{ $errors->has('instalment_fee_3') ? 'is-invalid' : '' }}" type="number" name="instalment_fee_3" id="instalment_fee_3" value="{{ old('instalment_fee_3', '') }}" step="0.01">
-                @if($errors->has('instalment_fee_3'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('instalment_fee_3') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.instalment_fee_3_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="due_date_3">{{ trans('cruds.enrolmentsQualification.fields.due_date_3') }}</label>
-                <input class="form-control date {{ $errors->has('due_date_3') ? 'is-invalid' : '' }}" type="text" name="due_date_3" id="due_date_3" value="{{ old('due_date_3') }}">
-                @if($errors->has('due_date_3'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('due_date_3') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.due_date_3_helper') }}</span>
-            </div>
+
+            
                     <div class="form-group">
                         <label for="note">{{ trans('cruds.enrolmentsQualification.fields.note') }}</label>
                         <textarea class="form-control {{ $errors->has('note') ? 'is-invalid' : '' }}" name="note" id="note">{{ old('note') }}</textarea>
@@ -382,25 +405,51 @@
 </div>
 
 <script type="text/javascript">
+
+    sessionStorage.removeItem('due_days_1');
+    sessionStorage.removeItem('due_days_2');
+    sessionStorage.removeItem('due_days_3');
+
     function updateCourseFees(){
+        
         var course_fee = 0;
+
+        var installment_fee_1 = 0;
+        var installment_fee_2 = 0;
+        var installment_fee_3 = 0;
+
+        var due_days_1 = 0;
+        var due_days_2 = 0;
+        var due_days_3 = 0;
 
         var course_title_id = $("#course_title_id").val();
         if(course_title_id){
             var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
             var courseurl = '{{ route("admin.enrolments-qualifications.getCourseFees", ":id") }}';
-            url = courseurl.replace(":id",course_title_id);
-            
+            url = courseurl.replace(":id",course_title_id);           
 
             $.ajax({
                 url: url,
                 type: 'get',
                 dataType: 'JSON',
                 success: function(data) {
+
                     if(data.course_fee){
                         course_fee = data.course_fee;
                     }
+
+                    installment_fee_1 = data.installment_fee_1;
+                    installment_fee_2 = data.installment_fee_2;
+                    installment_fee_3 = data.installment_fee_3;
+
+                    sessionStorage.setItem('due_days_1', data.due_days_1);
+                    sessionStorage.setItem('due_days_2', data.due_days_2);
+                    sessionStorage.setItem('due_days_3', data.due_days_3);
+                    
                     $("#total_fees").val(course_fee);
+                    $("#instalment_fee_1").val(installment_fee_1);
+                    $("#instalment_fee_2").val(installment_fee_2);
+                    $("#instalment_fee_3").val(installment_fee_3);
                     var amount_paid = $("#amount_paid").val();
                     var outstanding_balance = parseFloat(course_fee).toFixed(2) - parseFloat(amount_paid).toFixed(2);
                     $("#outstanding_balance").val(outstanding_balance.toFixed(2));
@@ -408,12 +457,13 @@
             });
         } else{
             $("#total_fees").val(0);
-
             var amount_paid = $("#amount_paid").val();
             var outstanding_balance = parseFloat(course_fee).toFixed(2) - parseFloat(amount_paid).toFixed(2);
             $("#outstanding_balance").val(outstanding_balance.toFixed(2));
 
         }
+
+        $('#start_date').prop('disabled', false);
     }
 
     function updateOutstanding(){
@@ -458,6 +508,61 @@
     }
     
 });
+
+$('#start_date').on('dp.change', function(e) {
+    var s_date = e.date.format(e.date._f);
+    var start_date = new Date(s_date);
+
+    if($('#course_title_id').val()){
+        due_date_1 = new Date(start_date);
+        due_date_2 = new Date(start_date);
+        due_date_3 = new Date(start_date);
+        
+        var due_days_1 = parseInt(sessionStorage.getItem('due_days_1'));
+        var due_days_2 = parseInt(sessionStorage.getItem('due_days_2'));
+        var due_days_3 = parseInt(sessionStorage.getItem('due_days_3'));
+
+        due_date_1.setDate(due_date_1.getDate() + due_days_1);
+        due_date_2.setDate(due_date_2.getDate() + due_days_2);
+        due_date_3.setDate(due_date_3.getDate() + due_days_3);
+
+        var d1 = due_date_1.getDate();
+        var m1 = due_date_1.getMonth() + 1;
+        var y1 = due_date_1.getFullYear();
+
+        var d2 = due_date_2.getDate();
+        var m2 = due_date_2.getMonth() + 1;
+        var y2 = due_date_2.getFullYear();
+
+        var d3 = due_date_3.getDate();
+        var m3 = due_date_3.getMonth() + 1;
+        var y3 = due_date_3.getFullYear();
+
+        if(m1 <= 9)
+        m1 = '0'+m1;
+        if(d1 <= 9)
+        d1 = '0'+d1;
+        var formatted_due_date_1 = d1 + '-' + m1 + '-' + y1;
+
+        if(m2 <= 9)
+        m2 = '0'+m2;
+        if(d2 <= 9)
+        d2 = '0'+ d2;
+        var formatted_due_date_2 = d2 + '-' + m2 + '-' + y2;
+
+        if(m3 <= 9)
+        m3 = '0'+m3;
+        if(d3 <= 9)
+        d3 = '0'+d3;
+        var formatted_due_date_3 = d3 + '-' + m3 + '-' + y3;
+
+        document.getElementById('due_date_1').value = formatted_due_date_1;
+        document.getElementById('due_date_2').value = formatted_due_date_2;
+        document.getElementById('due_date_3').value = formatted_due_date_3;
+    }    
+
+})
+
 </script>
 
 
