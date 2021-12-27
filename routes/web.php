@@ -46,6 +46,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Class Intakes
     Route::delete('class-intakes/destroy', 'ClassIntakesController@massDestroy')->name('class-intakes.massDestroy');
+    Route::post('class-intakes/parse-csv-import', 'ClassIntakesController@parseCsvImport')->name('class-intakes.parseCsvImport');
+    Route::post('class-intakes/process-csv-import', 'ClassIntakesController@processCsvImport')->name('class-intakes.processCsvImport');
     Route::resource('class-intakes', 'ClassIntakesController');
 
     // Courses
