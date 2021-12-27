@@ -65,6 +65,11 @@
                 {{ trans('cruds.programme.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#module_level_modules" role="tab" data-toggle="tab">
+                {{ trans('cruds.module.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="level_courses">
@@ -72,6 +77,9 @@
         </div>
         <div class="tab-pane" role="tabpanel" id="level_programmes">
             @includeIf('admin.levels.relationships.levelProgrammes', ['programmes' => $level->levelProgrammes])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="module_level_modules">
+            @includeIf('admin.levels.relationships.moduleLevelModules', ['modules' => $level->moduleLevelModules])
         </div>
     </div>
 </div>

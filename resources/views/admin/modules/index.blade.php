@@ -39,6 +39,9 @@
                             {{ trans('cruds.module.fields.module_code') }}
                         </th>
                         <th>
+                            {{ trans('cruds.module.fields.module_level') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.module.fields.module_status') }}
                         </th>
                         <th>
@@ -62,6 +65,14 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($levels as $key => $item)
+                                    <option value="{{ $item->level_name }}">{{ $item->level_name }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
                             <select class="search" strict="true">
@@ -95,6 +106,9 @@
                             </td>
                             <td>
                                 {{ $module->module_code ?? '' }}
+                            </td>
+                            <td>
+                                {{ $module->module_level->level_name ?? '' }}
                             </td>
                             <td>
                                 {{ App\Models\Module::MODULE_STATUS_RADIO[$module->module_status] ?? '' }}
