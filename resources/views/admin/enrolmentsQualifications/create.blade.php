@@ -542,19 +542,19 @@ $('#start_date').on('dp.change', function(e) {
         m1 = '0'+m1;
         if(d1 <= 9)
         d1 = '0'+d1;
-        var formatted_due_date_1 = d1 + '-' + m1 + '-' + y1;
+        var formatted_due_date_1 =  y1 + '-' + m1 + '-' + d1;
 
         if(m2 <= 9)
         m2 = '0'+m2;
         if(d2 <= 9)
         d2 = '0'+ d2;
-        var formatted_due_date_2 = d2 + '-' + m2 + '-' + y2;
+        var formatted_due_date_2 = y2 + '-' + m2 + '-' + d2;
 
         if(m3 <= 9)
         m3 = '0'+m3;
         if(d3 <= 9)
         d3 = '0'+d3;
-        var formatted_due_date_3 = d3 + '-' + m3 + '-' + y3;
+        var formatted_due_date_3 = y3  + '-' + m3 + '-' + d3;
 
         document.getElementById('due_date_1').value = formatted_due_date_1;
         document.getElementById('due_date_2').value = formatted_due_date_2;
