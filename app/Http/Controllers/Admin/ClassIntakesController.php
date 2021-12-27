@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyClassIntakeRequest;
 use App\Http\Requests\StoreClassIntakeRequest;
 use App\Http\Requests\UpdateClassIntakeRequest;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class ClassIntakesController extends Controller
 {
+    use CsvImportTrait;
+    
     public function index()
     {
         abort_if(Gate::denies('class_intake_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');

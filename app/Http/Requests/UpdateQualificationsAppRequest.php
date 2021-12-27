@@ -127,12 +127,6 @@ class UpdateQualificationsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_1' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'company_name_2' => [
                 'string',
                 'nullable',
@@ -141,12 +135,6 @@ class UpdateQualificationsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_2' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'company_name_3' => [
                 'string',
                 'nullable',
@@ -154,12 +142,6 @@ class UpdateQualificationsAppRequest extends FormRequest
             'designation_3' => [
                 'string',
                 'nullable',
-            ],
-            'duration_3' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'qualification_1' => [
                 'string',

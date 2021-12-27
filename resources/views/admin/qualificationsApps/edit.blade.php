@@ -300,7 +300,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_1">{{ trans('cruds.qualificationsApp.fields.duration_1') }}</label>
-                <input class="form-control {{ $errors->has('duration_1') ? 'is-invalid' : '' }}" type="number" name="duration_1" id="duration_1" value="{{ old('duration_1', $qualificationsApp->duration_1) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_1') ? 'is-invalid' : '' }}" type="number" name="duration_1" id="duration_1" value="{{ old('duration_1', $qualificationsApp->duration_1) }}" step="0.1">
                 @if($errors->has('duration_1'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_1') }}
@@ -330,7 +330,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_2">{{ trans('cruds.qualificationsApp.fields.duration_2') }}</label>
-                <input class="form-control {{ $errors->has('duration_2') ? 'is-invalid' : '' }}" type="number" name="duration_2" id="duration_2" value="{{ old('duration_2', $qualificationsApp->duration_2) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_2') ? 'is-invalid' : '' }}" type="number" name="duration_2" id="duration_2" value="{{ old('duration_2', $qualificationsApp->duration_2) }}" step="0.1">
                 @if($errors->has('duration_2'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_2') }}
@@ -360,7 +360,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_3">{{ trans('cruds.qualificationsApp.fields.duration_3') }}</label>
-                <input class="form-control {{ $errors->has('duration_3') ? 'is-invalid' : '' }}" type="number" name="duration_3" id="duration_3" value="{{ old('duration_3', $qualificationsApp->duration_3) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_3') ? 'is-invalid' : '' }}" type="number" name="duration_3" id="duration_3" value="{{ old('duration_3', $qualificationsApp->duration_3) }}" step="0.1">
                 @if($errors->has('duration_3'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_3') }}
