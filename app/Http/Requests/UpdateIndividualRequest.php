@@ -73,12 +73,6 @@ class UpdateIndividualRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_of_year_s_1' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'company_name_2' => [
                 'string',
                 'nullable',
@@ -87,12 +81,6 @@ class UpdateIndividualRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_of_year_s_2' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'company_name_3' => [
                 'string',
                 'nullable',
@@ -100,19 +88,7 @@ class UpdateIndividualRequest extends FormRequest
             'job_designation_3' => [
                 'string',
                 'nullable',
-            ],
-            'duration_of_year_s_3' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
-            'total_year_s_related_work_exp' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
+            ], 
             'qual_title_1' => [
                 'string',
                 'nullable',
