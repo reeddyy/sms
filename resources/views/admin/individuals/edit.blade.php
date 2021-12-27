@@ -187,7 +187,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_of_year_s_1">{{ trans('cruds.individual.fields.duration_of_year_s_1') }}</label>
-                <input onkeyup="updateRelevantExp()" class="form-control {{ $errors->has('duration_of_year_s_1') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_1" id="duration_of_year_s_1" value="{{ old('duration_of_year_s_1', $individual->duration_of_year_s_1) }}" step="1">
+                <input onkeyup="updateRelevantExp()" class="form-control {{ $errors->has('duration_of_year_s_1') ? 'is-invalid' : '' }}" type="number" name="duration_of_year_s_1" id="duration_of_year_s_1" value="{{ old('duration_of_year_s_1', $individual->duration_of_year_s_1) }}" step="0.1">
                 @if($errors->has('duration_of_year_s_1'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_of_year_s_1') }}
