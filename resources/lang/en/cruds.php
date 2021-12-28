@@ -1615,7 +1615,7 @@ return [
             'id_no_helper'                   => ' ',
             'gender'                         => 'Gender',
             'gender_helper'                  => ' ',
-            'dob'                            => 'Dob',
+            'dob'                            => 'DOB',
             'dob_helper'                     => ' ',
             'nationality'                    => 'Nationality',
             'nationality_helper'             => ' ',
