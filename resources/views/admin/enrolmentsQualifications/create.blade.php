@@ -556,9 +556,9 @@ $('#start_date').on('dp.change', function(e) {
         d3 = '0'+d3;
         var formatted_due_date_3 = y3  + '-' + m3 + '-' + d3;
 
-        document.getElementById('due_date_1').value = formatted_due_date_1;
-        document.getElementById('due_date_2').value = formatted_due_date_2;
-        document.getElementById('due_date_3').value = formatted_due_date_3;
+        document.getElementById('due_date_1').value = (formatted_due_date_1!="NaN-NaN-NaN") ? formatted_due_date_1 : '';
+        document.getElementById('due_date_2').value = (formatted_due_date_2!="NaN-NaN-NaN") ? formatted_due_date_2 : '';
+        document.getElementById('due_date_3').value = (formatted_due_date_3!="NaN-NaN-NaN") ? formatted_due_date_3 : '';
     }    
 
 })
