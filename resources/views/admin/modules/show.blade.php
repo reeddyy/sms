@@ -49,6 +49,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.module.fields.module_level') }}
+                        </th>
+                        <td>
+                            {{ $module->module_level->level_name ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.module.fields.module_status') }}
                         </th>
                         <td>

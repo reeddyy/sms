@@ -40,6 +40,11 @@ class Level extends Model
         return $this->hasMany(Programme::class, 'level_id', 'id');
     }
 
+    public function moduleLevelModules()
+    {
+        return $this->hasMany(Module::class, 'module_level_id', 'id');
+    }
+    
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');

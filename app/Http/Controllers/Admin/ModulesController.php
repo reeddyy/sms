@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\CsvImportTrait;
 use App\Http\Requests\MassDestroyModuleRequest;
 use App\Http\Requests\StoreModuleRequest;
+use App\Models\Level;
 use App\Http\Requests\UpdateModuleRequest;
 use App\Models\Module;
 use Gate;
@@ -20,16 +21,20 @@ class ModulesController extends Controller
     {
         abort_if(Gate::denies('module_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $modules = Module::all();
+        $modules = Module::with(['module_level'])->get();
 
-        return view('admin.modules.index', compact('modules'));
+        $levels = Level::get();
+
+        return view('admin.modules.index', compact('levels', 'modules'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('module_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.modules.create');
+        $module_levels = Level::pluck('level_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        return view('admin.modules.create', compact('module_levels'));
     }
 
     public function store(StoreModuleRequest $request)
@@ -43,7 +48,11 @@ class ModulesController extends Controller
     {
         abort_if(Gate::denies('module_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.modules.edit', compact('module'));
+        $module_levels = Level::pluck('level_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $module->load('module_level');
+
+        return view('admin.modules.edit', compact('module', 'module_levels'));
     }
 
     public function update(UpdateModuleRequest $request, Module $module)
@@ -57,7 +66,7 @@ class ModulesController extends Controller
     {
         abort_if(Gate::denies('module_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $module->load('moduleSCourses');
+        $module->load('module_level', 'moduleSCourses');
 
         return view('admin.modules.show', compact('module'));
     }

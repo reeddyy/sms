@@ -40,6 +40,20 @@
                 <span class="help-block">{{ trans('cruds.module.fields.module_code_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="module_level_id">{{ trans('cruds.module.fields.module_level') }}</label>
+                <select class="form-control select2 {{ $errors->has('module_level') ? 'is-invalid' : '' }}" name="module_level_id" id="module_level_id">
+                    @foreach($module_levels as $id => $entry)
+                        <option value="{{ $id }}" {{ old('module_level_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('module_level'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('module_level') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.module.fields.module_level_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required">{{ trans('cruds.module.fields.module_status') }}</label>
                 @foreach(App\Models\Module::MODULE_STATUS_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('module_status') ? 'is-invalid' : '' }}">

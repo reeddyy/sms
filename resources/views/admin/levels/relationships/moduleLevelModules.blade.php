@@ -1,8 +1,8 @@
-@can('digital_module_create')
+@can('module_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.digital-modules.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.digitalModule.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.modules.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.module.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,37 +10,37 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.digitalModule.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.module.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-levelDigitalModules">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-moduleLevelModules">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.id') }}
+                            {{ trans('cruds.module.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.module_name') }}
+                            {{ trans('cruds.module.fields.module_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.module_abbr') }}
+                            {{ trans('cruds.module.fields.module_abbr') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.module_code') }}
+                            {{ trans('cruds.module.fields.module_code') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.level') }}
+                            {{ trans('cruds.module.fields.module_level') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.module_status') }}
+                            {{ trans('cruds.module.fields.module_status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.digitalModule.fields.note') }}
+                            {{ trans('cruds.module.fields.note') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,47 +48,47 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($digitalModules as $key => $digitalModule)
-                        <tr data-entry-id="{{ $digitalModule->id }}">
+                    @foreach($modules as $key => $module)
+                        <tr data-entry-id="{{ $module->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $digitalModule->id ?? '' }}
+                                {{ $module->id ?? '' }}
                             </td>
                             <td>
-                                {{ $digitalModule->module_name ?? '' }}
+                                {{ $module->module_name ?? '' }}
                             </td>
                             <td>
-                                {{ $digitalModule->module_abbr ?? '' }}
+                                {{ $module->module_abbr ?? '' }}
                             </td>
                             <td>
-                                {{ $digitalModule->module_code ?? '' }}
+                                {{ $module->module_code ?? '' }}
                             </td>
                             <td>
-                                {{ $digitalModule->level->level_name ?? '' }}
+                                {{ $module->module_level->level_name ?? '' }}
                             </td>
                             <td>
-                                {{ App\Models\DigitalModule::MODULE_STATUS_RADIO[$digitalModule->module_status] ?? '' }}
+                                {{ App\Models\Module::MODULE_STATUS_RADIO[$module->module_status] ?? '' }}
                             </td>
                             <td>
-                                {{ $digitalModule->note ?? '' }}
+                                {{ $module->note ?? '' }}
                             </td>
                             <td>
-                                @can('digital_module_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.digital-modules.show', $digitalModule->id) }}">
+                                @can('module_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.modules.show', $module->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('digital_module_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.digital-modules.edit', $digitalModule->id) }}">
+                                @can('module_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.modules.edit', $module->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('digital_module_delete')
-                                    <form action="{{ route('admin.digital-modules.destroy', $digitalModule->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('module_delete')
+                                    <form action="{{ route('admin.modules.destroy', $module->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -110,11 +110,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('digital_module_delete')
+@can('module_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.digital-modules.massDestroy') }}",
+    url: "{{ route('admin.modules.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -145,7 +145,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-levelDigitalModules:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-moduleLevelModules:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

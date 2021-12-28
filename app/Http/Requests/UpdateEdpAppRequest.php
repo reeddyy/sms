@@ -98,12 +98,6 @@ class UpdateEdpAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_1' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'contact_no_1' => [
                 'string',
                 'nullable',
@@ -127,12 +121,6 @@ class UpdateEdpAppRequest extends FormRequest
             'designation_2' => [
                 'string',
                 'nullable',
-            ],
-            'duration_2' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'contact_no_2' => [
                 'string',
@@ -158,12 +146,6 @@ class UpdateEdpAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_3' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'contact_no_3' => [
                 'string',
                 'nullable',
@@ -188,12 +170,6 @@ class UpdateEdpAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration_4' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'contact_no_4' => [
                 'string',
                 'nullable',
@@ -217,12 +193,6 @@ class UpdateEdpAppRequest extends FormRequest
             'designation_5' => [
                 'string',
                 'nullable',
-            ],
-            'duration_5' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'contact_no_5' => [
                 'string',

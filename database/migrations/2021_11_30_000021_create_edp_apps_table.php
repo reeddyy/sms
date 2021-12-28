@@ -29,7 +29,7 @@ class CreateEdpAppsTable extends Migration
             $table->string('gender_1')->nullable();
             $table->string('id_no_1')->nullable();
             $table->string('designation_1')->nullable();
-            $table->integer('duration_1')->nullable();
+            $table->decimal('duration_1', 15, 1)->nullable();
             $table->string('contact_no_1')->nullable();
             $table->string('email_1')->nullable();
             $table->string('special_dietary_1')->nullable();
@@ -37,7 +37,7 @@ class CreateEdpAppsTable extends Migration
             $table->string('gender_2')->nullable();
             $table->string('id_no_2')->nullable();
             $table->string('designation_2')->nullable();
-            $table->integer('duration_2')->nullable();
+            $table->decimal('duration_2', 15, 1)->nullable();
             $table->string('contact_no_2')->nullable();
             $table->string('email_2')->nullable();
             $table->string('special_dietary_2')->nullable();
@@ -45,7 +45,7 @@ class CreateEdpAppsTable extends Migration
             $table->string('gender_3')->nullable();
             $table->string('id_no_3')->nullable();
             $table->string('designation_3')->nullable();
-            $table->integer('duration_3')->nullable();
+            $table->decimal('duration_3', 15, 1)->nullable();
             $table->string('contact_no_3')->nullable();
             $table->string('email_3')->nullable();
             $table->string('special_dietary_3')->nullable();
@@ -53,7 +53,7 @@ class CreateEdpAppsTable extends Migration
             $table->string('gender_4')->nullable();
             $table->string('id_no_4')->nullable();
             $table->string('designation_4')->nullable();
-            $table->integer('duration_4')->nullable();
+            $table->decimal('duration_4', 15, 1)->nullable();
             $table->string('contact_no_4')->nullable();
             $table->string('email_4')->nullable();
             $table->string('special_dietary_4')->nullable();
@@ -61,7 +61,7 @@ class CreateEdpAppsTable extends Migration
             $table->string('gender_5')->nullable();
             $table->string('id_no_5')->nullable();
             $table->string('designation_5')->nullable();
-            $table->integer('duration_5')->nullable();
+            $table->decimal('duration_5', 15, 1)->nullable();
             $table->string('contact_no_5')->nullable();
             $table->string('email_5')->nullable();
             $table->string('special_dietary_5')->nullable();
