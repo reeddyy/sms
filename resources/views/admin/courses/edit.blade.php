@@ -32,7 +32,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_month">{{ trans('cruds.course.fields.duration_month') }}</label>
-                <input class="form-control {{ $errors->has('duration_month') ? 'is-invalid' : '' }}" type="number" name="duration_month" id="duration_month" value="{{ old('duration_month', $course->duration_month) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_month') ? 'is-invalid' : '' }}" type="number" name="duration_month" id="duration_month" value="{{ old('duration_month', $course->duration_month) }}" step="0.1">
                 @if($errors->has('duration_month'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_month') }}
