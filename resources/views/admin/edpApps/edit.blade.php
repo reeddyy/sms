@@ -220,7 +220,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_1">{{ trans('cruds.edpApp.fields.duration_1') }}</label>
-                <input class="form-control {{ $errors->has('duration_1') ? 'is-invalid' : '' }}" type="number" name="duration_1" id="duration_1" value="{{ old('duration_1', $edpApp->duration_1) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_1') ? 'is-invalid' : '' }}" type="number" name="duration_1" id="duration_1" value="{{ old('duration_1', $edpApp->duration_1) }}" step="0.1">
                 @if($errors->has('duration_1'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_1') }}
@@ -300,7 +300,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_2">{{ trans('cruds.edpApp.fields.duration_2') }}</label>
-                <input class="form-control {{ $errors->has('duration_2') ? 'is-invalid' : '' }}" type="number" name="duration_2" id="duration_2" value="{{ old('duration_2', $edpApp->duration_2) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_2') ? 'is-invalid' : '' }}" type="number" name="duration_2" id="duration_2" value="{{ old('duration_2', $edpApp->duration_2) }}" step="0.1">
                 @if($errors->has('duration_2'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_2') }}
@@ -380,7 +380,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_3">{{ trans('cruds.edpApp.fields.duration_3') }}</label>
-                <input class="form-control {{ $errors->has('duration_3') ? 'is-invalid' : '' }}" type="number" name="duration_3" id="duration_3" value="{{ old('duration_3', $edpApp->duration_3) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_3') ? 'is-invalid' : '' }}" type="number" name="duration_3" id="duration_3" value="{{ old('duration_3', $edpApp->duration_3) }}" step="0.1">
                 @if($errors->has('duration_3'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_3') }}
@@ -460,7 +460,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_4">{{ trans('cruds.edpApp.fields.duration_4') }}</label>
-                <input class="form-control {{ $errors->has('duration_4') ? 'is-invalid' : '' }}" type="number" name="duration_4" id="duration_4" value="{{ old('duration_4', $edpApp->duration_4) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_4') ? 'is-invalid' : '' }}" type="number" name="duration_4" id="duration_4" value="{{ old('duration_4', $edpApp->duration_4) }}" step="0.1">
                 @if($errors->has('duration_4'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_4') }}
@@ -540,7 +540,7 @@
             </div>
             <div class="form-group">
                 <label for="duration_5">{{ trans('cruds.edpApp.fields.duration_5') }}</label>
-                <input class="form-control {{ $errors->has('duration_5') ? 'is-invalid' : '' }}" type="number" name="duration_5" id="duration_5" value="{{ old('duration_5', $edpApp->duration_5) }}" step="1">
+                <input class="form-control {{ $errors->has('duration_5') ? 'is-invalid' : '' }}" type="number" name="duration_5" id="duration_5" value="{{ old('duration_5', $edpApp->duration_5) }}" step="0.1">
                 @if($errors->has('duration_5'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration_5') }}

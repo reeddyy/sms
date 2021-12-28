@@ -89,12 +89,6 @@ class StoreIndividualsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
-            'duration' => [
-                'nullable',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
-            ],
             'job_function' => [
                 'string',
                 'nullable',

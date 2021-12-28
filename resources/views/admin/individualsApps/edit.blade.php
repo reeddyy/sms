@@ -200,7 +200,7 @@
             </div>
             <div class="form-group">
                 <label for="duration">{{ trans('cruds.individualsApp.fields.duration') }}</label>
-                <input class="form-control {{ $errors->has('duration') ? 'is-invalid' : '' }}" type="number" name="duration" id="duration" value="{{ old('duration', $individualsApp->duration) }}" step="1">
+                <input class="form-control {{ $errors->has('duration') ? 'is-invalid' : '' }}" type="number" name="duration" id="duration" value="{{ old('duration', $individualsApp->duration) }}" step="0.1">
                 @if($errors->has('duration'))
                     <div class="invalid-feedback">
                         {{ $errors->first('duration') }}

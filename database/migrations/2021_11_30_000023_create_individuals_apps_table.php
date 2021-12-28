@@ -27,7 +27,7 @@ class CreateIndividualsAppsTable extends Migration
             $table->string('hear_about_us')->nullable();
             $table->string('company_name')->nullable();
             $table->string('designation')->nullable();
-            $table->integer('duration')->nullable();
+            $table->decimal('duration', 15, 1)->nullable();
             $table->string('job_function')->nullable();
             $table->string('industry_type')->nullable();
             $table->string('company_address')->nullable();
