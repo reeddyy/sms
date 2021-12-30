@@ -35,6 +35,9 @@
                             {{ trans('cruds.enrolmentsQualification.fields.course_title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.course.fields.duration_month') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.start_date') }}
                         </th>
                         <th>
@@ -50,6 +53,9 @@
                             {{ trans('cruds.enrolmentsQualification.fields.student_name') }}
                         </th>
                         <th>
+                            {{ trans('cruds.individual.fields.id_no') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.enrolmentsQualification.fields.company_sponsored') }}
                         </th>
                         <th>
@@ -63,6 +69,9 @@
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.outstanding_balance') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.course.fields.no_of_instalment') }}
                         </th>
                         <th>
                             {{ trans('cruds.enrolmentsQualification.fields.instalment_fee_1') }}
@@ -119,7 +128,10 @@
                                 @endforeach
                             </select>
                         </td>
+
                         <td>
+                        </td>
+                         <td>
                         </td>
                         <td>
                         </td>
@@ -143,6 +155,8 @@
                             </select>
                         </td>
                         <td>
+                        </td>
+                        <td>
                             <select class="search" strict="true">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach(App\Models\EnrolmentsQualification::COMPANY_SPONSORED_RADIO as $key => $item)
@@ -157,6 +171,9 @@
                                     <option value="{{ $item->officer_name }}">{{ $item->officer_name }}</option>
                                 @endforeach
                             </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -209,6 +226,9 @@
                             <td>
                                 {{ $enrolmentsQualification->course_title->course_title ?? '' }}
                             </td>
+                             <td>
+                                {{ $enrolmentsQualification->course_title->duration_month ?? '' }}
+                            </td>
                             <td>
                                 {{ $enrolmentsQualification->start_date ?? '' }}
                             </td>
@@ -226,6 +246,9 @@
                             <td>
                                 {{ $enrolmentsQualification->student_name->name ?? '' }}
                             </td>
+                             <td>
+                                {{ $enrolmentsQualification->student_name->id_no ?? '' }}
+                            </td>
                             <td>
                                 {{ App\Models\EnrolmentsQualification::COMPANY_SPONSORED_RADIO[$enrolmentsQualification->company_sponsored] ?? '' }}
                             </td>
@@ -241,6 +264,9 @@
                             <td> 
                                 {{  number_format((float)($enrolmentsQualification->total_fees - $enrolmentsQualification->amount_paid), 2, '.', '');
                                  }}
+                            </td>
+                             <td>
+                                {{ $enrolmentsQualification->course_title->no_of_instalment ?? '' }}
                             </td>
                             <td>
                                 {{ $enrolmentsQualification->instalment_fee_1 ?? '' }}
