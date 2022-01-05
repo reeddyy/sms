@@ -15,24 +15,6 @@
     </div>
 
     <div class="card-body">
-        <form action="{{ route('admin.enrolments-qualifications.index') }}" method="POST">
-            @csrf
-            <div class="row">
-                <div class="col-md-2">                     
-                    <label for="course_title_search">Select Courses:</label>
-                </div>
-                <div class="col-md-6">
-                    <select class="select2 search" name="course_title_search[]" id="course_title_search" multiple="multiple">
-                        @foreach($courses as $key => $item)
-                            <option value="{{ $item->id }}">{{ $item->course_title }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-4">
-                    <input type="submit" class="btn btn-primary" value="Filter">
-                </div>
-            </div>
-        </form>
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-EnrolmentsQualification">
                 <thead>
@@ -139,15 +121,19 @@
                             </select>
                         </td>
                         <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($courses as $key => $item)
+                                    <option value="{{ $item->course_title }}">{{ $item->course_title }}</option>
+                                @endforeach
+                            </select>
                         </td>
 
                         <td>
-                            <input class="search" type="text" placeholder="YYYY-MM-DD">
                         </td>
                          <td>
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="YYYY-MM-DD">
                         </td>
                         <td>
                             <select class="search">
@@ -404,18 +390,6 @@ table.on('column-visibility.dt', function(e, settings, column, state) {
           visibleColumnsIndexes.push(colIdx);
       });
   })
-
-    
-    var vals = @json($selected_courses);
-
-    var s2 = $("#course_title_search").select2();
-
-    vals.forEach(function(e){
-    if(!s2.find('option:contains(' + e + ')').length) 
-    s2.append($('<option>').text());
-    });
-    s2.val(vals).trigger("change");
-    
 })
 
 </script>

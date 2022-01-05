@@ -91,7 +91,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Enrolments Qualifications
     Route::delete('enrolments-qualifications/destroy', 'EnrolmentsQualificationsController@massDestroy')->name('enrolments-qualifications.massDestroy');
     Route::resource('enrolments-qualifications', 'EnrolmentsQualificationsController');
-    Route::post('enrolments-qualifications', 'EnrolmentsQualificationsController@index');
     Route::get('enrolments-qualifications/course-fees/{id}', 'EnrolmentsQualificationsController@getCourseFees')->name('enrolments-qualifications.getCourseFees');
 
     // Payment Sources

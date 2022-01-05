@@ -19,17 +19,11 @@ use Symfony\Component\HttpFoundation\Response;
 
 class EnrolmentsQualificationsController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         abort_if(Gate::denies('enrolments_qualification_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $selected_courses = '';
-        if($request->course_title_search){
-            $selected_courses = $request->course_title_search;
-            $enrolmentsQualifications = EnrolmentsQualification::whereIn('course_title_id', $selected_courses)->with(['statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
-        }else{
-            $enrolmentsQualifications = EnrolmentsQualification::with(['statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
-        }
+        $enrolmentsQualifications = EnrolmentsQualification::with(['statuses', 'application_no', 'course_title', 'classes', 'student_name', 'officer_name'])->get();
 
         $status_qualifications = StatusQualification::get();
 
@@ -43,7 +37,7 @@ class EnrolmentsQualificationsController extends Controller
 
         $officers = Officer::get();
 
-        return view('admin.enrolmentsQualifications.index', compact('selected_courses', 'enrolmentsQualifications', 'status_qualifications', 'qualifications_apps', 'courses', 'class_intakes', 'individuals', 'officers'));
+        return view('admin.enrolmentsQualifications.index', compact('enrolmentsQualifications', 'status_qualifications', 'qualifications_apps', 'courses', 'class_intakes', 'individuals', 'officers'));
     }
 
     public function create()
