@@ -490,6 +490,7 @@
                     statuses += value.status_name + " ";
                 });                
                 $('#status').html(statuses);    
+                $('#enrolment_no').val(response.application_no);
                 $('#application_no').html(response.application_no);    
                 $('#sponsorship').html(response.sponsorship);    
                 $('#course').html(response.course);    
