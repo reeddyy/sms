@@ -43,7 +43,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="edp_title_id">{{ trans('cruds.admissionsEdp.fields.edp_title') }}</label>
-                <select class="form-control select2 {{ $errors->has('edp_title') ? 'is-invalid' : '' }}" name="edp_title_id" id="edp_title_id" required>
+                <select onchange="updateEDPFees()" class="form-control select2 {{ $errors->has('edp_title') ? 'is-invalid' : '' }}" name="edp_title_id" id="edp_title_id" required>
                     @foreach($edp_titles as $id => $entry)
                         <option value="{{ $id }}" {{ old('edp_title_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
@@ -158,7 +158,7 @@
             </div>
             <div class="form-group">
                 <label for="total_fees">{{ trans('cruds.admissionsEdp.fields.total_fees') }}</label>
-                <input class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', '0') }}" step="0.01">
+                <input onkeyup="updateOutstanding()" class="form-control {{ $errors->has('total_fees') ? 'is-invalid' : '' }}" type="number" name="total_fees" id="total_fees" value="{{ old('total_fees', '0') }}" step="0.01">
                 @if($errors->has('total_fees'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_fees') }}
@@ -168,7 +168,7 @@
             </div>
             <div class="form-group">
                 <label for="amount_paid">{{ trans('cruds.admissionsEdp.fields.amount_paid') }}</label>
-                <input class="form-control {{ $errors->has('amount_paid') ? 'is-invalid' : '' }}" type="number" name="amount_paid" id="amount_paid" value="{{ old('amount_paid', '0') }}" step="0.01">
+                <input readonly class="form-control {{ $errors->has('amount_paid') ? 'is-invalid' : '' }}" type="number" name="amount_paid" id="amount_paid" value="{{ old('amount_paid', '0') }}" step="0.01">
                 @if($errors->has('amount_paid'))
                     <div class="invalid-feedback">
                         {{ $errors->first('amount_paid') }}
@@ -204,7 +204,54 @@
         </form>
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $('#application_no_id').change(function(){
+        var application_no = $("#application_no_id option:selected").text();
+        $("#admission_no").val(application_no);
+    });
+    function updateEDPFees(){
+        
+        var programme_fee = 0;
 
+        var edp_title_id = $("#edp_title_id").val();
+        if(edp_title_id){
+            var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+            var programmeurl = '{{ route("admin.admissions-edps.getEDPFees", ":id") }}';
+            url = programmeurl.replace(":id",edp_title_id);           
 
+            $.ajax({
+                url: url,
+                type: 'get',
+                dataType: 'JSON',
+                success: function(data) {
+                    if(data.edp_fees){
+                        edp_fees = data.edp_fees;
+                    }
+                    
+                    $("#total_fees").val(edp_fees);
+                    var amount_paid = $("#amount_paid").val();
+                    var outstanding_balance = parseFloat(edp_fees).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+                    $("#outstanding_balance").val(outstanding_balance.toFixed(2));
+                }
+            });
+        } else{
+            $("#total_fees").val(0);
+            var amount_paid = $("#amount_paid").val();
+            var outstanding_balance = parseFloat(edp_fees).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+            $("#outstanding_balance").val(outstanding_balance.toFixed(2));
 
+        }
+
+        $('#start_date').prop('disabled', false);
+    }
+
+    function updateOutstanding(){
+        var edp_fees = $("#total_fees").val();
+        var amount_paid = $("#amount_paid").val();
+        var outstanding_balance = parseFloat(edp_fees).toFixed(2) - parseFloat(amount_paid).toFixed(2);
+        $("#outstanding_balance").val(outstanding_balance.toFixed(2));
+    }
+</script>
 @endsection

@@ -127,4 +127,22 @@ class AdmissionsEdpController extends Controller
 
         return response(null, Response::HTTP_NO_CONTENT);
     }
+
+    public function getEDPFees($edp_title_id)
+    {
+        abort_if(Gate::denies('admissions_edp_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $public_rate = 0;    
+        $edp = Programme::where('id', $edp_title_id)->firstOrFail();
+
+        if(!empty($edp)){    
+            $public_rate = $edp->public_rate;
+        }
+
+        return json_encode(array(
+            "edp_fees" => $public_rate
+        ));
+
+
+    }
 }
