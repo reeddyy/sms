@@ -86,11 +86,15 @@ class PaymentsQualificationsController extends Controller
         // update paid amounts sum for the enrolment as per enrolment id
         $enrolment_no = (isset($request->enrolment_no_id)) ? $request->enrolment_no_id : '';
         if($enrolment_no && $enrolment_no!=''){
+
             $paid_amount = PaymentsQualification::where('enrolment_no_id', $enrolment_no)->sum('payment_amount');
 
             $enrolmentQualification = EnrolmentsQualification::find($enrolment_no);
+
+            $enrolmentQualification->amount_paid = $paid_amount;
             
-            $outstanding_balance = round($enrolmentQualification->total_fees, 2) - round($paid_amount,2);
+            $outstanding_balance = round($enrolmentQualification->total_fees, 2) - round($paid_amount, 2);
+
             $enrolmentQualification->outstanding_balance = round($outstanding_balance, 2);
 
             $enrolmentQualification->save();
