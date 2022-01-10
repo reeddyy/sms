@@ -178,7 +178,7 @@
             </div>
             <div class="form-group">
                 <label for="outstanding_balance">{{ trans('cruds.admissionsEdp.fields.outstanding_balance') }}</label>
-                <input class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', '0') }}" step="0.01">
+                <input readonly class="form-control {{ $errors->has('outstanding_balance') ? 'is-invalid' : '' }}" type="number" name="outstanding_balance" id="outstanding_balance" value="{{ old('outstanding_balance', '0') }}" step="0.01">
                 @if($errors->has('outstanding_balance'))
                     <div class="invalid-feedback">
                         {{ $errors->first('outstanding_balance') }}

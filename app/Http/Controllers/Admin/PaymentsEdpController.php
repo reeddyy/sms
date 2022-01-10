@@ -87,8 +87,11 @@ class PaymentsEdpController extends Controller
             $paid_amount = PaymentsEdp::where('admission_no_id', $admission_no)->sum('payment_amount');
 
             $admissionsEdp = AdmissionsEdp::find($admission_no);
+
+            $admissionsEdp->amount_paid = $paid_amount;
             
             $outstanding_balance = round($admissionsEdp->total_fees, 2) - round($paid_amount,2);
+            
             $admissionsEdp->outstanding_balance = round($outstanding_balance, 2);
 
             $admissionsEdp->save();
