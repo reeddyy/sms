@@ -32,7 +32,7 @@ class PaymentsEdpController extends Controller
     {
         abort_if(Gate::denies('payments_edp_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_nos = AdmissionsEdp::pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $admission_nos = AdmissionsEdp::where('outstanding_balance', '!=', 0)->pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -43,6 +43,24 @@ class PaymentsEdpController extends Controller
     {
         $paymentsEdp = PaymentsEdp::create($request->all());
 
+        $admission_no = (isset($request->admission_no_id)) ? $request->admission_no_id : '';
+
+        if($admission_no && $admission_no!=''){
+            
+            $paid_amount = PaymentsEdp::where('deleted_at', null)->where('admission_no_id', $admission_no)->sum('payment_amount');
+
+            $admissionsEdp = AdmissionsEdp::find($admission_no);
+
+            $admissionsEdp->amount_paid = $paid_amount;
+
+            $outstanding_balance = round($admissionsEdp->total_fees, 2) - round($paid_amount,2);
+
+            $admissionsEdp->outstanding_balance = round($outstanding_balance, 2);
+
+            $admissionsEdp->save();
+
+        }
+
         return redirect()->route('admin.payments-edps.index');
     }
 
@@ -50,7 +68,7 @@ class PaymentsEdpController extends Controller
     {
         abort_if(Gate::denies('payments_edp_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_nos = AdmissionsEdp::pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $admission_nos = AdmissionsEdp::where('outstanding_balance', '=', 0)->orWhere('id', $paymentsEdp->admission_no_id)->pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -62,6 +80,22 @@ class PaymentsEdpController extends Controller
     public function update(UpdatePaymentsEdpRequest $request, PaymentsEdp $paymentsEdp)
     {
         $paymentsEdp->update($request->all());
+
+        // update paid amounts sum for the enrolment as per enrolment id
+        $admission_no = (isset($request->admission_no_id)) ? $request->admission_no_id : '';
+        if($admission_no && $admission_no != ''){
+            $paid_amount = PaymentsEdp::where('admission_no_id', $admission_no)->sum('payment_amount');
+
+            $admissionsEdp = AdmissionsEdp::find($admission_no);
+
+            $admissionsEdp->amount_paid = $paid_amount;
+            
+            $outstanding_balance = round($admissionsEdp->total_fees, 2) - round($paid_amount,2);
+            
+            $admissionsEdp->outstanding_balance = round($outstanding_balance, 2);
+
+            $admissionsEdp->save();
+        }
 
         return redirect()->route('admin.payments-edps.index');
     }
@@ -78,6 +112,18 @@ class PaymentsEdpController extends Controller
     public function destroy(PaymentsEdp $paymentsEdp)
     {
         abort_if(Gate::denies('payments_edp_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $payments = PaymentsEdp::where('admission_no_id', $paymentsEdp->admission_no_id);
+
+        if($payments->count()){
+            $admissionsEdp = AdmissionsEdp::find($paymentsEdp->admission_no_id);
+            
+            //update amount paid by deducting the deleted amount
+            $admissionsEdp->amount_paid = $admissionsEdp->amount_paid - $paymentsEdp->payment_amount;
+            $admissionsEdp->outstanding_balance = $admissionsEdp->outstanding_balance + $paymentsEdp->payment_amount;
+
+            $admissionsEdp->save();
+        }
 
         $paymentsEdp->delete();
 
