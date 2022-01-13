@@ -37,4 +37,46 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function azure()
+    {
+        return \Socialite::driver('azure')->redirect();
+    }
+
+    public function azureRedirect()
+    {
+        try {
+            $user = Socialite::driver('azure')->user();
+        } catch (Exception $e) {
+            return redirect('sign-in/azure');
+        }        
+
+        $authUser = $this->findOrCreateUser($user);
+
+        Auth::login($authUser, true);
+
+        return redirect('/');
+    }
+
+    private function findOrCreateUser($azureUser)
+    {
+    $authUser = User::where('email', $azureUser->email)->first();
+
+    if ($authUser){
+        return $authUser;
+    }else{
+        $createdUser =  User::create([
+            'name' => $azureUser->name,
+            'azure_id' => $azureUser->id,
+            'email' => $azureUser->email
+        ]);
+
+        $role = Role::find(2);
+        $createdUser->roles()->attach($role);
+
+        return $createdUser;
+    }
+
+
+}
 }
