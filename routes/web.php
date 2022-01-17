@@ -2,7 +2,7 @@
 
 Route::redirect('/', '/login');
 Route::get('/sign-in/azure', 'Auth\LoginController@azure');
-Route::get('/sign-in/azure/redirect', 'Auth/LoginController@azureRedirect');
+Route::get('/sign-in/azure/redirect', 'Auth\LoginController@azureRedirect');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
