@@ -46,7 +46,7 @@ class LoginController extends Controller
     public function azureRedirect()
     {
         try {
-            $user = Socialite::driver('azure')->user();
+            $user = \Socialite::driver('azure')->user();
         } catch (Exception $e) {
             return redirect('sign-in/azure');
         }        
@@ -59,24 +59,22 @@ class LoginController extends Controller
     }
 
     private function findOrCreateUser($azureUser)
-    {
-    $authUser = User::where('email', $azureUser->email)->first();
+    {    
+        $authUser = User::where('email', $azureUser->email)->first();
 
-    if ($authUser){
-        return $authUser;
-    }else{
-        $createdUser =  User::create([
-            'name' => $azureUser->name,
-            'azure_id' => $azureUser->id,
-            'email' => $azureUser->email
-        ]);
+        if ($authUser){
+            return $authUser;
+        }else{
+            $createdUser =  User::create([
+                'name' => $azureUser->name,
+                'azure_id' => $azureUser->id,
+                'email' => $azureUser->email
+            ]);
 
         $role = Role::find(2);
         $createdUser->roles()->attach($role);
 
         return $createdUser;
+        }
     }
-
-
-}
 }
