@@ -75,7 +75,7 @@
                     <hr>
                     <div class="row">
                         <div class="col-12">
-                            <a href="/sign-in/azure" class="btn btn-secondary btn-block">Sign in with Azure</a>
+                            <a href="/sign-in/azure" class="btn btn-secondary btn-block">Sign in with Microsoft</a>
                         </div>
                     </div>
                 <hr>
