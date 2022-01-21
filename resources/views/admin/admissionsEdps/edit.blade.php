@@ -380,7 +380,7 @@
                         for( var i in response ) {
                             x[i] = response[i];
                         }
-                        
+                    if(participants > 0){
                         for (let i = 1; i <= participants; i++) {   
                             participants_html += '<tr class="text-center"><th colspan=2>' + i + '. Participant</th>';
                             participants_html += '</tr><tr><th>Name</th><td>'+ x['participant_name_'+ i] +'</td></tr>'
@@ -388,9 +388,13 @@
                             participants_html += '<tr><th>Dietary</th><td>' + x['special_dietary_'+ i] + '</td></tr>';
                         }
                         $('#participants').html(participants_html);
+                        $('#participants').show(); 
+                    }else{
+                        participants_html = "";
+                        $('#participants').hide();
+                    }
                         $('#table_message').hide();
-                        $('#application_details').show();        
-                        $('#participants').show();        
+                        $('#application_details').show();       
                     }
                 }
             });

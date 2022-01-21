@@ -371,14 +371,19 @@
                     for( var i in response ) {
                         x[i] = response[i];
                     }
-                    
-                    for (let i = 1; i <= participants; i++) {   
-                        participants_html += '<tr class="text-center"><th colspan=2>' + i + '. Participant</th>';
-                        participants_html += '</tr><tr><th>Name</th><td>'+ x['participant_name_'+ i] +'</td></tr>'
-                        participants_html += '<tr><th>ID No.</th><td>' + x['id_no_'+ i] + '</td></tr>';
-                        participants_html += '<tr><th>Dietary</th><td>' + x['special_dietary_'+ i] + '</td></tr>';
+                    if(participants > 0){
+                        for (let i = 1; i <= participants; i++) {   
+                            participants_html += '<tr class="text-center"><th colspan=2>' + i + '. Participant</th>';
+                            participants_html += '</tr><tr><th>Name</th><td>'+ x['participant_name_'+ i] +'</td></tr>'
+                            participants_html += '<tr><th>ID No.</th><td>' + x['id_no_'+ i] + '</td></tr>';
+                            participants_html += '<tr><th>Dietary</th><td>' + x['special_dietary_'+ i] + '</td></tr>';
+                        }
+                        $('#participants').html(participants_html);
+                        $('#participants').show(); 
+                    }else{
+                        participants_html = "";
+                        $('#participants').hide();
                     }
-                    $('#participants').html(participants_html);
                     $('#table_message').hide();
                     $('#application_details').show();        
                 }
