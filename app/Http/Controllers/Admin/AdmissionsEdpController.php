@@ -103,6 +103,15 @@ class AdmissionsEdpController extends Controller
         return redirect()->route('admin.admissions-edps.index');
     }
 
+    public function getApplicationDetails($id = null)
+    {
+        if($id != null){
+            $admissionsEdp = EdpApp::where('id', $id)->with(['statuses', 'applicationNoAdmissionsEdps'])->first();
+            //dd($admissionsEdp);
+            return $admissionsEdp;
+        }
+    }
+
     public function show(AdmissionsEdp $admissionsEdp)
     {
         abort_if(Gate::denies('admissions_edp_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');

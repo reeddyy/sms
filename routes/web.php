@@ -131,8 +131,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Admissions Edp
     Route::delete('admissions-edps/destroy', 'AdmissionsEdpController@massDestroy')->name('admissions-edps.massDestroy');
-    Route::resource('admissions-edps', 'AdmissionsEdpController');
     Route::get('admissions-edps/programme-fees/{id}', 'AdmissionsEdpController@getEDPFees')->name('admissions-edps.getEDPFees');
+    Route::get('admissions-edps/application-details/{id}', 'AdmissionsEdpController@getApplicationDetails')->name('admissions-edps.getApplicationDetails');    
+    Route::resource('admissions-edps', 'AdmissionsEdpController');
 
     // Payments Edp
     Route::delete('payments-edps/destroy', 'PaymentsEdpController@massDestroy')->name('payments-edps.massDestroy');
