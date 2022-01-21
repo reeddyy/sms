@@ -349,6 +349,14 @@
                                 Sponsorship
                             </th>
                             <td id="sponsorship">
+                            
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Officer Name
+                            </th>
+                            <td id="officer_name">
                                 
                             </td>
                         </tr>
@@ -381,14 +389,6 @@
                                 Applicant ID No.
                             </th>
                             <td id="applicant_id_no">
-                            
-                            </td>
-                        </tr>
-                        <tr>
-                            <th width="25%"> 
-                                Officer Name
-                            </th>
-                            <td id="officer_name">
 
                             </td>
                         </tr>         
