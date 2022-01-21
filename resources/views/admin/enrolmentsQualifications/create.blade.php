@@ -492,12 +492,12 @@
                 $('#status').html(statuses);    
                 $('#enrolment_no').val(response.application_no);
                 $('#application_no').html(response.application_no);    
-                $('#sponsorship').html(response.sponsorship);    
+                $('#sponsorship').html(response.sponsorship);
+                $('#officer_name').html(response.officer_name);
                 $('#course').html(response.course);    
                 $('#commencement').html(response.commencement);    
                 $('#applicant_name').html(response.applicant_name);    
                 $('#applicant_id_no').html(response.id_no);    
-                $('#officer_name').html(response.officer_name);    
                 $('#table_message').hide();
                 $('#application_details').show();        
             }
