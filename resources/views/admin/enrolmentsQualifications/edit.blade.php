@@ -349,6 +349,14 @@
                                 Sponsorship
                             </th>
                             <td id="sponsorship">
+                            
+                            </td>
+                        </tr>
+                        <tr>
+                            <th width="25%"> 
+                                Officer Name
+                            </th>
+                            <td id="officer_name">
                                 
                             </td>
                         </tr>
@@ -381,14 +389,6 @@
                                 Applicant ID No.
                             </th>
                             <td id="applicant_id_no">
-                            
-                            </td>
-                        </tr>
-                        <tr>
-                            <th width="25%"> 
-                                Officer Name
-                            </th>
-                            <td id="officer_name">
 
                             </td>
                         </tr>         
@@ -471,12 +471,12 @@
                         });                
                         $('#status').html(statuses);    
                         $('#application_no').html(response.application_no);    
-                        $('#sponsorship').html(response.sponsorship);    
+                        $('#sponsorship').html(response.sponsorship);
+                        $('#officer_name').html(response.officer_name);
                         $('#course').html(response.course);    
                         $('#commencement').html(response.commencement);    
                         $('#applicant_name').html(response.applicant_name);    
-                        $('#applicant_id_no').html(response.id_no);    
-                        $('#officer_name').html(response.officer_name);    
+                        $('#applicant_id_no').html(response.id_no);
                         $('#table_message').hide();
                         $('#application_details').show();        
                     }
