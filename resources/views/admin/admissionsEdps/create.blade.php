@@ -140,7 +140,7 @@
                             <!-- Participant Name with ID -->
                             <div class="form-group">
                                 <label class="required" for="participant_name_id">{{ trans('cruds.admissionsEdp.fields.participant_name') }}</label>
-                                <select class="form-control select2 {{ $errors->has('student_name') ? 'is-invalid' : '' }}" name="student_name_id" id="student_name_id" required>
+                                <select class="form-control select2 {{ $errors->has('participant_name') ? 'is-invalid' : '' }}" name="participant_name_id" id="participant_name_id" required>
                                     <option value="">Please select</option>
                                     @foreach($participant_names as $participant_name)
                                         <option value="{{ $participant_name->id }}" {{ old('participant_name_id') == $participant_name->id ? 'selected' : '' }}>{{ $participant_name->name }} | {{ $participant_name->id_no }}</option>
@@ -151,7 +151,7 @@
                                         {{ $errors->first('participant_name_id') }}
                                     </div>
                                 @endif
-                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.student_name_helper') }}</span>
+                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.participant_name_helper') }}</span>
                             </div>
                         </div>
                     </div>

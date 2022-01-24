@@ -86,7 +86,7 @@ class AdmissionsEdpController extends Controller
 
         $venues = Venue::pluck('venue_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $participant_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $participant_names = Individual::select('name', 'id', 'id_no')->get();
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
