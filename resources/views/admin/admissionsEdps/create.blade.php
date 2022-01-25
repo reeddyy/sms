@@ -151,7 +151,7 @@
                                         {{ $errors->first('participant_name_id') }}
                                     </div>
                                 @endif
-                                <span class="help-block">{{ trans('cruds.enrolmentsQualification.fields.participant_name_helper') }}</span>
+                                <span class="help-block">{{ trans('cruds.admissionsEdp.fields.participant_name_helper') }}</span>
                             </div>
                         </div>
                     </div>
