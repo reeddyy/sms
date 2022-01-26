@@ -137,16 +137,18 @@
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <!-- Participant Name with ID -->
                             <div class="form-group">
-                                <label for="participant_name_id">{{ trans('cruds.admissionsEdp.fields.participant_name') }}</label>
-                                <select class="form-control select2 {{ $errors->has('participant_name') ? 'is-invalid' : '' }}" name="participant_name_id" id="participant_name_id">
-                                    @foreach($participant_names as $id => $entry)
-                                        <option value="{{ $id }}" {{ old('participant_name_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                                <label class="required" for="participant_name_id">{{ trans('cruds.admissionsEdp.fields.participant_name') }}</label>
+                                <select class="form-control select2 {{ $errors->has('participant_name') ? 'is-invalid' : '' }}" name="participant_name_id" id="participant_name_id" required>
+                                    <option value="">Please select</option>
+                                    @foreach($participant_names as $participant_name)
+                                        <option value="{{ $participant_name->id }}" {{ old('participant_name_id') == $participant_name->id ? 'selected' : '' }}>{{ $participant_name->name }} | {{ $participant_name->id_no }}</option>
                                     @endforeach
                                 </select>
-                                @if($errors->has('participant_name'))
+                                @if($errors->has('participant_name_id'))
                                     <div class="invalid-feedback">
-                                        {{ $errors->first('participant_name') }}
+                                        {{ $errors->first('participant_name_id') }}
                                     </div>
                                 @endif
                                 <span class="help-block">{{ trans('cruds.admissionsEdp.fields.participant_name_helper') }}</span>
