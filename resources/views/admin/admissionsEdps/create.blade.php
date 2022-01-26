@@ -362,17 +362,22 @@
                     $('#officer_name').html(response.officer_name);
                     $('#programme').html(response.programme);    
                     $('#commencement').html(response.commencement);   
-                    $('#no_participants').html(response.no_participants);
-                    // var participant_name_1 = response.participant_name_1 ? response.participant_name_1 : "";
-                    // var participant_name_2 = response.participant_name_2 ? response.participant_name_2 : "";
-                    // var participant_name_3 = response.participant_name_3 ? response.participant_name_3 : "";
+                    
 
-                    var participants = Number(response.no_participants);
+                    var participants = "";
+                    if(response.no_participants === "" || response.participants == null){
+                        participants = 1;
+                    }else{
+                        participants = Number(response.no_participants);
+                    }
+                    $('#no_participants').html(participants);
                     var participants_html = "";
                     x = [];
+
                     for( var i in response ) {
                         x[i] = response[i];
                     }
+
                     if(participants > 0){
                         for (let i = 1; i <= participants; i++) {   
                             participants_html += '<tr class="text-center"><th colspan=2>' + i + '. Participant</th>';
