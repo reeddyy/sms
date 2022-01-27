@@ -372,9 +372,16 @@
                         $('#officer_name').html(response.officer_name);
                         $('#programme').html(response.programme);    
                         $('#commencement').html(response.commencement);   
-                        $('#no_participants').html(response.no_participants);
 
-                        var participants = Number(response.no_participants);
+                        var participants = "";
+
+                        if(response.no_participants === "" || response.participants == null){
+                            participants = 1;
+                        }else{
+                            participants = Number(response.no_participants);
+                        }
+                        $('#no_participants').html(participants);
+
                         var participants_html = "";
                         x = [];
                         for( var i in response ) {
