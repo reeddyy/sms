@@ -375,11 +375,12 @@
 
                         var participants = "";
 
-                        if(response.no_participants === "" || response.participants == null){
+                        if(response.no_participants === "" || response.no_participants == null){
                             participants = 1;
                         }else{
                             participants = Number(response.no_participants);
                         }
+
                         $('#no_participants').html(participants);
 
                         var participants_html = "";
