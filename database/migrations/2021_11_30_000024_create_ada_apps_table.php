@@ -26,15 +26,15 @@ class CreateAdaAppsTable extends Migration
             $table->string('email')->nullable();
             $table->string('company_name_1')->nullable();
             $table->string('designation_1')->nullable();
-            $table->decimal('duration_1')->nullable();
+            $table->string('duration_1')->nullable();
             $table->string('country_1')->nullable();
             $table->string('company_name_2')->nullable();
             $table->string('designation_2')->nullable();
-            $table->decimal('duration_2')->nullable();
+            $table->string('duration_2')->nullable();
             $table->string('country_2')->nullable();
             $table->string('company_name_3')->nullable();
             $table->string('designation_3')->nullable();
-            $table->decimal('duration_3')->nullable();
+            $table->string('duration_3')->nullable();
             $table->string('country_3')->nullable();
             $table->string('programme_1')->nullable();
             $table->string('certificate_no_1')->nullable();
