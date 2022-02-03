@@ -168,8 +168,8 @@ class StoreQualificationsAppRequest extends FormRequest
                 'nullable',
             ],
             'year_attained_1' => [
+                'string',
                 'nullable',
-                'integer',
             ],
             'qualification_2' => [
                 'string',
@@ -184,8 +184,8 @@ class StoreQualificationsAppRequest extends FormRequest
                 'nullable',
             ],
             'year_attained_2' => [
+                'string',
                 'nullable',
-                'integer',
             ],
             'qualification_3' => [
                 'string',
@@ -200,8 +200,8 @@ class StoreQualificationsAppRequest extends FormRequest
                 'nullable',
             ],
             'year_attained_3' => [
+                'string',
                 'nullable',
-                'integer',
             ],
             'id_front' => [
                 'string',
