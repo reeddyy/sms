@@ -85,6 +85,10 @@ class StoreAdaAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'duration_1' => [
+                'string',
+                'nullable',
+            ],
             'country_1' => [
                 'string',
                 'nullable',
@@ -97,6 +101,10 @@ class StoreAdaAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'duration_2' => [
+                'string',
+                'nullable',
+            ],
             'country_2' => [
                 'string',
                 'nullable',
@@ -106,6 +114,10 @@ class StoreAdaAppRequest extends FormRequest
                 'nullable',
             ],
             'designation_3' => [
+                'string',
+                'nullable',
+            ],
+            'duration_3' => [
                 'string',
                 'nullable',
             ],
