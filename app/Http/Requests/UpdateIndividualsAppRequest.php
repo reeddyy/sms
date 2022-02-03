@@ -89,6 +89,10 @@ class UpdateIndividualsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'duration' => [
+                'string',
+                'nullable',
+            ],
             'job_function' => [
                 'string',
                 'nullable',
