@@ -127,6 +127,10 @@ class StoreQualificationsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'duration_1' => [
+                'string',
+                'nullable',
+            ],
             'company_name_2' => [
                 'string',
                 'nullable',
@@ -135,11 +139,19 @@ class StoreQualificationsAppRequest extends FormRequest
                 'string',
                 'nullable',
             ],
+            'duration_2' => [
+                'string',
+                'nullable',
+            ],
             'company_name_3' => [
                 'string',
                 'nullable',
             ],
             'designation_3' => [
+                'string',
+                'nullable',
+            ],
+            'duration_3' => [
                 'string',
                 'nullable',
             ],
@@ -158,8 +170,6 @@ class StoreQualificationsAppRequest extends FormRequest
             'year_attained_1' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'qualification_2' => [
                 'string',
@@ -176,8 +186,6 @@ class StoreQualificationsAppRequest extends FormRequest
             'year_attained_2' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'qualification_3' => [
                 'string',
@@ -194,8 +202,6 @@ class StoreQualificationsAppRequest extends FormRequest
             'year_attained_3' => [
                 'nullable',
                 'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'id_front' => [
                 'string',
