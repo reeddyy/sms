@@ -37,13 +37,13 @@ class CreateQualificationsAppsTable extends Migration
             $table->string('email')->nullable();
             $table->string('company_name_1')->nullable();
             $table->string('designation_1')->nullable();
-            $table->decimal('duration_1', 15, 1)->nullable();
+            $table->string('duration_1')->nullable();
             $table->string('company_name_2')->nullable();
             $table->string('designation_2')->nullable();
-            $table->decimal('duration_2', 15, 1)->nullable();
+            $table->string('duration_2')->nullable();
             $table->string('company_name_3')->nullable();
             $table->string('designation_3')->nullable();
-            $table->decimal('duration_3', 15, 1)->nullable();
+            $table->string('duration_3')->nullable();
             $table->string('qualification_1')->nullable();
             $table->string('level_1')->nullable();
             $table->string('institute_1')->nullable();

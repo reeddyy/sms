@@ -57,7 +57,7 @@ class AdmissionsEdpController extends Controller
 
         $venues = Venue::pluck('venue_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $participant_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $participant_names = Individual::select('name', 'id', 'id_no')->get();
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -86,7 +86,7 @@ class AdmissionsEdpController extends Controller
 
         $venues = Venue::pluck('venue_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $participant_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $participant_names = Individual::select('name', 'id', 'id_no')->get();
 
         $officer_names = Officer::pluck('officer_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -101,6 +101,15 @@ class AdmissionsEdpController extends Controller
         $admissionsEdp->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.admissions-edps.index');
+    }
+
+    public function getApplicationDetails($id = null)
+    {
+        if($id != null){
+            $admissionsEdp = EdpApp::where('id', $id)->with(['statuses', 'applicationNoAdmissionsEdps'])->first();
+            //dd($admissionsEdp);
+            return $admissionsEdp;
+        }
     }
 
     public function show(AdmissionsEdp $admissionsEdp)
