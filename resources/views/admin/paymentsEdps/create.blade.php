@@ -12,8 +12,8 @@
             <div class="form-group">
                 <label class="required" for="admission_no_id">{{ trans('cruds.paymentsEdp.fields.admission_no') }}</label>
                 <select class="form-control select2 {{ $errors->has('admission_no') ? 'is-invalid' : '' }}" name="admission_no_id" id="admission_no_id" required>
-                    @foreach($admission_nos as $id => $entry)
-                        <option value="{{ $id }}" {{ old('admission_no_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    @foreach($admission_nos as $admission_no)
+                        <option value="{{ $admission_no->id }}" {{ old('admission_no_id') == $admission_no->id ? 'selected' : '' }}>{{ $admission_no->admission_no }} | {{ $admission_no->participant_name->name }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('admission_no'))
