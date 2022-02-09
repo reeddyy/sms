@@ -32,7 +32,7 @@ class PaymentsEdpController extends Controller
     {
         abort_if(Gate::denies('payments_edp_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_nos = AdmissionsEdp::where('outstanding_balance', '!=', 0)->pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $admission_nos = AdmissionsEdp::where('outstanding_balance', '!=', 0)->select('id', 'admission_no', 'participant_name_id')->get();
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -68,7 +68,7 @@ class PaymentsEdpController extends Controller
     {
         abort_if(Gate::denies('payments_edp_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $admission_nos = AdmissionsEdp::where('outstanding_balance', '=', 0)->orWhere('id', $paymentsEdp->admission_no_id)->pluck('admission_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $admission_nos = AdmissionsEdp::where('outstanding_balance', '=', 0)->orWhere('id', $paymentsEdp->admission_no_id)->select('id', 'admission_no', 'participant_name_id')->get();
 
         $payment_sources = PaymentSource::pluck('payment_source_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
