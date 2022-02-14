@@ -26,14 +26,14 @@ class CreateIndividualsTable extends Migration
             $table->string('email_address');
             $table->string('company_name_1')->nullable();
             $table->string('job_designation_1')->nullable();
-            $table->decimal('duration_of_year_s_1', 15, 1)->nullable();
+            $table->decimal('duration_of_year_s_1', 15, 3)->nullable();
             $table->string('company_name_2')->nullable();
             $table->string('job_designation_2')->nullable();
-            $table->decimal('duration_of_year_s_2', 15, 1)->nullable();
+            $table->decimal('duration_of_year_s_2', 15, 3)->nullable();
             $table->string('company_name_3')->nullable();
             $table->string('job_designation_3')->nullable();
-            $table->decimal('duration_of_year_s_3', 15, 1)->nullable();
-            $table->decimal('total_year_s_related_work_exp', 15, 1)->nullable();
+            $table->decimal('duration_of_year_s_3', 15, 3)->nullable();
+            $table->decimal('total_year_s_related_work_exp', 15, 3)->nullable();
             $table->string('qual_title_1')->nullable();
             $table->string('qual_level_1')->nullable();
             $table->string('institute_name_1')->nullable();
