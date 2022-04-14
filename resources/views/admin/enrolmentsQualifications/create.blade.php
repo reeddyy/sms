@@ -318,7 +318,7 @@
                     <tbody id="table_message">
                         <tr class="text-center">
                             <th>
-                                Applicantion Details
+                                Application Details
                             </th>
                         </tr>
                         <tr>
@@ -330,7 +330,7 @@
                     <tbody id="application_details" style="display:none;">
                         <tr class="text-center">
                             <th colspan=2>
-                                Applicantion Details
+                                Application Details
                             </th>
                         </tr>
                         <tr>

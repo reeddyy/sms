@@ -142,7 +142,7 @@
                                 <label class="required" for="participant_name_id">{{ trans('cruds.admissionsEdp.fields.participant_name') }}</label>
                                 <select class="form-control select2 {{ $errors->has('participant_name') ? 'is-invalid' : '' }}" name="participant_name_id" id="participant_name_id" required>
                                     @foreach($participant_names as $participant_name)
-                                        <option value="{{ $participant_name->id }}" {{ (old('participant_name_id') ? old('participant_name_id') : $enrolmentsQualification->participant_name->id ?? '') == $participant_name->id ? 'selected' : '' }}>{{ $participant_name->name }} | {{ $participant_name->id_no }}</option>
+                                        <option value="{{ $participant_name->id }}" {{ (old('participant_name_id') ? old('participant_name_id') : $admissionsEdp->participant_name->id ?? '') == $participant_name->id ? 'selected' : '' }}>{{ $participant_name->name }} | {{ $participant_name->id_no }}</option>
                                     @endforeach
                                 </select>
                                 @if($errors->has('participant_name'))
@@ -249,7 +249,7 @@
                         <tbody id="table_message">
                             <tr class="text-center">
                                 <th colspan=2>
-                                    Applicantion Details
+                                    Application Details
                                 </th>
                             </tr>
                             <tr>
@@ -261,7 +261,7 @@
                         <tbody id="application_details" style="display:none;">
                             <tr class="text-center">
                                 <th colspan=2>
-                                    Applicantion Details
+                                    Application Details
                                 </th>
                             </tr>
                             <tr>
