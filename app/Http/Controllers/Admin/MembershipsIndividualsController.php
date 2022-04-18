@@ -34,6 +34,16 @@ class MembershipsIndividualsController extends Controller
         return view('admin.membershipsIndividuals.index', compact('membershipsIndividuals', 'status_memberships', 'individuals_apps', 'member_classes', 'individuals'));
     }
 
+    public function getApplicationDetails($id = null)
+    {
+        if($id != null){
+            $individuals_app = IndividualsApp::where('id', $id)->with(['statuses:id,status_name'])
+            ->select('id', 'application_no', 'member_class', 'name', 'id_no')
+            ->first();
+            return $individuals_app;
+        }
+    }
+
     public function create()
     {
         abort_if(Gate::denies('memberships_individual_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -44,7 +54,7 @@ class MembershipsIndividualsController extends Controller
 
         $member_classes = MemberClass::pluck('member_class_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $member_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_names = Individual::select('id', 'name', 'id_no')->get();
 
         return view('admin.membershipsIndividuals.create', compact('statuses', 'application_nos', 'member_classes', 'member_names'));
     }
@@ -67,7 +77,7 @@ class MembershipsIndividualsController extends Controller
 
         $member_classes = MemberClass::pluck('member_class_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $member_names = Individual::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_names = Individual::select('id', 'name', 'id_no')->get();
 
         $membershipsIndividual->load('statuses', 'application_no', 'member_class', 'member_name');
 

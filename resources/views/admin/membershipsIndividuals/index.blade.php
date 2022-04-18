@@ -135,6 +135,9 @@
                                 {{ $membershipsIndividual->member_status->status_name ?? '' }}
                             </td>
                             <td>
+                                {{ $membershipsIndividual->application_no->application_no ?? '' }}
+                            </td>
+                            <td>
                                 {{ $membershipsIndividual->member_class->member_class_name ?? '' }}
                             </td>
                             <td>
