@@ -49,8 +49,10 @@ class MembershipsIndividualsController extends Controller
         abort_if(Gate::denies('memberships_individual_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $statuses = StatusMembership::pluck('status_name', 'id');
+        
+        $exisiting_apps = MembershipsIndividual::select('application_no_id')->get()->toArray();
 
-        $application_nos = IndividualsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $application_nos = IndividualsApp::whereNotIn('id', $exisiting_apps)->pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $member_classes = MemberClass::pluck('member_class_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -73,7 +75,9 @@ class MembershipsIndividualsController extends Controller
 
         $statuses = StatusMembership::pluck('status_name', 'id');
 
-        $application_nos = IndividualsApp::pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $exisiting_apps = MembershipsIndividual::where('application_no_id', '!=', $membershipsIndividual->application_no_id)->select('application_no_id')->get()->toArray();
+
+        $application_nos = IndividualsApp::whereNotIn('id', $exisiting_apps)->pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $member_classes = MemberClass::pluck('member_class_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
