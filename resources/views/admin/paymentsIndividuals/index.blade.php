@@ -68,6 +68,7 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -81,6 +82,7 @@
                             </select>
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">

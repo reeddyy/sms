@@ -76,6 +76,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Memberships Individuals
     Route::delete('memberships-individuals/destroy', 'MembershipsIndividualsController@massDestroy')->name('memberships-individuals.massDestroy');
+    Route::get('memberships-individuals/application-details/{id}', 'MembershipsIndividualsController@getApplicationDetails')->name('memberships-individuals.getApplicationDetails');    
     Route::resource('memberships-individuals', 'MembershipsIndividualsController');
 
     // Certificates

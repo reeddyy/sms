@@ -93,8 +93,10 @@
                             </select>
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -114,6 +116,7 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
@@ -133,6 +136,9 @@
                             </td>
                             <td>
                                 {{ $membershipsIndividual->member_status->status_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $membershipsIndividual->application_no->application_no ?? '' }}
                             </td>
                             <td>
                                 {{ $membershipsIndividual->member_class->member_class_name ?? '' }}
