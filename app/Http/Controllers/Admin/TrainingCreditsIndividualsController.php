@@ -21,6 +21,11 @@ class TrainingCreditsIndividualsController extends Controller
 
         $trainingCreditsIndividuals = TrainingCreditsIndividual::with(['member_no', 'purpose'])->get();
 
+        // $trainingCreditsIndividuals = TrainingCreditsIndividual::with(['member_no', 'purpose'])
+        // ->groupBy('member_no_id')
+        // ->selectRaw('sum(amount) as total_amount, member_no_id')
+        // ->get();
+
         $memberships_individuals = MembershipsIndividual::get();
 
         $credits_funds_purposes = CreditsFundsPurpose::get();
@@ -32,7 +37,7 @@ class TrainingCreditsIndividualsController extends Controller
     {
         abort_if(Gate::denies('training_credits_individual_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         $purposes = CreditsFundsPurpose::pluck('purpose_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -50,7 +55,7 @@ class TrainingCreditsIndividualsController extends Controller
     {
         abort_if(Gate::denies('training_credits_individual_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         $purposes = CreditsFundsPurpose::pluck('purpose_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

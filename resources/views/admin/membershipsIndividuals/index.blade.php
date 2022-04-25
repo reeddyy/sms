@@ -156,10 +156,10 @@
                                 {{ $membershipsIndividual->member_name->name ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->training_credits ?? '' }}
+                                {{ $membershipsIndividual->memberNoTrainingCreditsIndividuals->sum('amount') ?? '' }}
                             </td>
                             <td>
-                                {{ $membershipsIndividual->support_funds ?? '' }}
+                                {{ $membershipsIndividual->memberNoSupportFundsIndividuals->sum('amount') ?? '' }}
                             </td>
                             <td>
                                 {{ $membershipsIndividual->admission_date ?? '' }}

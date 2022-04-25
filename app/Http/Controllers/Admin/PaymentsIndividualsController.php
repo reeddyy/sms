@@ -29,7 +29,7 @@ class PaymentsIndividualsController extends Controller
     {
         abort_if(Gate::denies('payments_individual_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         return view('admin.paymentsIndividuals.create', compact('member_nos'));
     }
@@ -45,7 +45,7 @@ class PaymentsIndividualsController extends Controller
     {
         abort_if(Gate::denies('payments_individual_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         $paymentsIndividual->load('member_no');
 

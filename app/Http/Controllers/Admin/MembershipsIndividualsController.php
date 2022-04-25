@@ -11,6 +11,8 @@ use App\Models\IndividualsApp;
 use App\Models\MemberClass;
 use App\Models\MembershipsIndividual;
 use App\Models\StatusMembership;
+use App\Models\TrainingCreditsIndividual;
+use App\Models\SupportFundsIndividual;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -75,6 +77,10 @@ class MembershipsIndividualsController extends Controller
 
         $statuses = StatusMembership::pluck('status_name', 'id');
 
+        $training_credits = $membershipsIndividual->memberNoTrainingCreditsIndividuals->sum('amount');
+
+        $support_funds = $membershipsIndividual->memberNoSupportFundsIndividuals->sum('amount');
+
         $exisiting_apps = MembershipsIndividual::where('application_no_id', '!=', $membershipsIndividual->application_no_id)->select('application_no_id')->get()->toArray();
 
         $application_nos = IndividualsApp::whereNotIn('id', $exisiting_apps)->pluck('application_no', 'id')->prepend(trans('global.pleaseSelect'), '');
@@ -85,12 +91,12 @@ class MembershipsIndividualsController extends Controller
 
         $membershipsIndividual->load('statuses', 'application_no', 'member_class', 'member_name');
 
-        return view('admin.membershipsIndividuals.edit', compact('statuses', 'application_nos', 'member_classes', 'member_names', 'membershipsIndividual'));
+        return view('admin.membershipsIndividuals.edit', compact('statuses', 'application_nos', 'member_classes', 'member_names', 'membershipsIndividual', 'training_credits', 'support_funds'));
     }
 
     public function update(UpdateMembershipsIndividualRequest $request, MembershipsIndividual $membershipsIndividual)
     {
-        $membershipsIndividual->update($request->all());
+        $membershipsIndividual->update($request->except(['training_credits', 'support_funds']));
         $membershipsIndividual->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.memberships-individuals.index');
