@@ -33,8 +33,6 @@ class MembershipsIndividual extends Model
         'valid_till',
         'member_no',
         'member_name_id',
-        'training_credits',
-        'support_funds',
         'admission_date',
         'note',
         'created_at',
@@ -110,5 +108,10 @@ class MembershipsIndividual extends Model
     protected function serializeDate(DateTimeInterface $date)
     {
         return $date->format('Y-m-d H:i:s');
+    }
+
+    public function training_credits()
+    {
+        return $this->hasMany(TrainingCreditsIndividual::class, 'member_no_id', 'id')->sum('amount');
     }
 }

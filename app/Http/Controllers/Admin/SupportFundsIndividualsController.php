@@ -35,7 +35,7 @@ class SupportFundsIndividualsController extends Controller
     {
         abort_if(Gate::denies('support_funds_individual_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         $fund_names = SupportFund::pluck('fund_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
@@ -55,7 +55,7 @@ class SupportFundsIndividualsController extends Controller
     {
         abort_if(Gate::denies('support_funds_individual_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $member_nos = MembershipsIndividual::pluck('member_no', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $member_nos = MembershipsIndividual::select('member_no', 'id', 'member_name_id')->get();
 
         $fund_names = SupportFund::pluck('fund_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 

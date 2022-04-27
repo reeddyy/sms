@@ -86,7 +86,7 @@
                             {{ trans('cruds.membershipsIndividual.fields.training_credits') }}
                         </th>
                         <td>
-                            {{ $membershipsIndividual->training_credits }}
+                            {{ $membershipsIndividual->memberNoTrainingCreditsIndividuals->sum('amount') ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -94,7 +94,7 @@
                             {{ trans('cruds.membershipsIndividual.fields.support_funds') }}
                         </th>
                         <td>
-                            {{ $membershipsIndividual->support_funds }}
+                            {{ $membershipsIndividual->memberNoSupportFundsIndividuals->sum('amount') ?? '' }}
                         </td>
                     </tr>
                     <tr>

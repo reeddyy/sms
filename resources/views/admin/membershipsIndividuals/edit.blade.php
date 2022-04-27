@@ -124,7 +124,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="training_credits">{{ trans('cruds.membershipsIndividual.fields.training_credits') }}</label>
-                                <input class="form-control {{ $errors->has('training_credits') ? 'is-invalid' : '' }}" type="number" name="training_credits" id="training_credits" value="{{ old('training_credits', $membershipsIndividual->training_credits) }}" step="0.01">
+                                <input readonly class="form-control {{ $errors->has('training_credits') ? 'is-invalid' : '' }}" type="number" name="training_credits" id="training_credits" value="{{ old('training_credits', $training_credits) }}" step="0.01">
                                 @if($errors->has('training_credits'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('training_credits') }}
@@ -136,7 +136,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="support_funds">{{ trans('cruds.membershipsIndividual.fields.support_funds') }}</label>
-                                <input class="form-control {{ $errors->has('support_funds') ? 'is-invalid' : '' }}" type="number" name="support_funds" id="support_funds" value="{{ old('support_funds', $membershipsIndividual->support_funds) }}" step="0.01">
+                                <input readonly class="form-control {{ $errors->has('support_funds') ? 'is-invalid' : '' }}" type="number" name="support_funds" id="support_funds" value="{{ old('support_funds', $support_funds) }}" step="0.01">
                                 @if($errors->has('support_funds'))
                                     <div class="invalid-feedback">
                                         {{ $errors->first('support_funds') }}

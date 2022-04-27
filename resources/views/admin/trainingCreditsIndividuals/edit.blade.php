@@ -13,8 +13,9 @@
             <div class="form-group">
                 <label class="required" for="member_no_id">{{ trans('cruds.trainingCreditsIndividual.fields.member_no') }}</label>
                 <select class="form-control select2 {{ $errors->has('member_no') ? 'is-invalid' : '' }}" name="member_no_id" id="member_no_id" required>
-                    @foreach($member_nos as $id => $entry)
-                        <option value="{{ $id }}" {{ (old('member_no_id') ? old('member_no_id') : $trainingCreditsIndividual->member_no->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
+                    <option value=""> Select Member</option>
+                    @foreach($member_nos as $member_no)
+                        <option value="{{ $member_no->id }}" {{ (old('member_no_id') ? old('member_no_id') : $trainingCreditsIndividual->member_no->id ?? '') == $member_no->id ? 'selected' : '' }}>{{ $member_no->member_no }} | {{ $member_no->member_name->name }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('member_no'))

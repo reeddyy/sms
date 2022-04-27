@@ -255,6 +255,7 @@
 $('#application_no_id').change(function(){
         var application_no = $("#application_no_id option:selected").text();
         $("#member_no").val(application_no);
+        //getFundAmounts(application_no);
 
         //Loading Application details
 
@@ -288,5 +289,10 @@ $('#application_no_id').change(function(){
             $('#table_message').show();  
         }
     });
+
+    function getFundAmounts()
+    {
+
+    }
 </script>
 @endsection
