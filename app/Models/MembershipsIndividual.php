@@ -34,6 +34,8 @@ class MembershipsIndividual extends Model
         'member_no',
         'member_name_id',
         'admission_date',
+        'training_credits',
+        'support_funds',
         'note',
         'created_at',
         'updated_at',
