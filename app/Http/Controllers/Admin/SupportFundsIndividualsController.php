@@ -11,6 +11,7 @@ use App\Models\MembershipsIndividual;
 use App\Models\SupportFund;
 use App\Models\SupportFundsIndividual;
 use Gate;
+use DB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,9 +47,28 @@ class SupportFundsIndividualsController extends Controller
 
     public function store(StoreSupportFundsIndividualRequest $request)
     {
-        $supportFundsIndividual = SupportFundsIndividual::create($request->all());
+        try {          
 
-        return redirect()->route('admin.support-funds-individuals.index');
+            DB::beginTransaction();
+
+            $supportFundsIndividual = SupportFundsIndividual::create($request->all());
+
+            $total_support_funds = SupportFundsIndividual::where('member_no_id', $supportFundsIndividual->member_no_id)
+                                    ->sum('amount');
+
+            MembershipsIndividual::find($supportFundsIndividual->member_no_id)
+                                    ->update(['support_funds' => $total_support_funds]);
+
+            DB::commit();
+
+            return redirect()->route('admin.support-funds-individuals.index');
+
+        } catch (\Exception $e) {
+
+            DB::rollback();
+            throw $e;
+
+        }
     }
 
     public function edit(SupportFundsIndividual $supportFundsIndividual)
@@ -68,9 +88,26 @@ class SupportFundsIndividualsController extends Controller
 
     public function update(UpdateSupportFundsIndividualRequest $request, SupportFundsIndividual $supportFundsIndividual)
     {
-        $supportFundsIndividual->update($request->all());
+        try{
+            DB::beginTransaction();
 
-        return redirect()->route('admin.support-funds-individuals.index');
+            $member_no_id = $supportFundsIndividual->member_no_id;
+
+            $supportFundsIndividual->update($request->all());
+
+            $total_support_funds = SupportFundsIndividual::where('member_no_id', $member_no_id)
+            ->sum('amount');
+
+            MembershipsIndividual::find($member_no_id)
+            ->update(['support_funds' => $total_support_funds]);
+
+            DB::commit();
+
+            return redirect()->route('admin.support-funds-individuals.index');
+        }catch(\Exception $e){
+            DB::rollback();
+            throw $e;
+        }
     }
 
     public function show(SupportFundsIndividual $supportFundsIndividual)
@@ -86,9 +123,27 @@ class SupportFundsIndividualsController extends Controller
     {
         abort_if(Gate::denies('support_funds_individual_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $supportFundsIndividual->delete();
+        try {
+            DB::beginTransaction();
+            $member_no_id = $supportFundsIndividual->member_no_id;
 
-        return back();
+            $supportFundsIndividual->delete();
+    
+            $total_support_funds = SupportFundsIndividual::where('member_no_id', $member_no_id)
+            ->sum('amount');
+    
+            MembershipsIndividual::find($member_no_id)
+            ->update(['support_funds' => $total_support_funds]);    
+            
+            DB::commit();
+    
+            return back();
+        } catch (\Throwable $th) {
+            DB::rollback();
+            throw $e;
+        }
+        
+
     }
 
     public function massDestroy(MassDestroySupportFundsIndividualRequest $request)

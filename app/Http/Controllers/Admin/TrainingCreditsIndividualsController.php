@@ -10,6 +10,7 @@ use App\Models\CreditsFundsPurpose;
 use App\Models\MembershipsIndividual;
 use App\Models\TrainingCreditsIndividual;
 use Gate;
+use DB;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -46,9 +47,26 @@ class TrainingCreditsIndividualsController extends Controller
 
     public function store(StoreTrainingCreditsIndividualRequest $request)
     {
-        $trainingCreditsIndividual = TrainingCreditsIndividual::create($request->all());
+        try{
 
-        return redirect()->route('admin.training-credits-individuals.index');
+            DB::beginTransaction();
+            $trainingCreditsIndividual = TrainingCreditsIndividual::create($request->all());
+
+            $total_training_credits = TrainingCreditsIndividual::where('member_no_id', $trainingCreditsIndividual->member_no_id)
+                ->sum('amount');
+    
+            MembershipsIndividual::find($trainingCreditsIndividual->member_no_id)
+            ->update(['training_credits' => $total_training_credits]);
+
+            DB::commit();
+    
+            return redirect()->route('admin.training-credits-individuals.index');
+
+        }catch(\Exception $e){
+            DB::rollback();
+            throw $e;
+        }
+        
     }
 
     public function edit(TrainingCreditsIndividual $trainingCreditsIndividual)
@@ -66,9 +84,28 @@ class TrainingCreditsIndividualsController extends Controller
 
     public function update(UpdateTrainingCreditsIndividualRequest $request, TrainingCreditsIndividual $trainingCreditsIndividual)
     {
-        $trainingCreditsIndividual->update($request->all());
+        
+        try{
+            DB::beginTransaction();
 
-        return redirect()->route('admin.training-credits-individuals.index');
+            $member_no_id = $trainingCreditsIndividual->member_no_id;
+
+            $trainingCreditsIndividual->update($request->all());
+
+            $total_training_credits = TrainingCreditsIndividual::where('member_no_id', $member_no_id)
+            ->sum('amount');
+
+            MembershipsIndividual::find($member_no_id)
+            ->update(['training_credits' => $total_training_credits]);
+
+            DB::commit();
+    
+            return redirect()->route('admin.training-credits-individuals.index');
+        }catch(\Exception $e){
+            DB::rollback();
+            throw $e;
+        }
+        
     }
 
     public function show(TrainingCreditsIndividual $trainingCreditsIndividual)
@@ -84,9 +121,26 @@ class TrainingCreditsIndividualsController extends Controller
     {
         abort_if(Gate::denies('training_credits_individual_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $trainingCreditsIndividual->delete();
+        try {
+            DB::beginTransaction();
+            $member_no_id = $trainingCreditsIndividual->member_no_id;
+    
+            $trainingCreditsIndividual->delete();
+    
+            $total_training_credits = TrainingCreditsIndividual::where('member_no_id', $member_no_id)
+                ->sum('amount');
+    
+            MembershipsIndividual::find($member_no_id)
+            ->update(['training_credits' => $total_training_credits]);
 
-        return back();
+            DB::commit();
+    
+            return back();
+
+        } catch (\Exception $e) {
+            DB::rollback();
+            throw $e;
+        }
     }
 
     public function massDestroy(MassDestroyTrainingCreditsIndividualRequest $request)
