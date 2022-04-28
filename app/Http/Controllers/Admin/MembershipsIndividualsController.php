@@ -96,7 +96,7 @@ class MembershipsIndividualsController extends Controller
 
     public function update(UpdateMembershipsIndividualRequest $request, MembershipsIndividual $membershipsIndividual)
     {
-        $membershipsIndividual->update($request->all());
+        $membershipsIndividual->update($request->except(['training_credits', 'support_funds']));
         $membershipsIndividual->statuses()->sync($request->input('statuses', []));
 
         return redirect()->route('admin.memberships-individuals.index');
